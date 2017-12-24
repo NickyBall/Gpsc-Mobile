@@ -9,6 +9,7 @@ import {
  MarkerOptions,
  Marker
 } from '@ionic-native/google-maps';
+import { PlantPage } from '../plant/plant';
 
 /**
  * Generated class for the WorldPage page.
@@ -24,6 +25,7 @@ import {
 })
 export class WorldPage {
   map: GoogleMap;
+  plantPage = PlantPage;
   countryList = JSON.parse(`[
   {
     "order": 1,
@@ -272,7 +274,12 @@ export class WorldPage {
   }
 
   selectedCountry(item) {
-    alert(item.name);
+    if (item.order == 1) {
+      this.navCtrl.push(this.plantPage);
+    } else {
+      alert(item.name + ' has no data');
+    }
+
   }
 
 }
