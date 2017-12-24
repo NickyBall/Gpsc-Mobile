@@ -7,5 +7,22 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-card (click)="changePage(1)">
+    <ion-card-content>
+      <img item-start/>
+      <h1>General Information</h1>
+    </ion-card-content>
+  </ion-card>
+  <ion-card (click)="changePage(2)">
+    <ion-card-content >
+      <img item-start/>
+      <h1>Plant Layout</h1>
+    </ion-card-content>
+  </ion-card>
+  <ion-card (click)="changePage(3)">
+    <ion-card-content >
+      <img item-start/>
+      <h1>Executive Summary</h1>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

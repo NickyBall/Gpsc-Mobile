@@ -10,6 +10,9 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { WorldPage } from '../pages/world/world';
 import { PlantPage } from '../pages/plant/plant';
+import { InfoPage } from '../pages/info/info';
+import { LayoutPage } from '../pages/layout/layout';
+import { SummaryPage } from '../pages/summary/summary';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { PlantPage } from '../pages/plant/plant';
     HomePage,
     LoginPage,
     WorldPage,
-    PlantPage
+    PlantPage,
+    InfoPage,
+    LayoutPage,
+    SummaryPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,10 @@ import { PlantPage } from '../pages/plant/plant';
     HomePage,
     LoginPage,
     WorldPage,
-    PlantPage
+    PlantPage,
+    InfoPage,
+    LayoutPage,
+    SummaryPage
   ],
   providers: [
     StatusBar,
