@@ -2,4 +2,15 @@ page-world {
   #map_canvas {
       height: 40%;
   }
+  .scroll-content {
+    padding: 0px !important;
+  }
+  .item[no-lines].bottom-border { 
+    border-bottom: 1px solid #eeeeee; 
+  }
+  .toolbar-title {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+  }
 }
