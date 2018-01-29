@@ -7,6 +7,7 @@ import {
  GoogleMapOptions
 } from '@ionic-native/google-maps';
 import { PlantPage } from '../plant/plant';
+import { CountryServiceProvider } from '../../providers/country-service/country-service';
 
 /**
  * Generated class for the WorldPage page.
@@ -23,88 +24,102 @@ import { PlantPage } from '../plant/plant';
 export class WorldPage {
   map: GoogleMap;
   plantPage = PlantPage;
-  countryList = JSON.parse(`[
-  {
-    "order": 1,
-    "name": "THAILAND",
-    "geolocation": {
-      "lat": 15.87,
-      "lng": 100.9925
-    },
-    "categories": [
-      {
-        "name": "powerPlant",
-        "imgUrl": "http://via.placeholder.com/50x50"
-      },
-      {
-        "name": "solarPlant",
-        "imgUrl": "http://via.placeholder.com/50x50"
-      }
-    ]
-  },
-  {
-    "order": 2,
-    "name": "LAOS",
-    "geolocation": {
-      "lat": 19.8563,
-      "lng": 102.4955
-    },
-    "categories": [
-      {
-        "name": "damPlant",
-        "imgUrl": "http://via.placeholder.com/50x50"
-      }
-    ]
-  },
-  {
-    "order": 3,
-    "name": "JAPAN",
-    "geolocation": {
-      "lat": 36.2048,
-      "lng": 138.2529
-    },
-    "categories": [
-      {
-        "name": "solarPlant",
-        "imgUrl": "http://via.placeholder.com/50x50"
-      }
-    ]
-  },
-  {
-    "order": 4,
-    "name": "USA",
-    "geolocation": {
-      "lat": 42.877742,
-      "lng": -97.380979
-    },
-    "categories": [
-      {
-        "name": "windPlant",
-        "imgUrl": "http://via.placeholder.com/50x50"
-      }
-    ]
-  },
-  {
-    "order": 5,
-    "name": "MYANMAR",
-    "geolocation": {
-      "lat": 21.9162,
-      "lng": 95.956
-    },
-    "categories": [
-      {
-        "name": "powerPlant",
-        "imgUrl": "http://via.placeholder.com/50x50"
-      },
-      {
-        "name": "damPlant",
-        "imgUrl": "http://via.placeholder.com/50x50"
-      }
-    ]
-  }
-]`);
+//   countryList = JSON.parse(`
+//   [
+//   {
+//     "order": 1,
+//     "name": "THAILAND",
+//     "geolocation": {
+//       "lat": 15.87,
+//       "lng": 100.9925
+//     },
+//     "categories": [
+//       {
+//         "name": "powerPlant",
+//         "imgUrl": "http://via.placeholder.com/50x50"
+//       },
+//       {
+//         "name": "solarPlant",
+//         "imgUrl": "http://via.placeholder.com/50x50"
+//       }
+//     ]
+//   },
+//   {
+//     "order": 2,
+//     "name": "LAOS",
+//     "geolocation": {
+//       "lat": 19.8563,
+//       "lng": 102.4955
+//     },
+//     "categories": [
+//       {
+//         "name": "damPlant",
+//         "imgUrl": "http://via.placeholder.com/50x50"
+//       }
+//     ]
+//   },
+//   {
+//     "order": 3,
+//     "name": "JAPAN",
+//     "geolocation": {
+//       "lat": 36.2048,
+//       "lng": 138.2529
+//     },
+//     "categories": [
+//       {
+//         "name": "solarPlant",
+//         "imgUrl": "http://via.placeholder.com/50x50"
+//       }
+//     ]
+//   },
+//   {
+//     "order": 4,
+//     "name": "USA",
+//     "geolocation": {
+//       "lat": 42.877742,
+//       "lng": -97.380979
+//     },
+//     "categories": [
+//       {
+//         "name": "windPlant",
+//         "imgUrl": "http://via.placeholder.com/50x50"
+//       }
+//     ]
+//   },
+//   {
+//     "order": 5,
+//     "name": "MYANMAR",
+//     "geolocation": {
+//       "lat": 21.9162,
+//       "lng": 95.956
+//     },
+//     "categories": [
+//       {
+//         "name": "powerPlant",
+//         "imgUrl": "http://via.placeholder.com/50x50"
+//       },
+//       {
+//         "name": "damPlant",
+//         "imgUrl": "http://via.placeholder.com/50x50"
+//       }
+//     ]
+//   }
+// ]`);
+  countryList: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps, public countryProvider: CountryServiceProvider) {
+    this.getCountryList();
+  }
+
+  getCountryList() {
+    let param = {
+      UserCode: "UserCode123456"
+    };
+    let UserCode = "UserCode123456";
+    this.countryProvider.getAllCountry(UserCode).then(data => {
+      this.countryList = data;
+      console.log(data);
+    });
   }
 
   ionViewDidLoad() {
