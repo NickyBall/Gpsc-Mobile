@@ -1,6 +1,6 @@
 page-info {
     .tt-content{
-        max-width:980px;
+        max-height:200px;
         margin:auto;
         background-color: rgb(192, 155, 212)
     }
@@ -24,5 +24,9 @@ page-info {
 
     ion-note{
         font-size: small;
+    }
+
+    .icon-size{
+        height: 20px;
     }
 }
