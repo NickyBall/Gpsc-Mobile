@@ -38,7 +38,7 @@
                     <!-- ... -->
                     <ion-list>
                         <ion-item *ngFor="let item of streamList" (click)="selectedPlant(item)">
-                            <div class="item-icon" item-start><img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}"/></div>
+                            <div class="item-icon" item-start text-center><img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}"/></div>
                             <div class="item-name">{{item.PlantName}}</div>
                             <div class="item-share"  item-end><ion-icon name="rose"></ion-icon></div>
                         </ion-item>
@@ -50,7 +50,7 @@
                     <!-- ... -->
                     <ion-list>
                         <ion-item *ngFor="let item of solarList" (click)="selectedPlant(item)">
-                            <div class="item-icon" item-start><img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}"/></div>
+                            <div class="item-icon" item-start text-center><img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}"/></div>
                             <div class="item-name">{{item.PlantName}}</div>
                             <div class="item-share"  item-end><ion-icon name="rose"></ion-icon></div>
                         </ion-item>
