@@ -2,31 +2,46 @@ page-info {
     .tt-content{
         max-height:200px;
         margin:auto;
-        background-color: rgb(192, 155, 212)
     }
 
     ion-item:nth-child(even) {
         background-color: rgb(224, 226, 225);
-        font-size: small;
-        max-height: 20px;
-        contain:none;
+        max-height: 15px;
+        vertical-align:middle;
+
     }
 
     ion-item:nth-child(odd) {
-        font-size: small;
-        max-height: 20px;
-        contain:none;
-    }
-
-    .custom-icon-size{
-        font-size: 20px;
+        max-height: 15px;
+        vertical-align:middle;
+     
     }
 
     ion-note{
         font-size: small;
+        position: relative;
+        left: -10%;
+        float: left;
+   
     }
 
     .icon-size{
         height: 20px;
     }
+
+    ion-img{
+        background-color: transparent;
+    }
+
+    .detail{
+        position: relative;
+        left: 5%;
+    }
+
+    .img-list{
+        position: relative;
+        left: 4%;
+        vertical-align:middle;
+    }
+
 }
