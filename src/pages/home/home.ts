@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { LayoutPage } from '../layout/layout';
 import { SummaryPage } from '../summary/summary';
@@ -12,8 +12,11 @@ export class HomePage {
   infoPage = InfoPage;
   layoutPage = LayoutPage;
   summaryPage = SummaryPage;
-  constructor(public navCtrl: NavController) {
 
+  plantData: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.plantData = this.navParams.get('plantData');
   }
 
   changePage(page) {
@@ -29,7 +32,9 @@ export class HomePage {
         nextPage = this.summaryPage;
         break;
     }
-    this.navCtrl.push(nextPage);
+    this.navCtrl.push(nextPage, {
+      plantData: this.plantData
+    });
   }
 
 }

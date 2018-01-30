@@ -1,47 +1,27 @@
 page-info {
-    .tt-content{
-        max-height:200px;
-        margin:auto;
-    }
-
     ion-item:nth-child(even) {
         background-color: rgb(224, 226, 225);
         max-height: 15px;
-        vertical-align:middle;
-
     }
 
     ion-item:nth-child(odd) {
         max-height: 15px;
-        vertical-align:middle;
-     
     }
 
     ion-note{
         font-size: small;
         position: relative;
-        left: -10%;
-        float: left;
-   
+        left: -20%;
     }
 
-    .icon-size{
-        height: 20px;
-    }
-
-    ion-img{
-        background-color: transparent;
-    }
-
-    .detail{
+    .icon-info{
         position: relative;
-        left: 5%;
+        left: -17%;
     }
 
-    .img-list{
-        position: relative;
-        left: 4%;
-        vertical-align:middle;
+    .tt-content{
+        max-height:200px;
+        margin:auto;
     }
 
 }

@@ -203,25 +203,19 @@ export class PlantPage {
     ]
     `);
 
-  private plantData: any;
-  private dummyData = {
-    "UserCode" : "UserCode123456",
-    "PlantId" : 5
-  }
-
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               private googleMap: GoogleMaps,
               public plantProvider: PlantProvider) {
   }
 
-  getPlantData(){
-    this.plantProvider.requestPlant(this.dummyData)
+  selectedPlant(item){
+    this.plantProvider.requestPlant(item.order)
       .then(data => {
-        this.plantData = data;
+        this.navCtrl.push(this.homePage, { plantData:data });
       });
-  //  this.plantData = this.dummyData;
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlantPage');
@@ -384,14 +378,6 @@ export class PlantPage {
         });
 
       });
-  }
-
-  selectedPlant(item) {
-    if (item.order == 5) {
-      this.navCtrl.push(this.homePage);
-    } else {
-      alert (item.name + ' has no data.');
-    }
   }
 
 }

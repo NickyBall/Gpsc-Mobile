@@ -17,12 +17,12 @@ export class PlantProvider {
     console.log('Hello PlantProvider Provider');
   }
 
-  requestPlant(data){
+  requestPlant(id){
     return new Promise(resolve => {
       this.http.post(this.apiUrl, 
         {
           UserCode: "UserCode123456",
-          PlantId: 5
+          PlantId: id
         },
         {
           headers: {
@@ -38,14 +38,4 @@ export class PlantProvider {
     })
   }
 
-  // addUser(data) {
-  //   return new Promise((resolve, reject) => {
-  //     this.http.post(this.apiUrl, JSON.stringify(data))
-  //       .subscribe(res => {
-  //         resolve(res);
-  //       }, (err) => {
-  //         reject(err);
-  //       });
-  //   });
-  // }
 }
