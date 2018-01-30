@@ -23,6 +23,9 @@ import { HomePage } from '../home/home';
 export class PlantPage {
   map: GoogleMap;
   homePage = HomePage;
+  selectedSection = 'tabButtonTwo';
+  tabOneImg = './assets/imgs/i3.png';
+  tabTwoImg = './assets/imgs/i2.png';
   plantList = JSON.parse(`
     [
       {
@@ -203,11 +206,22 @@ export class PlantPage {
     `);
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlantPage');
     this.loadMap();
+  }
+
+  segmentClick(selectedSection) {
+    this.tabOneImg = './assets/imgs/i3.png';
+    this.tabTwoImg = './assets/imgs/i1.png';
+    if (selectedSection == 'tabButtonOne') {
+      this.tabOneImg = './assets/imgs/i4.png';
+    } else if (selectedSection == 'tabButtonTwo') {
+      this.tabTwoImg = './assets/imgs/i2.png';
+    }
   }
 
   loadMap(){

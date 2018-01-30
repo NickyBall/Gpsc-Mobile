@@ -286,7 +286,7 @@ export class WorldPage {
   }
 
   selectedCountry(item) {
-    if (item.order == 1) {
+    if (item.CountryId == 1) {
       this.navCtrl.push(this.plantPage);
     } else {
       alert(item.name + ' has no data');
