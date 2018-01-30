@@ -15,6 +15,8 @@ import { LayoutPage } from '../pages/layout/layout';
 import { SummaryPage } from '../pages/summary/summary';
 import { PlantProvider } from '../providers/plant/plant';
 import { HttpClientModule } from '@angular/common/http';
+import { MomentPipe } from '../pipes/moment/moment';
+import { MomentModule } from 'angular2-moment';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     HttpClientModule,
+    MomentModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

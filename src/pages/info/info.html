@@ -30,7 +30,7 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Wolfsburg_VW-Werk.jpg" alt="">
       </ion-col>
     </ion-row>
-    <!-- <ion-row>
+    <ion-row>
       <ion-col class="tt-content">
         <img src="https://2.imimg.com/data2/GU/KV/MY-1838556/vastu-for-factory-500x500.jpg" alt="">
       </ion-col>
@@ -40,12 +40,8 @@
       <ion-col>
         <img src="https://www.soneticscorp.com/wp-content/uploads/2016/07/Volkswagen.jpg" alt="">
       </ion-col>
-    </ion-row> -->
-    <ion-row>
-      <ion-col>
-          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="codDate"></ion-datetime>
-      </ion-col>
     </ion-row>
+ 
   </ion-grid>
   
    <ion-footer>
@@ -113,8 +109,9 @@
           </ion-col>
           <ion-col align-self-center col-md-7>
             <ion-note>
-              <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+              <!-- <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime> -->
               <!-- {{ plantData.PlantInfo.COD }} -->
+              {{ plantData.PlantInfo.COD | amDateFormat:'MMMM-YYYY' }}
             </ion-note>
           </ion-col>
         </ion-row>     
@@ -130,8 +127,9 @@
             <div>PPA</div>
           </ion-col>
           <ion-col align-self-center col-md-7>
-              <!-- {{ plantData.PlantInfo.PPA }} -->
-              <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="plantData.PlantInfo.PPA"></ion-datetime>
+            <ion-note>
+                {{ plantData.PlantInfo.PPA | amDuration:'years' }}
+            </ion-note>
           </ion-col>
         </ion-row>     
       </ion-item>
