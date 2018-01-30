@@ -7,6 +7,7 @@ import {
  GoogleMapOptions
 } from '@ionic-native/google-maps';
 import { HomePage } from '../home/home';
+import { PlantProvider } from '../../providers/plant/plant';
 
 /**
  * Generated class for the PlantPage page.
@@ -202,7 +203,24 @@ export class PlantPage {
     ]
     `);
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps) {
+  private plantData: any;
+  private dummyData = {
+    "UserCode" : "UserCode123456",
+    "PlantId" : 5
+  }
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              private googleMap: GoogleMaps,
+              public plantProvider: PlantProvider) {
+  }
+
+  getPlantData(){
+    this.plantProvider.requestPlant(this.dummyData)
+      .then(data => {
+        this.plantData = data;
+      });
+  //  this.plantData = this.dummyData;
   }
 
   ionViewDidLoad() {

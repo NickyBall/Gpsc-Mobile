@@ -13,6 +13,8 @@ import { PlantPage } from '../pages/plant/plant';
 import { InfoPage } from '../pages/info/info';
 import { LayoutPage } from '../pages/layout/layout';
 import { SummaryPage } from '../pages/summary/summary';
+import { PlantProvider } from '../providers/plant/plant';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { SummaryPage } from '../pages/summary/summary';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -44,7 +47,8 @@ import { SummaryPage } from '../pages/summary/summary';
     StatusBar,
     SplashScreen,
     GoogleMaps,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PlantProvider
   ]
 })
 export class AppModule {}
