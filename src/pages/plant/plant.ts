@@ -7,6 +7,7 @@ import {
  GoogleMapOptions
 } from '@ionic-native/google-maps';
 import { HomePage } from '../home/home';
+import { CompanyProvider } from '../../providers/company/company';
 
 /**
  * Generated class for the PlantPage page.
@@ -26,192 +27,25 @@ export class PlantPage {
   selectedSection = 'tabButtonTwo';
   tabOneImg = './assets/imgs/i3.png';
   tabTwoImg = './assets/imgs/i2.png';
-  plantList = JSON.parse(`
-    [
-      {
-        "order": 1,
-        "name": "RPCL",
-        "imgUrl": "http://via.placeholder.com/50x50",
-        "power": [
-          {
-            "name": "electricPower",
-            "values": [
-              {
-                "value": 1400,
-                "unit": "MW"
-              }
-            ]
-          }
-        ],
-        "sharities": [
-          {
-            "name": "GPSC",
-            "stock": 15
-          }
-        ],
-        "geolocation": {
-          "lat": 17.573643,
-          "lng": 99.219517
-        }
-      },
-      {
-        "order": 2,
-        "name": "IRPC CLEAN POWER",
-        "imgUrl": "http://via.placeholder.com/50x50",
-        "power": [
-          {
-            "name": "electricPower",
-            "values": [
-              {
-                "value": 240,
-                "unit": "MW"
-              }
-            ]
-          },
-          {
-            "name": "steamPower",
-            "values": [
-              {
-                "value": "180-300",
-                "unit": "T/H"
-              }
-            ]
-          }
-        ],
-        "sharities": [
-          {
-            "name": "GPSC",
-            "stock": 51
-          }
-        ],
-        "geolocation": {
-          "lat": 14.823936,
-          "lng": 102.430339
-        }
-      },
-      {
-        "order": 3,
-        "name": "NNEG",
-        "imgUrl": "http://via.placeholder.com/50x50",
-        "power": [
-          {
-            "name": "electricPower",
-            "values": [
-              {
-                "value": 125,
-                "unit": "MW"
-              }
-            ]
-          },
-          {
-            "name": "steamPower",
-            "values": [
-              {
-                "value": 30,
-                "unit": "T/H"
-              }
-            ]
-          }
-        ],
-        "sharities": [
-          {
-            "name": "GPSC",
-            "stock": 30
-          }
-        ],
-        "geolocation": {
-          "lat": 13.224339,
-          "lng": 101.47577
-        }
-      },
-      {
-        "order": 4,
-        "name": "BIC",
-        "imgUrl": "http://via.placeholder.com/50x50",
-        "power": [
-          {
-            "name": "electricPower",
-            "values": [
-              {
-                "value": 117,
-                "unit": "MW"
-              },
-              {
-                "value": 117,
-                "unit": "MW"
-              }
-            ]
-          },
-          {
-            "name": "steamPower",
-            "values": [
-              {
-                "value": 20,
-                "unit": "T/H"
-              },
-              {
-                "value": 20,
-                "unit": "T/H"
-              }
-            ]
-          }
-        ],
-        "sharities": [
-          {
-            "name": "GPSC",
-            "stock": 25
-          }
-        ],
-        "geolocation": {
-          "lat": 13.47764,
-          "lng": 99.436464
-        }
-      },
-      {
-        "order": 5,
-        "name": "CHPP",
-        "imgUrl": "http://via.placeholder.com/50x50",
-        "power": [
-          {
-            "name": "electricPower",
-            "values": [
-              {
-                "value": 5,
-                "unit": "MW"
-              }
-            ]
-          },
-          {
-            "name": "steamPower",
-            "values": [
-              {
-                "value": "12,000",
-                "unit": "RT"
-              }
-            ]
-          }
-        ],
-        "sharities": [
-          {
-            "name": "GPSC",
-            "stock": 100
-          }
-        ],
-        "geolocation": {
-          "lat": 10.933347,
-          "lng": 99.176127
-        }
-      }
-    ]
-    `);
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps) {
-
+  solarList: any;
+  streamList: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps, public companyProvider: CompanyProvider) {
+    this.getPlantList();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlantPage');
     this.loadMap();
+  }
+
+  getPlantList() {
+    let UserCode = 'UserCode123456';
+    let CountryId = 1;
+    this.companyProvider.getAllPlants(UserCode, CountryId).then((data: any) => {
+      this.streamList = data.filter(plant => plant.PlantType == "Stream Plant");
+      this.solarList = data.filter(plant => plant.PlantType == "Solar Plant");
+      console.log(data);
+    })
   }
 
   segmentClick(selectedSection) {
