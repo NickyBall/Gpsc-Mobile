@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <div>
-      <ion-title class="nav-title"><img height="30" src="./assets/imgs/logo.png" alt="" >Plant Monitoring</ion-title>
+      <ion-title class="nav-title"><img src="./assets/imgs/GPSC-Nav-head.png" alt="" ></ion-title>
     </div>
     
   </ion-navbar>
@@ -23,10 +23,11 @@
     <ion-list>
       <ion-item no-lines class="bottom-border" *ngFor="let item of countryList" (click)="selectedCountry(item)">
         <!-- <ion-icon name="leaf" item-start></ion-icon> -->
-        <div item-start><img width="38" height="38" src="./assets/imgs/pin1.png"/></div>
-          {{item.CountryName}}
-        <div item-end><img width="38" height="38" src="./assets/imgs/i3.png"/></div>
-        <div item-end><img width="38" height="38" src="./assets/imgs/i1.png"/></div>
+        <div item-start><img width="28" src="./assets/imgs/pin1.png"/></div>
+        <div class="country-name">{{item.CountryName}}</div>
+          
+        <div class="plant-icon" item-end><img width="28" src="./assets/imgs/i3.png"/></div>
+        <div class="plant-icon" item-end><img width="28" src="./assets/imgs/i1.png"/></div>
         <!-- <ion-img width="50" height="50" src="http://via.placeholder.com/50x50/ff0000/000000" item-end></ion-img> -->
         <!-- <ion-icon name="rose" item-end></ion-icon> -->
       </ion-item>

@@ -8,7 +8,7 @@
 
   <ion-navbar>
       <div>
-          <ion-title class="nav-title"><img height="30" src="./assets/imgs/logo.png" alt="" >Plant Monitoring</ion-title>
+        <ion-title class="nav-title"><img src="./assets/imgs/GPSC-Nav-head.png" alt="" ></ion-title>
         </div>
   </ion-navbar>
 
@@ -24,10 +24,10 @@
             <ion-toolbar color="white" class="plant-type-toolbar">
                 <ion-segment [(ngModel)]="selectedSection" color="white">
                     <ion-segment-button value="tabButtonOne" (click)="segmentClick(selectedSection)">
-                        <div><img height="40" [src]="tabOneImg" alt=""></div>
+                        <div><img height="28" [src]="tabOneImg" alt=""></div>
                     </ion-segment-button>
                     <ion-segment-button value="tabButtonTwo" (click)="segmentClick(selectedSection)">
-                        <div><img height="40" [src]="tabTwoImg" alt=""></div>
+                        <div><img height="28" [src]="tabTwoImg" alt=""></div>
                     </ion-segment-button>
                 </ion-segment>
             </ion-toolbar>
@@ -38,9 +38,9 @@
                     <!-- ... -->
                     <ion-list>
                         <ion-item *ngFor="let item of streamList" (click)="selectedPlant(item)">
-                          <ion-icon name="leaf" item-start></ion-icon>
-                            {{item.PlantName}}
-                          <ion-icon name="rose" item-end></ion-icon>
+                            <div class="item-icon" item-start><img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}"/></div>
+                            <div class="item-name">{{item.PlantName}}</div>
+                            <div class="item-share"  item-end><ion-icon name="rose"></ion-icon></div>
                         </ion-item>
                       </ion-list>
                 </div>
@@ -50,9 +50,9 @@
                     <!-- ... -->
                     <ion-list>
                         <ion-item *ngFor="let item of solarList" (click)="selectedPlant(item)">
-                          <ion-icon name="leaf" item-start></ion-icon>
-                            {{item.PlantName}}
-                          <ion-icon name="rose" item-end></ion-icon>
+                            <div class="item-icon" item-start><img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}"/></div>
+                            <div class="item-name">{{item.PlantName}}</div>
+                            <div class="item-share"  item-end><ion-icon name="rose"></ion-icon></div>
                         </ion-item>
                       </ion-list>
                 </div>

@@ -195,7 +195,7 @@ export class PlantPage {
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');
-        this.plantList.forEach((plant) => {
+        this.streamList.forEach((plant) => {
           this.map.addMarker({
               title: plant.name,
               icon: 'blue',
