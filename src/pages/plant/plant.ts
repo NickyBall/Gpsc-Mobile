@@ -217,11 +217,12 @@ export class PlantPage {
   }
 
   selectedPlant(item) {
-    if (item.PlantId == 5) {
-      this.navCtrl.push(this.homePage);
-    } else {
-      alert (item.name + ' has no data.');
-    }
+    // if (item.PlantId == 5) {
+    //   this.navCtrl.push(this.homePage);
+    // } else {
+    //   alert (item.name + ' has no data.');
+    // }
+    this.navCtrl.push(this.homePage, {plantId: item.PlantId});
   }
 
 }

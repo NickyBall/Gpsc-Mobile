@@ -1,6 +1,6 @@
 page-info {
     ion-item:nth-child(even) {
-        background-color: rgb(224, 226, 225);
+        background-color: rgb(243, 243, 243);
         max-height: 15px;
     }
 
@@ -11,7 +11,7 @@ page-info {
     ion-note{
         font-size: small;
         position: relative;
-        left: -20%;
+        left: -30%;
     }
 
     .icon-info{
@@ -22,6 +22,21 @@ page-info {
     .tt-content{
         max-height:200px;
         margin:auto;
+        overflow-y: scroll;
+    }
+
+    ion-item ion-col img{
+        height: 30px;
+        width: 32px;
+    }
+
+    ion-grid{
+        overflow-y: auto;
+    }
+
+    .span-cap{
+        position: relative;
+        left: 15%;
     }
 
 }

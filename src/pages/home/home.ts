@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { LayoutPage } from '../layout/layout';
 import { SummaryPage } from '../summary/summary';
+import { PlantProvider } from '../../providers/plant/plant';
 
 @Component({
   selector: 'page-home',
@@ -14,9 +15,18 @@ export class HomePage {
   summaryPage = SummaryPage;
 
   plantData: any;
+  companyName: string = undefined;
+  logo: string = undefined;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.plantData = this.navParams.get('plantData');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public plantProvider: PlantProvider) {
+    let id = this.navParams.get('plantId');
+    this.plantProvider.requestPlant(id)
+    .then(data => {
+      this.plantData = data;
+      this.companyName = this.plantData.PlantInfo.CompanyName;
+      this.logo = this.plantData.PlantInfo.CompanyLogo;
+    });
+    
   }
 
   changePage(page) {

@@ -27,130 +27,132 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Wolfsburg_VW-Werk.jpg" alt="">
+        <img src="http://via.placeholder.com/256x192" alt="">
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col class="tt-content">
-        <img src="https://2.imimg.com/data2/GU/KV/MY-1838556/vastu-for-factory-500x500.jpg" alt="">
+      <ion-col>
+        <img src="http://via.placeholder.com/78x58" alt="">
       </ion-col>
       <ion-col>
-        <img src="https://i.ytimg.com/vi/qIfe7C_GpTw/maxresdefault.jpg" alt="">
+        <img src="http://via.placeholder.com/78x58" alt="">
       </ion-col>
       <ion-col>
-        <img src="https://www.soneticscorp.com/wp-content/uploads/2016/07/Volkswagen.jpg" alt="">
+        <img src="http://via.placeholder.com/78x58" alt="">
       </ion-col>
     </ion-row>
  
   </ion-grid>
-  
-   <ion-footer>
-    <ion-list class="tt-content">
-      <ion-item no-line>
-        <ion-row>
-          <ion-col align-self-center col-md-1 class="icon-info">
-            <div text-right>
-              <img src="http://via.placeholder.com/32x30" alt="">    
-            </div>
-          </ion-col>
-          <ion-col align-self-center col-md-4 class="icon-info">
-            <div>Type</div>
-          </ion-col>
-          <ion-col align-self-center col-md-7>
-            <ion-note>
-              {{ plantData.PlantType }}
-            </ion-note>
-          </ion-col>
-        </ion-row>     
-      </ion-item>
-      <ion-item no-line>
-        <ion-row>
-          <ion-col align-self-center col-md-1 class="icon-info">
-            <div text-right>
-              <img src="http://via.placeholder.com/32x30" alt="">    
-            </div>
-          </ion-col>
-          <ion-col align-self-center col-md-4 class="icon-info">
-            <div>Capacity</div>
-          </ion-col>
-          <ion-col align-self-center col-md-7>
-            <ion-note>
-              {{ plantData.PlantInfo.Capacity }}
-            </ion-note>
-          </ion-col>
-        </ion-row>     
-      </ion-item>
-      <ion-item no-line>
-        <ion-row>
-          <ion-col align-self-center col-md-1 class="icon-info">
-            <div text-right>
-              <img src="http://via.placeholder.com/32x30" alt="">    
-            </div>
-          </ion-col>
-          <ion-col align-self-center col-md-4 class="icon-info">
-            <div>Customer</div>
-          </ion-col>
-          <ion-col align-self-center col-md-7>
-            <ion-note>
-              {{ plantData.Customer.CustomerName }}
-            </ion-note>
-          </ion-col>
-        </ion-row>     
-      </ion-item>
-      <ion-item no-line>
-        <ion-row>
-          <ion-col align-self-center col-md-1 class="icon-info">
-            <div text-right>
-              <img src="http://via.placeholder.com/32x30" alt="">    
-            </div>
-          </ion-col>
-          <ion-col align-self-center col-md-4 class="icon-info">
-            <div>COD</div>
-          </ion-col>
-          <ion-col align-self-center col-md-7>
-            <ion-note>
-              <!-- <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime> -->
-              <!-- {{ plantData.PlantInfo.COD }} -->
-              {{ plantData.PlantInfo.COD | amDateFormat:'MMMM-YYYY' }}
-            </ion-note>
-          </ion-col>
-        </ion-row>     
-      </ion-item>
-      <ion-item no-line>
-        <ion-row>
-          <ion-col align-self-center col-md-1 class="icon-info">
-            <div text-right>
-              <img src="http://via.placeholder.com/32x30" alt="">    
-            </div>
-          </ion-col>
-          <ion-col align-self-center col-md-4 class="icon-info">
-            <div>PPA</div>
-          </ion-col>
-          <ion-col align-self-center col-md-7>
-            <ion-note>
-                {{ plantData.PlantInfo.PPA | amDuration:'years' }}
-            </ion-note>
-          </ion-col>
-        </ion-row>     
-      </ion-item>
-      <ion-item no-line>
-        <ion-row>
-          <ion-col align-self-center col-md-1 class="icon-info">
-            <div text-right>
-              <img src="http://via.placeholder.com/32x30" alt="">    
-            </div>
-          </ion-col>
-          <ion-col align-self-center col-md-4 class="icon-info">
-            <div>Location</div>
-          </ion-col>
-          <ion-col align-self-center col-md-7>
-            <ion-note>
-              Chonburi
-              <!-- use lat long to get location  -->
-            </ion-note>
-          </ion-col>
-        </ion-row>     
-      </ion-item>
-    </ion-list>
-   </ion-footer>
 </ion-content>
+   <ion-footer>   
+      <ion-list class="tt-content">
+        <ion-item no-line>
+          <ion-row>
+            <ion-col align-self-center col-md-1 class="icon-info">
+              <div text-right>
+                <img src="assets/imgs/i9.png" alt="">    
+              </div>
+            </ion-col>
+            <ion-col align-self-center col-md-4 class="icon-info">
+              <div>Type</div>
+            </ion-col>
+            <ion-col align-self-center col-md-7>
+              <ion-note>
+                {{ plantData.PlantType }}
+              </ion-note>
+            </ion-col>
+          </ion-row>     
+        </ion-item>
+        <ion-item no-line>
+          <ion-row>
+            <ion-col align-self-center col-md-1 class="icon-info">
+              <div text-right>
+                <img src="assets/imgs/i10.png" alt="">    
+              </div>
+            </ion-col>
+            <ion-col align-self-center col-md-4 class="icon-info">
+              <div>Capacity</div>
+            </ion-col>
+            <ion-col align-self-center col-md-7>
+              <ion-note>
+                  <div class="span-cap">
+                      Electricity {{ power }} MW
+                  </div>
+              </ion-note>
+            </ion-col>
+          </ion-row>     
+        </ion-item>
+        <ion-item no-line>
+          <ion-row>
+            <ion-col align-self-center col-md-1 class="icon-info">
+              <div text-right>
+                <img src="assets/imgs/i11.png" alt="">       
+              </div>
+            </ion-col>
+            <ion-col align-self-center col-md-4 class="icon-info">
+              <div>Customer</div>
+            </ion-col>
+            <ion-col align-self-center col-md-7>
+              <ion-note>
+                {{ plantData.Customer.CustomerName }}
+              </ion-note>
+            </ion-col>
+          </ion-row>     
+        </ion-item>
+        <ion-item no-line>
+          <ion-row>
+            <ion-col align-self-center col-md-1 class="icon-info">
+              <div text-right>
+                <img src="assets/imgs/i12.png" alt="">      
+              </div>
+            </ion-col>
+            <ion-col align-self-center col-md-3 class="icon-info">
+              <div>COD</div>
+            </ion-col>
+            <ion-col align-self-center col-md-8>
+              <ion-note>
+                <!-- <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime> -->
+                <!-- {{ plantData.PlantInfo.COD }} -->
+                {{ plantData.PlantInfo.COD | amDateFormat:'MMMM-YYYY' }}
+              </ion-note>
+            </ion-col>
+          </ion-row>     
+        </ion-item>
+        <ion-item no-line>
+          <ion-row>
+            <ion-col align-self-center col-md-1 class="icon-info">
+              <div text-right>
+                <img src="assets/imgs/i13.png" alt="">       
+              </div>
+            </ion-col>
+            <ion-col align-self-center col-md-4 class="icon-info">
+              <div>PPA</div>
+            </ion-col>
+            <ion-col align-self-center col-md-7>
+              <ion-note>
+                  {{ plantData.PlantInfo.PPA | amDuration:'years' }}
+              </ion-note>
+            </ion-col>
+          </ion-row>     
+        </ion-item>
+        <ion-item no-line>
+          <ion-row>
+            <ion-col align-self-center col-md-1 class="icon-info">
+              <div text-right>
+                <img src="assets/imgs/i14.png" alt="">      
+              </div>
+            </ion-col>
+            <ion-col align-self-center col-md-4 class="icon-info">
+              <div>Location</div>
+            </ion-col>
+            <ion-col align-self-center col-md-7>
+              <ion-note>
+                Chonburi
+                <!-- use lat long to get location  -->
+              </ion-note>
+            </ion-col>
+          </ion-row>     
+        </ion-item>
+      </ion-list>
+   </ion-footer>
+

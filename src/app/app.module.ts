@@ -18,6 +18,7 @@ import { CountryServiceProvider } from '../providers/country-service/country-ser
 import { SummaryPage } from '../pages/summary/summary';
 import { CompanyProvider } from '../providers/company/company';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
+import { PlantProvider } from '../providers/plant/plant';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CountryServiceProvider,
     CompanyProvider,
-    LoginServiceProvider
+    LoginServiceProvider,
+    PlantProvider
   ]
 })
 export class AppModule {}
