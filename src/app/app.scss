@@ -19,11 +19,9 @@
     display: flex;
     align-items: center;
   }
-  .scroll-content {
-		// align-content: center;
-		// display: flex;
-		// flex-direction: column;
-		// justify-content: center;
-        // text-align: center;
-        overflow-y: hidden;
-    }
+.scroll-content {
+  overflow-y: auto;
+}
+::-webkit-scrollbar {
+  display:none;
+}
