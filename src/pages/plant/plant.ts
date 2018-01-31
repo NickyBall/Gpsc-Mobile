@@ -217,7 +217,7 @@ export class PlantPage {
   }
 
   selectedPlant(item) {
-    if (item.order == 5) {
+    if (item.PlantId == 5) {
       this.navCtrl.push(this.homePage);
     } else {
       alert (item.name + ' has no data.');
