@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MomentModule } from 'angular2-moment';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -31,6 +32,7 @@ import { CompanyProvider } from '../providers/company/company';
   imports: [
     BrowserModule,
     HttpClientModule,
+    MomentModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
