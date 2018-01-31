@@ -13,10 +13,8 @@ import { WorldPage } from '../pages/world/world';
 import { PlantPage } from '../pages/plant/plant';
 import { InfoPage } from '../pages/info/info';
 import { LayoutPage } from '../pages/layout/layout';
-import { CountryServiceProvider } from '../providers/country-service/country-service';
 import { SummaryPage } from '../pages/summary/summary';
-import { CompanyProvider } from '../providers/company/company';
-import { LoginServiceProvider } from '../providers/login-service/login-service';
+import { CountryServiceProvider } from '../providers/country-service/country-service';
 
 @NgModule({
   declarations: [
@@ -50,9 +48,7 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
     SplashScreen,
     GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CountryServiceProvider,
-    CompanyProvider,
-    LoginServiceProvider
+    CountryServiceProvider
   ]
 })
 export class AppModule {}

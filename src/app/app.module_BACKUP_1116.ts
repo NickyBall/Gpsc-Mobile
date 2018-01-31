@@ -14,9 +14,12 @@ import { PlantPage } from '../pages/plant/plant';
 import { InfoPage } from '../pages/info/info';
 import { LayoutPage } from '../pages/layout/layout';
 import { CountryServiceProvider } from '../providers/country-service/country-service';
+<<<<<<< HEAD
 import { SummaryPage } from '../pages/summary/summary';
 import { CompanyProvider } from '../providers/company/company';
+=======
 import { LoginServiceProvider } from '../providers/login-service/login-service';
+>>>>>>> e08f01263480fca323b71d8bf9d8709f08415add
 
 @NgModule({
   declarations: [
@@ -51,8 +54,11 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
     GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CountryServiceProvider,
-    CompanyProvider,
+<<<<<<< HEAD
+    CompanyProvider
+=======
     LoginServiceProvider
+>>>>>>> e08f01263480fca323b71d8bf9d8709f08415add
   ]
 })
 export class AppModule {}

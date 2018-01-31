@@ -13,9 +13,8 @@ import { WorldPage } from '../pages/world/world';
 import { PlantPage } from '../pages/plant/plant';
 import { InfoPage } from '../pages/info/info';
 import { LayoutPage } from '../pages/layout/layout';
-import { CountryServiceProvider } from '../providers/country-service/country-service';
 import { SummaryPage } from '../pages/summary/summary';
-import { CompanyProvider } from '../providers/company/company';
+import { CountryServiceProvider } from '../providers/country-service/country-service';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 
 @NgModule({
@@ -51,7 +50,6 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
     GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CountryServiceProvider,
-    CompanyProvider,
     LoginServiceProvider
   ]
 })
