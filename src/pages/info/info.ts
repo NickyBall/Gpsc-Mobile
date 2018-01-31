@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import * as moment from 'moment';
 
 /**
  * Generated class for the InfoPage page.
@@ -15,7 +16,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InfoPage {
 
+  private plantData: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.plantData = this.navParams.get('plantData');
   }
 
   ionViewDidLoad() {

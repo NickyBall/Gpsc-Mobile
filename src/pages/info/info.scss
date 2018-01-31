@@ -1,3 +1,27 @@
 page-info {
+    ion-item:nth-child(even) {
+        background-color: rgb(224, 226, 225);
+        max-height: 15px;
+    }
+
+    ion-item:nth-child(odd) {
+        max-height: 15px;
+    }
+
+    ion-note{
+        font-size: small;
+        position: relative;
+        left: -20%;
+    }
+
+    .icon-info{
+        position: relative;
+        left: -17%;
+    }
+
+    .tt-content{
+        max-height:200px;
+        margin:auto;
+    }
 
 }
