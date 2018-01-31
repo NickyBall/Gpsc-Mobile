@@ -25,10 +25,27 @@ page-plant {
     align-content: center;
   }
   .item-name {
-    width: 30%;
+    width: 25%;
     font-size: 12px;
   }
   .item-share {
     width: 10%;
+    padding-right: 40px;
   }
+  .share-row {
+    color: orange;
+  }
+  .share-percentage {
+    font-size: 16px;
+  }
+  .share-company {
+    font-size: 12px;
+  }
+  .divider{
+    position:absolute;
+    right:20%;
+    top:10%;
+    bottom:10%;
+    border-left:1px solid orange;
+}
 }

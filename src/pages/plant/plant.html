@@ -40,7 +40,17 @@
                         <ion-item *ngFor="let item of streamList" (click)="selectedPlant(item)">
                             <div class="item-icon" item-start text-center><img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}"/></div>
                             <div class="item-name">{{item.PlantName}}</div>
-                            <div class="item-share"  item-end><ion-icon name="rose"></ion-icon></div>
+                            <div class="divider"></div>
+                            <div class="item-share"  item-end>
+                                <ion-grid class="share-row">
+                                    <ion-row class="share-percentage">
+                                        {{item.SharedHolderPercentage}}%
+                                    </ion-row>
+                                    <ion-row class="share-company">
+                                        {{item.SharedHolder.SharedHolderName}}
+                                    </ion-row>
+                                </ion-grid>
+                            </div>
                         </ion-item>
                       </ion-list>
                 </div>
@@ -52,7 +62,17 @@
                         <ion-item *ngFor="let item of solarList" (click)="selectedPlant(item)">
                             <div class="item-icon" item-start text-center><img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}"/></div>
                             <div class="item-name">{{item.PlantName}}</div>
-                            <div class="item-share"  item-end><ion-icon name="rose"></ion-icon></div>
+                            <div class="divider"></div>
+                            <div class="item-share"  item-end>
+                                <ion-grid class="share-row">
+                                    <ion-row class="share-percentage">
+                                        {{item.SharedHolderPercentage}}%
+                                    </ion-row>
+                                    <ion-row class="share-company">
+                                        {{item.SharedHolder.SharedHolderName}}
+                                    </ion-row>
+                                </ion-grid>
+                            </div>
                         </ion-item>
                       </ion-list>
                 </div>
