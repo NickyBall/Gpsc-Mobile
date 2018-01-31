@@ -15,6 +15,7 @@ import { InfoPage } from '../pages/info/info';
 import { LayoutPage } from '../pages/layout/layout';
 import { SummaryPage } from '../pages/summary/summary';
 import { CountryServiceProvider } from '../providers/country-service/country-service';
+import { LoginServiceProvider } from '../providers/login-service/login-service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CountryServiceProvider } from '../providers/country-service/country-ser
     SplashScreen,
     GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CountryServiceProvider
+    CountryServiceProvider,
+    LoginServiceProvider
   ]
 })
 export class AppModule {}
