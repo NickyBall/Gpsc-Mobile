@@ -7,22 +7,60 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>plant</ion-title>
+      <div>
+          <ion-title class="nav-title"><img height="30" src="./assets/imgs/logo.png" alt="" >Plant Monitoring</ion-title>
+        </div>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div id="map_canvas2">
-  </div>
-  <div>
-    <ion-list>
-      <ion-item *ngFor="let item of plantList" (click)="selectedPlant(item)">
-        <ion-icon name="leaf" item-start></ion-icon>
-          {{item.name}}
-        <ion-icon name="rose" item-end></ion-icon>
-      </ion-item>
-    </ion-list>
-  </div>
+          <div id="map_canvas2" class="map-section"> 
+          </div>
+      
+        
+        <div class="tab-section">
+            <ion-toolbar color="white" class="plant-type-toolbar">
+                <ion-segment [(ngModel)]="selectedSection" color="white">
+                    <ion-segment-button value="tabButtonOne" (click)="segmentClick(selectedSection)">
+                        <div><img height="40" [src]="tabOneImg" alt=""></div>
+                    </ion-segment-button>
+                    <ion-segment-button value="tabButtonTwo" (click)="segmentClick(selectedSection)">
+                        <div><img height="40" [src]="tabTwoImg" alt=""></div>
+                    </ion-segment-button>
+                </ion-segment>
+            </ion-toolbar>
+            <div [ngSwitch]="selectedSection">
+
+                <div *ngSwitchCase="'tabButtonOne'">
+                    <!-- Content to show when the fist tab button is selected -->
+                    <!-- ... -->
+                    <ion-list>
+                        <ion-item *ngFor="let item of streamList" (click)="selectedPlant(item)">
+                          <ion-icon name="leaf" item-start></ion-icon>
+                            {{item.PlantName}}
+                          <ion-icon name="rose" item-end></ion-icon>
+                        </ion-item>
+                      </ion-list>
+                </div>
+    
+                <div *ngSwitchCase="'tabButtonTwo'">
+                    <!-- Content to show when the second tab button is selected -->
+                    <!-- ... -->
+                    <ion-list>
+                        <ion-item *ngFor="let item of solarList" (click)="selectedPlant(item)">
+                          <ion-icon name="leaf" item-start></ion-icon>
+                            {{item.PlantName}}
+                          <ion-icon name="rose" item-end></ion-icon>
+                        </ion-item>
+                      </ion-list>
+                </div>
+    
+            </div>
+                
+        </div>
+              
+        
+  
 </ion-content>
