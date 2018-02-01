@@ -11,7 +11,7 @@
         <ion-row align-items-center>
           <ion-col align-self-center>
             <div text-right>
-              <img src="http://via.placeholder.com/35x32" alt="">
+              <img src={{logo}} alt="">
             </div>
           </ion-col>
           <ion-col align-self-center>
@@ -75,7 +75,7 @@
             </ion-col>
             <ion-col align-self-center col-md-7>
               <ion-note>
-                  <div class="span-cap">
+                  <div>
                       Electricity {{ power }} MW
                   </div>
               </ion-note>
@@ -111,8 +111,6 @@
             </ion-col>
             <ion-col align-self-center col-md-8>
               <ion-note>
-                <!-- <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime> -->
-                <!-- {{ plantData.PlantInfo.COD }} -->
                 {{ plantData.PlantInfo.COD | amDateFormat:'MMMM-YYYY' }}
               </ion-note>
             </ion-col>
@@ -147,8 +145,7 @@
             </ion-col>
             <ion-col align-self-center col-md-7>
               <ion-note>
-                Chonburi
-                <!-- use lat long to get location  -->
+                {{ locationName }}
               </ion-note>
             </ion-col>
           </ion-row>     

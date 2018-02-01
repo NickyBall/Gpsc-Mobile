@@ -15,23 +15,61 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-card (click)="changePage(1)">
-    <ion-card-content>
-      <img item-start/>
-      <h1>General Information</h1>
-    </ion-card-content>
-  </ion-card>
-  <ion-card (click)="changePage(2)">
-    <ion-card-content >
-      <img item-start/>
-      <h1>Plant Layout</h1>
-    </ion-card-content>
-  </ion-card>
-  <ion-card (click)="changePage(3)">
-    <ion-card-content >
-      <img item-start/>
-      <h1>Executive Summary</h1>
-    </ion-card-content>
-  </ion-card>
+<ion-content padding class="bg-body">
+  <div class="first-card">
+    <ion-card (click)="changePage(1)" [ngStyle]="{'background-color': cardColor1}">
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <div text-right>
+              <img class="icon-style" [src]="icon1" item-start/>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div text-wrap class="text-menu" [ngStyle]="{'color': fontColor1}">
+              General Information
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-card-content> 
+    </ion-card>      
+  </div>
+  
+  <div class="card">
+    <ion-card (click)="changePage(2)" [ngStyle]="{'background-color': cardColor2}">
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <div text-right>
+                <img class="icon-style" [src]="icon2" item-start/>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div text-wrap class="text-menu" [ngStyle]="{'color': fontColor2}">
+              Plant <br>Layout
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-card-content> 
+    </ion-card>
+  </div>
+  <div class="card">
+    <ion-card (click)="changePage(3)" [ngStyle]="{'background-color': cardColor3}">
+      <ion-card-content>
+        <ion-row>
+          <ion-col>
+            <div text-right>
+              <img class="icon-style" [src]="icon3" item-start/>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div text-wrap class="text-menu" [ngStyle]="{'color': fontColor3}">
+              Executive Summary
+            </div>
+          </ion-col>
+        </ion-row>
+        </ion-card-content> 
+    </ion-card>
+  </div>
+  
 </ion-content>

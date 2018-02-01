@@ -35,7 +35,7 @@ export class PlantProvider {
       }, err => {
         console.log(err);
       });
-    })
+    });
   }
 
 }

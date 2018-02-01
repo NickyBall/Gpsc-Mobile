@@ -13,32 +13,76 @@ export class HomePage {
   infoPage = InfoPage;
   layoutPage = LayoutPage;
   summaryPage = SummaryPage;
-
+  
+  icon1: string = undefined;
+  icon2: string = undefined;
+  icon3: string = undefined;
+  cardColor1: string = undefined;
+  cardColor2: string = undefined;
+  cardColor3: string = undefined;
   plantData: any;
   companyName: string = undefined;
   logo: string = undefined;
+  fontColor1: string = undefined;
+  fontColor2: string = undefined;
+  fontColor3: string = undefined;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public plantProvider: PlantProvider) {
+   
     let id = this.navParams.get('plantId');
     this.plantProvider.requestPlant(id)
     .then(data => {
       this.plantData = data;
       this.companyName = this.plantData.PlantInfo.CompanyName;
-      this.logo = this.plantData.PlantInfo.CompanyLogo;
-    });
-    
+      this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.PlantInfo.CompanyLogo;
+    }); 
+  }
+
+  ionViewDidLoad() {
+    this.icon1 = "assets/imgs/b1.png";
+    this.icon2 = "assets/imgs/b3.png";
+    this.icon3 = "assets/imgs/b5.png";
+    this.cardColor1 = '#ffffff';
+    this.cardColor2 = '#ffffff';
+    this.cardColor3 = '#ffffff';
+    this.fontColor1 = '#afafaf';
+    this.fontColor2 = '#afafaf';
+    this.fontColor3 = '#afafaf';
+  }
+
+  ionViewWillEnter(){
+    this.icon1 = "assets/imgs/b1.png";
+    this.icon2 = "assets/imgs/b3.png";
+    this.icon3 = "assets/imgs/b5.png";
+    this.cardColor1 = '#ffffff';
+    this.cardColor2 = '#ffffff';
+    this.cardColor3 = '#ffffff';
+    this.fontColor1 = '#afafaf';
+    this.fontColor2 = '#afafaf';
+    this.fontColor3 = '#afafaf';
   }
 
   changePage(page) {
     var nextPage;
+    
+    
     switch (page) {
       case 1:
+        this.cardColor1 = '#75a0e5';
+        this.fontColor1 = '#ffffff'; 
+        this.icon1 = "assets/imgs/b2.png"; 
         nextPage = this.infoPage;
         break;
       case 2:
+        this.cardColor2 = '#75a0e5';
+        this.fontColor2 = '#ffffff'; 
+        this.icon2 = "assets/imgs/b4.png"; 
         nextPage = this.layoutPage;
         break;
       case 3:
+        this.cardColor3 = '#75a0e5';
+        this.fontColor3 = '#ffffff'; 
+        this.icon3 = "assets/imgs/b6.png"; 
         nextPage = this.summaryPage;
         break;
     }
