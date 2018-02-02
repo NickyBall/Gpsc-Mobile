@@ -1,11 +1,17 @@
 page-home {
 
     .card{
-     margin-top: 15%;   
+     margin-top: 15%;
+     max-width: 90%;
+     margin-left: auto;
+     margin-right: auto;   
     }
 
     .first-card{
-        margin-top: 20%;
+        margin-top: auto;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .bg-body{
@@ -19,5 +25,15 @@ page-home {
     .icon-style{
         max-height: 40px;
         max-width: 50px;
+    }
+
+    .title-align{
+        position: relative;
+        left: 17%;
+    }
+
+    .img-icon{
+        position: relative;
+        left: 15%;
     }
 }
