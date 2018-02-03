@@ -8,10 +8,10 @@
 
   <ion-navbar>
       <ion-title>
-        <ion-row align-items-center>
+        <ion-row class="title-align">
           <ion-col align-self-center>
             <div text-right>
-              <img src="http://via.placeholder.com/35x32" alt="">
+              <img src={{logo}} alt="">
             </div>
           </ion-col>
           <ion-col align-self-center>
@@ -24,25 +24,24 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <img src="http://via.placeholder.com/256x192" alt="">
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <img src="http://via.placeholder.com/78x58" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="http://via.placeholder.com/78x58" alt="">
-      </ion-col>
-      <ion-col>
-        <img src="http://via.placeholder.com/78x58" alt="">
-      </ion-col>
-    </ion-row>
- 
-  </ion-grid>
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            <img class="img-info" src="http://via.placeholder.com/256x192" alt="">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <img class="img-info" src="http://via.placeholder.com/256x192" alt="">
+          </ion-col>
+          <ion-col>
+            <img class="img-info" src="http://via.placeholder.com/256x192" alt="">
+          </ion-col>
+          <ion-col>
+            <img class="img-info" src="http://via.placeholder.com/256x192" alt="">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 </ion-content>
    <ion-footer>   
       <ion-list class="tt-content">
@@ -75,7 +74,7 @@
             </ion-col>
             <ion-col align-self-center col-md-7>
               <ion-note>
-                  <div class="span-cap">
+                  <div>
                       Electricity {{ power }} MW
                   </div>
               </ion-note>
@@ -111,8 +110,6 @@
             </ion-col>
             <ion-col align-self-center col-md-8>
               <ion-note>
-                <!-- <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime> -->
-                <!-- {{ plantData.PlantInfo.COD }} -->
                 {{ plantData.PlantInfo.COD | amDateFormat:'MMMM-YYYY' }}
               </ion-note>
             </ion-col>
@@ -147,8 +144,7 @@
             </ion-col>
             <ion-col align-self-center col-md-7>
               <ion-note>
-                Chonburi
-                <!-- use lat long to get location  -->
+                {{ locationName }}
               </ion-note>
             </ion-col>
           </ion-row>     

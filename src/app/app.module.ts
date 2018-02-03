@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { HttpClientModule } from '@angular/common/http';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 import { MomentModule } from 'angular2-moment';
 import { MyApp } from './app.component';
@@ -52,6 +53,7 @@ import { PlantProvider } from '../providers/plant/plant';
     StatusBar,
     SplashScreen,
     GoogleMaps,
+    NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CountryServiceProvider,
     CompanyProvider,

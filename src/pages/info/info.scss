@@ -20,7 +20,7 @@ page-info {
     }
 
     .tt-content{
-        max-height:200px;
+        max-height: 150px;
         margin:auto;
         overflow-y: scroll;
     }
@@ -30,13 +30,16 @@ page-info {
         width: 32px;
     }
 
-    ion-grid{
-        overflow-y: auto;
+    .img-info{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
     }
 
-    .span-cap{
+    .title-align{
         position: relative;
-        left: 15%;
+        left: 17%;
     }
 
 }
