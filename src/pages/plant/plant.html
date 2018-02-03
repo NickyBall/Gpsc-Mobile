@@ -6,85 +6,90 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-      <div>
-        <ion-title class="nav-title" text-center><img src="./assets/imgs/GPSC-Nav-head.png" alt="" ></ion-title>
+    <ion-navbar>
+        <div>
+            <ion-title class="nav-title" text-center>
+                <img src="./assets/imgs/GPSC-Nav-head.png" alt="">
+            </ion-title>
         </div>
-  </ion-navbar>
-
+    </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-          <div id="map_canvas2" class="map-section"> 
-          </div>
-        
-            <div class="tab-section">
-                <ion-toolbar color="white" class="plant-type-toolbar">
-                    <ion-segment [(ngModel)]="selectedSection" color="white">
-                        <ion-segment-button value="tabButtonOne" (click)="segmentClick(selectedSection)">
-                            <div><img height="28" [src]="tabOneImg" alt=""></div>
-                        </ion-segment-button>
-                        <ion-segment-button value="tabButtonTwo" (click)="segmentClick(selectedSection)">
-                            <div><img height="28" [src]="tabTwoImg" alt=""></div>
-                        </ion-segment-button>
-                    </ion-segment>
-                </ion-toolbar>
-                <ion-scroll scrollY="true" style="width: 100%; height: 100%;">
-                    <div [ngSwitch]="selectedSection">
-    
-                        <div *ngSwitchCase="'tabButtonOne'">
-                            <!-- Content to show when the fist tab button is selected -->
-                            <!-- ... -->
-                            <ion-list>
-                                <ion-item *ngFor="let item of streamList" (click)="selectedPlant(item)">
-                                    <div class="item-icon" item-start text-center><img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}"/></div>
-                                    <div class="item-name">{{item.PlantName}}</div>
-                                    <div class="divider"></div>
-                                    <div class="item-share"  item-end>
-                                        <ion-grid class="share-row">
-                                            <ion-row class="share-percentage">
-                                                {{item.SharedHolderPercentage}}%
-                                            </ion-row>
-                                            <ion-row class="share-company">
-                                                {{item.SharedHolder.SharedHolderName}}
-                                            </ion-row>
-                                        </ion-grid>
-                                    </div>
-                                </ion-item>
-                              </ion-list>
-                        </div>
-            
-                        <div *ngSwitchCase="'tabButtonTwo'">
-                            <!-- Content to show when the second tab button is selected -->
-                            <!-- ... -->
-                            <ion-list>
-                                <ion-item *ngFor="let item of solarList" (click)="selectedPlant(item)">
-                                    <div class="item-icon" item-start text-center><img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}"/></div>
-                                    <div class="item-name">{{item.PlantName}}</div>
-                                    <div class="divider"></div>
-                                    <div class="item-share"  item-end>
-                                        <ion-grid class="share-row">
-                                            <ion-row class="share-percentage">
-                                                {{item.SharedHolderPercentage}}%
-                                            </ion-row>
-                                            <ion-row class="share-company">
-                                                {{item.SharedHolder.SharedHolderName}}
-                                            </ion-row>
-                                        </ion-grid>
-                                    </div>
-                                </ion-item>
-                              </ion-list>
-                        </div>
-            
-                    </div>
-                </ion-scroll>
-                
-                    
-            </div>
-        </ion-content> 
-        
-              
-        
-  
 
+<ion-content padding>
+    <div id="map_canvas2" class="map-section">
+    </div>
+
+    <div class="tab-section">
+        <ion-toolbar color="white" class="plant-type-toolbar">
+            <ion-segment [(ngModel)]="selectedSection" color="white">
+                <ion-segment-button value="tabButtonOne" (click)="segmentClick(selectedSection)">
+                    <div>
+                        <img height="28" [src]="tabOneImg" alt="">
+                    </div>
+                </ion-segment-button>
+                <ion-segment-button value="tabButtonTwo" (click)="segmentClick(selectedSection)">
+                    <div>
+                        <img height="28" [src]="tabTwoImg" alt="">
+                    </div>
+                </ion-segment-button>
+            </ion-segment>
+        </ion-toolbar>
+        <ion-scroll scrollY="true" style="width: 100%; height: 100%;">
+            <div [ngSwitch]="selectedSection">
+
+                <div *ngSwitchCase="'tabButtonOne'">
+                    <!-- Content to show when the fist tab button is selected -->
+                    <!-- ... -->
+                    <ion-list>
+                        <ion-item *ngFor="let item of streamList" (click)="selectedPlant(item)">
+                            <div class="item-icon" item-start text-center>
+                                <img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}" />
+                            </div>
+                            <div class="item-name">{{item.PlantName}}</div>
+                            <div class="divider"></div>
+                            <div class="item-share" item-end>
+                                <ion-grid class="share-row">
+                                    <ion-row class="share-percentage">
+                                        {{item.SharedHolderPercentage}}%
+                                    </ion-row>
+                                    <ion-row class="share-company">
+                                        {{item.SharedHolder.SharedHolderName}}
+                                    </ion-row>
+                                </ion-grid>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+                </div>
+
+                <div *ngSwitchCase="'tabButtonTwo'">
+                    <!-- Content to show when the second tab button is selected -->
+                    <!-- ... -->
+                    <ion-list>
+                        <ion-item *ngFor="let item of solarList" (click)="selectedPlant(item)">
+                            <div class="item-icon" item-start text-center>
+                                <img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}" />
+                            </div>
+                            <div class="item-name">{{item.PlantName}}</div>
+                            <div class="divider"></div>
+                            <div class="item-share" item-end>
+                                <ion-grid class="share-row">
+                                    <ion-row class="share-percentage">
+                                        {{item.SharedHolderPercentage}}%
+                                    </ion-row>
+                                    <ion-row class="share-company">
+                                        {{item.SharedHolder.SharedHolderName}}
+                                    </ion-row>
+                                </ion-grid>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+                </div>
+
+            </div>
+        </ion-scroll>
+
+
+    </div>
+</ion-content>
