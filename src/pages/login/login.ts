@@ -44,17 +44,17 @@ export class LoginPage {
     let Password = password;
     console.log("prepairParams:"+username+password);
     this.loginService.getAuthen(Username, Password).then(data =>{
-      this.resultCode = data;
-      console.log(this.resultCode);
-      for(let key in this.resultCode){
-        if(this.resultCode[key] == 200){
-          this.navCtrl.push(this.worldPage);
-        }
-        else if (this.resultCode[key] == 401){
-          alert("Invalid Username or Password");
-        }
+      let response = JSON.stringify(data); // Convert {any} data to {string}
+      let json = JSON.parse(response); // Convert Json string to JavaScript Key-Value Object
+      console.log(json['ResultCode']);
+      if (json['ResultCode'] == 200) {
+        console.log(json['UserCode']);
+        this.navCtrl.push(this.worldPage);
+      } else {
+        alert("Invalid Username or Password");
       }
     });
+
   }
   // authen(username: string, password: string) {
   //   if (username == 'admin' && password == '123456') {
