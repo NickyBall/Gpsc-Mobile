@@ -31,11 +31,11 @@ export class LoginPage {
   }
 
   loginClick() {
-    if (this.authen(this.username, this.password)) {
-      this.navCtrl.push(this.worldPage);
+    if (this.username != null && this.password != null){
+      this.authen(this.username, this.password);
     }
     else{
-      alert("Invalid Username or Password")
+      alert("Username or Password must not be empty");
     }
   }
 
@@ -45,17 +45,16 @@ export class LoginPage {
     console.log("prepairParams:"+username+password);
     this.loginService.getAuthen(Username, Password).then(data =>{
       this.resultCode = data;
+      console.log(this.resultCode);
+      for(let key in this.resultCode){
+        if(this.resultCode[key] == 200){
+          this.navCtrl.push(this.worldPage);
+        }
+        else if (this.resultCode[key] == 401){
+          alert("Invalid Username or Password");
+        }
+      }
     });
-    console.log(this.resultCode);
-    
-    for(let key in this.resultCode){
-      if(this.resultCode[key] == 200){
-        return true;
-      }
-      else if (this.resultCode[key] == 401){
-        return false;
-      }
-    }
   }
   // authen(username: string, password: string) {
   //   if (username == 'admin' && password == '123456') {
