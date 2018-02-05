@@ -14,5 +14,114 @@
 
 
 <ion-content padding>
+  <ion-card class="weather-present">
 
+    <ion-card-content>
+      <!-- Add card content here! -->
+      Present Day Weathers
+    </ion-card-content>
+
+  </ion-card>
+  <ion-card>
+
+    <ion-card-content>
+      <!-- Add card content here! -->
+        <section>
+              <div class="item">
+                  Sunday
+                </div>
+                <div class="divider"></div>
+                <div class="item">
+                  Monday
+                </div>
+                <div class="divider"></div>
+                <div class="item">
+                  Tuesday
+                </div>
+                <div class="divider"></div>
+                <div class="item">
+                  Wednesday
+                </div>
+          
+        </section>
+    </ion-card-content>
+
+  </ion-card>
+  <ion-card>
+
+    <ion-card-content>
+      <!-- Add card content here! -->
+      <div text-center>
+        Latest update 11/Dec/2018 21:01:07
+      </div>
+      
+    </ion-card-content>
+
+  </ion-card>
+
+  <div class="tab-section">
+    <ion-toolbar color="white" class="plant-type-toolbar">
+      <ion-segment [(ngModel)]="selectedSection" color="white">
+        <ion-segment-button value="powerGenerationTab" (click)="segmentClick(selectedSection)">
+          <div text-wrap>
+            <span>Power Generation</span>
+          </div>
+        </ion-segment-button>
+        <ion-segment-button value="irradiationTab" (click)="segmentClick(selectedSection)">
+          <div text-wrap>
+            <span>Irradiation</span>
+          </div>
+        </ion-segment-button>
+        <ion-segment-button value="ambientTemperatureTab" (click)="segmentClick(selectedSection)">
+          <div text-wrap>
+            <span>Ambient Temperature</span>
+          </div>
+        </ion-segment-button>
+        <ion-segment-button value="enegyGenerationTab" (click)="segmentClick(selectedSection)">
+          <div text-wrap>
+            <span>Energy Generation</span>
+          </div>
+        </ion-segment-button>
+        <ion-segment-button value="generationSummaryTab" (click)="segmentClick(selectedSection)">
+          <div text-wrap>
+            <span>Generation Summary</span>
+          </div>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+    <ion-scroll scrollY="true" style="width: 100%; height: 100%;">
+      <div [ngSwitch]="selectedSection">
+
+        <div *ngSwitchCase="'powerGenerationTab'">
+          <!-- Content to show when the fist tab button is selected -->
+          <!-- ... -->
+          <span>Power Generation</span>
+        </div>
+
+        <div *ngSwitchCase="'irradiationTab'">
+          <!-- Content to show when the second tab button is selected -->
+          <!-- ... -->
+          <span>Irradiation</span>
+        </div>
+        <div *ngSwitchCase="'ambientTemperatureTab'">
+          <!-- Content to show when the second tab button is selected -->
+          <!-- ... -->
+          <span>Ambient Temperature</span>
+        </div>
+        <div *ngSwitchCase="'enegyGenerationTab'">
+          <!-- Content to show when the second tab button is selected -->
+          <!-- ... -->
+          <span>Energy Generation</span>
+        </div>
+        <div *ngSwitchCase="'generationSummaryTab'">
+          <!-- Content to show when the second tab button is selected -->
+          <!-- ... -->
+          <span>Generation Summary</span>
+        </div>
+
+      </div>
+    </ion-scroll>
+
+
+  </div>
 </ion-content>

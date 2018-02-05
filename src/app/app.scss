@@ -19,3 +19,11 @@
     display: flex;
     align-items: center;
   }
+.scroll-content {
+  overflow-y: auto;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+::-webkit-scrollbar {
+  display:none;
+}

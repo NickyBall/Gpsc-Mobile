@@ -31,11 +31,11 @@ export class LoginPage {
   }
 
   loginClick() {
-    if (this.authen(this.username, this.password)) {
-      this.navCtrl.push(this.worldPage);
+    if (this.username != null && this.password != null){
+      this.authen(this.username, this.password);
     }
     else{
-      alert("Invalid Username or Password")
+      alert("Username or Password must not be empty");
     }
   }
 
@@ -44,18 +44,17 @@ export class LoginPage {
     let Password = password;
     console.log("prepairParams:"+username+password);
     this.loginService.getAuthen(Username, Password).then(data =>{
-      this.resultCode = data;
+      let response = JSON.stringify(data); // Convert {any} data to {string}
+      let json = JSON.parse(response); // Convert Json string to JavaScript Key-Value Object
+      console.log(json['ResultCode']);
+      if (json['ResultCode'] == 200) {
+        console.log(json['UserCode']);
+        this.navCtrl.push(this.worldPage);
+      } else {
+        alert("Invalid Username or Password");
+      }
     });
-    console.log(this.resultCode);
-    
-    for(let key in this.resultCode){
-      if(this.resultCode[key] == 200){
-        return true;
-      }
-      else if (this.resultCode[key] == 401){
-        return false;
-      }
-    }
+
   }
   // authen(username: string, password: string) {
   //   if (username == 'admin' && password == '123456') {
