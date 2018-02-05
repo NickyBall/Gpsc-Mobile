@@ -47,15 +47,15 @@
       <ion-list class="tt-content">
         <ion-item no-line>
           <ion-row>
-            <ion-col align-self-center col-md-1 class="icon-info">
+            <ion-col align-self-center col-2 class="icon-info">
               <div text-right>
                 <img src="assets/imgs/i9.png" alt="">    
               </div>
             </ion-col>
-            <ion-col align-self-center col-md-4 class="icon-info">
-              <div>Type</div>
+            <ion-col align-self-center col-4 offset-1>
+              <div class="title-info">Type</div>
             </ion-col>
-            <ion-col align-self-center col-md-7>
+            <ion-col align-self-center col-5>
               <ion-note>
                 {{ plantData.PlantType }}
               </ion-note>
@@ -64,15 +64,15 @@
         </ion-item>
         <ion-item no-line>
           <ion-row>
-            <ion-col align-self-center col-md-1 class="icon-info">
+            <ion-col align-self-center col-2 class="icon-info">
               <div text-right>
                 <img src="assets/imgs/i10.png" alt="">    
               </div>
             </ion-col>
-            <ion-col align-self-center col-md-4 class="icon-info">
-              <div>Capacity</div>
+            <ion-col align-self-center col-4 offset-1>
+              <div class="title-info">Capacity</div>
             </ion-col>
-            <ion-col align-self-center col-md-7>
+            <ion-col align-self-center col-5>
               <ion-note>
                   <div>
                       Electricity {{ power }} MW
@@ -83,15 +83,15 @@
         </ion-item>
         <ion-item no-line>
           <ion-row>
-            <ion-col align-self-center col-md-1 class="icon-info">
+            <ion-col align-self-center col-2 class="icon-info">
               <div text-right>
                 <img src="assets/imgs/i11.png" alt="">       
               </div>
             </ion-col>
-            <ion-col align-self-center col-md-4 class="icon-info">
-              <div>Customer</div>
+            <ion-col align-self-center col-4 offset-1>
+              <div class="title-info">Customer</div>
             </ion-col>
-            <ion-col align-self-center col-md-7>
+            <ion-col align-self-center col-5>
               <ion-note>
                 {{ plantData.Customer.CustomerName }}
               </ion-note>
@@ -100,15 +100,15 @@
         </ion-item>
         <ion-item no-line>
           <ion-row>
-            <ion-col align-self-center col-md-1 class="icon-info">
+            <ion-col align-self-center col-2 class="icon-info">
               <div text-right>
                 <img src="assets/imgs/i12.png" alt="">      
               </div>
             </ion-col>
-            <ion-col align-self-center col-md-3 class="icon-info">
-              <div>COD</div>
+            <ion-col align-self-center col-4 offset-1>
+              <div class="title-info">COD</div>
             </ion-col>
-            <ion-col align-self-center col-md-8>
+            <ion-col align-self-center col-5>
               <ion-note>
                 {{ plantData.PlantInfo.COD | amDateFormat:'MMMM-YYYY' }}
               </ion-note>
@@ -117,15 +117,15 @@
         </ion-item>
         <ion-item no-line>
           <ion-row>
-            <ion-col align-self-center col-md-1 class="icon-info">
+            <ion-col align-self-center col-2 class="icon-info">
               <div text-right>
                 <img src="assets/imgs/i13.png" alt="">       
               </div>
             </ion-col>
-            <ion-col align-self-center col-md-4 class="icon-info">
-              <div>PPA</div>
+            <ion-col align-self-center col-4 offset-1>
+              <div class="title-info">PPA</div>
             </ion-col>
-            <ion-col align-self-center col-md-7>
+            <ion-col align-self-center col-5>
               <ion-note>
                   {{ plantData.PlantInfo.PPA | amDuration:'years' }}
               </ion-note>
@@ -134,15 +134,15 @@
         </ion-item>
         <ion-item no-line>
           <ion-row>
-            <ion-col align-self-center col-md-1 class="icon-info">
+            <ion-col align-self-center col-2 class="icon-info">
               <div text-right>
                 <img src="assets/imgs/i14.png" alt="">      
               </div>
             </ion-col>
-            <ion-col align-self-center col-md-4 class="icon-info">
-              <div>Location</div>
+            <ion-col align-self-center col-4 offset-1>
+              <div class="title-info">Location</div>
             </ion-col>
-            <ion-col align-self-center col-md-7>
+            <ion-col align-self-center col-5>
               <ion-note>
                 {{ locationName }}
               </ion-note>
