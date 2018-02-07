@@ -89,13 +89,24 @@
         </ion-segment-button>
       </ion-segment>
     </ion-toolbar>
-    <ion-scroll scrollY="true" style="width: 100%; height: 100%;">
+    <!-- <ion-scroll scrollY="true" style="width: 100%; height: 150px;"> -->
       <div [ngSwitch]="selectedSection">
-
-        <div *ngSwitchCase="'powerGenerationTab'">
-          <!-- Content to show when the fist tab button is selected -->
-          <!-- ... -->
-          <span>Power Generation</span>
+        <div *ngSwitchCase="'powerGenerationTab'" class="power-gen-container">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <span>Power Generation</span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-8>
+                <div id="gauge-chart" style="display: block;"	></div>
+              </ion-col>
+              <ion-col col-4>
+                <div>Value MW</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </div>
 
         <div *ngSwitchCase="'irradiationTab'">
@@ -120,7 +131,7 @@
         </div>
 
       </div>
-    </ion-scroll>
+    <!-- </ion-scroll> -->
 
 
   </div>

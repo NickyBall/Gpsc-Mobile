@@ -2,7 +2,7 @@ page-summary {
     .segment-button {
         color: black !important;
         font-size: 9px !important;
-        min-height: 20px;
+        min-height: 30px;
         line-height: 1.0rem !important;
         text-transform: none !important;
     }
@@ -43,6 +43,14 @@ page-summary {
         color: #488aff;
         font-size: 12px;
         margin: auto;
+    }
+
+    div.highcharts-container g.highcharts-tracker > * {
+        fill :rgb(155, 155, 155);
+    }
+
+    .power-gen-container{
+        max-height: 50px;
     }
       
 }
