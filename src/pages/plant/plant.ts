@@ -45,23 +45,34 @@ export class PlantPage {
       this.streamList = data.filter(plant => plant.PlantType == "Stream Plant");
       this.solarList = data.filter(plant => plant.PlantType == "Solar Plant");
       console.log(data);
-      this.solarList.forEach((plant) => {
-        this.map.addMarker({
-          title: plant.name,
-          icon: 'blue',
-          animation: 'DROP',
-          position: {
-            lat: plant.Location.Lat,
-            lng: plant.Location.Lng
-          }
-        }).then(marker => {
-          marker.on(GoogleMapsEvent.MARKER_CLICK)
-            .subscribe(() => {
-              // alert('clicked');
-            });
-        });
-      });
+      this.updateMarker(this.solarList);
     })
+  }
+
+  updateMarker(plantList) {
+    this.map.clear();
+    plantList.forEach((plant) => {
+      this.map.addMarker({
+        title: plant.name,
+        icon: {
+          url: './assets/imgs/pin1.png',
+          size: {
+            width: 28,
+            height: 35
+          }
+        },
+        animation: 'DROP',
+        position: {
+          lat: plant.Location.Lat,
+          lng: plant.Location.Lng
+        }
+      }).then(marker => {
+        marker.on(GoogleMapsEvent.MARKER_CLICK)
+          .subscribe(() => {
+            // alert('clicked');
+          });
+      });
+    });
   }
 
   segmentClick(selectedSection) {
@@ -69,42 +80,10 @@ export class PlantPage {
     this.tabTwoImg = './assets/imgs/i1.png';
     if (selectedSection == 'tabButtonOne') {
       this.tabOneImg = './assets/imgs/i4.png';
-      this.map.clear();
-      this.streamList.forEach((plant) => {
-        this.map.addMarker({
-          title: plant.name,
-          icon: 'blue',
-          animation: 'DROP',
-          position: {
-            lat: plant.Location.Lat,
-            lng: plant.Location.Lng
-          }
-        }).then(marker => {
-          marker.on(GoogleMapsEvent.MARKER_CLICK)
-            .subscribe(() => {
-              // alert('clicked');
-            });
-        });
-      });
+      this.updateMarker(this.streamList);
     } else if (selectedSection == 'tabButtonTwo') {
       this.tabTwoImg = './assets/imgs/i2.png';
-      this.map.clear();
-      this.solarList.forEach((plant) => {
-        this.map.addMarker({
-          title: plant.name,
-          icon: 'blue',
-          animation: 'DROP',
-          position: {
-            lat: plant.Location.Lat,
-            lng: plant.Location.Lng
-          }
-        }).then(marker => {
-          marker.on(GoogleMapsEvent.MARKER_CLICK)
-            .subscribe(() => {
-              // alert('clicked');
-            });
-        });
-      });
+      this.updateMarker(this.solarList);
     }
   }
 

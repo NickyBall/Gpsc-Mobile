@@ -39,8 +39,15 @@ export class WorldPage {
       this.countryList.forEach((country) => {
         this.map.addMarker({
             title: country.name,
-            icon: 'blue',
+            icon: {
+              url: './assets/imgs/pin1.png',
+              size: {
+                width: 28,
+                height: 35
+              }
+            },
             animation: 'DROP',
+            
             position: {
               lat: country.Location.Lat,
               lng: country.Location.Lng
