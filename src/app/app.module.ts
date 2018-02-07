@@ -20,6 +20,7 @@ import { SummaryPage } from '../pages/summary/summary';
 import { CompanyProvider } from '../providers/company/company';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { PlantProvider } from '../providers/plant/plant';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PlantProvider } from '../providers/plant/plant';
     BrowserModule,
     HttpClientModule,
     MomentModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
