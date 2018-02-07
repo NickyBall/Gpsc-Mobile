@@ -25,12 +25,12 @@ export class SummaryPage {
   }
 
   ionViewDidLoad() {
-    this.powerIcon = "assets/imgs/b3.png";  // temp
-
+    this.powerGenGraph();
   }
 
-  segmentClick(selectedSection) {
-    this.gaugeChart = HighCharts.chart('power-chart', {
+  powerGenGraph() {
+    this.gaugeChart = HighCharts.chart('gauge-chart', {
+        
         chart: {
             type: 'gauge',
             plotBackgroundColor: null,
@@ -41,7 +41,7 @@ export class SummaryPage {
         },
     
         title: {
-            text: ''
+            text: 'Speedometer'
         },
     
         pane: {
@@ -58,31 +58,31 @@ export class SummaryPage {
     
         // the value axis
         yAxis: {
-            min: 0,
-            max: 5,
-            lineColor: '#efefef',
-            tickColor: '#efefef',
-            minorTickColor: 'transparent',
-            tickPixelInterval: 1,
-            tickInterval: 1,
-            lineWidth: 2,
-            labels: {
-                distance: -20,
-                rotation: 0
-            },
-            tickLength: 15,
-            minorTickLength: 5,
-            endOnTick: false,
+          min: 0,
+          max: 5,
+          lineColor: '#efefef',
+          tickColor: '#efefef',
+          minorTickColor: 'transparent',
+          tickPixelInterval: 1,
+          tickInterval: 1,
+          lineWidth: 2,
+          labels: {
+              distance: -20,
+              rotation: 0
+          },
+          tickLength: 15,
+          minorTickLength: 5,
+          endOnTick: false,
             plotBands: [{
                 from: 0,
                 to: 100,
                 color:  {
-                    linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
-                    stops: [
-                        [0, '#19f3ff'],
-                        [1, '#1847ff']
-                    ]
-                }
+                  linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
+                  stops: [
+                      [0, '#19f3ff'],
+                      [1, '#1847ff']
+                  ]
+              }
             }]
         },
     
