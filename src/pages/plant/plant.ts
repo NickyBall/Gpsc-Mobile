@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {
- GoogleMaps,
- GoogleMap,
- GoogleMapsEvent,
- GoogleMapOptions
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent,
+  GoogleMapOptions
 } from '@ionic-native/google-maps';
 import { HomePage } from '../home/home';
 import { CompanyProvider } from '../../providers/company/company';
@@ -30,7 +30,7 @@ export class PlantPage {
   solarList: any;
   streamList: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps, public companyProvider: CompanyProvider) {
-    this.getPlantList();
+
   }
 
   ionViewDidLoad() {
@@ -45,6 +45,22 @@ export class PlantPage {
       this.streamList = data.filter(plant => plant.PlantType == "Stream Plant");
       this.solarList = data.filter(plant => plant.PlantType == "Solar Plant");
       console.log(data);
+      this.solarList.forEach((plant) => {
+        this.map.addMarker({
+          title: plant.name,
+          icon: 'blue',
+          animation: 'DROP',
+          position: {
+            lat: plant.Location.Lat,
+            lng: plant.Location.Lng
+          }
+        }).then(marker => {
+          marker.on(GoogleMapsEvent.MARKER_CLICK)
+            .subscribe(() => {
+              // alert('clicked');
+            });
+        });
+      });
     })
   }
 
@@ -53,12 +69,46 @@ export class PlantPage {
     this.tabTwoImg = './assets/imgs/i1.png';
     if (selectedSection == 'tabButtonOne') {
       this.tabOneImg = './assets/imgs/i4.png';
+      this.map.clear();
+      this.streamList.forEach((plant) => {
+        this.map.addMarker({
+          title: plant.name,
+          icon: 'blue',
+          animation: 'DROP',
+          position: {
+            lat: plant.Location.Lat,
+            lng: plant.Location.Lng
+          }
+        }).then(marker => {
+          marker.on(GoogleMapsEvent.MARKER_CLICK)
+            .subscribe(() => {
+              // alert('clicked');
+            });
+        });
+      });
     } else if (selectedSection == 'tabButtonTwo') {
       this.tabTwoImg = './assets/imgs/i2.png';
+      this.map.clear();
+      this.solarList.forEach((plant) => {
+        this.map.addMarker({
+          title: plant.name,
+          icon: 'blue',
+          animation: 'DROP',
+          position: {
+            lat: plant.Location.Lat,
+            lng: plant.Location.Lng
+          }
+        }).then(marker => {
+          marker.on(GoogleMapsEvent.MARKER_CLICK)
+            .subscribe(() => {
+              // alert('clicked');
+            });
+        });
+      });
     }
   }
 
-  loadMap(){
+  loadMap() {
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
@@ -70,119 +120,119 @@ export class PlantPage {
       },
       styles: [
         {
-          "featureType":"all",
-          "elementType":"all",
-          "stylers":[
+          "featureType": "all",
+          "elementType": "all",
+          "stylers": [
             {
-              "hue":"#e7ecf0"
+              "hue": "#e7ecf0"
             }
           ]
         },
         {
-          "featureType":"administrative.province",
-          "elementType":"all",
-          "stylers":[
+          "featureType": "administrative.province",
+          "elementType": "all",
+          "stylers": [
             {
-              "visibility":"off"
+              "visibility": "off"
             }
           ]
         },
         {
-          "featureType":"landscape",
-          "elementType":"all",
-          "stylers":[
+          "featureType": "landscape",
+          "elementType": "all",
+          "stylers": [
             {
-              "gamma":"3.62"
+              "gamma": "3.62"
             },
             {
-              "lightness":"-2"
+              "lightness": "-2"
             },
             {
-              "saturation":"-46"
+              "saturation": "-46"
             },
             {
-              "weight":"1.39"
+              "weight": "1.39"
             },
             {
-              "visibility":"on"
+              "visibility": "on"
             },
             {
-              "color":"#ededed"
+              "color": "#ededed"
             }
           ]
         },
         {
-          "featureType":"poi",
-          "elementType":"all",
-          "stylers":[
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [
             {
-              "visibility":"off"
+              "visibility": "off"
             }
           ]
         },
         {
-          "featureType":"road",
-          "elementType":"all",
-          "stylers":[
+          "featureType": "road",
+          "elementType": "all",
+          "stylers": [
             {
-              "saturation":"-61"
+              "saturation": "-61"
             },
             {
-              "visibility":"on"
+              "visibility": "on"
             },
             {
-              "lightness":"20"
+              "lightness": "20"
             },
             {
-              "gamma":"1.10"
+              "gamma": "1.10"
             },
             {
-              "weight":"1.99"
+              "weight": "1.99"
             }
           ]
         },
         {
-          "featureType":"road",
-          "elementType":"geometry",
-          "stylers":[
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [
             {
-              "weight":"0.99"
+              "weight": "0.99"
             }
           ]
         },
         {
-          "featureType":"road",
-          "elementType":"labels",
-          "stylers":[
+          "featureType": "road",
+          "elementType": "labels",
+          "stylers": [
             {
-              "visibility":"off"
+              "visibility": "off"
             }
           ]
         },
         {
-          "featureType":"transit",
-          "elementType":"all",
-          "stylers":[
+          "featureType": "transit",
+          "elementType": "all",
+          "stylers": [
             {
-              "visibility":"off"
+              "visibility": "off"
             }
           ]
         },
         {
-          "featureType":"water",
-          "elementType":"all",
-          "stylers":[
+          "featureType": "water",
+          "elementType": "all",
+          "stylers": [
             {
-              "visibility":"simplified"
+              "visibility": "simplified"
             },
             {
-              "saturation":"-45"
+              "saturation": "-45"
             },
             {
-              "gamma":"1"
+              "gamma": "1"
             },
             {
-              "lightness":"-4"
+              "lightness": "-4"
             }
           ]
         }
@@ -195,24 +245,7 @@ export class PlantPage {
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');
-        this.streamList.forEach((plant) => {
-          this.map.addMarker({
-              title: plant.name,
-              icon: 'blue',
-              animation: 'DROP',
-              position: {
-                lat: plant.geolocation.lat,
-                lng: plant.geolocation.lng
-              }
-            })
-            .then(marker => {
-              marker.on(GoogleMapsEvent.MARKER_CLICK)
-                .subscribe(() => {
-                  // alert('clicked');
-                });
-            });
-        });
-
+        this.getPlantList();
       });
   }
 
@@ -222,7 +255,7 @@ export class PlantPage {
     // } else {
     //   alert (item.name + ' has no data.');
     // }
-    this.navCtrl.push(this.homePage, {plantId: item.PlantId});
+    this.navCtrl.push(this.homePage, { plantId: item.PlantId });
   }
 
 }
