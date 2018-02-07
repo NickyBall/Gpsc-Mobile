@@ -36,29 +36,29 @@ export class WorldPage {
       this.countryList = data;
       
       console.log(data);
-      this.countryList.forEach((country) => {
-        this.map.addMarker({
-            title: country.name,
-            icon: {
-              url: './assets/imgs/pin1.png',
-              size: {
-                width: 28,
-                height: 35
-              }
-            },
-            animation: 'DROP',
+      // this.countryList.forEach((country) => {
+      //   this.map.addMarker({
+      //       title: country.name,
+      //       icon: {
+      //         url: './assets/imgs/pin1.png',
+      //         size: {
+      //           width: 28,
+      //           height: 35
+      //         }
+      //       },
+      //       animation: 'DROP',
             
-            position: {
-              lat: country.Location.Lat,
-              lng: country.Location.Lng
-            }
-          }).then(marker => {
-            marker.on(GoogleMapsEvent.MARKER_CLICK)
-              .subscribe(() => {
-                // alert('clicked');
-              });
-          });
-      });
+      //       position: {
+      //         lat: country.Location.Lat,
+      //         lng: country.Location.Lng
+      //       }
+      //     }).then(marker => {
+      //       marker.on(GoogleMapsEvent.MARKER_CLICK)
+      //         .subscribe(() => {
+      //           // alert('clicked');
+      //         });
+      //     });
+      // });
       // Wait the MAP_READY before using any methods.
       
     });
@@ -67,7 +67,7 @@ export class WorldPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorldPage');
     this.loadMap();
-    
+    this.getCountryList();
   }
 
   loadMap(){
@@ -205,7 +205,7 @@ export class WorldPage {
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');
-        this.getCountryList();
+        // this.getCountryList();
       });
   }
 

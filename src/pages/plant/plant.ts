@@ -36,6 +36,7 @@ export class PlantPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlantPage');
     this.loadMap();
+    this.getPlantList();
   }
 
   getPlantList() {
@@ -45,7 +46,7 @@ export class PlantPage {
       this.streamList = data.filter(plant => plant.PlantType == "Stream Plant");
       this.solarList = data.filter(plant => plant.PlantType == "Solar Plant");
       console.log(data);
-      this.updateMarker(this.solarList);
+      // this.updateMarker(this.solarList);
     })
   }
 
@@ -80,10 +81,10 @@ export class PlantPage {
     this.tabTwoImg = './assets/imgs/i1.png';
     if (selectedSection == 'tabButtonOne') {
       this.tabOneImg = './assets/imgs/i4.png';
-      this.updateMarker(this.streamList);
+      // this.updateMarker(this.streamList);
     } else if (selectedSection == 'tabButtonTwo') {
       this.tabTwoImg = './assets/imgs/i2.png';
-      this.updateMarker(this.solarList);
+      // this.updateMarker(this.solarList);
     }
   }
 
@@ -224,7 +225,7 @@ export class PlantPage {
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');
-        this.getPlantList();
+        // this.getPlantList();
       });
   }
 

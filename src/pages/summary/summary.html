@@ -62,27 +62,27 @@
   <div class="tab-section">
     <ion-toolbar color="white" class="plant-type-toolbar">
       <ion-segment [(ngModel)]="selectedSection" color="white">
-        <ion-segment-button value="powerGenerationTab">
+        <ion-segment-button value="powerGenerationTab" (click)="powerGenGraph()">
           <div text-wrap>
             <span>Power Generation</span>
           </div>
         </ion-segment-button>
-        <ion-segment-button value="irradiationTab">
+        <ion-segment-button value="irradiationTab" (click)="irradiationGraph()">
           <div text-wrap>
             <span>Irradiation</span>
           </div>
         </ion-segment-button>
-        <ion-segment-button value="ambientTemperatureTab">
+        <ion-segment-button value="ambientTemperatureTab" (click)="ambientTemperatureGraph()">
           <div text-wrap>
             <span>Ambient Temperature</span>
           </div>
         </ion-segment-button>
-        <ion-segment-button value="enegyGenerationTab">
+        <ion-segment-button value="enegyGenerationTab" (click)="enegyGenerationGraph()">
           <div text-wrap>
             <span>Energy Generation</span>
           </div>
         </ion-segment-button>
-        <ion-segment-button value="generationSummaryTab">
+        <ion-segment-button value="generationSummaryTab" (click)="generationSummaryGraph()">
           <div text-wrap>
             <span>Generation Summary</span>
           </div>
