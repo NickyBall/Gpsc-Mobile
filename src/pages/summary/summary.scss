@@ -50,7 +50,37 @@ page-summary {
     }
 
     .power-gen-container{
-        max-height: 50px;
+        max-height: 100%;
+        margin-top: 15%;
+    }
+
+    .power-title{
+        background: -webkit-linear-gradient(rgba(22, 154, 231, 0.918), rgb(30, 125, 248));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .power-text{
+        margin-top: -50%;
+    }
+
+    .power-unit{
+        font-size: 170%;
+        color: rgb(161, 161, 161);
+    }
+
+    .power-value{
+        font-size: 250%;
+        background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .power-icon{
+        img{
+         max-height: 30px;
+        }
+        margin-top: -43%;
     }
       
 }
