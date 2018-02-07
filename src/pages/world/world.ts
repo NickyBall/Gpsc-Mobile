@@ -27,20 +27,40 @@ export class WorldPage {
   countryList: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps, public countryProvider: CountryServiceProvider) {
-    this.getCountryList();
+    
   }
 
   getCountryList() {
     let UserCode = "UserCode123456";
     this.countryProvider.getAllCountry(UserCode).then(data => {
       this.countryList = data;
+      
       console.log(data);
+      this.countryList.forEach((country) => {
+        this.map.addMarker({
+            title: country.name,
+            icon: 'blue',
+            animation: 'DROP',
+            position: {
+              lat: country.Location.Lat,
+              lng: country.Location.Lng
+            }
+          }).then(marker => {
+            marker.on(GoogleMapsEvent.MARKER_CLICK)
+              .subscribe(() => {
+                // alert('clicked');
+              });
+          });
+      });
+      // Wait the MAP_READY before using any methods.
+      
     });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorldPage');
     this.loadMap();
+    
   }
 
   loadMap(){
@@ -175,29 +195,10 @@ export class WorldPage {
     };
 
     this.map = this.googleMap.create('map_canvas', mapOptions);
-
-    // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');
-        this.countryList.forEach((country) => {
-          this.map.addMarker({
-              title: country.name,
-              icon: 'blue',
-              animation: 'DROP',
-              position: {
-                lat: country.geolocation.lat,
-                lng: country.geolocation.lng
-              }
-            })
-            .then(marker => {
-              marker.on(GoogleMapsEvent.MARKER_CLICK)
-                .subscribe(() => {
-                  // alert('clicked');
-                });
-            });
-        });
-
+        this.getCountryList();
       });
   }
 
