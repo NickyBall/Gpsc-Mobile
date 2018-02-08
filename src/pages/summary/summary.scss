@@ -62,15 +62,19 @@ page-summary {
 
     .power-text{
         margin-top: -50%;
+        position: relative;
+        left: 5%;
+        margin-top: -50%;
+    
     }
 
     .power-unit{
-        font-size: 170%;
+        font-size: 150%;
         color: rgb(161, 161, 161);
     }
 
     .power-value{
-        font-size: 250%;
+        font-size: 220%;
         background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -79,8 +83,11 @@ page-summary {
     .power-icon{
         img{
          max-height: 30px;
+         position: relative;
+         right: -8%;
+
         }
-        margin-top: -43%;
+        margin-top: -38%;
     }
       
 }
