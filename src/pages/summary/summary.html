@@ -95,7 +95,7 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <span class="power-title">Power Generation</span>
+                <span class="tab-title">Power Generation</span>
               </ion-col>
             </ion-row>
             <ion-row class="power-gen-container">
@@ -119,7 +119,7 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <span class="power-title">irradiationTab</span>
+                <span class="tab-title">irradiationTab</span>
               </ion-col>
             </ion-row>
             <ion-row class="power-gen-container">
@@ -144,7 +144,7 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <span class="power-title">ambientTemperatureTab</span>
+                <span class="tab-title">ambientTemperatureTab</span>
               </ion-col>
             </ion-row>
             <ion-row class="power-gen-container">
@@ -168,28 +168,28 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <span class="power-title">Energy Generation</span>
+                <span class="tab-title">Energy Generation</span>
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col>
                 <ion-segment [(ngModel)]="selectedEnergySection" color="white">
-                  <ion-segment-button value="hourlyTab" (click)="hourlyGraph()">
+                  <ion-segment-button value="hourlyTab" (click)="hourlyGraph(1)">
                     <div text-wrap>
                       <span>Hourly</span>
                     </div>
                   </ion-segment-button>
-                  <ion-segment-button value="dailyTab" (click)="dailyGraph()">
+                  <ion-segment-button value="dailyTab" (click)="dailyGraph(1)">
                     <div text-wrap>
                       <span>Daily</span>
                     </div>
                   </ion-segment-button>
-                  <ion-segment-button value="monthlyTab" (click)="monthlyGraph()">
+                  <ion-segment-button value="monthlyTab" (click)="monthlyGraph(1)">
                     <div text-wrap>
                       <span>Monthly</span>
                     </div>
                   </ion-segment-button>
-                  <ion-segment-button value="yearlyTab" (click)="yearlyGraph()">
+                  <ion-segment-button value="yearlyTab" (click)="yearlyGraph(1)">
                     <div text-wrap>
                       <span>Yearly</span>
                     </div>
@@ -198,7 +198,17 @@
               </ion-col>
             </ion-row>
             <div [ngSwitch]="selectedEnergySection">
-              <div *ngSwitchCase="'hourlyTab'">
+              <div *ngSwitchCase="'hourlyTab'" class="energy-chart-bg">
+                <ion-row no-padding>
+                  <ion-col text-right>
+                    <button ion-button class="chart-type-toggle" (click)="hourlyGraph(1)" no-padding>
+                        <ion-icon name="stats"></ion-icon>
+                    </button>
+                    <button ion-button class="chart-type-toggle" (click)="hourlyGraph(2)" no-padding>
+                        <ion-icon name="trending-up"></ion-icon>
+                    </button>
+                  </ion-col>
+                </ion-row>
                 <ion-row>
                   <ion-col>
                     <canvas #hourlyCanvas></canvas>
@@ -206,7 +216,17 @@
                 </ion-row>
               </div>
 
-              <div *ngSwitchCase="'dailyTab'">
+              <div *ngSwitchCase="'dailyTab'" class="energy-chart-bg">
+                <ion-row no-padding>
+                    <ion-col text-right>
+                      <button ion-button class="chart-type-toggle" (click)="dailyGraph(1)" no-padding>
+                          <ion-icon name="stats"></ion-icon>
+                      </button>
+                      <button ion-button class="chart-type-toggle" (click)="dailyGraph(2)" no-padding>
+                          <ion-icon name="trending-up"></ion-icon>
+                      </button>
+                    </ion-col>
+                  </ion-row>
                 <ion-row>
                     <ion-col>
                       <canvas #dailyCanvas></canvas>
@@ -214,15 +234,49 @@
                   </ion-row>
               </div>
 
-              <div *ngSwitchCase="'monthlyTab'">
-                <ion-row>
-                    <ion-col>
-                      <canvas #monthlyCanvas></canvas>
+              <div *ngSwitchCase="'monthlyTab'" class="energy-chart-bg">
+                <ion-row no-padding>
+                    <ion-col text-right>
+                      <button ion-button class="chart-type-toggle" (click)="monthlyGraph(1)" no-padding>
+                          <ion-icon name="stats"></ion-icon>
+                      </button>
+                      <button ion-button class="chart-type-toggle" (click)="monthlyGraph(2)" no-padding>
+                          <ion-icon name="trending-up"></ion-icon>
+                      </button>
                     </ion-col>
                   </ion-row>
+                  <ion-row no-padding> 
+                      <ion-col class="target">
+                        <ul>
+                          <li>Target</li>
+                        </ul>
+                      </ion-col>
+                    </ion-row>
+                  <ion-row>
+                      <ion-col>
+                        <canvas #monthlyCanvas></canvas>
+                      </ion-col>
+                    </ion-row>
               </div>
 
-              <div *ngSwitchCase="'yearlyTab'">
+              <div *ngSwitchCase="'yearlyTab'"  class="energy-chart-bg">
+                <ion-row no-padding>
+                  <ion-col text-right>
+                    <button ion-button class="chart-type-toggle" (click)="yearlyGraph(1)" no-padding>
+                        <ion-icon name="stats"></ion-icon>
+                    </button>
+                    <button ion-button class="chart-type-toggle" (click)="yearlyGraph(2)" no-padding>
+                        <ion-icon name="trending-up"></ion-icon>
+                    </button>
+                  </ion-col>
+                </ion-row>
+                <ion-row no-padding> 
+                    <ion-col class="target">
+                      <ul>
+                        <li>Target</li>
+                      </ul>
+                    </ion-col>
+                  </ion-row>
                 <ion-row>
                     <ion-col>
                       <canvas #yearlyCanvas></canvas>

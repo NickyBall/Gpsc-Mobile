@@ -54,7 +54,7 @@ page-summary {
         margin-top: 15%;
     }
 
-    .power-title{
+    .tab-title{
         background: -webkit-linear-gradient(rgba(22, 154, 231, 0.918), rgb(30, 125, 248));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -89,5 +89,34 @@ page-summary {
         }
         margin-top: -38%;
     }
-      
+
+    .energy-chart-bg{
+        background-color: rgb(230, 230, 230);
+    }
+
+    .chart-type-toggle{
+        background-color: rgb(255, 255, 255);
+        color: #488aff;
+        max-height: 30px;
+        width: 25px;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+    
+    .chart-type-toggle:focus{
+        color: rgb(255, 255, 255);
+        background-color: #488aff;
+    }
+
+    .target{
+        ul li{
+            float: right;
+            font-size: 60%;
+            margin-top: -8%;
+            color: rgba(248, 94, 23, 0.918);
+        }
+        margin-right: 5px;
+
+    }
+
 }

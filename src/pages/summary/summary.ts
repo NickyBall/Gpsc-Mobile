@@ -24,6 +24,7 @@ export class SummaryPage {
   @ViewChild('monthlyCanvas') monthlyCanvas;
   @ViewChild('yearlyCanvas') yearlyCanvas;
 
+
   selectedSection = 'powerGenerationTab';
 
   powerChart: any;
@@ -66,6 +67,7 @@ export class SummaryPage {
     this.powerData = 3.5;
     this.irradiationData = 700;
     this.ambientTempData = 30;
+
     // console.log(this.irradChart);
     // this.irradiationGraph();
     // this.ambientTemperatureGraph();
@@ -310,135 +312,257 @@ export class SummaryPage {
 
   enegyGenerationGraph() {
     setTimeout(() => {
-        this.hourlyGraph();
+        this.hourlyGraph(1);
     }, 500);
   }
 
-  hourlyGraph(){
+  hourlyGraph(type: number){
+    if(this.hourly){
+        this.hourly.destroy();
+    }
+
+    let config = {     
+        type: '',
+        data: {
+          labels: ["7am", "8am", "9am", "10am", "11am", "12am", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"],
+          datasets: [
+            ]
+          },
+          options: {
+            legend: {
+              display: false
+            },
+            tooltips: {
+              enabled: false
+            },
+            scales: {
+              xAxes: [{
+                barPercentage: 0.5,
+              }]
+            },
+            chartArea: {
+                backgroundColor: 'rgba(190, 190, 190, 0.7)'
+            }
+         }
+ 
+    }
+
+    if(type === 1){
+        config.type = 'bar';
+        config.data.datasets =   [{
+            backgroundColor: "rgba(22, 189, 231, 0.918)",
+            data: [22, 32, 34, 16, 32, 40, 35, 34, 29, 30, 31, 21],
+            }];
+    }
+    if(type === 2){
+        config.type = 'line';
+        config.data.datasets =   [{
+            lineTension: 0.1,
+            backgroundColor: "transparent",
+            borderColor: "rgba(22, 189, 231, 0.918)",
+            pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
+            data: [22, 32, 34, 16, 32, 40, 35, 34, 29, 30, 31, 21],
+            }];
+    }
+
     setTimeout(() => {
-        this.hourly = new Chart(this.hourlyCanvas.nativeElement, {     
-            type: 'bar',
-            data: {
-              labels: ["7am", "8am", "9am", "10am", "11am", "12am", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"],
-              datasets: [
-                  {
-                  lineTension: 0.1,
-                  backgroundColor: "rgba(22, 189, 231, 0.918)",
-                  data: [22, 32, 34, 16, 32, 40, 35, 34, 29, 30, 31, 21],
-                  }
-                ]
-              },
-              options: {
-                legend: {
-                  display: false
-                },
-                tooltips: {
-                  enabled: false
-                },
-                scales: {
-                  xAxes: [{
-                    barPercentage: 0.5,
-                  }]
-                  }
-             }
-     
-        });
+        this.hourly = new Chart(this.hourlyCanvas.nativeElement, config);
     }, 100);
   }
 
-  dailyGraph(){
-    setTimeout(() => {
-        this.dialy = new Chart(this.dailyCanvas.nativeElement, {     
-            type: 'bar',
-            data: {
-              labels: ["7Jan", "8Jan", "9Jan", "10Jan", "11Jan", "12Jan", "1Jan"],
-              datasets: [
-                  {
-                  lineTension: 0.1,
-                  backgroundColor: "rgba(22, 189, 231, 0.918)",
-                  data: [22, 32, 34, 16, 32, 40, 35],
-                  }
-                ]
-              },
-              options: {
-                legend: {
-                  display: false
-                },
-                tooltips: {
-                  enabled: false
-                },
-                scales: {
-                  xAxes: [{
-                    barPercentage: 0.5,
-                  }]
-                  }
-             }
+  dailyGraph(type: number){
+    if(this.dialy){
+        this.dialy.destroy();
+    }
 
-        });
+    let config = {     
+        type: '',
+        data: {
+          labels: ["7Jan", "8Jan", "9Jan", "10Jan", "11Jan", "12Jan", "1Jan"],
+          datasets: []
+          },
+          options: {
+            legend: {
+              display: false
+            },
+            tooltips: {
+              enabled: false
+            },
+            scales: {
+              xAxes: [{
+                barPercentage: 0.5,
+              }]
+              },
+            chartArea: {
+                backgroundColor: 'rgba(190, 190, 190, 0.7)'
+            }
+         }
+
+    };
+
+    if(type === 1){
+        config.type = 'bar';
+        config.data.datasets =   [{
+            backgroundColor: "rgba(22, 189, 231, 0.918)",
+            data: [22, 32, 34, 16, 32, 40, 35],
+            }];
+    }
+    if(type === 2){
+        config.type = 'line';
+        config.data.datasets =   [{
+            lineTension: 0.1,
+            backgroundColor: "transparent",
+            borderColor: "rgba(22, 189, 231, 0.918)",
+            pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
+            data: [22, 32, 34, 16, 32, 40, 35],
+            }];
+    }
+
+    setTimeout(() => {
+        this.dialy = new Chart(this.dailyCanvas.nativeElement, config);
     }, 100);
   }
 
-  monthlyGraph(){
-    setTimeout(() => {
-        this.monthly = new Chart(this.monthlyCanvas.nativeElement, {     
-            type: 'bar',
-            data: {
-              labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-              datasets: [
-                  {
-                  lineTension: 0.1,
-                  backgroundColor: "rgba(22, 189, 231, 0.918)",
-                  data: [22, 14, 34, 16, 32, 40, 33, 20, 29, 30, 35, 21],
-                  }
-                ]
-              },
-              options: {
-                legend: {
-                  display: false
-                },
-                tooltips: {
-                  enabled: false
-                },
-                scales: {
-                  xAxes: [{
-                    barPercentage: 0.5,
-                  }]
-                  }
-             }
+  monthlyGraph(type: number){
+    if(this.monthly){
+        this.monthly.destroy();
+    }
 
-        });
+    let config = {     
+        type: '',
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: []
+          },
+          options: {
+            legend: {
+              display: false
+            },
+            tooltips: {
+              enabled: false
+            },
+            scales: {
+              xAxes: [{
+                barPercentage: 0.5,
+              }]
+            },
+            chartArea: {
+                backgroundColor: 'rgba(190, 190, 190, 0.7)'
+            }
+         }
+
+    };
+
+    if(type === 1){
+        config.type = 'bar';
+        config.data.datasets = [{
+                backgroundColor: "rgba(22, 189, 231, 0.918)",
+                data: [22, 14, 34, 16, 32, 40, 33, 20, 29, 30, 35, 21],
+            },
+            {
+                lineTension: 0.1,
+                backgroundColor: "transparent",
+                borderColor: "rgba(248, 94, 23, 0.918)",
+                pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
+                data: [25, 20, 34, 20, 40, 40, 45, 50, 32, 35, 34, 50],
+                type: 'line'
+            }
+        ];
+    }
+    if(type === 2){
+        config.type = 'line';
+        config.data.datasets =   [{
+                lineTension: 0.1,
+                backgroundColor: "transparent",
+                borderColor: "rgba(22, 189, 231, 0.918)",
+                pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
+                data: [22, 14, 34, 16, 32, 40, 33, 20, 29, 30, 35, 21],
+            },
+            {
+                lineTension: 0.1,
+                backgroundColor: "transparent",
+                borderColor: "rgba(248, 94, 23, 0.918)",
+                pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
+                data: [25, 20, 34, 20, 40, 40, 45, 50, 32, 35, 34, 50],
+                type: 'line'
+            }
+        ];
+    }
+
+    setTimeout(() => {
+        this.monthly = new Chart(this.monthlyCanvas.nativeElement, config);
     }, 100);
   }
 
-  yearlyGraph(){
-    setTimeout(() => {
-        this.yearly = new Chart(this.yearlyCanvas.nativeElement, {     
-            type: 'bar',
-            data: {
-              labels: ["2015", "2016", "2017", "2018"],
-              datasets: [
-                  {
-                  lineTension: 0.1,
-                  backgroundColor: "rgba(22, 189, 231, 0.918)",
-                  data: [22, 32, 34, 16],
-                  }
-                ]
-              },
-              options: {
-                legend: {
-                  display: false
-                },
-                tooltips: {
-                  enabled: false
-                },
-                scales: {
-                  xAxes: [{
-                    barPercentage: 0.5,
-                  }]
-                  }
-             }
+  yearlyGraph(type :number){
+    if(this.yearly){
+        this.yearly.destroy();
+    }
 
-        });
+    let config = {     
+        type: '',
+        data: {
+          labels: ["2015", "2016", "2017", "2018"],
+          datasets: []
+          },
+          options: {
+            legend: {
+              display: false
+            },
+            tooltips: {
+              enabled: false
+            },
+            scales: {
+              xAxes: [{
+                barPercentage: 0.5,
+              }]
+            },
+            chartArea: {
+                backgroundColor: 'transparent'
+            }
+         }
+
+    };
+
+    if(type === 1){
+        config.type = 'bar';
+        config.data.datasets = [{
+                backgroundColor: "rgba(22, 189, 231, 0.918)",
+                data: [22, 32, 34, 16]
+            },
+            {
+                lineTension: 0.1,
+                backgroundColor: "transparent",
+                borderColor: "rgba(248, 94, 23, 0.918)",
+                pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
+                data: [30, 35, 40, 30],
+                type: 'line'
+            }
+        ];
+    }
+    if(type === 2){
+        config.type = 'line';
+        config.data.datasets =   [
+            {
+                lineTension: 0.1,
+                backgroundColor: "transparent",
+                pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
+                borderColor: "rgba(22, 189, 231, 0.918)",
+                data: [22, 32, 34, 16],
+            },
+            {
+                lineTension: 0.1,
+                backgroundColor: "transparent",
+                borderColor: "rgba(248, 94, 23, 0.918)",
+                pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
+                data: [30, 35, 40, 30],
+                type: 'line'
+            }
+        ];
+    }
+
+    setTimeout(() => {
+        this.yearly = new Chart(this.yearlyCanvas.nativeElement, config);
     }, 100);
   }
 
