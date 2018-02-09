@@ -2,7 +2,12 @@ page-summary {
 
     ion-segment{
         ion-segment-button{
+            height: 20px !important;
         }
+    }
+
+    .energy-segment{
+        height: 17px !important;
     }
 
     .segment-button {

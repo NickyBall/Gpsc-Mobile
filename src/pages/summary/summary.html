@@ -174,22 +174,22 @@
             <ion-row>
               <ion-col>
                 <ion-segment [(ngModel)]="selectedEnergySection" color="white">
-                  <ion-segment-button value="hourlyTab" (click)="hourlyGraph(1)">
+                  <ion-segment-button class="energy-segment" value="hourlyTab" (click)="hourlyGraph(1)">
                     <div text-wrap>
                       <span>Hourly</span>
                     </div>
                   </ion-segment-button>
-                  <ion-segment-button value="dailyTab" (click)="dailyGraph(1)">
+                  <ion-segment-button class="energy-segment" value="dailyTab" (click)="dailyGraph(1)">
                     <div text-wrap>
                       <span>Daily</span>
                     </div>
                   </ion-segment-button>
-                  <ion-segment-button value="monthlyTab" (click)="monthlyGraph(1)">
+                  <ion-segment-button class="energy-segment" value="monthlyTab" (click)="monthlyGraph(1)">
                     <div text-wrap>
                       <span>Monthly</span>
                     </div>
                   </ion-segment-button>
-                  <ion-segment-button value="yearlyTab" (click)="yearlyGraph(1)">
+                  <ion-segment-button class="energy-segment" value="yearlyTab" (click)="yearlyGraph(1)">
                     <div text-wrap>
                       <span>Yearly</span>
                     </div>

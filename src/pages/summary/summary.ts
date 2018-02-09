@@ -26,6 +26,7 @@ export class SummaryPage {
 
 
   selectedSection = 'powerGenerationTab';
+  selectedEnergySection = 'hourlyTab';
 
   powerChart: any;
   powerData: any;
@@ -63,7 +64,7 @@ export class SummaryPage {
     this.ambientIcon = "assets/imgs/Temp.png";
 
     this.powerGenGraph();
-
+    // this.hourlyGraph(1);
     this.powerData = 3.5;
     this.irradiationData = 700;
     this.ambientTempData = 30;
@@ -311,9 +312,7 @@ export class SummaryPage {
   }
 
   enegyGenerationGraph() {
-    setTimeout(() => {
-        this.hourlyGraph(1);
-    }, 500);
+    this.hourlyGraph(1);
   }
 
   hourlyGraph(type: number){
