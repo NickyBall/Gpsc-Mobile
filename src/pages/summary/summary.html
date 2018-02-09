@@ -64,27 +64,27 @@
       <ion-segment [(ngModel)]="selectedSection" color="white">
         <ion-segment-button value="powerGenerationTab" (click)="powerGenGraph()">
           <div text-wrap>
-            <span>Power Generation</span>
+            <span class="segment-text">Power Generation</span>
           </div>
         </ion-segment-button>
         <ion-segment-button value="irradiationTab" (click)="irradiationGraph()">
           <div text-wrap>
-            <span>Irradiation</span>
+            <span class="segment-text">Irradiation</span>
           </div>
         </ion-segment-button>
         <ion-segment-button value="ambientTemperatureTab" (click)="ambientTemperatureGraph()">
           <div text-wrap>
-            <span>Ambient Temperature</span>
+            <span class="segment-text">Ambient Temperature</span>
           </div>
         </ion-segment-button>
         <ion-segment-button value="enegyGenerationTab" (click)="enegyGenerationGraph()">
           <div text-wrap>
-            <span>Energy Generation</span>
+            <span class="segment-text">Energy Generation</span>
           </div>
         </ion-segment-button>
         <ion-segment-button value="generationSummaryTab" (click)="generationSummaryGraph()">
           <div text-wrap>
-            <span>Generation Summary</span>
+            <span class="segment-text">Generation Summary</span>
           </div>
         </ion-segment-button>
       </ion-segment>
@@ -288,30 +288,46 @@
           </ion-grid>
         </div>
         <div *ngSwitchCase="'generationSummaryTab'">
-          <!-- <ion-grid>
+          <ion-grid>
             <ion-row>
               <ion-col>
-                <span class="power-title">Power Generation</span>
+                <span class="tab-title">Generation Summary</span>
               </ion-col>
             </ion-row>
-            <ion-row class="power-gen-container">
-              <ion-col col-8>
-                <div id="generation-chart" style="display: block;"	></div>
+            <ion-row class="start-gap" margin>
+              <span class="snippet">Today's Generation</span>
+            </ion-row>
+            <ion-row class="underline">
+              <ion-col col-9>
+                <div class="value-summary" text-center>237345</div>
               </ion-col>
-              <ion-col col-4 align-self-center>
-                <div class="power-text">
-                  <span class="power-value">3.5</span>
-                  <span class="power-unit">MW</span>
-                </div>
+              <ion-col col-3>
+                <span class="unit-summary">KW/h</span>
               </ion-col>
             </ion-row>
-            <ion-row>
-              <ion-col col-8 text-center class="power-icon">
-                <img [src]="powerIcon" item-start/>
-              </ion-col>
-              <ion-col col-4></ion-col>
+            <ion-row margin>
+              <span class="snippet">MTD Generation (Actual/Plan)</span>
             </ion-row>
-          </ion-grid> -->
+            <ion-row class="underline">
+              <ion-col col-9>
+                <div class="value-summary" text-center>75434523/10000000</div>
+              </ion-col>
+              <ion-col col-3>
+                <span class="unit-summary">KW/h</span>
+              </ion-col>
+            </ion-row>
+            <ion-row margin>
+              <span class="snippet">YID Generation (Actual/Plan)</span>
+            </ion-row>
+            <ion-row class="underline">
+              <ion-col col-9>
+                <div class="value-summary" text-center>18906305/2000000</div>
+              </ion-col>
+              <ion-col col-3>
+                <span class="unit-summary">KW/h</span>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </div>
 
       </div>

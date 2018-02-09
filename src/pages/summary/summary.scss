@@ -1,4 +1,10 @@
 page-summary {
+
+    ion-segment{
+        ion-segment-button{
+        }
+    }
+
     .segment-button {
         color: black !important;
         font-size: 9px !important;
@@ -47,6 +53,10 @@ page-summary {
 
     div.highcharts-container g.highcharts-tracker > * {
         fill :rgb(155, 155, 155);
+    }
+
+    .segment-text{
+        font-size: 90%;
     }
 
     .power-gen-container{
@@ -117,6 +127,36 @@ page-summary {
         }
         margin-right: 5px;
 
+    }
+
+    .start-gap{
+        padding-top: 5%;
+    }
+
+    .snippet{
+        font-size: 70%;
+        color: rgb(133, 133, 133);
+        position: relative;
+        left: 5%;
+    }
+
+    .value-summary{
+        font-size: 130%;
+        background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .unit-summary{
+        font-size: 65%;
+        color: rgb(133, 133, 133);
+    }
+
+    .underline{
+        border-bottom: 2px solid;
+        border-color: rgb(197, 197, 197);
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
 }
