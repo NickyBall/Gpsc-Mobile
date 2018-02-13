@@ -52,6 +52,11 @@ export class SummaryPage {
 
   generationSummaryChart: any;
   generationSummaryData: any;
+  summaryToday: number = 234432
+  summaryMTDActual: number = 7654098;
+  summaryMTDPlan: number = 10000000;
+  summaryYTDActual: number = 18324394;
+  summaryYTDPlan: number = 20000000;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

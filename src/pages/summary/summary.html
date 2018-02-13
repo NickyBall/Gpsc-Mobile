@@ -299,7 +299,7 @@
             </ion-row>
             <ion-row class="underline">
               <ion-col col-9>
-                <div class="value-summary" text-center>237345</div>
+                <div class="value-summary" text-center>{{ summaryToday|number }}</div>
               </ion-col>
               <ion-col col-3>
                 <span class="unit-summary">KW/h</span>
@@ -310,7 +310,7 @@
             </ion-row>
             <ion-row class="underline">
               <ion-col col-9>
-                <div class="value-summary" text-center>75434523/10000000</div>
+                <div class="value-summary" text-center>{{ summaryMTDActual|number }}/{{ summaryMTDPlan|number }}</div>
               </ion-col>
               <ion-col col-3>
                 <span class="unit-summary">KW/h</span>
@@ -321,7 +321,7 @@
             </ion-row>
             <ion-row class="underline">
               <ion-col col-9>
-                <div class="value-summary" text-center>18906305/2000000</div>
+                <div class="value-summary" text-center>{{ summaryYTDActual|number }}/{{ summaryYTDPlan|number }}</div>
               </ion-col>
               <ion-col col-3>
                 <span class="unit-summary">KW/h</span>
