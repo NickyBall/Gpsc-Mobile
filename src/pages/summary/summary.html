@@ -64,27 +64,27 @@
       <ion-segment [(ngModel)]="selectedSection" color="white">
         <ion-segment-button value="powerGenerationTab" (click)="powerGenGraph()">
           <div text-wrap>
-            <span>Power Generation</span>
+            <span class="segment-text">Power Generation</span>
           </div>
         </ion-segment-button>
         <ion-segment-button value="irradiationTab" (click)="irradiationGraph()">
           <div text-wrap>
-            <span>Irradiation</span>
+            <span class="segment-text">Irradiation</span>
           </div>
         </ion-segment-button>
         <ion-segment-button value="ambientTemperatureTab" (click)="ambientTemperatureGraph()">
           <div text-wrap>
-            <span>Ambient Temperature</span>
+            <span class="segment-text">Ambient Temperature</span>
           </div>
         </ion-segment-button>
         <ion-segment-button value="enegyGenerationTab" (click)="enegyGenerationGraph()">
           <div text-wrap>
-            <span>Energy Generation</span>
+            <span class="segment-text">Energy Generation</span>
           </div>
         </ion-segment-button>
         <ion-segment-button value="generationSummaryTab" (click)="generationSummaryGraph()">
           <div text-wrap>
-            <span>Generation Summary</span>
+            <span class="segment-text">Generation Summary</span>
           </div>
         </ion-segment-button>
       </ion-segment>
@@ -95,25 +95,23 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <span class="power-title">Power Generation</span>
+                <span class="tab-title">Power Generation</span>
               </ion-col>
             </ion-row>
             <ion-row class="power-gen-container">
               <ion-col col-8>
                 <div id="power-chart"></div>
               </ion-col>
-              <ion-col col-4 align-self-center>
-                <div class="power-text">
-                  <span class="power-value">3.5</span>
-                  <span class="power-unit">MW</span>
-                </div>
-              </ion-col>
+              <ion-col col-4></ion-col>
             </ion-row>
             <ion-row>
-              <ion-col col-8 text-center class="power-icon">
+              <ion-col col-7 text-center class="power-icon">
                 <img [src]="powerIcon" item-start/>
               </ion-col>
-              <ion-col col-4></ion-col>
+              <ion-col col-5 class="power-text">
+                  <span class="power-value">{{ powerData }}</span>
+                  <span class="power-unit">MW</span>
+                </ion-col>
             </ion-row>
           </ion-grid>
         </div>
@@ -121,25 +119,24 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <span class="power-title">irradiationTab</span>
+                <span class="tab-title">irradiationTab</span>
               </ion-col>
             </ion-row>
             <ion-row class="power-gen-container">
               <ion-col col-8>
-                <div id="irradiation-chart" style="display: block;"	></div>
+                <div id="irradiation-chart"></div>
               </ion-col>
-              <ion-col col-4 align-self-center>
-                <div class="power-text">
-                  <span class="power-value">3.5</span>
-                  <span class="power-unit">xx</span>
-                </div>
+              <ion-col col-4>
               </ion-col>
             </ion-row>
             <ion-row>
-              <ion-col col-8 text-center class="power-icon">
-                <img [src]="powerIcon" item-start/>
+              <ion-col col-7 text-center class="power-icon">
+                <img [src]="irradiationIcon" item-start/>
               </ion-col>
-              <ion-col col-4></ion-col>
+              <ion-col col-5 class="power-text">
+                <span class="power-value">{{ irradiationData }}</span>
+                <span class="power-unit">W/M<sup>2</sup></span>
+              </ion-col>
             </ion-row>
           </ion-grid>
         </div>
@@ -147,80 +144,190 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <span class="power-title">ambientTemperatureTab</span>
+                <span class="tab-title">ambientTemperatureTab</span>
               </ion-col>
             </ion-row>
             <ion-row class="power-gen-container">
               <ion-col col-8>
-                <div id="ambient-chart" style="display: block;"	></div>
+                <div id="ambient-chart"></div>
               </ion-col>
-              <ion-col col-4 align-self-center>
-                <div class="power-text">
-                  <span class="power-value">3.5</span>
-                  <span class="power-unit">MW</span>
-                </div>
-              </ion-col>
+             <ion-col></ion-col>
             </ion-row>
             <ion-row>
-              <ion-col col-8 text-center class="power-icon">
-                <img [src]="powerIcon" item-start/>
+              <ion-col col-7 text-center class="power-icon">
+                <img [src]="ambientIcon" item-start/>
               </ion-col>
-              <ion-col col-4></ion-col>
+              <ion-col col-5 class="power-text">
+                  <span class="power-value">{{ ambientTempData }}</span>
+                  <span class="power-unit"><sup>o</sup>C</span>
+                </ion-col>
             </ion-row>
           </ion-grid>
         </div>
         <div *ngSwitchCase="'enegyGenerationTab'">
-          <!-- <ion-grid>
+          <ion-grid>
             <ion-row>
               <ion-col>
-                <span class="power-title">enegyGenerationTab</span>
-              </ion-col>
-            </ion-row>
-            <ion-row class="power-gen-container">
-              <ion-col col-8>
-                <div id="enegy-chart" style="display: block;"	></div>
-              </ion-col>
-              <ion-col col-4 align-self-center>
-                <div class="power-text">
-                  <span class="power-value">3.5</span>
-                  <span class="power-unit">MW</span>
-                </div>
+                <span class="tab-title">Energy Generation</span>
               </ion-col>
             </ion-row>
             <ion-row>
-              <ion-col col-8 text-center class="power-icon">
-                <img [src]="powerIcon" item-start/>
+              <ion-col>
+                <ion-segment [(ngModel)]="selectedEnergySection" color="white">
+                  <ion-segment-button class="energy-segment" value="hourlyTab" (click)="hourlyGraph(1)">
+                    <div>
+                      <span>Hourly</span>
+                    </div>
+                  </ion-segment-button>
+                  <ion-segment-button class="energy-segment" value="dailyTab" (click)="dailyGraph(1)">
+                    <div>
+                      <span>Daily</span>
+                    </div>
+                  </ion-segment-button>
+                  <ion-segment-button class="energy-segment" value="monthlyTab" (click)="monthlyGraph(1)">
+                    <div>
+                      <span>Monthly</span>
+                    </div>
+                  </ion-segment-button>
+                  <ion-segment-button class="energy-segment" value="yearlyTab" (click)="yearlyGraph(1)">
+                    <div>
+                      <span>Yearly</span>
+                    </div>
+                  </ion-segment-button>
+                </ion-segment>
               </ion-col>
-              <ion-col col-4></ion-col>
             </ion-row>
-          </ion-grid> -->
-         
+            <div [ngSwitch]="selectedEnergySection">
+              <div *ngSwitchCase="'hourlyTab'" class="energy-chart-bg">
+                <ion-row no-padding>
+                  <ion-col text-right>
+                    <button ion-button class="chart-type-toggle" (click)="hourlyGraph(1)" no-padding>
+                        <ion-icon name="stats"></ion-icon>
+                    </button>
+                    <button ion-button class="chart-type-toggle" (click)="hourlyGraph(2)" no-padding>
+                        <ion-icon name="trending-up"></ion-icon>
+                    </button>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <canvas #hourlyCanvas></canvas>
+                  </ion-col>
+                </ion-row>
+              </div>
+
+              <div *ngSwitchCase="'dailyTab'" class="energy-chart-bg">
+                <ion-row no-padding>
+                    <ion-col text-right>
+                      <button ion-button class="chart-type-toggle" (click)="dailyGraph(1)" no-padding>
+                          <ion-icon name="stats"></ion-icon>
+                      </button>
+                      <button ion-button class="chart-type-toggle" (click)="dailyGraph(2)" no-padding>
+                          <ion-icon name="trending-up"></ion-icon>
+                      </button>
+                    </ion-col>
+                  </ion-row>
+                <ion-row>
+                    <ion-col>
+                      <canvas #dailyCanvas></canvas>
+                    </ion-col>
+                  </ion-row>
+              </div>
+
+              <div *ngSwitchCase="'monthlyTab'" class="energy-chart-bg">
+                <ion-row no-padding>
+                    <ion-col text-right>
+                      <button ion-button class="chart-type-toggle" (click)="monthlyGraph(1)" no-padding>
+                          <ion-icon name="stats"></ion-icon>
+                      </button>
+                      <button ion-button class="chart-type-toggle" (click)="monthlyGraph(2)" no-padding>
+                          <ion-icon name="trending-up"></ion-icon>
+                      </button>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row no-padding> 
+                      <ion-col class="target">
+                        <ul>
+                          <li>Target</li>
+                        </ul>
+                      </ion-col>
+                    </ion-row>
+                  <ion-row>
+                      <ion-col>
+                        <canvas #monthlyCanvas></canvas>
+                      </ion-col>
+                    </ion-row>
+              </div>
+
+              <div *ngSwitchCase="'yearlyTab'"  class="energy-chart-bg">
+                <ion-row no-padding>
+                  <ion-col text-right>
+                    <button ion-button class="chart-type-toggle" (click)="yearlyGraph(1)" no-padding>
+                        <ion-icon name="stats"></ion-icon>
+                    </button>
+                    <button ion-button class="chart-type-toggle" (click)="yearlyGraph(2)" no-padding>
+                        <ion-icon name="trending-up"></ion-icon>
+                    </button>
+                  </ion-col>
+                </ion-row>
+                <ion-row no-padding> 
+                    <ion-col class="target">
+                      <ul>
+                        <li>Target</li>
+                      </ul>
+                    </ion-col>
+                  </ion-row>
+                <ion-row>
+                    <ion-col>
+                      <canvas #yearlyCanvas></canvas>
+                    </ion-col>
+                  </ion-row>
+              </div>
+            </div>
+              
+          </ion-grid>
         </div>
         <div *ngSwitchCase="'generationSummaryTab'">
-          <!-- <ion-grid>
+          <ion-grid>
             <ion-row>
               <ion-col>
-                <span class="power-title">Power Generation</span>
+                <span class="tab-title">Generation Summary</span>
               </ion-col>
             </ion-row>
-            <ion-row class="power-gen-container">
-              <ion-col col-8>
-                <div id="generation-chart" style="display: block;"	></div>
+            <ion-row class="start-gap" margin>
+              <span class="snippet">Today's Generation</span>
+            </ion-row>
+            <ion-row class="underline">
+              <ion-col col-9>
+                <div class="value-summary" text-center>237345</div>
               </ion-col>
-              <ion-col col-4 align-self-center>
-                <div class="power-text">
-                  <span class="power-value">3.5</span>
-                  <span class="power-unit">MW</span>
-                </div>
+              <ion-col col-3>
+                <span class="unit-summary">KW/h</span>
               </ion-col>
             </ion-row>
-            <ion-row>
-              <ion-col col-8 text-center class="power-icon">
-                <img [src]="powerIcon" item-start/>
-              </ion-col>
-              <ion-col col-4></ion-col>
+            <ion-row margin>
+              <span class="snippet">MTD Generation (Actual/Plan)</span>
             </ion-row>
-          </ion-grid> -->
+            <ion-row class="underline">
+              <ion-col col-9>
+                <div class="value-summary" text-center>75434523/10000000</div>
+              </ion-col>
+              <ion-col col-3>
+                <span class="unit-summary">KW/h</span>
+              </ion-col>
+            </ion-row>
+            <ion-row margin>
+              <span class="snippet">YID Generation (Actual/Plan)</span>
+            </ion-row>
+            <ion-row class="underline">
+              <ion-col col-9>
+                <div class="value-summary" text-center>18906305/2000000</div>
+              </ion-col>
+              <ion-col col-3>
+                <span class="unit-summary">KW/h</span>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </div>
 
       </div>

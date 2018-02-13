@@ -1,4 +1,15 @@
 page-summary {
+
+    ion-segment{
+        ion-segment-button{
+            height: 20px !important;
+        }
+    }
+
+    .energy-segment{
+        height: 20px !important;
+    }
+
     .segment-button {
         color: black !important;
         font-size: 9px !important;
@@ -49,12 +60,16 @@ page-summary {
         fill :rgb(155, 155, 155);
     }
 
+    .segment-text{
+        font-size: 90%;
+    }
+
     .power-gen-container{
         max-height: 100%;
         margin-top: 15%;
     }
 
-    .power-title{
+    .tab-title{
         background: -webkit-linear-gradient(rgba(22, 154, 231, 0.918), rgb(30, 125, 248));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -62,15 +77,19 @@ page-summary {
 
     .power-text{
         margin-top: -50%;
+        position: relative;
+        left: 5%;
+        margin-top: -50%;
+    
     }
 
     .power-unit{
-        font-size: 170%;
+        font-size: 150%;
         color: rgb(161, 161, 161);
     }
 
     .power-value{
-        font-size: 250%;
+        font-size: 220%;
         background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -79,8 +98,70 @@ page-summary {
     .power-icon{
         img{
          max-height: 30px;
+         position: relative;
+         right: -8%;
+
         }
-        margin-top: -43%;
+        margin-top: -38%;
     }
-      
+
+    .energy-chart-bg{
+        background-color: rgb(230, 230, 230);
+    }
+
+    .chart-type-toggle{
+        background-color: rgb(255, 255, 255);
+        color: #488aff;
+        max-height: 30px;
+        width: 25px;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+    
+    .chart-type-toggle:focus{
+        color: rgb(255, 255, 255);
+        background-color: #488aff;
+    }
+
+    .target{
+        ul li{
+            float: right;
+            font-size: 60%;
+            margin-top: -8%;
+            color: rgba(248, 94, 23, 0.918);
+        }
+        margin-right: 5px;
+
+    }
+
+    .start-gap{
+        padding-top: 5%;
+    }
+
+    .snippet{
+        font-size: 70%;
+        color: rgb(133, 133, 133);
+        position: relative;
+        left: 5%;
+    }
+
+    .value-summary{
+        font-size: 130%;
+        background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .unit-summary{
+        font-size: 65%;
+        color: rgb(133, 133, 133);
+    }
+
+    .underline{
+        border-bottom: 2px solid;
+        border-color: rgb(197, 197, 197);
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
 }
