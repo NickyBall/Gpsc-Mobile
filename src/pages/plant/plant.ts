@@ -43,8 +43,8 @@ export class PlantPage {
     let UserCode = 'UserCode123456';
     let CountryId = 1;
     this.companyProvider.getAllPlants(UserCode, CountryId).then((data: any) => {
-      this.streamList = data.filter(plant => plant.PlantType == "Stream Plant");
-      this.solarList = data.filter(plant => plant.PlantType == "Solar Plant");
+      this.streamList = data.Result.filter(plant => plant.PlantType == "Stream Plant");
+      this.solarList = data.Result.filter(plant => plant.PlantType == "Solar Plant");
       console.log(data);
       // this.updateMarker(this.solarList);
     })

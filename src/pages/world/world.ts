@@ -32,8 +32,8 @@ export class WorldPage {
 
   getCountryList() {
     let UserCode = "UserCode123456";
-    this.countryProvider.getAllCountry(UserCode).then(data => {
-      this.countryList = data;
+    this.countryProvider.getAllCountry(UserCode).then((data: any) => {
+      this.countryList = data.Result;
       
       console.log(data);
       // this.countryList.forEach((country) => {
