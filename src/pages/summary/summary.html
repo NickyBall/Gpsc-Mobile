@@ -60,8 +60,8 @@
   </ion-card>
 
   <div class="tab-section">
-    <ion-toolbar color="white" class="plant-type-toolbar">
-      <ion-segment [(ngModel)]="selectedSection" color="white">
+    <ion-toolbar color="white" class="plant-type-toolbar" mode="md">
+      <ion-segment [(ngModel)]="selectedSection" color="white" mode="md">
         <ion-segment-button value="powerGenerationTab" (click)="powerGenGraph()">
           <div text-wrap>
             <span class="segment-text">Power Generation</span>
@@ -173,7 +173,7 @@
             </ion-row>
             <ion-row>
               <ion-col>
-                <ion-segment [(ngModel)]="selectedEnergySection" color="white">
+                <ion-segment [(ngModel)]="selectedEnergySection" color="white" mode="md">
                   <ion-segment-button class="energy-segment" value="hourlyTab" (click)="hourlyGraph(1)">
                     <div>
                       <span>Hourly</span>
@@ -201,7 +201,7 @@
               <div *ngSwitchCase="'hourlyTab'" class="energy-chart-bg">
                 <ion-row no-padding>
                   <ion-col text-right>
-                    <button ion-button class="chart-type-toggle" (click)="hourlyGraph(1)" no-padding>
+                    <button ion-button class="chart-type-toggle" (click)="hourlyGraph(1)" autofocus no-padding>
                         <ion-icon name="stats"></ion-icon>
                     </button>
                     <button ion-button class="chart-type-toggle" (click)="hourlyGraph(2)" no-padding>

@@ -38,7 +38,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
     HttpClientModule,
     MomentModule,
     IonicModule.forRoot(MyApp),
-    IonicImageViewerModule
+    IonicImageViewerModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
