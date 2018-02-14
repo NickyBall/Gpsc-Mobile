@@ -21,6 +21,7 @@ import { CompanyProvider } from '../providers/company/company';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { PlantProvider } from '../providers/plant/plant';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { WeatherServiceProvider } from '../providers/weather/weather';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
     CountryServiceProvider,
     CompanyProvider,
     LoginServiceProvider,
-    PlantProvider
+    PlantProvider,
+    WeatherServiceProvider
   ]
 })
 export class AppModule {}

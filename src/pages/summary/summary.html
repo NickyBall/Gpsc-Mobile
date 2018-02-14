@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>summary</ion-title>
+    <ion-title class="nav-title" text-center><img src="./assets/imgs/CHPP-Nav-head.png" alt="" ></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,9 +16,36 @@
 <ion-content padding>
   <ion-card class="weather-present">
 
-    <ion-card-content>
-      <!-- Add card content here! -->
+    <!-- <ion-card-content>
       Present Day Weathers
+    </ion-card-content> -->
+    <ion-card-content>
+      <section>
+
+        <div>
+          {{cityName}}
+        </div>
+
+        <div>
+          <p class="textwhite">Wednesday</p>
+          <p class="textsmall">21.00 PM.</p>
+          <p class="textsmall">14/02/2018</p>
+        </div>
+
+        <div>
+          <img src="./assets/imgs/weathericons/b1.png"/>
+        </div>
+
+        <div>
+          {{currentTemp}}°C
+        </div>
+
+        <div>
+            <p class="textsmall">{{weatherDescription}}</p>
+            <p class="textsmall">{{maxTemp}}°C - {{minTemp}}°C</p>
+        </div>
+
+      </section>
     </ion-card-content>
 
   </ion-card>
@@ -27,7 +54,33 @@
     <ion-card-content>
       <!-- Add card content here! -->
         <section>
-              <div class="item">
+          <div class="item">
+            <p>Thursday</p>
+            <img class="smallweathericon" src="./assets/imgs/weathericons/b2.png"/>
+            <p class="textsmallblack">26°C - 30°C</p>
+          </div>
+          <div class="divider"></div>
+
+          <div class="item">
+              <p>Friday</p>
+              <img class="smallweathericon" src="./assets/imgs/weathericons/b3.png"/>
+              <p class="textsmallblack">26°C - 30°C</p>
+          </div>
+          <div class="divider"></div>
+
+          <div class="item">
+              <p>Saturday</p>
+              <img class="smallweathericon" src="./assets/imgs/weathericons/b4.png"/>
+              <p class="textsmallblack">26°C - 30°C</p>
+          </div>
+          <div class="divider"></div>
+          
+          <div class="item">
+              <p>Sunday</p>
+              <img class="smallweathericon" src="./assets/imgs/weathericons/b5.png"/>
+              <p class="textsmallblack">26°C - 30°C</p>
+          </div>
+              <!-- <div class="item">
                   Sunday
                 </div>
                 <div class="divider"></div>
@@ -41,8 +94,7 @@
                 <div class="divider"></div>
                 <div class="item">
                   Wednesday
-                </div>
-          
+                </div> -->
         </section>
     </ion-card-content>
 

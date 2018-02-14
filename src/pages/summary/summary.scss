@@ -163,5 +163,23 @@ page-summary {
         margin-left: 5%;
         margin-right: 5%;
     }
-
+    .textsmall{
+        color: white;
+        font-size: 60%;
+    }
+    .textsmallblack{
+        color: black;
+        font-size: 60%;
+        text-align: center;
+    }
+    .textwhite{
+        color: white;
+    }
+    img.smallweathericon{
+        max-width:40%;
+        max-height:40%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
