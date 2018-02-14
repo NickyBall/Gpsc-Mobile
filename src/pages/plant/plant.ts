@@ -45,7 +45,7 @@ export class PlantPage {
     this.companyProvider.getAllPlants(UserCode, CountryId).then((data: any) => {
       this.streamList = data.Result.filter(plant => plant.PlantType == "Stream Plant");
       this.solarList = data.Result.filter(plant => plant.PlantType == "Solar Plant");
-      console.log(data);
+      // console.log(data);
       // this.updateMarker(this.solarList);
     })
   }

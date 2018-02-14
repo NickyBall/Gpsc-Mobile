@@ -15,7 +15,7 @@
             </div>
           </ion-col>
           <ion-col align-self-center>
-            <div text-left>{{ plantData.PlantInfo.CompanyName }}</div>
+            <div text-left>{{ plantData.Result.PlantInfo.CompanyName }}</div>
           </ion-col>
         </ion-row> 
         </ion-title>
@@ -56,7 +56,7 @@
             </ion-col>
             <ion-col align-self-center col-5>
               <ion-note>
-                {{ plantData.PlantType }}
+                {{ plantData.Result.PlantType }}
               </ion-note>
             </ion-col>
           </ion-row>     
@@ -92,7 +92,7 @@
             </ion-col>
             <ion-col align-self-center col-5>
               <ion-note>
-                {{ plantData.Customer.CustomerName }}
+                {{ plantData.Result.Customer.CustomerName }}
               </ion-note>
             </ion-col>
           </ion-row>     
@@ -109,7 +109,7 @@
             </ion-col>
             <ion-col align-self-center col-5>
               <ion-note>
-                {{ plantData.PlantInfo.COD | amDateFormat:'MMMM-YYYY' }}
+                {{ plantData.Result.PlantInfo.COD | amDateFormat:'MMMM-YYYY' }}
               </ion-note>
             </ion-col>
           </ion-row>     
@@ -126,7 +126,7 @@
             </ion-col>
             <ion-col align-self-center col-5>
               <ion-note>
-                  {{ plantData.PlantInfo.PPA | amDuration:'years' }}
+                  {{ plantData.Result.PlantInfo.PPA | amDuration:'years' }}
               </ion-note>
             </ion-col>
           </ion-row>     

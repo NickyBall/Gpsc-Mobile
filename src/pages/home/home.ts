@@ -30,11 +30,14 @@ export class HomePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public plantProvider: PlantProvider) {
    
     let id = this.navParams.get('plantId');
+    
     this.plantProvider.requestPlant(id)
     .then(data => {
+     
       this.plantData = data;
-      this.companyName = this.plantData.PlantInfo.CompanyName;
-      this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.PlantInfo.CompanyLogo;
+      this.companyName = this.plantData.Result.PlantInfo.CompanyName;
+      console.log(this.companyName);
+      this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
     }); 
   }
 

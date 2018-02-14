@@ -24,12 +24,13 @@ export class InfoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeGeocoder: NativeGeocoder) {
     this.plantData = this.navParams.get('plantData');
-    this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.PlantInfo.CompanyLogo;
-    let temp = this.plantData.PlantInfo.Capacity;
+    console.log(this.plantData);
+    this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+    let temp = this.plantData.Result.PlantInfo.Capacity;
     temp /= 1000000;
     this.power = Math.round(temp);
 
-    this.nativeGeocoder.reverseGeocode(this.plantData.Location.Lat, this.plantData.Location.Lng)
+    this.nativeGeocoder.reverseGeocode(this.plantData.Result.Location.Lat, this.plantData.Result.Location.Lng)
           .then((result: NativeGeocoderReverseResult) => {
             this.locationName = result.administrativeArea
           })
