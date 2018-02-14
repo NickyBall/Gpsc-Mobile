@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import * as HighCharts from 'highcharts';
 import * as HighchartsMore from 'highcharts/highcharts-more';
+import { WeatherServiceProvider } from '../../providers/weather/weather';
+
 HighchartsMore(HighCharts);
 
 /**
@@ -53,10 +55,20 @@ export class SummaryPage {
   generationSummaryChart: any;
   generationSummaryData: any;
 
+  cityName: any;
+  currentTemp: any;
+  stringCurrent: any;
+  maxTemp: any;
+  minTemp: any;
+  weatherDescription: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public weatherServiceProvider: WeatherServiceProvider) {
   }
 
+  ionViewDidLoad(){
+      this.getWeather();
+  }
 
   ionViewDidEnter() {
     this.powerIcon = "assets/imgs/Elect.png";
@@ -76,6 +88,28 @@ export class SummaryPage {
     // this.generationSummaryGraph();
   }
 
+  getWeather(){
+      this.weatherServiceProvider.getWeather().then((data:any) =>{
+          let response = JSON.stringify(data); // Convert {any} data to {string}
+          let json = JSON.parse(response); // Convert Json string to JavaScript Key-Value Object
+          this.cityName = json['name'];
+          //this.stringCurrent = json['main']['temp'];
+          //this.currentTemp = ((parseInt(this.stringCurrent))-32)*(5/9);
+          this.currentTemp = json['main']['temp'];
+          //this.stringCurrent = json['main']['temp_max'];
+          this.maxTemp = json['main']['temp_max'];
+          //this.stringCurrent = json['main']['temp_min'];
+          this.minTemp = json['main']['temp_min'];
+          this.weatherDescription = json['weather']['0']['main'];
+
+          console.log(data);
+          console.log(json['name']);
+          console.log(json['main']['temp']);
+          console.log(json['main']['temp_max']);
+          console.log(json['main']['temp_min']);
+          console.log(json['weather']['0']['main']);
+      });
+  }
   powerGenGraph() {
       setTimeout(() => {
         this.powerChart = HighCharts.chart('power-chart', {
