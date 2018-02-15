@@ -14,102 +14,95 @@
 
 
 <ion-content padding>
-  <ion-card class="weather-present">
+  <div class="myweather">
 
-    <!-- <ion-card-content>
-      Present Day Weathers
-    </ion-card-content> -->
-    <ion-card-content>
-      <section>
-
-        <div>
-          {{cityName}}
-        </div>
-
-        <div>
-          <p class="textwhite">Wednesday</p>
-          <p class="textsmall">21.00 PM.</p>
-          <p class="textsmall">14/02/2018</p>
-        </div>
-
-        <div>
-          <img src="./assets/imgs/weathericons/b1.png"/>
-        </div>
-
-        <div>
-          {{currentTemp}}°C
-        </div>
-
-        <div>
-            <p class="textsmall">{{weatherDescription}}</p>
-            <p class="textsmall">{{maxTemp}}°C - {{minTemp}}°C</p>
-        </div>
-
-      </section>
-    </ion-card-content>
-
-  </ion-card>
-  <ion-card>
-
-    <ion-card-content>
-      <!-- Add card content here! -->
+    <ion-card class="presentweather">
+      <ion-card-content class="bigblock">
         <section>
-          <div class="item">
-            <p>Thursday</p>
-            <img class="smallweathericon" src="./assets/imgs/weathericons/b2.png"/>
-            <p class="textsmallblack">26°C - 30°C</p>
-          </div>
-          <div class="divider"></div>
-
-          <div class="item">
-              <p>Friday</p>
-              <img class="smallweathericon" src="./assets/imgs/weathericons/b3.png"/>
-              <p class="textsmallblack">26°C - 30°C</p>
-          </div>
-          <div class="divider"></div>
-
-          <div class="item">
-              <p>Saturday</p>
-              <img class="smallweathericon" src="./assets/imgs/weathericons/b4.png"/>
-              <p class="textsmallblack">26°C - 30°C</p>
-          </div>
-          <div class="divider"></div>
-          
-          <div class="item">
-              <p>Sunday</p>
-              <img class="smallweathericon" src="./assets/imgs/weathericons/b5.png"/>
-              <p class="textsmallblack">26°C - 30°C</p>
-          </div>
-              <!-- <div class="item">
-                  Sunday
+            <div class="fourblock">
+                <p style="color:white; padding-left:20%" text-center>Bangkok</p>
+            </div>
+            <div class="fourblock">
+                <p style="color:white; padding-left:10%; font-size:90%">Wednesday</p>
+                <p style="color:white; padding-left:10%; font-size:70%">12.00</p>  
+                <p style="color:white; padding-left:10%; font-size:70%">17/Feb/2018</p>
+            </div>
+            <div class="oneblock">
+                <div class="parent-showdatetime-text-vertical-center">
+                  <div class="myimagecenter">
+                    <img src="./assets/imgs/weathericons/b1.png"/>
+                  </div>
                 </div>
-                <div class="divider"></div>
-                <div class="item">
-                  Monday
+            </div>
+            <div class="fourblock">
+                <div class="parent-showdatetime-text-vertical-center">
+                  <div class="mytemptext">
+                      <p style="color:white; font-size:140%">{{currentTemp}}°C</p>
+                  </div>
                 </div>
-                <div class="divider"></div>
-                <div class="item">
-                  Tuesday
+            </div>
+            <div class="fourblock">
+              <div class="parent-showdatetime-text-vertical-center">
+                <div class="mytemptext">
+                  <p style="color:white; padding-right:20%; font-size:90%" text-center>{{weatherDescription}}</p>
+                  <p style="color:white; padding-right:20%; font-size:70%" text-center>{{minTemp}}°C-{{maxTemp}}°C</p>
                 </div>
-                <div class="divider"></div>
-                <div class="item">
-                  Wednesday
-                </div> -->
+              </div>  
+            </div>
         </section>
-    </ion-card-content>
-
-  </ion-card>
-  <ion-card>
-
-    <ion-card-content>
-      <!-- Add card content here! -->
-      <div text-center>
-        Latest update 11/Dec/2018 21:01:07
-      </div>
+      </ion-card-content>
+    </ion-card>
       
-    </ion-card-content>
+    <ion-card class="futureweather">
+      <ion-card-content class="bigblock">
+        <section>
 
-  </ion-card>
+          <div class="futurefourblock" style="width:98%;">
+              <p style="font-size:60%;
+              text-align:center">Thursday</p>
+              <img class="smallweathericon" src="./assets/imgs/weathericons/b5.png"/>
+              <p style="font-size:60%;
+              text-align:center">26°C - 30°C</p>
+          </div>
+
+          <div class="futurefourblock" style="width:98%;">
+                <p style="font-size:60%;
+                text-align:center">Friday</p>
+                <img class="smallweathericon" src="./assets/imgs/weathericons/b5.png"/>
+                <p style="font-size:60%;
+                text-align:center">26°C - 30°C</p>
+          </div>
+
+          <div class="futurefourblock" style="width:98%;">
+                <p style="font-size:60%;
+                text-align:center">Saturday</p>
+                <img class="smallweathericon" src="./assets/imgs/weathericons/b5.png"/>
+                <p style="font-size:60%;
+                text-align:center">26°C - 30°C</p>
+          </div>
+
+          <div class="futurefourblock" style="width:98%;">
+                <p style="font-size:60%;
+                text-align:center">Sunday</p>
+                <img class="smallweathericon" src="./assets/imgs/weathericons/b5.png"/>
+                <p style="font-size:60%;
+                text-align:center">26°C - 30°C</p>
+          </div>
+        </section>
+      </ion-card-content>
+    </ion-card>
+        
+    <ion-card class="showdatetime">
+      <ion-card-content>
+        <div class="parent-showdatetime-text-vertical-center">
+          <div class="child-showdatetime-text-vertical-center">
+            Latest update 11/Dec/2018 21:01:07
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    
+  </div>
 
   <div class="tab-section">
     <ion-toolbar color="white" class="plant-type-toolbar" mode="md">
