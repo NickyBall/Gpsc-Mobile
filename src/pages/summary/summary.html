@@ -112,8 +112,8 @@
   </ion-card>
 
   <div class="tab-section">
-    <ion-toolbar color="white" class="plant-type-toolbar">
-      <ion-segment [(ngModel)]="selectedSection" color="white">
+    <ion-toolbar color="white" class="plant-type-toolbar" mode="md">
+      <ion-segment [(ngModel)]="selectedSection" color="white" mode="md">
         <ion-segment-button value="powerGenerationTab" (click)="powerGenGraph()">
           <div text-wrap>
             <span class="segment-text">Power Generation</span>
@@ -134,7 +134,7 @@
             <span class="segment-text">Energy Generation</span>
           </div>
         </ion-segment-button>
-        <ion-segment-button value="generationSummaryTab" (click)="generationSummaryGraph()">
+        <ion-segment-button value="generationSummaryTab">
           <div text-wrap>
             <span class="segment-text">Generation Summary</span>
           </div>
@@ -225,7 +225,7 @@
             </ion-row>
             <ion-row>
               <ion-col>
-                <ion-segment [(ngModel)]="selectedEnergySection" color="white">
+                <ion-segment [(ngModel)]="selectedEnergySection" color="white" mode="md">
                   <ion-segment-button class="energy-segment" value="hourlyTab" (click)="hourlyGraph(1)">
                     <div>
                       <span>Hourly</span>
@@ -252,13 +252,17 @@
             <div [ngSwitch]="selectedEnergySection">
               <div *ngSwitchCase="'hourlyTab'" class="energy-chart-bg">
                 <ion-row no-padding>
-                  <ion-col text-right>
-                    <button ion-button class="chart-type-toggle" (click)="hourlyGraph(1)" no-padding>
+                  <ion-col text-right>  
+                    <div class="active-energy-btn">
+                      <input checked="checked" id="hourChart" type="radio" name="chart" (click)="hourlyGraph(1)" />
+                      <label for="hourChart" class="chart-type">
                         <ion-icon name="stats"></ion-icon>
-                    </button>
-                    <button ion-button class="chart-type-toggle" (click)="hourlyGraph(2)" no-padding>
+                      </label>
+                      <input id="hourGraph" type="radio" name="chart" (click)="hourlyGraph(2)"/>
+                      <label for="hourGraph" class="chart-type">
                         <ion-icon name="trending-up"></ion-icon>
-                    </button>
+                      </label>
+                    </div>
                   </ion-col>
                 </ion-row>
                 <ion-row>
@@ -271,12 +275,16 @@
               <div *ngSwitchCase="'dailyTab'" class="energy-chart-bg">
                 <ion-row no-padding>
                     <ion-col text-right>
-                      <button ion-button class="chart-type-toggle" (click)="dailyGraph(1)" no-padding>
+                      <div class="active-energy-btn">
+                        <input checked="checked" id="dailyChart" type="radio" name="chart" (click)="dailyGraph(1)" />
+                        <label for="dailyChart" class="chart-type">
                           <ion-icon name="stats"></ion-icon>
-                      </button>
-                      <button ion-button class="chart-type-toggle" (click)="dailyGraph(2)" no-padding>
+                        </label>
+                        <input id="dailyGraph" type="radio" name="chart" (click)="dailyGraph(2)"/>
+                        <label for="dailyGraph" class="chart-type">
                           <ion-icon name="trending-up"></ion-icon>
-                      </button>
+                        </label>
+                      </div>
                     </ion-col>
                   </ion-row>
                 <ion-row>
@@ -289,12 +297,16 @@
               <div *ngSwitchCase="'monthlyTab'" class="energy-chart-bg">
                 <ion-row no-padding>
                     <ion-col text-right>
-                      <button ion-button class="chart-type-toggle" (click)="monthlyGraph(1)" no-padding>
+                      <div class="active-energy-btn">
+                        <input checked="checked" id="monthlyChart" type="radio" name="chart" (click)="monthlyGraph(1)" />
+                        <label for="monthlyChart" class="chart-type">
                           <ion-icon name="stats"></ion-icon>
-                      </button>
-                      <button ion-button class="chart-type-toggle" (click)="monthlyGraph(2)" no-padding>
+                        </label>
+                        <input id="monthlyGraph" type="radio" name="chart" (click)="monthlyGraph(2)"/>
+                        <label for="monthlyGraph" class="chart-type">
                           <ion-icon name="trending-up"></ion-icon>
-                      </button>
+                        </label>
+                      </div>
                     </ion-col>
                   </ion-row>
                   <ion-row no-padding> 
@@ -314,12 +326,16 @@
               <div *ngSwitchCase="'yearlyTab'"  class="energy-chart-bg">
                 <ion-row no-padding>
                   <ion-col text-right>
-                    <button ion-button class="chart-type-toggle" (click)="yearlyGraph(1)" no-padding>
+                    <div class="active-energy-btn">
+                      <input checked="checked" id="yearlyChart" type="radio" name="chart" (click)="yearlyGraph(2)" />
+                      <label for="yearlyChart" class="chart-type">
                         <ion-icon name="stats"></ion-icon>
-                    </button>
-                    <button ion-button class="chart-type-toggle" (click)="yearlyGraph(2)" no-padding>
+                      </label>
+                      <input id="yearlyGraph" type="radio" name="chart" (click)="yearlyGraph(2)"/>
+                      <label for="yearlyGraph" class="chart-type">
                         <ion-icon name="trending-up"></ion-icon>
-                    </button>
+                      </label>
+                    </div>
                   </ion-col>
                 </ion-row>
                 <ion-row no-padding> 

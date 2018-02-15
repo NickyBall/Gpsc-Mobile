@@ -39,7 +39,7 @@ import { WeatherServiceProvider } from '../providers/weather/weather';
     HttpClientModule,
     MomentModule,
     IonicModule.forRoot(MyApp),
-    IonicImageViewerModule
+    IonicImageViewerModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

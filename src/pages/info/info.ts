@@ -21,10 +21,11 @@ export class InfoPage {
   private power: number = undefined;
   private locationName: string = undefined;
   private logo: string = undefined;
+  private ppaData: any = undefined;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeGeocoder: NativeGeocoder) {
     this.plantData = this.navParams.get('plantData');
-    console.log(this.plantData);
+ 
     this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
     let temp = this.plantData.Result.PlantInfo.Capacity;
     temp /= 1000000;
@@ -35,6 +36,12 @@ export class InfoPage {
             this.locationName = result.administrativeArea
           })
           .catch((error: any) => console.log(error));
+    
+    let ppaYear = moment(this.plantData.Result.PlantInfo.PPA).year();
+    let ppaYearNow = moment().year();
+    let diffYear = ppaYear - ppaYearNow;
+    this.ppaData = diffYear + ' Years (End ' + ppaYear + ')';
+    console.log(diffYear);
 
   }
 

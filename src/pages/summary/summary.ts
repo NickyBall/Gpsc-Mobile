@@ -25,7 +25,10 @@ export class SummaryPage {
   @ViewChild('dailyCanvas') dailyCanvas;
   @ViewChild('monthlyCanvas') monthlyCanvas;
   @ViewChild('yearlyCanvas') yearlyCanvas;
-
+   graph1 = 'autofocus';
+   graph2 = 'autofocus';
+   graph3 = 'autofocus';
+   graph4 = 'autofocus';
 
   selectedSection = 'powerGenerationTab';
   selectedEnergySection = 'hourlyTab';
@@ -602,9 +605,6 @@ export class SummaryPage {
     setTimeout(() => {
         this.yearly = new Chart(this.yearlyCanvas.nativeElement, config);
     }, 100);
-  }
-
-  generationSummaryGraph() {
   }
 
 }
