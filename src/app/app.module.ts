@@ -22,6 +22,8 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { PlantProvider } from '../providers/plant/plant';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 
+import { FocusFirstSegmentDirective } from '../directives/focus-first-segment/focus-first-segment';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,7 +33,8 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
     PlantPage,
     InfoPage,
     LayoutPage,
-    SummaryPage
+    SummaryPage,
+    FocusFirstSegmentDirective
   ],
   imports: [
     BrowserModule,

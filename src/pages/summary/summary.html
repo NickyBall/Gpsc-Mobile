@@ -201,7 +201,7 @@
               <div *ngSwitchCase="'hourlyTab'" class="energy-chart-bg">
                 <ion-row no-padding>
                   <ion-col text-right>
-                    <button ion-button class="chart-type-toggle" (click)="hourlyGraph(1)" autofocus no-padding>
+                    <button ion-button class="chart-type-toggle" (click)="hourlyGraph(1)" no-padding focus-first-segment>
                         <ion-icon name="stats"></ion-icon>
                     </button>
                     <button ion-button class="chart-type-toggle" (click)="hourlyGraph(2)" no-padding>
@@ -219,7 +219,7 @@
               <div *ngSwitchCase="'dailyTab'" class="energy-chart-bg">
                 <ion-row no-padding>
                     <ion-col text-right>
-                      <button ion-button class="chart-type-toggle" (click)="dailyGraph(1)" no-padding>
+                      <button ion-button class="chart-type-toggle" (click)="dailyGraph(1)" no-padding focus-first-segment>
                           <ion-icon name="stats"></ion-icon>
                       </button>
                       <button ion-button class="chart-type-toggle" (click)="dailyGraph(2)" no-padding>
@@ -237,7 +237,7 @@
               <div *ngSwitchCase="'monthlyTab'" class="energy-chart-bg">
                 <ion-row no-padding>
                     <ion-col text-right>
-                      <button ion-button class="chart-type-toggle" (click)="monthlyGraph(1)" no-padding>
+                      <button ion-button class="chart-type-toggle" (click)="monthlyGraph(1)" no-padding focus-first-segment>
                           <ion-icon name="stats"></ion-icon>
                       </button>
                       <button ion-button class="chart-type-toggle" (click)="monthlyGraph(2)" no-padding>
@@ -262,7 +262,7 @@
               <div *ngSwitchCase="'yearlyTab'"  class="energy-chart-bg">
                 <ion-row no-padding>
                   <ion-col text-right>
-                    <button ion-button class="chart-type-toggle" (click)="yearlyGraph(1)" no-padding>
+                    <button ion-button class="chart-type-toggle" (click)="yearlyGraph(1)" no-padding focus-first-segment>
                         <ion-icon name="stats"></ion-icon>
                     </button>
                     <button ion-button class="chart-type-toggle" (click)="yearlyGraph(2)" no-padding>
