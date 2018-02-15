@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 import { WorldPage } from '../world/world';
 import { LoginServiceProvider } from '../../providers/login-service/login-service';
@@ -21,9 +21,13 @@ export class LoginPage {
   username: '';
   password: '';
   resultCode: any;
+  loader: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginServiceProvider, public loadingCtrl: LoadingController) {
        this.loginService;
+       this.loader = this.loadingCtrl.create({
+        content: "Authenticating..."
+      });
   }
 
   ionViewDidLoad() {
@@ -32,6 +36,7 @@ export class LoginPage {
 
   loginClick() {
     if (this.username != null && this.password != null){
+      this.loader.present();
       this.authen(this.username, this.password);
     }
     else{
@@ -42,11 +47,13 @@ export class LoginPage {
   authen(username: string, password: string){
     let Username = username;
     let Password = password;
+
     console.log("prepairParams:"+username+password);
     this.loginService.getAuthen(Username, Password).then(data =>{
       let response = JSON.stringify(data); // Convert {any} data to {string}
       let json = JSON.parse(response); // Convert Json string to JavaScript Key-Value Object
       console.log(json['ResultCode']);
+      this.loader.dismiss();
       if (json['ResultCode'] == 200) {
         console.log(json['UserCode']);
         this.navCtrl.push(this.worldPage);

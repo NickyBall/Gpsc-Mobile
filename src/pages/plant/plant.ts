@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -29,13 +29,17 @@ export class PlantPage {
   tabTwoImg = './assets/imgs/i2.png';
   solarList: any;
   streamList: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps, public companyProvider: CompanyProvider) {
-
+  loader: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps, public companyProvider: CompanyProvider, public loadingCtrl: LoadingController) {
+    this.loader = this.loadingCtrl.create({
+      content: "Loading Power Plant..."
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlantPage');
     this.loadMap();
+    this.loader.present();
     this.getPlantList();
   }
 
@@ -46,6 +50,7 @@ export class PlantPage {
       this.streamList = data.Result.filter(plant => plant.PlantType == "Stream Plant");
       this.solarList = data.Result.filter(plant => plant.PlantType == "Solar Plant");
       // console.log(data);
+      this.loader.dismiss();
       // this.updateMarker(this.solarList);
     })
   }
