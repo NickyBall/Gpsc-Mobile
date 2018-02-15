@@ -573,7 +573,4 @@ export class SummaryPage {
     }, 100);
   }
 
-  generationSummaryGraph() {
-  }
-
 }

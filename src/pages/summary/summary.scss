@@ -108,29 +108,42 @@ page-summary {
         background-color: rgb(230, 230, 230);
     }
 
-    .chart-type-toggle{
-        background-color: rgb(255, 255, 255);
-        color: #488aff;
-        max-height: 30px;
-        width: 25px;
-        padding-left: 3px;
-        padding-right: 3px;
+    .active-energy-btn input:active{
+        opacity: .9;
+    }
+    .active-energy-btn input:checked +.chart-type{
+          -webkit-filter: none;
+             -moz-filter: none;
+                  filter: none;
+            color: rgb(255, 255, 255);
+            background-color: #488aff;
+    }
+    .active-energy-btn input{
+        margin:0;padding:0;
+        -webkit-appearance:none;
+           -moz-appearance:none;
+                appearance:none;
     }
     
-    .chart-type-toggle:focus{
-        color: rgb(255, 255, 255);
-        background-color: #488aff;
+    .active-energy-btn label{
+      font-size: 15px;
+    }
+    .chart-type{
+        background-color: rgb(255, 255, 255);
+        color: #488aff;
+        padding: 3px;
+        border-radius: 3px;
+        margin: 2px;
     }
 
     .target{
         ul li{
             float: right;
-            font-size: 60%;
-            margin-top: -8%;
+            font-size: 70%;
+            margin-top: -4%;
             color: rgba(248, 94, 23, 0.918);
         }
         margin-right: 5px;
-
     }
 
     .start-gap{
