@@ -326,6 +326,7 @@ export class SummaryPage {
   hourlyGraph(type: number){
     if(this.hourly){
         this.hourly.destroy();
+        this.selectedEnergySection = 'hourlyTab';
     }
 
     let config = {     
@@ -380,6 +381,7 @@ export class SummaryPage {
   dailyGraph(type: number){
     if(this.dialy){
         this.dialy.destroy();
+        this.selectedEnergySection = 'dailyTab';
     }
 
     let config = {     
@@ -433,6 +435,7 @@ export class SummaryPage {
   monthlyGraph(type: number){
     if(this.monthly){
         this.monthly.destroy();
+        this.selectedEnergySection = 'monthlyTab';
     }
 
     let config = {     
@@ -504,6 +507,7 @@ export class SummaryPage {
   yearlyGraph(type :number){
     if(this.yearly){
         this.yearly.destroy();
+        this.selectedEnergySection = 'yearlyTab';
     }
 
     let config = {     
