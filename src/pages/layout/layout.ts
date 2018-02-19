@@ -15,7 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LayoutPage {
 
+  plantData: any;
+  logo: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.plantData = this.navParams.get('plantData');
+    this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
   }
 
   ionViewDidLoad() {

@@ -7,7 +7,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title class="nav-title" text-center><img src="./assets/imgs/CHPP-Nav-head.png" alt="" ></ion-title>
+    <ion-title>
+       <ion-row class="title-align">
+          <ion-col align-self-center>
+            <div text-right>
+              <img src={{logo}} alt="">
+            </div>
+          </ion-col>
+          <ion-col align-self-center>
+            <div text-left>{{ plantData.Result.PlantInfo.CompanyName }}</div>
+          </ion-col>
+        </ion-row> 
+    </ion-title>
   </ion-navbar>
 
 </ion-header>

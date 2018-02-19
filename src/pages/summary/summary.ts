@@ -70,8 +70,13 @@ export class SummaryPage {
   minTemp: any;
   weatherDescription: any;
 
+  logo: string = undefined;
+  plantData: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public weatherServiceProvider: WeatherServiceProvider) {
+        this.plantData = this.navParams.get('plantData');
+        this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
   }
 
   ionViewDidLoad(){
