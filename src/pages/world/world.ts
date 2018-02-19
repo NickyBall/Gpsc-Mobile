@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import {
  GoogleMaps,
  GoogleMap,
@@ -25,40 +25,42 @@ export class WorldPage {
   map: GoogleMap;
   plantPage = PlantPage;
   countryList: any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps, public countryProvider: CountryServiceProvider) {
-    
+  loader: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps, public countryProvider: CountryServiceProvider, public loadingCtrl: LoadingController) {
+    this.loader = this.loadingCtrl.create({
+      content: "Loading Country..."
+    })
   }
 
   getCountryList() {
     let UserCode = "UserCode123456";
     this.countryProvider.getAllCountry(UserCode).then((data: any) => {
       this.countryList = data.Result;
-      
+      this.loader.dismiss();
       console.log(data);
-      // this.countryList.forEach((country) => {
-      //   this.map.addMarker({
-      //       title: country.name,
-      //       icon: {
-      //         url: './assets/imgs/pin1.png',
-      //         size: {
-      //           width: 28,
-      //           height: 35
-      //         }
-      //       },
-      //       animation: 'DROP',
+      this.countryList.forEach((country) => {
+        this.map.addMarker({
+            title: country.name,
+            icon: {
+              url: './assets/imgs/pin1.png',
+              size: {
+                width: 28,
+                height: 35
+              }
+            },
+            animation: 'DROP',
             
-      //       position: {
-      //         lat: country.Location.Lat,
-      //         lng: country.Location.Lng
-      //       }
-      //     }).then(marker => {
-      //       marker.on(GoogleMapsEvent.MARKER_CLICK)
-      //         .subscribe(() => {
-      //           // alert('clicked');
-      //         });
-      //     });
-      // });
+            position: {
+              lat: country.Location.Lat,
+              lng: country.Location.Lng
+            }
+          }).then(marker => {
+            marker.on(GoogleMapsEvent.MARKER_CLICK)
+              .subscribe(() => {
+                // alert('clicked');
+              });
+          });
+      });
       // Wait the MAP_READY before using any methods.
       
     });
@@ -66,6 +68,7 @@ export class WorldPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorldPage');
+    this.loader.present();
     this.loadMap();
     this.getCountryList();
   }
