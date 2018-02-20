@@ -2,8 +2,13 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import * as HighCharts from 'highcharts';
+import * as moment from 'moment';
 import * as HighchartsMore from 'highcharts/highcharts-more';
 import { WeatherServiceProvider } from '../../providers/weather/weather';
+import { HourlyEnergyProvider } from '../../providers/hourly-energy/hourly-energy';
+import { DailyEnergyProvider } from '../../providers/daily-energy/daily-energy';
+import { MonthlyEnergyProvider } from '../../providers/monthly-energy/monthly-energy';
+import { YearlyEnergyProvider } from '../../providers/yearly-energy/yearly-energy';
 
 HighchartsMore(HighCharts);
 
@@ -73,10 +78,50 @@ export class SummaryPage {
   logo: string = undefined;
   plantData: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public weatherServiceProvider: WeatherServiceProvider) {
-        this.plantData = this.navParams.get('plantData');
-        this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+  constructor(public navCtrl: NavController, 
+            public navParams: NavParams, 
+            public weatherServiceProvider: WeatherServiceProvider,
+            public hourlyEnergyProvider: HourlyEnergyProvider,
+            public dailyEnergyProvider: DailyEnergyProvider,
+            public monthlyEnergyProvider: MonthlyEnergyProvider,
+            public yearlyEnergyProvider: YearlyEnergyProvider) {
+        
+                // this.plantData = this.navParams.get('plantData');
+                // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+                // let id = this.plantData.Result.PlantId;
+
+                // this.plantData = this.navParams.get('plantData');
+                this.logo = 'http://pms-api-dev.azurewebsites.net/';
+                let id = 5;
+
+                this.hourlyEnergyProvider.requestHourlyEnergy(id)
+                    .then(data => {
+                        this.hourlyData = data;
+        
+                    }).catch(error => {
+                        console.log(error);
+                    });
+
+                this.dailyEnergyProvider.requestDailyEnergy(id)
+                .then(data => {
+                    this.dialyData = data;
+                }).catch(error => {
+                    console.log(error);
+                });
+
+                this.monthlyEnergyProvider.requestMonthlyEnergy(id)
+                .then(data => {
+                    this.monthlyData = data;
+                }).catch(error => {
+                    console.log(error);
+                });
+
+                this.yearlyEnergyProvider.requestYearlyEnergy(id)
+                .then(data => {
+                    this.yearlyData = data;
+                }).catch(error => {
+                    console.log(error);
+                });
   }
 
   ionViewDidLoad(){
@@ -93,12 +138,6 @@ export class SummaryPage {
     this.powerData = 3.5;
     this.irradiationData = 700;
     this.ambientTempData = 30;
-
-    // console.log(this.irradChart);
-    // this.irradiationGraph();
-    // this.ambientTemperatureGraph();
-    // this.enegyGenerationGraph();
-    // this.generationSummaryGraph();
   }
 
   getWeather(){
@@ -115,12 +154,12 @@ export class SummaryPage {
           this.minTemp = json['main']['temp_min'];
           this.weatherDescription = json['weather']['0']['main'];
 
-          console.log(data);
-          console.log(json['name']);
-          console.log(json['main']['temp']);
-          console.log(json['main']['temp_max']);
-          console.log(json['main']['temp_min']);
-          console.log(json['weather']['0']['main']);
+        //   console.log(data);
+        //   console.log(json['name']);
+        //   console.log(json['main']['temp']);
+        //   console.log(json['main']['temp_max']);
+        //   console.log(json['main']['temp_min']);
+        //   console.log(json['weather']['0']['main']);
       });
   }
   powerGenGraph() {
@@ -368,10 +407,40 @@ export class SummaryPage {
         this.selectedEnergySection = 'hourlyTab';
     }
 
+    let dataSrc = this.hourlyData.Result;
+    let hourlyDataSrc = undefined;
+    let x;
+    let y;
+    let timeLabel = undefined;
+    let l = dataSrc.length
+    if( l >= 12){
+        // for(let i = dataSrc.length; )
+        hourlyDataSrc = dataSrc.map(y =>{
+            return Math.round(y.EnergyValue/1000000);
+        });
+        y = hourlyDataSrc.slice(l-11, l);
+        
+        timeLabel = dataSrc.map(x =>{
+            return moment(x.TimeStamp).format('ha');
+        })
+        x = timeLabel.slice(l-11, l);
+    }
+    else{
+        y = dataSrc.map(y =>{
+            return Math.round(y.EnergyValue/1000000);
+        });
+        x = dataSrc.map(x =>{
+            return moment(x.TimeStamp).format('ha');
+        })
+    }
+
+    // let ppaYear = moment(this.plantData.Result.PlantInfo.PPA).year();
+
+
     let config = {     
         type: '',
         data: {
-          labels: ["7am", "8am", "9am", "10am", "11am", "12am", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"],
+          labels: x,
           datasets: [
             ]
           },
@@ -385,7 +454,29 @@ export class SummaryPage {
             scales: {
               xAxes: [{
                 barPercentage: 0.5,
-              }]
+                gridLines : {
+                    display : false
+                },
+                ticks: {
+                    fontSize: 8
+                },
+              }],
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: "MW",
+                  fontColor: "grey",
+                  fontSize: 10,
+                  fontStyle: 'normal',
+                  fontFamily: 'Lata'
+                },
+                ticks: {
+                    beginAtZero: true,
+                    fontSize: 8,
+                    stepSize: 3
+                }
+              }],
+             
             },
             chartArea: {
                 backgroundColor: 'rgba(190, 190, 190, 0.7)'
@@ -398,9 +489,10 @@ export class SummaryPage {
         config.type = 'bar';
         config.data.datasets =   [{
             backgroundColor: "rgba(22, 189, 231, 0.918)",
-            data: [22, 32, 34, 16, 32, 40, 35, 34, 29, 30, 31, 21],
+            data: y,
             }];
     }
+
     if(type === 2){
         config.type = 'line';
         config.data.datasets =   [{
@@ -408,7 +500,7 @@ export class SummaryPage {
             backgroundColor: "transparent",
             borderColor: "rgba(22, 189, 231, 0.918)",
             pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
-            data: [22, 32, 34, 16, 32, 40, 35, 34, 29, 30, 31, 21],
+            data: y,
             }];
     }
 
@@ -423,10 +515,37 @@ export class SummaryPage {
         this.selectedEnergySection = 'dailyTab';
     }
 
+    let dataSrc = this.dialyData.Result;
+    let dailyDataSrc = undefined;
+    let x;
+    let y;
+    let timeLabel = undefined;
+    let l = dataSrc.length
+    if( l >= 7){
+        // for(let i = dataSrc.length; )
+        dailyDataSrc = dataSrc.map(y =>{
+            return Math.round(y.EnergyValue/1000000);
+        });
+        y = dailyDataSrc.slice(l-7, l);
+        
+        timeLabel = dataSrc.map(x =>{
+            return moment(x.TimeStamp).format('D MMM');
+        })
+        x = timeLabel.slice(l-7, l);
+    }
+    else{
+        y = dataSrc.map(y =>{
+            return Math.round(y.EnergyValue/1000000);
+        });
+        x = dataSrc.map(x =>{
+            return moment(x.TimeStamp).format('D MMM');
+        })
+    }
+
     let config = {     
         type: '',
         data: {
-          labels: ["7Jan", "8Jan", "9Jan", "10Jan", "11Jan", "12Jan", "1Jan"],
+          labels: x,
           datasets: []
           },
           options: {
@@ -438,8 +557,29 @@ export class SummaryPage {
             },
             scales: {
               xAxes: [{
+                gridLines : {
+                    display : false
+                },
                 barPercentage: 0.5,
-              }]
+                ticks: {
+                    fontSize: 8
+                }
+              }],
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: "MW",
+                  fontColor: "grey",
+                  fontSize: 10,
+                  fontStyle: 'normal',
+                  fontFamily: 'Lata'
+                },
+                ticks: {
+                    beginAtZero: true,
+                    fontSize: 8,
+                    stepSize: 3
+                }
+              }],
               },
             chartArea: {
                 backgroundColor: 'rgba(190, 190, 190, 0.7)'
@@ -452,7 +592,7 @@ export class SummaryPage {
         config.type = 'bar';
         config.data.datasets =   [{
             backgroundColor: "rgba(22, 189, 231, 0.918)",
-            data: [22, 32, 34, 16, 32, 40, 35],
+            data: y,
             }];
     }
     if(type === 2){
@@ -462,8 +602,8 @@ export class SummaryPage {
             backgroundColor: "transparent",
             borderColor: "rgba(22, 189, 231, 0.918)",
             pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
-            data: [22, 32, 34, 16, 32, 40, 35],
-            }];
+            data: y,
+        }];
     }
 
     setTimeout(() => {
@@ -477,10 +617,37 @@ export class SummaryPage {
         this.selectedEnergySection = 'monthlyTab';
     }
 
+    let dataSrc = this.monthlyData.Result;
+    let monthlyDataSrc = undefined;
+    let x;
+    let y;
+    let timeLabel = undefined;
+    let l = dataSrc.length
+    if( l >= 12){
+        // for(let i = dataSrc.length; )
+        monthlyDataSrc = dataSrc.map(y =>{
+            return Math.round(y.EnergyValue/1000000);
+        });
+        y = monthlyDataSrc.slice(l-11, l);
+        
+        timeLabel = dataSrc.map(x =>{
+            return moment(x.TimeStamp).format('MMM');
+        })
+        x = timeLabel.slice(l-11, l);
+    }
+    else{
+        y = dataSrc.map(y =>{
+            return Math.round(y.EnergyValue/1000000);
+        });
+        x = dataSrc.map(x =>{
+            return moment(x.TimeStamp).format('MMM');
+        })
+    }
+
     let config = {     
         type: '',
         data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          labels: x,
           datasets: []
           },
           options: {
@@ -493,7 +660,28 @@ export class SummaryPage {
             scales: {
               xAxes: [{
                 barPercentage: 0.5,
-              }]
+                gridLines : {
+                    display : false
+                },
+                ticks: {
+                    fontSize: 8
+                },
+              }],
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: "MW",
+                  fontColor: "grey",
+                  fontSize: 10,
+                  fontStyle: 'normal',
+                  fontFamily: 'Lata'
+                },
+                ticks: {
+                    beginAtZero: true,
+                    fontSize: 8,
+                    stepSize: 3
+                }
+              }],
             },
             chartArea: {
                 backgroundColor: 'rgba(190, 190, 190, 0.7)'
@@ -506,14 +694,14 @@ export class SummaryPage {
         config.type = 'bar';
         config.data.datasets = [{
                 backgroundColor: "rgba(22, 189, 231, 0.918)",
-                data: [22, 14, 34, 16, 32, 40, 33, 20, 29, 30, 35, 21],
+                data: y,
             },
             {
                 lineTension: 0.1,
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
-                data: [25, 20, 34, 20, 40, 40, 45, 50, 32, 35, 34, 50],
+                data: [25, 20, 23, 23, 20, 22, 23, 26, 25, 25, 21],
                 type: 'line'
             }
         ];
@@ -525,14 +713,14 @@ export class SummaryPage {
                 backgroundColor: "transparent",
                 borderColor: "rgba(22, 189, 231, 0.918)",
                 pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
-                data: [22, 14, 34, 16, 32, 40, 33, 20, 29, 30, 35, 21],
+                data: y,
             },
             {
                 lineTension: 0.1,
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
-                data: [25, 20, 34, 20, 40, 40, 45, 50, 32, 35, 34, 50],
+                data: [25, 20, 23, 23, 20, 22, 23, 26, 25, 25, 21],
                 type: 'line'
             }
         ];
@@ -549,10 +737,37 @@ export class SummaryPage {
         this.selectedEnergySection = 'yearlyTab';
     }
 
+    let dataSrc = this.yearlyData.Result;
+    let yearlyDataSrc = undefined;
+    let x;
+    let y;
+    let timeLabel = undefined;
+    let l = dataSrc.length
+    if( l >= 6){
+        // for(let i = dataSrc.length; )
+        yearlyDataSrc = dataSrc.map(y =>{
+            return Math.round(y.EnergyValue/1000000);
+        });
+        y = yearlyDataSrc.slice(l-6, l);
+        
+        timeLabel = dataSrc.map(x =>{
+            return moment(x.TimeStamp).format('YYYY');
+        })
+        x = timeLabel.slice(l-6, l);
+    }
+    else{
+        y = dataSrc.map(y =>{
+            return Math.round(y.EnergyValue/1000000);
+        });
+        x = dataSrc.map(x =>{
+            return moment(x.TimeStamp).format('YYYY');
+        })
+    }
+
     let config = {     
         type: '',
         data: {
-          labels: ["2015", "2016", "2017", "2018"],
+          labels: x,
           datasets: []
           },
           options: {
@@ -565,6 +780,27 @@ export class SummaryPage {
             scales: {
               xAxes: [{
                 barPercentage: 0.5,
+                gridLines : {
+                    display : false
+                },
+                ticks: {
+                    fontSize: 10
+                },
+              }],
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: "MW",
+                  fontColor: "grey",
+                  fontSize: 10,
+                  fontStyle: 'normal',
+                  fontFamily: 'Lata'
+                },
+                ticks: {
+                    beginAtZero: true,
+                    fontSize: 8,
+                    stepSize: 3
+                }
               }]
             },
             chartArea: {
@@ -578,14 +814,14 @@ export class SummaryPage {
         config.type = 'bar';
         config.data.datasets = [{
                 backgroundColor: "rgba(22, 189, 231, 0.918)",
-                data: [22, 32, 34, 16]
+                data: y
             },
             {
                 lineTension: 0.1,
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
-                data: [30, 35, 40, 30],
+                data: [18, 20],
                 type: 'line'
             }
         ];
@@ -598,14 +834,14 @@ export class SummaryPage {
                 backgroundColor: "transparent",
                 pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
                 borderColor: "rgba(22, 189, 231, 0.918)",
-                data: [22, 32, 34, 16],
+                data: y
             },
             {
                 lineTension: 0.1,
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
-                data: [30, 35, 40, 30],
+                data: [18, 20],
                 type: 'line'
             }
         ];

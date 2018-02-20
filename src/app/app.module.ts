@@ -22,6 +22,10 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { PlantProvider } from '../providers/plant/plant';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { WeatherServiceProvider } from '../providers/weather/weather';
+import { HourlyEnergyProvider } from '../providers/hourly-energy/hourly-energy';
+import { DailyEnergyProvider } from '../providers/daily-energy/daily-energy';
+import { MonthlyEnergyProvider } from '../providers/monthly-energy/monthly-energy';
+import { YearlyEnergyProvider } from '../providers/yearly-energy/yearly-energy';
 
 @NgModule({
   declarations: [
@@ -62,7 +66,11 @@ import { WeatherServiceProvider } from '../providers/weather/weather';
     CompanyProvider,
     LoginServiceProvider,
     PlantProvider,
-    WeatherServiceProvider
+    WeatherServiceProvider,
+    HourlyEnergyProvider,
+    DailyEnergyProvider,
+    MonthlyEnergyProvider,
+    YearlyEnergyProvider
   ]
 })
 export class AppModule {}
