@@ -222,13 +222,13 @@
           </ion-grid>
         </div>
         <div *ngSwitchCase="'enegyGenerationTab'">
-          <ion-grid>
-            <ion-row>
+          <ion-grid class="tt">
+            <ion-row class="tab-gap-header">
               <ion-col>
                 <span class="tab-title">Energy Generation</span>
               </ion-col>
             </ion-row>
-            <ion-row>
+            <ion-row class="tab-gap">
               <ion-col>
                 <ion-segment [(ngModel)]="selectedEnergySection" color="white" mode="md">
                   <ion-segment-button class="energy-segment" value="hourlyTab" (click)="hourlyGraph(1)">

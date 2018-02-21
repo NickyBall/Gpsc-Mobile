@@ -1,5 +1,6 @@
 page-summary {
 
+    // font-family: 'Lato', sans-serif !important;
     ion-segment{
         ion-segment-button{
             height: 20px !important;
@@ -108,13 +109,35 @@ page-summary {
         
     }
 
+    .tt{
+        background-color: rgb(230, 230, 230);
+    }
+
+    .tab-gap-header{
+        background-color: white;
+        padding-top: 3%;
+        padding-bottom: 2%;
+        position: relative;
+        top: -10px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .tab-gap{
+        background-color: white;
+        position: relative;
+        top: -10px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
     .title-align{
         position: relative;
         left: 17%;
     }
 
     .energy-chart-bg{
-        background-color: rgb(230, 230, 230);
+        // background-color: rgb(230, 230, 230);
     }
 
     .active-energy-btn input:active{
