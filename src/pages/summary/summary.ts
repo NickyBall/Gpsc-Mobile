@@ -86,18 +86,17 @@ export class SummaryPage {
             public monthlyEnergyProvider: MonthlyEnergyProvider,
             public yearlyEnergyProvider: YearlyEnergyProvider) {
         
-                // this.plantData = this.navParams.get('plantData');
-                // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
-                // let id = this.plantData.Result.PlantId;
+                this.plantData = this.navParams.get('plantData');
+                this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+                let id = this.plantData.Result.PlantId;
 
                 // this.plantData = this.navParams.get('plantData');
-                this.logo = 'http://pms-api-dev.azurewebsites.net/';
-                let id = 5;
+                // this.logo = 'http://pms-api-dev.azurewebsites.net/';
+                // let id = 5;
 
                 this.hourlyEnergyProvider.requestHourlyEnergy(id)
                     .then(data => {
                         this.hourlyData = data;
-        
                     }).catch(error => {
                         console.log(error);
                     });
@@ -519,15 +518,30 @@ export class SummaryPage {
     let dailyDataSrc = undefined;
     let x;
     let y;
+    let upper = 16;
+    let lower = 0;
     let timeLabel = undefined;
     let l = dataSrc.length
     if( l >= 7){
         // for(let i = dataSrc.length; )
         dailyDataSrc = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/1000000);
+            return Math.round(y.EnergyValue/1000000 *10)/10;
         });
+        console.log('check ', dailyDataSrc);
         y = dailyDataSrc.slice(l-7, l);
-        
+        let max, min, range, compensate;
+        max = Math.max.apply(null, y);
+        min = Math.min.apply(null, y);
+        console.log('max ', max);
+        console.log('min ', min);
+        range = max-min;
+        compensate = range * 50 / 100; // 20% of range
+        console.log('comp ', compensate);
+        upper = Math.round((max + compensate) * 10)/10
+        lower = Math.round((min - compensate) * 10)/10
+        console.log('upper ', upper);
+        console.log('lower ', lower);
+
         timeLabel = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('D MMM');
         })
@@ -537,6 +551,14 @@ export class SummaryPage {
         y = dataSrc.map(y =>{
             return Math.round(y.EnergyValue/1000000);
         });
+        let max, min, range, compensate;
+        max = Math.max(y);
+        min = Math.min(y);
+        range = max-min;
+        compensate = range * 20 / 100; // 20% of range
+        upper = Math.round(compensate) + max;
+        lower = min - Math.round(compensate);
+
         x = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('D MMM');
         })
@@ -575,9 +597,11 @@ export class SummaryPage {
                   fontFamily: 'Lata'
                 },
                 ticks: {
-                    beginAtZero: true,
+                    // beginAtZero: true,
+                    min: lower,
+                    max: upper,
                     fontSize: 8,
-                    stepSize: 3
+                    stepSize: 0.2
                 }
               }],
               },
@@ -619,17 +643,41 @@ export class SummaryPage {
 
     let dataSrc = this.monthlyData.Result;
     let monthlyDataSrc = undefined;
-    let x;
-    let y;
+    let monthlyDataTarget = undefined;
+    let x, y, yTarget, chooseMax, upper, lower;
     let timeLabel = undefined;
     let l = dataSrc.length
     if( l >= 12){
-        // for(let i = dataSrc.length; )
+
         monthlyDataSrc = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/1000000);
+            return Math.round(y.EnergyValue/1000000 * 10)/10;
         });
+
+        monthlyDataTarget = dataSrc.map(y =>{
+            return Math.round(y.Target/1000000 * 10)/10;
+        });
+
         y = monthlyDataSrc.slice(l-11, l);
-        
+        yTarget = monthlyDataTarget.slice(l-11, l);
+        console.log('value ', y);
+        console.log('target', yTarget);
+        let max, maxTarget, min, range, compensate;
+        max = Math.max.apply(null, y);
+        maxTarget = Math.max.apply(null, yTarget);
+        min = Math.min.apply(null, y);
+
+        if(maxTarget > max){
+            chooseMax = maxTarget;
+        }else{
+            chooseMax = max;
+        }
+        range = chooseMax-min;
+        compensate = range * 50 / 100; // 50% of range
+        upper = Math.round((chooseMax + compensate) * 10)/10
+        lower = Math.round((min - compensate) * 10)/10
+        console.log('upper ', upper);
+        console.log('lower ', lower);
+
         timeLabel = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('MMM');
         })
@@ -637,8 +685,32 @@ export class SummaryPage {
     }
     else{
         y = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/1000000);
+            return Math.round(y.EnergyValue/1000000 * 10)/10;
         });
+
+        yTarget = dataSrc.map(y =>{
+            return Math.round(y.Target/1000000 * 10)/10;
+        });
+
+        console.log('value ', y);
+        console.log('target', yTarget);
+        let max, maxTarget, min, range, compensate;
+        max = Math.max.apply(null, y);
+        maxTarget = Math.max.apply(null, yTarget);
+        min = Math.min.apply(null, y);
+
+        if(maxTarget > max){
+            chooseMax = maxTarget;
+        }else{
+            chooseMax = max;
+        }
+        range = chooseMax-min;
+        compensate = range * 50 / 100; // 50% of range
+        upper = Math.round((chooseMax + compensate) * 10)/10
+        lower = Math.round((min - compensate) * 10)/10
+        console.log('upper ', upper);
+        console.log('lower ', lower);
+
         x = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('MMM');
         })
@@ -677,9 +749,11 @@ export class SummaryPage {
                   fontFamily: 'Lata'
                 },
                 ticks: {
-                    beginAtZero: true,
+                    // beginAtZero: true,
+                    max: chooseMax,
+                    min: lower,
                     fontSize: 8,
-                    stepSize: 3
+                    // stepSize: 3
                 }
               }],
             },
@@ -701,7 +775,7 @@ export class SummaryPage {
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
-                data: [25, 20, 23, 23, 20, 22, 23, 26, 25, 25, 21],
+                data: yTarget,
                 type: 'line'
             }
         ];
@@ -720,7 +794,7 @@ export class SummaryPage {
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
-                data: [25, 20, 23, 23, 20, 22, 23, 26, 25, 25, 21],
+                data: yTarget,
                 type: 'line'
             }
         ];
@@ -739,8 +813,8 @@ export class SummaryPage {
 
     let dataSrc = this.yearlyData.Result;
     let yearlyDataSrc = undefined;
-    let x;
-    let y;
+    let yearlyDataSrcTarget = undefined;
+    let x, y, yTarget, chooseMax, upper, lower;
     let timeLabel = undefined;
     let l = dataSrc.length
     if( l >= 6){
@@ -748,8 +822,31 @@ export class SummaryPage {
         yearlyDataSrc = dataSrc.map(y =>{
             return Math.round(y.EnergyValue/1000000);
         });
+        yearlyDataSrcTarget = dataSrc.map(y =>{
+            return Math.round(y.Target/1000000);
+        });
+
         y = yearlyDataSrc.slice(l-6, l);
-        
+        yTarget = yearlyDataSrcTarget.slice(l-6, l);
+        console.log('value ', y);
+        console.log('target', yTarget);
+        let max, maxTarget, min, range, compensate;
+        max = Math.max.apply(null, y);
+        maxTarget = Math.max.apply(null, yTarget);
+        min = Math.min.apply(null, y);
+
+        if(maxTarget > max){
+            chooseMax = maxTarget;
+        }else{
+            chooseMax = max;
+        }
+        range = chooseMax-min;
+        compensate = range * 50 / 100; // 50% of range
+        upper = Math.round((chooseMax + compensate) * 10)/10
+        lower = Math.round((min - compensate) * 10)/10
+        console.log('upper ', upper);
+        console.log('lower ', lower);
+
         timeLabel = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('YYYY');
         })
@@ -759,6 +856,30 @@ export class SummaryPage {
         y = dataSrc.map(y =>{
             return Math.round(y.EnergyValue/1000000);
         });
+
+        yTarget = dataSrc.map(y =>{
+            return Math.round(y.Target/1000000);
+        });
+
+        console.log('value ', y);
+        console.log('target', yTarget);
+        let max, maxTarget, min, range, compensate;
+        max = Math.max.apply(null, y);
+        maxTarget = Math.max.apply(null, yTarget);
+        min = Math.min.apply(null, y);
+
+        if(maxTarget > max){
+            chooseMax = maxTarget;
+        }else{
+            chooseMax = max;
+        }
+        range = chooseMax-min;
+        compensate = range * 50 / 100; // 50% of range
+        upper = Math.round((chooseMax + compensate) * 10)/10
+        lower = Math.round((min - compensate) * 10)/10
+        console.log('upper ', upper);
+        console.log('lower ', lower);
+
         x = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('YYYY');
         })
@@ -797,9 +918,11 @@ export class SummaryPage {
                   fontFamily: 'Lata'
                 },
                 ticks: {
-                    beginAtZero: true,
+                    // beginAtZero: true,
                     fontSize: 8,
-                    stepSize: 3
+                    max: chooseMax,
+                    min: lower,
+                    // stepSize: 3
                 }
               }]
             },
@@ -821,7 +944,7 @@ export class SummaryPage {
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
-                data: [18, 20],
+                data: yTarget,
                 type: 'line'
             }
         ];
@@ -841,7 +964,7 @@ export class SummaryPage {
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
-                data: [18, 20],
+                data: yTarget,
                 type: 'line'
             }
         ];

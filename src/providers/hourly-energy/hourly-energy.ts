@@ -12,7 +12,6 @@ export class HourlyEnergyProvider {
 
   apiUrl = 'http://pms-api-dev.azurewebsites.net/api/PowerPlant/GetHourlyEnergyGen';
   constructor(public http: HttpClient) {
-    console.log('Hello HourlyEnergyProvider Provider');
   }
 
   requestHourlyEnergy(id){
@@ -29,7 +28,7 @@ export class HourlyEnergyProvider {
         }
       ).subscribe(res =>{
         resolve(res);
-        // console.log(res);
+        // console.log('hour from method', res);
       }, err => {
         console.log(err);
       });
