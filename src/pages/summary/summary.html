@@ -27,7 +27,6 @@
 
 <ion-content padding>
   <div class="myweather">
-
     <ion-card class="presentweather">
       <ion-card-content class="bigblock">
         <section>
@@ -35,14 +34,14 @@
                 <p style="color:white; padding-left:20%" text-center>Bangkok</p>
             </div>
             <div class="fourblock">
-                <p style="color:white; padding-left:10%; font-size:90%">Wednesday</p>
-                <p style="color:white; padding-left:10%; font-size:70%">12.00</p>  
-                <p style="color:white; padding-left:10%; font-size:70%">17/Feb/2018</p>
-            </div>
+                <p style="color:white; padding-left:10%; font-size:90%">{{currentDay}}</p>
+                <p style="color:white; padding-left:10%; font-size:70%">{{currentTime}}</p>  
+                <p style="color:white; padding-left:10%; font-size:70%">{{currentDate | date:"dd/MMM/yyyy"}}</p>
+              </div>
             <div class="oneblock">
                 <div class="parent-showdatetime-text-vertical-center">
                   <div class="myimagecenter">
-                    <img src="./assets/imgs/weathericons/b1.png"/>
+                    <img src="./assets/imgs/weathericons/01.png"/>
                   </div>
                 </div>
             </div>
@@ -66,39 +65,15 @@
     </ion-card>
       
     <ion-card class="futureweather">
-      <ion-card-content class="bigblock">
-        <section>
-
-          <div class="futurefourblock" style="width:98%;">
-              <p style="font-size:60%;
-              text-align:center">Thursday</p>
-              <img class="smallweathericon" src="./assets/imgs/weathericons/b5.png"/>
-              <p style="font-size:60%;
-              text-align:center">26°C - 30°C</p>
-          </div>
-
-          <div class="futurefourblock" style="width:98%;">
-                <p style="font-size:60%;
-                text-align:center">Friday</p>
-                <img class="smallweathericon" src="./assets/imgs/weathericons/b5.png"/>
-                <p style="font-size:60%;
-                text-align:center">26°C - 30°C</p>
-          </div>
-
-          <div class="futurefourblock" style="width:98%;">
-                <p style="font-size:60%;
-                text-align:center">Saturday</p>
-                <img class="smallweathericon" src="./assets/imgs/weathericons/b5.png"/>
-                <p style="font-size:60%;
-                text-align:center">26°C - 30°C</p>
-          </div>
-
-          <div class="futurefourblock" style="width:98%;">
-                <p style="font-size:60%;
-                text-align:center">Sunday</p>
-                <img class="smallweathericon" src="./assets/imgs/weathericons/b5.png"/>
-                <p style="font-size:60%;
-                text-align:center">26°C - 30°C</p>
+      <ion-card-content class="bigblock" style="height:100%;max-height:100%">
+        <section style="height:100%;max-height:100%">
+          <div *ngFor="let item of dayList" class="futurefourblock" 
+          style="width:98%;height:100%;max-height:100%;position:relative;">
+            <p style="font-size:60%;
+              text-align:center">{{item[0]}}</p>
+            <img class="smallweathericon" src="./assets/imgs/weathericons/02.png"/>
+            <p style="font-size:60%;
+              text-align:center;position:absolute;left:25%;bottom:0;">{{item[1]}}°C - {{item[2]}}°C</p>
           </div>
         </section>
       </ion-card-content>
@@ -108,7 +83,7 @@
       <ion-card-content>
         <div class="parent-showdatetime-text-vertical-center">
           <div class="child-showdatetime-text-vertical-center">
-            Latest update 11/Dec/2018 21:01:07
+            Latest update {{currentDate | date:"dd/MMM/yyyy"}} {{currentDate | date:"HH:mm:ss"}}
           </div>
         </div>
       </ion-card-content>
