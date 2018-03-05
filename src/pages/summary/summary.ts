@@ -84,6 +84,7 @@ export class SummaryPage {
   logo: string = undefined;
   plantData: any;
   testArr: any[];
+  currentIconWeather: any;
 
   loader: any;
 
@@ -156,6 +157,7 @@ export class SummaryPage {
 
   getWeather(){
       this.weatherServiceProvider.getWeather().then((data:any) =>{
+          console.log(data);
           let response = JSON.stringify(data); // Convert {any} data to {string}
           let json = JSON.parse(response); // Convert Json string to JavaScript Key-Value Object
           //console.log(json);
@@ -170,6 +172,7 @@ export class SummaryPage {
             this.maxTemp = json['list'][0]['main']['temp_max'].toString().substring(0,2);
             this.minTemp = json['list'][0]['main']['temp_min'].toString().substring(0,2);
             this.weatherDescription = json['list'][0]['weather'][0]['main'];
+            this.currentIconWeather = json['list'][0]['weather'][0]['icon'].toString().substring(0,2);
             this.currentTime = "00.00";
           }
           if(date.getHours() >= 3 && date.getHours() < 6){
@@ -178,6 +181,8 @@ export class SummaryPage {
             this.maxTemp = json['list'][1]['main']['temp_max'].toString().substring(0,2);
             this.minTemp = json['list'][1]['main']['temp_min'].toString().substring(0,2);
             this.weatherDescription = json['list'][1]['weather'][0]['main'];
+            this.currentIconWeather = json['list'][1]['weather'][0]['icon'].toString().substring(0,2);
+
             this.currentTime = "03.00";
           }
           if(date.getHours() >= 6 && date.getHours() < 9){
@@ -186,6 +191,8 @@ export class SummaryPage {
             this.maxTemp = json['list'][2]['main']['temp_max'].toString().substring(0,2);
             this.minTemp = json['list'][2]['main']['temp_min'].toString().substring(0,2);
             this.weatherDescription = json['list'][2]['weather'][0]['main'];
+            this.currentIconWeather = json['list'][2]['weather'][0]['icon'].toString().substring(0,2);
+
             this.currentTime = "06.00";
           }
           if(date.getHours() >= 9 && date.getHours() < 12){
@@ -194,6 +201,8 @@ export class SummaryPage {
             this.maxTemp = json['list'][3]['main']['temp_max'].toString().substring(0,2);
             this.minTemp = json['list'][3]['main']['temp_min'].toString().substring(0,2);
             this.weatherDescription = json['list'][3]['weather'][0]['main'];
+            this.currentIconWeather = json['list'][3]['weather'][0]['icon'].toString().substring(0,2);
+
             this.currentTime = "09.00";
           }
           if(date.getHours() >= 12 && date.getHours() < 15){
@@ -202,6 +211,8 @@ export class SummaryPage {
             this.maxTemp = json['list'][4]['main']['temp_max'].toString().substring(0,2);
             this.minTemp = json['list'][4]['main']['temp_min'].toString().substring(0,2);
             this.weatherDescription = json['list'][4]['weather'][0]['main'];
+            this.currentIconWeather = json['list'][4]['weather'][0]['icon'].toString().substring(0,2);
+
             this.currentTime = "12.00";
           }
           if(date.getHours() >= 15 && date.getHours() < 18){
@@ -210,6 +221,8 @@ export class SummaryPage {
             this.maxTemp = json['list'][5]['main']['temp_max'].toString().substring(0,2);
             this.minTemp = json['list'][5]['main']['temp_min'].toString().substring(0,2);
             this.weatherDescription = json['list'][5]['weather'][0]['main'];
+            this.currentIconWeather = json['list'][5]['weather'][0]['icon'].toString().substring(0,2);
+
             this.currentTime = "15.00";
           }
           if(date.getHours() >= 18 && date.getHours() < 21){
@@ -218,6 +231,8 @@ export class SummaryPage {
             this.maxTemp = json['list'][6]['main']['temp_max'].toString().substring(0,2);
             this.minTemp = json['list'][6]['main']['temp_min'].toString().substring(0,2);
             this.weatherDescription = json['list'][6]['weather'][0]['main'];
+            this.currentIconWeather = json['list'][6]['weather'][0]['icon'].toString().substring(0,2);
+
             this.currentTime = "18.00";
           }
           if(date.getHours() >= 21 && date.getHours() == 23){
@@ -226,6 +241,8 @@ export class SummaryPage {
             this.maxTemp = json['list'][7]['main']['temp_max'].toString().substring(0,2);
             this.minTemp = json['list'][7]['main']['temp_min'].toString().substring(0,2);
             this.weatherDescription = json['list'][7]['weather'][0]['main'];
+            this.currentIconWeather = json['list'][7]['weather'][0]['icon'].toString().substring(0,2);
+
             this.currentTime = "21.00";
           }
           //#endregion
@@ -250,13 +267,15 @@ export class SummaryPage {
                 //this.dayList[_i] = arrayFactory({});
                 this.dayList[_i] = arrayFactory({0:weekdays[date.getDay()+_i+1], 
                     1:json['list'][(11+(8*_i))]['main']['temp_min'].toString().substring(0,2),
-                2:json['list'][(11+(8*_i))]['main']['temp_max'].toString().substring(0,2)});
+                2:json['list'][(11+(8*_i))]['main']['temp_max'].toString().substring(0,2),
+            3:json['list'][(11+(8*_i))]['weather'][0]['icon'].toString().substring(0,2)});
               }
               if(date.getDay()+_i+1 >= 7){
                 //   this.dayList[_i] = weekdays[(date.getDay()+_i+1)-7];
                 this.dayList[_i] = arrayFactory({0:weekdays[(date.getDay()+_i+1)-7],
                 1:json['list'][(11+(8*_i))]['main']['temp_min'].toString().substring(0,2),
-            2:json['list'][(11+(8*_i))]['main']['temp_max'].toString().substring(0,2)});
+            2:json['list'][(11+(8*_i))]['main']['temp_max'].toString().substring(0,2),
+        3:json['list'][(11+(8*_i))]['weather'][0]['icon'].toString().substring(0,2)});
                 
               }
           }
