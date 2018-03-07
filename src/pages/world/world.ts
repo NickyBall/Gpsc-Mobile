@@ -70,6 +70,7 @@ export class WorldPage {
     console.log('ionViewDidLoad WorldPage');
     this.loader.present();
     this.loadMap();
+    // Comment this when deploy
     this.getCountryList();
   }
 
@@ -208,6 +209,7 @@ export class WorldPage {
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');
+        // Uncomment this when deploy
         // this.getCountryList();
       });
   }

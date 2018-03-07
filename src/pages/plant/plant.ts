@@ -40,6 +40,7 @@ export class PlantPage {
     console.log('ionViewDidLoad PlantPage');
     this.loadMap();
     this.loader.present();
+    // Comment this when deploy.
     this.getPlantList();
   }
 
@@ -51,6 +52,7 @@ export class PlantPage {
       this.solarList = data.Result.filter(plant => plant.PlantType == "Solar Plant");
       // console.log(data);
       this.loader.dismiss();
+      // Uncomment this when deploy.
       // this.updateMarker(this.solarList);
     })
   }
@@ -86,9 +88,11 @@ export class PlantPage {
     this.tabTwoImg = './assets/imgs/i1.png';
     if (selectedSection == 'tabButtonOne') {
       this.tabOneImg = './assets/imgs/i4.png';
+      // UnComment this when deploy
       // this.updateMarker(this.streamList);
     } else if (selectedSection == 'tabButtonTwo') {
       this.tabTwoImg = './assets/imgs/i2.png';
+      // Uncomment this when deploy
       // this.updateMarker(this.solarList);
     }
   }
