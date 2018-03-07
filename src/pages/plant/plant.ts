@@ -40,7 +40,8 @@ export class PlantPage {
     console.log('ionViewDidLoad PlantPage');
     this.loadMap();
     this.loader.present();
-    this.getPlantList();
+    // Comment this when deploy.
+    // this.getPlantList();
   }
 
   getPlantList() {
@@ -51,7 +52,8 @@ export class PlantPage {
       this.solarList = data.Result.filter(plant => plant.PlantType == "Solar Plant");
       // console.log(data);
       this.loader.dismiss();
-      // this.updateMarker(this.solarList);
+      // Uncomment this when deploy.
+      this.updateMarker(this.solarList);
     })
   }
 
@@ -86,10 +88,12 @@ export class PlantPage {
     this.tabTwoImg = './assets/imgs/i1.png';
     if (selectedSection == 'tabButtonOne') {
       this.tabOneImg = './assets/imgs/i4.png';
-      // this.updateMarker(this.streamList);
+      // UnComment this when deploy
+      this.updateMarker(this.streamList);
     } else if (selectedSection == 'tabButtonTwo') {
       this.tabTwoImg = './assets/imgs/i2.png';
-      // this.updateMarker(this.solarList);
+      // Uncomment this when deploy
+      this.updateMarker(this.solarList);
     }
   }
 
@@ -230,7 +234,7 @@ export class PlantPage {
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');
-        // this.getPlantList();
+        this.getPlantList();
       });
   }
 
