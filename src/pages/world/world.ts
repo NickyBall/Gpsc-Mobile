@@ -26,7 +26,7 @@ export class WorldPage {
   plantPage = PlantPage;
   countryList: any;
   loader: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps, public countryProvider: CountryServiceProvider, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public countryProvider: CountryServiceProvider, public loadingCtrl: LoadingController) {
     this.loader = this.loadingCtrl.create({
       content: "Loading Country..."
     })
@@ -204,7 +204,7 @@ export class WorldPage {
       ]
     };
 
-    this.map = this.googleMap.create('map_canvas', mapOptions);
+    this.map = GoogleMaps.create('map_canvas', mapOptions);
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');

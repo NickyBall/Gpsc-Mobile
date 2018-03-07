@@ -86,13 +86,13 @@ export class SummaryPage {
             public monthlyEnergyProvider: MonthlyEnergyProvider,
             public yearlyEnergyProvider: YearlyEnergyProvider) {
         
-                this.plantData = this.navParams.get('plantData');
-                this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
-                let id = this.plantData.Result.PlantId;
-
                 // this.plantData = this.navParams.get('plantData');
-                // this.logo = 'http://pms-api-dev.azurewebsites.net/';
-                // let id = 5;
+                // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+                // let id = this.plantData.Result.PlantId;
+
+                this.plantData = this.navParams.get('plantData');
+                this.logo = 'http://pms-api-dev.azurewebsites.net/';
+                let id = 5;
 
                 this.hourlyEnergyProvider.requestHourlyEnergy(id)
                     .then(data => {
@@ -407,6 +407,7 @@ export class SummaryPage {
     }
 
     let dataSrc = this.hourlyData.Result;
+    console.log('check Result res', dataSrc);
     let hourlyDataSrc = undefined;
     let x;
     let y;
