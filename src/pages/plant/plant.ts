@@ -41,7 +41,7 @@ export class PlantPage {
     this.loadMap();
     this.loader.present();
     // Comment this when deploy.
-    this.getPlantList();
+    // this.getPlantList();
   }
 
   getPlantList() {
@@ -53,7 +53,7 @@ export class PlantPage {
       // console.log(data);
       this.loader.dismiss();
       // Uncomment this when deploy.
-      // this.updateMarker(this.solarList);
+      this.updateMarker(this.solarList);
     })
   }
 
@@ -89,11 +89,11 @@ export class PlantPage {
     if (selectedSection == 'tabButtonOne') {
       this.tabOneImg = './assets/imgs/i4.png';
       // UnComment this when deploy
-      // this.updateMarker(this.streamList);
+      this.updateMarker(this.streamList);
     } else if (selectedSection == 'tabButtonTwo') {
       this.tabTwoImg = './assets/imgs/i2.png';
       // Uncomment this when deploy
-      // this.updateMarker(this.solarList);
+      this.updateMarker(this.solarList);
     }
   }
 
@@ -234,7 +234,7 @@ export class PlantPage {
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');
-        // this.getPlantList();
+        this.getPlantList();
       });
   }
 

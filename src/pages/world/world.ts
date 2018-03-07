@@ -71,7 +71,7 @@ export class WorldPage {
     this.loader.present();
     this.loadMap();
     // Comment this when deploy
-    this.getCountryList();
+    // this.getCountryList();
   }
 
   loadMap(){
@@ -210,7 +210,7 @@ export class WorldPage {
       .then(() => {
         console.log('Map is ready!');
         // Uncomment this when deploy
-        // this.getCountryList();
+        this.getCountryList();
       });
   }
 
