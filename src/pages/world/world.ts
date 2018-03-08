@@ -85,6 +85,7 @@ export class WorldPage {
         tilt: 0
       },
       styles: [
+        {elementType: 'labels.text.fill', stylers: [{color: 'silver'}]},
         {
           "featureType":"all",
           "elementType":"all",
@@ -100,6 +101,9 @@ export class WorldPage {
           "stylers":[
             {
               "visibility":"off"
+            },
+            {
+              "color":"silver"
             }
           ]
         },
@@ -216,7 +220,7 @@ export class WorldPage {
 
   selectedCountry(item) {
     if (item.CountryId == 1) {
-      this.navCtrl.push(this.plantPage);
+      this.navCtrl.push(this.plantPage, { country: item.CountryName});
     } else {
       alert(item.name + ' has no data');
     }

@@ -30,7 +30,9 @@ export class PlantPage {
   solarList: any;
   streamList: any;
   loader: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps, public companyProvider: CompanyProvider, public loadingCtrl: LoadingController) {
+  titleLabel: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public companyProvider: CompanyProvider, public loadingCtrl: LoadingController) {
+    this.titleLabel = this.navParams.get('country');
     this.loader = this.loadingCtrl.create({
       content: "Loading Power Plant..."
     })
@@ -49,8 +51,21 @@ export class PlantPage {
     let CountryId = 1;
     this.companyProvider.getAllPlants(UserCode, CountryId).then((data: any) => {
       this.streamList = data.Result.filter(plant => plant.PlantType == "Stream Plant");
+      this.streamList.map(x => {
+        if(x.PlantName != 'CHPP'){
+          x.alpha = 0.5;
+        }else{
+          x.alpha = 1;
+        }
+      });
       this.solarList = data.Result.filter(plant => plant.PlantType == "Solar Plant");
-      // console.log(data);
+      this.solarList.map(x => {
+        if(x.PlantName != 'CHPP'){
+          x.alpha = 0.5;
+        }else{
+          x.alpha = 1;
+        }
+      });
       this.loader.dismiss();
       // Uncomment this when deploy.
       this.updateMarker(this.solarList);
@@ -104,7 +119,7 @@ export class PlantPage {
           lat: 15.87,
           lng: 100.9925
         },
-        zoom: 4,
+        zoom: 5,
         tilt: 0
       },
       styles: [
@@ -228,7 +243,7 @@ export class PlantPage {
       ]
     };
 
-    this.map = this.googleMap.create('map_canvas2', mapOptions);
+    this.map = GoogleMaps.create('map_canvas2', mapOptions);
 
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
