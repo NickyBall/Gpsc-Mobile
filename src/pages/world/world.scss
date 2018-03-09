@@ -16,18 +16,29 @@ page-world {
   .scroll-content {
     padding: 0px !important;
   }
-  .item[no-lines].bottom-border { 
-    border-bottom: 1px solid #eeeeee; 
-  }
-  .plant-icon {
-    padding-right: 8px;
-  }
-  .country-name {
-    padding-left: 8px;
-    font-size: 90%;
-    color: steelblue;
-  }
 
+  ion-item { 
+    max-height: 40px;
+    margin-top: -3%;
+    margin-bottom: -3%;
+    border-bottom: 1px solid #eeeeee !important;
+    .pin-icon{
+      margin-left: 10%;
+    }
+    .country-name {
+      // padding-left: 8px;
+      font-size: 90%;
+      color: steelblue;
+      position: relative;
+      left: -18%;
+
+    }
+    .plant-icon {
+      padding-right: 8px;
+    }
+
+  }
+  
   .shadow-effect{
     z-index: 5;
     box-shadow: 0px -2px 2px rgb(184, 184, 184);

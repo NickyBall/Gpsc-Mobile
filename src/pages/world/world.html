@@ -21,19 +21,33 @@
   <div id="map_canvas">
   </div>
   <ion-scroll scrollY="true" class="shadow-effect" style="width: 100%; height: 50%;">
-    <div>
       <ion-list>
-        <ion-item no-lines class="bottom-border" *ngFor="let item of countryList" (click)="selectedCountry(item)">
+        <ion-item no-lines *ngFor="let item of countryList" (click)="selectedCountry(item)">
+          <ion-row>
+            <ion-col align-self-end class="pin-icon">
+                <img width="20" src="./assets/imgs/pin1.png"/>
+            </ion-col>
+            <ion-col align-self-end text-uppercase class="country-name">
+                {{item.CountryName}}
+            </ion-col>
+            <!-- <ion-col align-self-end class="plant-icon" *ngIf="item.type.length > 1; else oneIcon" >
+              <div  *ngFor="let t of item.type">
+                <img width="25" [src]="t.type"/>
+              </div>  
+            <ng-template #oneIcon>
+              <img width="25" [src]="item.type"/>
+            </ng-template>
+            </ion-col> -->
+
+            <ion-col align-self-end class="plant-icon" *ngIf="item.type" >
+                <img width="25" [src]="item.type"/>
+            </ion-col>
+
+          </ion-row>
           <!-- <ion-icon name="leaf" item-start></ion-icon> -->
-          <div item-start><img width="22" src="./assets/imgs/pin1.png"/></div>
-          <div class="country-name">{{item.CountryName}}</div>
-            
-          <div class="plant-icon" item-end><img width="28" src="./assets/imgs/i3.png"/></div>
-          <div class="plant-icon" item-end><img width="28" src="./assets/imgs/i1.png"/></div>
           <!-- <ion-img width="50" height="50" src="http://via.placeholder.com/50x50/ff0000/000000" item-end></ion-img> -->
           <!-- <ion-icon name="rose" item-end></ion-icon> -->
         </ion-item>
       </ion-list>
-    </div>
   </ion-scroll>
 </ion-content>

@@ -32,6 +32,7 @@ export class HomePage {
               public plantProvider: PlantProvider) {
 
     let id = this.navParams.get('plantId');
+    // let id = 5;
     
     this.plantProvider.requestPlant(id)
     .then(data => {
