@@ -195,7 +195,7 @@
     </ion-row>
     <ion-row no-padding class="tab-segment">
       <ion-col no-padding>
-          <ion-toolbar color="white" class="plant-type-toolbar" mode="md">
+          <ion-toolbar color="white" mode="md">
             <ion-segment [(ngModel)]="selectedSection" color="white" mode="md">
               <ion-segment-button value="powerGenerationTab" (click)="powerGenGraph()">
                 <div text-wrap>
@@ -308,6 +308,7 @@
                   </ion-row>
                   <ion-row class="tab-gap">
                     <ion-col>
+                      <ion-toolbar color="white" mode="md">
                       <ion-segment [(ngModel)]="selectedEnergySection" color="white" mode="md">
                         <ion-segment-button class="energy-segment" value="hourlyTab" (click)="hourlyGraph(1)">
                           <div>
@@ -330,6 +331,7 @@
                           </div>
                         </ion-segment-button>
                       </ion-segment>
+                      </ion-toolbar>
                     </ion-col>
                   </ion-row>
                   <div [ngSwitch]="selectedEnergySection">

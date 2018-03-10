@@ -18,12 +18,13 @@ page-summary {
                 ion-segment{
                     background-color: white;
                     ion-segment-button{
-                        height: 17px !important;
+                        height: 15px !important;
                         color: rgb(75, 75, 75) !important;
                         font-size: 9px !important;
                         min-height: 30px;
                         line-height: 1.0rem !important;
                         text-transform: none !important;
+                        margin-bottom: -27px;
                     }
                 }
                 .energy-segment{
@@ -33,6 +34,7 @@ page-summary {
                 .segment-button.segment-activated {
                     color: steelblue !important;
                     border-bottom: 2px solid rgb(66, 165, 231);
+                    border-width: 3px;
                 }
                 .toolbar-background {
                     background-color:white;
