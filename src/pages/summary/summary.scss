@@ -1,308 +1,373 @@
 page-summary {
 
-    // font-family: 'Lato', sans-serif !important;
-    ion-segment{
-        ion-segment-button{
-            height: 20px !important;
-        }
+    // font-family: 'Lato', sans-serif;
+    .scroll-content{
+        // margin: 0px !important;
     }
-
-    .energy-segment{
-        height: 20px !important;
-    }
-
-    .segment-button {
-        color: black !important;
-        font-size: 9px !important;
-        min-height: 30px;
-        line-height: 1.0rem !important;
-        text-transform: none !important;
-    }
-    .segment-button.segment-activated {
-        color: #488aff !important;
-    }
-    .weather-present {
-        background-color: #488aff;
-        color: white;
-        padding: 0px !important;
-    }
-
-    .card-md, .card-ios {
-        margin: 0px;
-        width: 100%;
-        margin-bottom: 8px;
-    }
-    section {
-        display: flex;
-        flex-direction: row;
-        flex: 1;
-        margin: 0 -8px;
-        min-height: 30px;
-      }
-      
-      section > * {
-        margin: 0 8px;
-      }
-
-    .divider {
-        width: 2px;
-        margin: 0px 0;
-        background: #488aff;
-      }
-    .item {
-        flex: 0 1 auto;
-        color: #488aff;
-        font-size: 12px;
-        margin: auto;
-    }
-
-    div.highcharts-container g.highcharts-tracker > * {
-        fill :rgb(155, 155, 155);
-    }
-
-    .segment-text{
-        font-size: 90%;
-    }
-
-    .power-gen-container{
-        max-height: 100%;
-        margin-top: 15%;
-    }
-
-    .tab-title{
-        background: -webkit-linear-gradient(rgba(22, 154, 231, 0.918), rgb(30, 125, 248));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .power-text{
-        margin-top: -50%;
-        position: relative;
-        left: 5%;
-        margin-top: -50%;
-    
-    }
-
-    .power-unit{
-        font-size: 150%;
-        color: rgb(161, 161, 161);
-    }
-
-    .power-value{
-        font-size: 220%;
-        background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .power-icon{
-        img{
-         max-height: 30px;
-         position: relative;
-         right: -8%;
-
-        }
-        margin-top: -38%;
-    }
-
-    .panel-margin{
+    .main-bg{
+        background-color: rgb(240, 238, 238);
         
-    }
-
-    .tt{
-        background-color: rgb(230, 230, 230);
-    }
-
-    .tab-gap-header{
-        background-color: white;
-        padding-top: 3%;
-        padding-bottom: 2%;
-        position: relative;
-        top: -10px;
-        margin-left: 8px;
-        margin-right: 8px;
-    }
-
-    .tab-gap{
-        background-color: white;
-        position: relative;
-        top: -10px;
-        margin-left: 8px;
-        margin-right: 8px;
-    }
-
-    .title-align{
-        position: relative;
-        left: 17%;
-    }
-
-    .energy-chart-bg{
-        // background-color: rgb(230, 230, 230);
-    }
-
-    .active-energy-btn input:active{
-        opacity: .9;
-    }
-    .active-energy-btn input:checked +.chart-type{
-          -webkit-filter: none;
-             -moz-filter: none;
-                  filter: none;
-            color: rgb(255, 255, 255);
-            background-color: #488aff;
-    }
-    .active-energy-btn input{
-        margin:0;padding:0;
-        -webkit-appearance:none;
-           -moz-appearance:none;
-                appearance:none;
-    }
-    
-    .active-energy-btn label{
-      font-size: 15px;
-    }
-    .chart-type{
-        background-color: rgb(255, 255, 255);
-        color: #488aff;
-        padding: 3px;
-        border-radius: 3px;
-        margin: 2px;
-    }
-
-    .target{
-        ul li{
-            float: right;
-            font-size: 70%;
-            margin-top: -4%;
-            color: rgba(248, 94, 23, 0.918);
+        .tab-segment{
+            margin-top: 6px;
+            margin-left: -3px;
+            margin-right: -10px;
+            width: 102%;
+            background-color: white;
+            ion-toolbar{
+                background-color: white;
+                ion-segment{
+                    background-color: white;
+                    ion-segment-button{
+                        height: 17px !important;
+                        color: rgb(75, 75, 75) !important;
+                        font-size: 9px !important;
+                        min-height: 30px;
+                        line-height: 1.0rem !important;
+                        text-transform: none !important;
+                    }
+                }
+                .energy-segment{
+                    height: 20px !important;
+                }
+            
+                .segment-button.segment-activated {
+                    color: steelblue !important;
+                    border-bottom: 2px solid rgb(66, 165, 231);
+                }
+                .toolbar-background {
+                    background-color:white;
+                }
+            }
+            
         }
-        margin-right: 5px;
-    }
+        
+        
+        // .weather-present {
+        //     background-color: #488aff;
+        //     color: white;
+        //     padding: 0px !important;
+        // }
+    
+        // .card-md, .card-ios {
+        //     margin: 0px;
+        //     width: 100%;
+        //     margin-bottom: 8px;
+        // }
+        // section {
+        //     display: flex;
+        //     flex-direction: row;
+        //     flex: 1;
+        //     margin: 0 -8px;
+        //     min-height: 30px;
+        //   }
+          
+          section > * {
+            margin: 0 8px;
+          }
+    
+        .divider {
+            width: 2px;
+            margin: 0px 0;
+            background: #488aff;
+          }
+        .item {
+            flex: 0 1 auto;
+            color: #488aff;
+            font-size: 12px;
+            margin: auto;
+        }
+    
+        div.highcharts-container g.highcharts-tracker > * {
+            fill :rgb(155, 155, 155);
+        }
+    
+        .segment-text{
+            font-size: 90%;
+        }
+    
+        .power-gen-container{
+            max-height: 100%;
+            margin-top: 15%;
+        }
+    
+        .tab-title{
+            background: -webkit-linear-gradient(rgba(22, 154, 231, 0.918), rgb(30, 125, 248));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    
+        .power-text{
+            margin-top: -50%;
+            position: relative;
+            left: 5%;
+            margin-top: -50%;
+        
+        }
+    
+        .power-unit{
+            font-size: 150%;
+            color: rgb(161, 161, 161);
+        }
+    
+        .power-value{
+            font-size: 220%;
+            background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    
+        .power-icon{
+            img{
+             max-height: 30px;
+             position: relative;
+             right: -8%;
+    
+            }
+            margin-top: -38%;
+        }
+    
+        .tt{
+            background-color: rgb(230, 230, 230);
+        }
+    
+        .tab-gap-header{
+            background-color: white;
+            padding-top: 3%;
+            padding-bottom: 2%;
+            position: relative;
+            top: -10px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+    
+        .tab-gap{
+            background-color: white;
+            position: relative;
+            top: -10px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+    
+        .title-align{
+            position: relative;
+            left: 17%;
+        }
+    
+        .energy-chart-bg{
+            // background-color: rgb(230, 230, 230);
+        }
+    
+        .active-energy-btn input:active{
+            opacity: .9;
+        }
+        .active-energy-btn input:checked +.chart-type{
+              -webkit-filter: none;
+                 -moz-filter: none;
+                      filter: none;
+                color: rgb(255, 255, 255);
+                background-color: #488aff;
+        }
+        .active-energy-btn input{
+            margin:0;padding:0;
+            -webkit-appearance:none;
+               -moz-appearance:none;
+                    appearance:none;
+        }
+        
+        .active-energy-btn label{
+          font-size: 15px;
+        }
+        .chart-type{
+            background-color: rgb(255, 255, 255);
+            color: #488aff;
+            padding: 3px;
+            border-radius: 3px;
+            margin: 2px;
+        }
+    
+        .target{
+            ul li{
+                float: right;
+                font-size: 70%;
+                margin-top: -4%;
+                color: rgba(248, 94, 23, 0.918);
+            }
+            margin-right: 5px;
+        }
+    
+        .start-gap{
+            padding-top: 5%;
+        }
+    
+        .snippet{
+            font-size: 70%;
+            color: rgb(133, 133, 133);
+            position: relative;
+            left: 5%;
+        }
+    
+        .value-summary{
+            font-size: 130%;
+            background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    
+        .unit-summary{
+            font-size: 65%;
+            color: rgb(133, 133, 133);
+        }
+    
+        .underline{
+            border-bottom: 2px solid;
+            border-color: rgb(197, 197, 197);
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+    
+        //1st Row Show Current Temp Info
+        .presentweather{
+            z-index: 5;
+            box-shadow: 0px 2px 1px rgb(184, 184, 184);
+            color: white;
+            padding-top: 2px;
+            // padding-bottom: 2px;
+            margin-top: -1%;
+            margin-left: -3px;
+            margin-right: -3px;
+            width: 102%;
+            max-height: 35%;
+            background: linear-gradient(to right, #8dbde8 , #98e9ea);
+            .weather-title{
+                font-size: 100%;
+            }
+            .weather-date{
+                .day{
+                    font-size: 95%;
+                }
+                .time{
+                    font-size: 60%
+                }
+                .dt{
+                    font-size: 60%;
+                }
+            }
+            .weather-icon{
+                position: relative;
+                left: -5%;
+                img{
+                    height: 30px;
+                    width: 30px;
+                }
+            }
+            .weather-degree{
+                font-size: 200%;
+                font-weight: 100;
+            }
+            .weather-env{
+                .text{
+                    font-size: 80%;
+                }
+                .max-min{
+                    font-size: 50%;
+                }
+            }
+        }
 
-    .start-gap{
-        padding-top: 5%;
+        .futureweather{
+            margin-top: 3px;
+            margin-left: -3px;
+            margin-right: -10px;
+            width: 102%;
+            color: steelblue;
+            background-color: white;
+            // .seperator{
+               
+            // }
+            .seperator:before{
+                content : "";
+                position: absolute;
+                top: 10%;
+                left: 1px;
+                // bottom  : 0;
+                // height  : 1px;
+                height   : 75%;  /* or 100px */
+                border-left: 2px solid rgb(71, 184, 236);
+            }
+            .text{
+                font-size: 60%;
+            }
+            .icon{
+                img{
+                    height: 20px;
+                }
+            }
+            .temp{
+                margin-top: -6px;
+                .temp-value{
+                    font-size: 75%;
+                }
+                .max-min{
+                    position: relative;
+                    left: -4px;
+                    font-size: 25%;
+                }
+            }
+        }
+   
+        // .mytemptext{
+        //     position: absolute;
+        //     top: 30%;
+        //     left: 0;
+        //     right: 0;  
+        // }
+        //EOF 1st Row Show Current Temp Info
+    
+        //2nd Row Show Future Temp Info
+      
+        // img.smallweathericon{
+        //     max-width:30%;
+        //     max-height:30%;
+        //     display: block;
+        //     margin-left: auto;
+        //     margin-right: auto;
+        // }
+        //EOF 2nd Row Show Future Temp Info
+    
+        //3rd Row show date time
+        .showdatetime{
+            z-index: 5;
+            box-shadow: 0px 2px 1px rgb(184, 184, 184);
+            margin-top: 6px;
+            margin-left: -3px;
+            margin-right: -3px;
+            width: 102%;
+            color:grey;
+            background-color: white;
+            padding: 4%;
+            .title-label{
+                font-size: 80%;
+                position: relative;
+                left: -3%;
+            }
+            .date{
+                font-size: 80%;
+                position: relative;
+                left: 2%;
+            }
+            .time{
+                font-size: 80%;
+                position: relative;
+                left: 3%;
+            }
+        }
+      
+        .child-showdatetime-text-vertical-center{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+        }
+        //EOF 3rd Row show date time
     }
-
-    .snippet{
-        font-size: 70%;
-        color: rgb(133, 133, 133);
-        position: relative;
-        left: 5%;
-    }
-
-    .value-summary{
-        font-size: 130%;
-        background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .unit-summary{
-        font-size: 65%;
-        color: rgb(133, 133, 133);
-    }
-
-    .underline{
-        border-bottom: 2px solid;
-        border-color: rgb(197, 197, 197);
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-    .myweather{
-        width: 100%;
-        max-width: 100%;
-        height: 100%;
-        max-height: 30%;
-    }
-
-    //1st Row Show Current Temp Info
-    .presentweather{
-        padding: 0;
-        margin:0;
-        width: 100%;
-        max-width: 100%;
-        max-height: 35%;
-        height: 100%;
-        background-color:rgb(109, 200, 253);
-    }
-    .bigblock{
-        padding:0;
-        margin:0;
-    }
-    .fourblock{
-        padding: 0;
-        margin:0;
-        width: 100%;
-        max-width: 22%;
-        text-align: left;
-    }
-    .oneblock{
-        padding: 0;
-        margin:0;
-        width: 100%;
-        max-width: 12%;
-    }
-    .myimagecenter{
-        position: absolute;
-        left: 0;
-        right: 0;
-    }
-    .mytemptext{
-        position: absolute;
-        top: 30%;
-        left: 0;
-        right: 0;  
-    }
-    //EOF 1st Row Show Current Temp Info
-
-    //2nd Row Show Future Temp Info
-    .futureweather{
-        padding: 0;
-        margin:0;
-        padding-top: 2%;
-        width: 100%;
-        max-width: 100%;
-        max-height: 35%;
-        height: 100%;
-    }
-    .futurefourblock{
-        padding: 0;
-        margin:0;
-        width: 100%;
-        max-width: 25%;
-        height: 100%;
-        max-height: 100%;
-    }
-    img.smallweathericon{
-        max-width:30%;
-        max-height:30%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    //EOF 2nd Row Show Future Temp Info
-
-    //3rd Row show date time
-    .showdatetime{
-        padding: 0;
-        margin:0;
-        width: 100%;
-        max-width: 100%;
-        max-height: 30%;
-        height: 100%;
-    }
-    .parent-showdatetime-text-vertical-center{
-        width: 100%;
-        max-width: 100%;
-        height: 100%;
-        max-height: 100%;
-        position: relative;
-        text-align: center;
-    }
-    .child-showdatetime-text-vertical-center{
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-    }
-    //EOF 3rd Row show date time
 }

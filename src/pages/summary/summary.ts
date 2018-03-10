@@ -12,13 +12,6 @@ import { YearlyEnergyProvider } from '../../providers/yearly-energy/yearly-energ
 
 HighchartsMore(HighCharts);
 
-/**
- * Generated class for the SummaryPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-summary',
@@ -30,10 +23,6 @@ export class SummaryPage {
   @ViewChild('dailyCanvas') dailyCanvas;
   @ViewChild('monthlyCanvas') monthlyCanvas;
   @ViewChild('yearlyCanvas') yearlyCanvas;
-//    graph1 = 'autofocus';
-//    graph2 = 'autofocus';
-//    graph3 = 'autofocus';
-//    graph4 = 'autofocus';
 
   selectedSection = 'powerGenerationTab';
   selectedEnergySection = 'hourlyTab';
@@ -58,7 +47,6 @@ export class SummaryPage {
   monthlyData: any;
   yearly: any;
   yearlyData: any;
-
 
   generationSummaryChart: any;
   generationSummaryData: any;
@@ -86,13 +74,9 @@ export class SummaryPage {
             public monthlyEnergyProvider: MonthlyEnergyProvider,
             public yearlyEnergyProvider: YearlyEnergyProvider) {
         
-                // this.plantData = this.navParams.get('plantData');
-                // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
-                // let id = this.plantData.Result.PlantId;
-
                 this.plantData = this.navParams.get('plantData');
-                this.logo = 'http://pms-api-dev.azurewebsites.net/';
-                let id = 5;
+                this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+                let id = this.plantData.Result.PlantId;
 
                 this.hourlyEnergyProvider.requestHourlyEnergy(id)
                     .then(data => {

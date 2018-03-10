@@ -25,7 +25,7 @@
         <ion-item no-lines *ngFor="let item of countryList" (click)="selectedCountry(item)">
           <ion-row>
             <ion-col align-self-end class="pin-icon">
-                <img width="20" src="./assets/imgs/pin1.png"/>
+                <img width="18" src="./assets/imgs/pin1.png"/>
             </ion-col>
             <ion-col align-self-end text-uppercase class="country-name">
                 {{item.CountryName}}
@@ -40,7 +40,7 @@
             </ion-col> -->
 
             <ion-col align-self-end class="plant-icon" *ngIf="item.type" >
-                <img width="25" [src]="item.type"/>
+                <img width="22" [src]="item.type"/>
             </ion-col>
 
           </ion-row>
