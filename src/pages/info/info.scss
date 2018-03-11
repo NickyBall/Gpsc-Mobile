@@ -11,6 +11,10 @@ page-info {
         height: 40%;
         z-index: 5;
         box-shadow: 0px -2px 2px rgb(184, 184, 184);
+        .scroll-h{
+            width:100% !important;
+            height:40vh !important;
+        }
         ion-list{
             margin-top: 1%;
             border: none !important;

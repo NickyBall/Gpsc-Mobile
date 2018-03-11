@@ -35,7 +35,7 @@ export class WorldPage {
     this.loader = this.loadingCtrl.create({
       content: "Loading Country..."
     });
-    this.isRunOnDevice = false;
+    this.isRunOnDevice = true;
   }
 
   getCountryList() {

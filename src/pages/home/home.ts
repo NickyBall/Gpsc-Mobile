@@ -40,7 +40,8 @@ export class HomePage {
       this.plantData = data;
       this.companyName = this.plantData.Result.PlantInfo.CompanyName;
       console.log(this.companyName);
-      this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+      // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+      this.logo = 'assets/imgs/CHPP.png'
     }); 
   }
 
