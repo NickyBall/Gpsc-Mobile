@@ -14,7 +14,7 @@ page-login {
     h2.textlogo{
         margin-top: 5%;
         text-align: center;
-        color:antiquewhite;
+        color:white;
         font-style: italic;
         font-size: 150%;
         opacity: 0.7;
@@ -57,6 +57,7 @@ page-login {
         &.custom-input {
           font-size: 80%; //sets text font size
           color: white;
+          opacity: 0.8;
           ::placeholder {
             margin-top: 0%;
             margin-bottom: 0%;
@@ -64,6 +65,7 @@ page-login {
             padding-bottom: 0%;
             font-size: 80%; //sets placeholder font size
             color: white;
+            opacity: 0.8;
           }
         }
       }
