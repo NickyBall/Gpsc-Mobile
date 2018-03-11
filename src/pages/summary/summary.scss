@@ -3,6 +3,7 @@ page-summary {
     // font-family: 'Lato', sans-serif;
     .scroll-content{
         // margin: 0px !important;
+        background-color: #e6e6e6;
     }
 
     .title-align{
@@ -14,9 +15,13 @@ page-summary {
     
     .main-bg{
         background-color: rgb(240, 238, 238);
+        padding-bottom: 0px;
         .energy-period {
             margin-top: -18px;
-            padding-bottom: 20px;
+            padding-bottom: 0px;
+        }
+        .title-label {
+            padding-top: 10%;
         }
         .tab-segment{
             margin-top: 6px;
@@ -107,7 +112,7 @@ page-summary {
     
         .power-gen-container{
             max-height: 100%;
-            margin-top: 15%;
+            margin-top: 20%;
         }
     
         .tab-title{
@@ -213,7 +218,11 @@ page-summary {
         }
     
         .start-gap{
-            padding-top: 5%;
+            padding-top: 10%;
+        }
+
+        .last-gap {
+            margin-bottom: 20%;
         }
     
         .snippet{

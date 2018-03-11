@@ -35,7 +35,7 @@
 
 </ion-header>
 
-<ion-content no-padding>
+<ion-content no-padding class="summary-content">
   <ion-grid class="main-bg">
 
     <ion-row no-padding class="presentweather">
@@ -224,7 +224,7 @@
               <div *ngSwitchCase="'powerGenerationTab'" class="panel-margin">
                 <ion-grid>
                   <ion-row>
-                    <ion-col>
+                    <ion-col class="title-label">
                       <span class="tab-title">Power Generation</span>
                     </ion-col>
                   </ion-row>
@@ -248,7 +248,7 @@
               <div *ngSwitchCase="'irradiationTab'">
                 <ion-grid>
                   <ion-row>
-                    <ion-col>
+                    <ion-col class="title-label">
                       <span class="tab-title">Irradiation</span>
                     </ion-col>
                   </ion-row>
@@ -273,7 +273,7 @@
               <div *ngSwitchCase="'ambientTemperatureTab'">
                 <ion-grid>
                   <ion-row>
-                    <ion-col>
+                    <ion-col class="title-label">
                       <span class="tab-title">Ambient Temperature</span>
                     </ion-col>
                   </ion-row>
@@ -438,7 +438,7 @@
               <div *ngSwitchCase="'generationSummaryTab'">
                 <ion-grid>
                   <ion-row>
-                    <ion-col>
+                    <ion-col class="title-label">
                       <span class="tab-title">Generation Summary</span>
                     </ion-col>
                   </ion-row>
@@ -471,7 +471,7 @@
                     <ion-col col-9>
                       <div class="value-summary" text-center>{{ summaryYTDActual|number }}/{{ summaryYTDPlan|number }}</div>
                     </ion-col>
-                    <ion-col col-3>
+                    <ion-col col-3 class="last-gap">
                       <span class="unit-summary">KW/h</span>
                     </ion-col>
                   </ion-row>
