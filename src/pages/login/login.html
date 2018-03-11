@@ -11,21 +11,48 @@
   <img class="resize"src="./assets/imgs/gpsclogo.png"/>
   <h2 class="textlogo">Plat Monitoring</h2>
   <ion-card>
-    <ion-card-content>
+    <ion-card-content style="margin-top:15%">
       <ion-list no-line>
-        <ion-item class="roundcorner">
-          <ion-input type="text" placeholder="Username" [(ngModel)]="username"></ion-input>
-          <ion-icon name="contact" item-left></ion-icon>
-        </ion-item>
-      <br>
-        <ion-item class="roundcorner">
-          <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
-          <ion-icon name="lock" item-left></ion-icon>
-        </ion-item>
-      <br>
-        <button class="loginbutton" ion-button block color="facebook" (click)="loginClick()">
+        <div class="item images-parent">
+          <ion-item class="roundcorner">
+
+            <img item-start style="margin:0;
+            max-width: 15%;
+            max-height: 15%;
+            display: block;" 
+            src="./assets/imgs/iconusername.png"/>
+
+            <ion-input style="
+            margin:0;padding-left:5%!important;color:white;"
+            class="custom-input" 
+            type="text" placeholder="Username" [(ngModel)]="username">
+          </ion-input>
+
+          </ion-item>  
+        </div>
+
+        <div style="margin-top:4%" class="item images-parent">
+            <ion-item class="roundcorner">
+
+              <img item-start style="margin:0;
+              max-width: 15%;
+              max-height: 15%;
+              display: block;" 
+              src="./assets/imgs/iconpassword.png"/>
+
+              <ion-input style="
+              margin:0;padding-left:5%!important;color:white;"
+              class="custom-input" 
+              type="password" placeholder="Password" [(ngModel)]="password">
+            </ion-input>
+
+            </ion-item>  
+          </div>
+
+        <button class="loginbutton" (click)="loginClick()">
           Log On
         </button>
+
       </ion-list>
     </ion-card-content>
   </ion-card>
