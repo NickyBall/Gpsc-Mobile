@@ -37,174 +37,156 @@
 
 <ion-content no-padding>
   <ion-grid class="main-bg">
+
     <ion-row no-padding class="presentweather">
       <ion-col col-3 text-center class="weather-title" no-padding>Bangkok</ion-col>
       <ion-col col-3 class="weather-date" no-padding>
         <ion-row>
           <ion-col class="day" no-padding>
-            <!-- {{currentDay}} -->
-            Monday
+            {{currentDay}}
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col class="time" no-padding>
-            <!-- {{currentTime}} -->
-            21:00
+            {{currentTime}}
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col class="dt" no-padding>
-            <!-- {{currentDate | date:"dd/MMM/yyyy"}} -->
-            11/Dec/2017
+            {{currentDate | date:"dd/MMM/yyyy"}}
           </ion-col>
         </ion-row>
       </ion-col>
       <ion-col col-6>
         <ion-row>
           <ion-col col-3 class="weather-icon" no-padding>
-            <!-- <img src="./assets/imgs/weathericons/{{currentIconWeather}}.png"/> -->
-            <img src="./assets/imgs/weathericons/w1.png"/>
+            <img src="./assets/imgs/weathericons/currenticon/{{currentIconWeather}}.png"/>
           </ion-col>
           <ion-col col-4 class="weather-degree" no-padding>
-            <!-- {{currentTemp}}°C -->
-            25°
+            {{currentTemp}}°
           </ion-col>
           <ion-col col-5 class="weather-env" no-padding align-self-center text-center>
             <ion-row>
               <ion-col class="text" no-padding>
-                <!-- {{weatherDescription}} -->
-                CLEAR
+                {{weatherDescription}}
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col class="max-min" no-padding>
-                <!-- {{minTemp}}°C-{{maxTemp}}°C -->
-                19°C-29°C
+                {{minTemp}}°C-{{maxTemp}}°C
               </ion-col>
             </ion-row>
           </ion-col>
         </ion-row>
       </ion-col>
     </ion-row>
+
     <ion-row no-padding class="futureweather" text-center>
         <ion-col no-padding>
           <ion-row>
             <ion-col no-padding class="text">
-              Sunday
+              {{futureDay1Name}}
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col no-padding class="icon">
-              <img src="./assets/imgs/weathericons/new2.png"/>
+              <img src="./assets/imgs/weathericons/futureicon/{{futureDay1Icon}}.png"/>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col no-padding class="temp">
               <span class="temp-value">
-                  25°
+                {{futureDay1Temp}}°
               </span>
               <span class="max-min">
-                  19°C-29°C
+                {{futureDay1minT}}°C-{{futureDay1maxT}}°C
               </span>
             </ion-col>
           </ion-row>
         </ion-col>
+
         <ion-col no-padding class="seperator">
           <ion-row>
             <ion-col no-padding class="text">
-              Monday
+              {{futureDay2Name}}
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col no-padding class="icon">
-              <img src="./assets/imgs/weathericons/new3.png"/>
+              <img src="./assets/imgs/weathericons/{{futureDay2Icon}}.png"/>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col no-padding class="temp">
               <span class="temp-value">
-                  25°
+                {{futureDay2Temp}}°
               </span>
               <span class="max-min">
-                  19°C-29°C
+                {{futureDay2minT}}°C-{{futureDay2maxT}}°C
+              </span>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <ion-col no-padding class="seperator">
+          <ion-row>
+            <ion-col no-padding class="text">
+              {{futureDay3Name}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col no-padding class="icon">
+              <img src="./assets/imgs/weathericons/{{futureDay3Icon}}.png"/>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col no-padding class="temp">
+              <span class="temp-value">
+                {{futureDay3Temp}}°
+              </span>
+              <span class="max-min">
+                {{futureDay3minT}}°C-{{futureDay3maxT}}°C
+              </span>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <ion-col no-padding class="seperator">
+          <ion-row>
+            <ion-col no-padding class="text">
+              {{futureDay4Name}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col no-padding class="icon">
+              <img src="./assets/imgs/weathericons/{{futureDay4Icon}}.png"/>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col no-padding class="temp">
+              <span class="temp-value">
+                {{futureDay4Temp}}°
+              </span>
+              <span class="max-min">
+                {{futureDay4minT}}°C-{{futureDay4maxT}}°C
               </span>
             </ion-col>
           </ion-row>
         </ion-col> 
-        <ion-col no-padding class="seperator">
-            <ion-row>
-              <ion-col no-padding class="text">
-                Tuesday
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col no-padding class="icon">
-                <img src="./assets/imgs/weathericons/new9.png"/>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col no-padding class="temp">
-                <span class="temp-value">
-                    25°
-                </span>
-                <span class="max-min">
-                    19°C-29°C
-                </span>
-              </ion-col>
-            </ion-row>
-          </ion-col> 
-          <ion-col no-padding class="seperator">
-              <ion-row>
-                <ion-col no-padding class="text">
-                  Wednesday
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col no-padding class="icon">
-                  <img src="./assets/imgs/weathericons/new7.png"/>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col no-padding class="temp">
-                  <span class="temp-value">
-                      25°
-                  </span>
-                  <span class="max-min">
-                      19°C-29°C
-                  </span>
-                </ion-col>
-              </ion-row>
-            </ion-col> 
-              <!-- <div *ngFor="let item of dayList" class="futurefourblock" 
-              style="width:98%;height:100%;max-height:100%;position:relative;">
-                <p style="font-size:60%;
-                  text-align:center">{{item[0]}}</p>
-                <img class="smallweathericon" src="./assets/imgs/weathericons/{{item[3]}}.png"/>
-                <p style="font-size:60%;
-                  text-align:center;position:absolute;left:25%;bottom:0;">{{item[1]}}°C - {{item[2]}}°C</p>
-              </div> -->
-      
     </ion-row>
 
     <ion-row no-padding class="showdatetime">
       <ion-col no-padding text-center>
         <span class="title-label">Latest update</span>
         <span class="date">
-          <!-- {{currentDate | date:"dd/MMM/yyyy"}} -->
-            11/Dec/2017
+          {{currentDate | date:"dd/MMM/yyyy"}}
         </span>
         <span class="time">
-            <!-- {{currentDate | date:"HH:mm:ss"}} -->
-            21:01:07
+            {{currentDate | date:"HH:mm:ss"}}
         </span>  
-          
-        <!-- <div class="parent-showdatetime-text-vertical-center">
-          <div class="child-showdatetime-text-vertical-center">
-            Latest update {{currentDate | date:"dd/MMM/yyyy"}} {{currentDate | date:"HH:mm:ss"}}
-          </div>
-        </div> -->
       </ion-col>
     </ion-row>
+
     <ion-row no-padding class="tab-segment">
       <ion-col no-padding>
           <ion-toolbar color="white" mode="md">
