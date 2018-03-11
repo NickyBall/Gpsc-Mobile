@@ -15,10 +15,8 @@
     </ion-navbar>
 </ion-header>
 
-
-
 <ion-content padding>
-    <div id="title-label">{{titleLabel}}</div>
+    <div text-uppercase id="title-label">{{titleLabel}}</div>
     <div id="map_canvas2">
     </div>
 
@@ -37,30 +35,41 @@
                 </ion-segment-button>
             </ion-segment>
         </ion-toolbar>
-        <ion-scroll scrollY="true" style="width: 100%; height: 70%;">
+        <ion-scroll scrollY="true" style="width: 100%; height: 70%; background-color: rgb(240, 240, 240);">
             <div [ngSwitch]="selectedSection">
-
                 <div *ngSwitchCase="'tabButtonOne'">
-                    <!-- Content to show when the fist tab button is selected -->
-                    <!-- ... -->
                     <ion-list>
                         <ion-item *ngFor="let item of streamList" (click)="selectedPlant(item)" [style.opacity]="item.alpha">
-                                <div class="item-icon" item-start text-center>
-                                        <img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}" />
-                                </div>
-                                <div class="item-name">{{item.PlantName}}</div>
-                                <div class="divider"></div>
-                                <div class="item-share" item-end>
-                                    <ion-grid class="share-row">
-                                        <ion-row class="share-percentage">
+                            <ion-row class="item-list" no-padding>
+                                <ion-col class="item-icon" no-padding col-4 text-center>
+                                    <img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}" />
+                                </ion-col>
+                                <ion-col class="item-power" col-6>
+                                    <ion-row no-padding>
+                                        <ion-col class="item-name" no-padding>
+                                            {{item.PlantName}}
+                                        </ion-col>
+                                    </ion-row>
+                                    <ion-row no-padding>
+                                        <ion-col class="power-gen" no-padding col-2>
+                                            <img src="/assets/imgs/E1.png"/>
+                                            {{item.ElectricGen}} MW
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                                <ion-col class="share-row">
+                                    <ion-row no-padding>
+                                        <ion-col class="share-percentage" no-padding>
                                             {{item.SharedHolderPercentage}}%
-                                        </ion-row>
-                                        <ion-row class="share-company">
+                                        </ion-col>
+                                    </ion-row>
+                                    <ion-row no-padding>
+                                        <ion-col class="share-company" no-padding>
                                             {{item.SharedHolder.SharedHolderName}}
-                                        </ion-row>
-                                    </ion-grid>
-                                </div>
-                        
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
                         </ion-item>
                     </ion-list>
                 </div>
@@ -70,7 +79,38 @@
                     <!-- ... -->
                     <ion-list>
                         <ion-item *ngFor="let item of solarList" (click)="selectedPlant(item)" [style.opacity]="item.alpha">
-                            <div class="item-icon" item-start text-center>
+                            <ion-row class="item-list" no-padding>
+                                <ion-col class="item-icon" no-padding col-4 text-center>
+                                    <img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}" />
+                                </ion-col>
+                                <ion-col class="item-power" col-6>
+                                    <ion-row no-padding>
+                                        <ion-col class="item-name" no-padding>
+                                            {{item.PlantName}}
+                                        </ion-col>
+                                    </ion-row>
+                                    <ion-row no-padding>
+                                        <ion-col class="power-gen" no-padding col-2>
+                                            <img src="./assets/imgs/E1.png"/>
+                                            {{item.ElectricGen}} MW
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                                <ion-col class="share-row">
+                                    <ion-row no-padding>
+                                        <ion-col class="share-percentage" no-padding>
+                                            {{item.SharedHolderPercentage}}%
+                                        </ion-col>
+                                    </ion-row>
+                                    <ion-row no-padding>
+                                        <ion-col class="share-company" no-padding>
+                                            {{item.SharedHolder.SharedHolderName}}
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                           
+                            <!-- <div class="item-icon" item-start text-center>
                                 <img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}" />
                             </div>
                             <div class="item-name">{{item.PlantName}}</div>
@@ -84,7 +124,7 @@
                                         {{item.SharedHolder.SharedHolderName}}
                                     </ion-row>
                                 </ion-grid>
-                            </div>
+                            </div> -->
                         </ion-item>
                     </ion-list>
                 </div>

@@ -26,16 +26,38 @@ export class WorldPage {
   plantPage = PlantPage;
   countryList: any;
   loader: any;
+  // factoryIcon = '/assets/imgs/i3.png';
+  // solarIcon = '/assets/imgs/i1.png';
+  // damIcon = '/assets/imgs/i5.png';
+  // energyIcon = '/assets/imgs/i7.png';
+  isRunOnDevice: boolean;
   constructor(public navCtrl: NavController, public navParams: NavParams, public countryProvider: CountryServiceProvider, public loadingCtrl: LoadingController) {
     this.loader = this.loadingCtrl.create({
       content: "Loading Country..."
-    })
+    });
+    this.isRunOnDevice = false;
   }
 
   getCountryList() {
     let UserCode = "UserCode123456";
     this.countryProvider.getAllCountry(UserCode).then((data: any) => {
       this.countryList = data.Result;
+      this.countryList.map(x => {
+        if(x.CountryId == 1){
+          x.type = './assets/imgs/i3.png';
+        }else if(x.CountryId == 2){
+          x.type = './assets/imgs/i5.png';
+        }else if(x.CountryId == 3){
+          x.type = './assets/imgs/i1.png';
+        }else if(x.CountryId == 3){
+          x.type = './assets/imgs/i7.png';
+        }else if(x.CountryId == 4){
+          x.type = './assets/imgs/i7.png';
+        }else if(x.CountryId == 5){
+          x.type = './assets/imgs/i1.png';
+        }
+      });
+      console.log('icon', JSON.stringify(this.countryList));
       this.loader.dismiss();
       console.log(data);
       this.countryList.forEach((country) => {
@@ -69,9 +91,11 @@ export class WorldPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorldPage');
     this.loader.present();
-    this.loadMap();
-    // Comment this when deploy
-    // this.getCountryList();
+    if (this.isRunOnDevice) {
+      this.loadMap();
+    } else {
+      this.getCountryList();
+    }
   }
 
   loadMap(){
@@ -203,12 +227,15 @@ export class WorldPage {
             },
             {
               "lightness":"-4"
+            },
+            {
+              "color":"#bbceed"
             }
           ]
         }
       ]
     };
-
+    
     this.map = GoogleMaps.create('map_canvas', mapOptions);
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {

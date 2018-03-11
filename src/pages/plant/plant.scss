@@ -24,40 +24,69 @@ page-plant {
     background-color: white;
     color: orange;
   }
+  // .segment-button.segment-activated:before {
+  //   content : "";
+  //   position: absolute;
+  //   // left: 10%;
+  //   // bottom: 1px;
+  //   bottom  : 0;
+  //   height  : 1px;
+  //   height   : 75%;  /* or 100px */
+  //   border-bottom: 2px solid, orange;
+  // }
   .segment-button.segment-activated {
+    // border-bottom: 2px solid orange;
     border-color: orange !important;
   }
-  .item-icon {
-    width: 30%;
-    align-content: center;
-  }
-  .item-name {
-    width: 25%;
-    font-size: 12px;
-  }
+  
   .item-share {
     width: 10%;
     padding-right: 40px;
   }
-  .share-row {
-    color: orange;
+
+  ion-list{
+    ion-item{
+      background-color: rgb(240, 240, 240);
+    }
   }
-  .share-percentage {
-    font-size: 16px;
-  }
-  .share-company {
-    font-size: 12px;
+
+  .item-list{
+    // background-color: rgb(240, 240, 240);
+    .item-icon {
+      width: 20%;
+      align-content: center;
+    }
+
+    .item-power{
+      padding-left: 3%;
+      .item-name {
+        font-size: 85%;
+        color: steelblue;
+      }
+      .power-gen{
+        font-size: 60%;
+        color: gray;
+        img{
+          width: 50%;
+        }
+      }
+    }
+  
+    .share-row {
+      padding-left: 4%;
+      color: rgb(255, 123, 0);
+      border-left:1px solid rgb(175, 175, 175);
+      .share-percentage {
+        font-size: 90%;
+      }
+      .share-company {
+        font-size: 70%;
+      }
+    }
   }
 
   .shadow-effect{
     box-shadow: 0px -2px 2px rgb(184, 184, 184);
   }
 
-  .divider{
-    position:absolute;
-    right:20%;
-    top:10%;
-    bottom:10%;
-    border-left:1px solid orange;
-}
 }
