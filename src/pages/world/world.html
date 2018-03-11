@@ -20,7 +20,7 @@
   <div id="title-label">Our Projects</div>
   <div id="map_canvas">
   </div>
-  <ion-scroll scrollY="true" class="shadow-effect" style="width: 100%; height: 50%;">
+  <ion-scroll scrollY="true" class="shadow-effect" style="width: 100%; height: 50%; background-color: rgb(250, 250, 250);">
       <ion-list>
         <ion-item no-lines *ngFor="let item of countryList" (click)="selectedCountry(item)">
           <ion-row>
@@ -40,7 +40,7 @@
             </ion-col> -->
 
             <ion-col align-self-end class="plant-icon" *ngIf="item.type" >
-                <img width="22" [src]="item.type"/>
+                <img width="25" [src]="item.type"/>
             </ion-col>
 
           </ion-row>
