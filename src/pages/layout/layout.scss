@@ -7,7 +7,9 @@ page-layout {
         margin-right: auto;
       }
       .title-align{
-        position: relative;
-        left: 17%;
+        .title-header{
+            font-size: 90%;
+            color: steelblue;
+        }
     }
 }

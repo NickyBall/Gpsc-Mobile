@@ -4,6 +4,14 @@ page-summary {
     .scroll-content{
         // margin: 0px !important;
     }
+
+    .title-align{
+        .title-header{
+            font-size: 90%;
+            color: steelblue;
+        }
+    }
+    
     .main-bg{
         background-color: rgb(240, 238, 238);
         .energy-period {
@@ -157,11 +165,6 @@ page-summary {
             top: -10px;
             margin-left: 8px;
             margin-right: 8px;
-        }
-    
-        .title-align{
-            position: relative;
-            left: 17%;
         }
     
         .energy-chart-bg{

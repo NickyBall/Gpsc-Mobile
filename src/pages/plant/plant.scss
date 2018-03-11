@@ -24,7 +24,18 @@ page-plant {
     background-color: white;
     color: orange;
   }
+  // .segment-button.segment-activated:before {
+  //   content : "";
+  //   position: absolute;
+  //   // left: 10%;
+  //   // bottom: 1px;
+  //   bottom  : 0;
+  //   height  : 1px;
+  //   height   : 75%;  /* or 100px */
+  //   border-bottom: 2px solid, orange;
+  // }
   .segment-button.segment-activated {
+    // border-bottom: 2px solid orange;
     border-color: orange !important;
   }
   
