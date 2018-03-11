@@ -4,17 +4,20 @@ page-login {
         background-size: cover;
     }
     img.resize {
-        max-width:40%;
-        max-height:40%;
+        max-width: 30%;
+        max-height: 30%;
         display: block;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 50%;
+        margin-top: 45%;
       }
     h2.textlogo{
-        margin-top: 0%;
+        margin-top: 5%;
         text-align: center;
-        color: white;
+        color:antiquewhite;
+        font-style: italic;
+        font-size: 150%;
+        opacity: 0.7;
     }
 	
     ion-card.card {
@@ -23,12 +26,58 @@ page-login {
 		border-radius: 5px;
     }
     .roundcorner{
+        padding: 0;
         border-radius: 15px;
+        width: 80%;
+        height: 10%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(154, 188, 250, 0.61);
     }
     button.loginbutton{
         display: block;
+        margin-top: 4%;
         margin-left: auto;
         margin-right: auto;
         border-radius: 15px;
+        min-height: 3.5rem;
+        width: 80%;
+        //height: 10%;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+        //background: linear-gradient(to right, rgb(103, 200, 238) , rgb(143, 240, 247));
+        background: linear-gradient(to right, rgb(33, 143, 187) , rgb(143, 240, 247));
+
     }
+    .item {
+        min-height: 1rem; /* <- this can be whatever you need */
+    }
+    ion-input {
+        &.custom-input {
+          font-size: 80%; //sets text font size
+          color: white;
+          ::placeholder {
+            margin-top: 0%;
+            margin-bottom: 0%;
+            padding-top: 0%;
+            padding-bottom: 0%;
+            font-size: 80%; //sets placeholder font size
+            color: white;
+          }
+        }
+      }
+    .images-parent{
+        text-align: center;
+      }
+  
+    .left-image{
+        float:left;
+        max-width: 80px !important;
+        max-height: 80px !important;
+      }
+      .text-input{
+          margin-top: 6% !important;
+          margin-bottom: 6% !important;
+      }
 }
