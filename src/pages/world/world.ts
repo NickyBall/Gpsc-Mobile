@@ -26,7 +26,7 @@ export class WorldPage {
   plantPage = PlantPage;
   countryList: any;
   loader: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMap: GoogleMaps, public countryProvider: CountryServiceProvider, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public countryProvider: CountryServiceProvider, public loadingCtrl: LoadingController) {
     this.loader = this.loadingCtrl.create({
       content: "Loading Country..."
     })
@@ -71,7 +71,7 @@ export class WorldPage {
     this.loader.present();
     this.loadMap();
     // Comment this when deploy
-    this.getCountryList();
+    // this.getCountryList();
   }
 
   loadMap(){
@@ -85,6 +85,7 @@ export class WorldPage {
         tilt: 0
       },
       styles: [
+        {elementType: 'labels.text.fill', stylers: [{color: 'silver'}]},
         {
           "featureType":"all",
           "elementType":"all",
@@ -100,6 +101,9 @@ export class WorldPage {
           "stylers":[
             {
               "visibility":"off"
+            },
+            {
+              "color":"silver"
             }
           ]
         },
@@ -205,18 +209,18 @@ export class WorldPage {
       ]
     };
 
-    this.map = this.googleMap.create('map_canvas', mapOptions);
+    this.map = GoogleMaps.create('map_canvas', mapOptions);
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');
         // Uncomment this when deploy
-        // this.getCountryList();
+        this.getCountryList();
       });
   }
 
   selectedCountry(item) {
     if (item.CountryId == 1) {
-      this.navCtrl.push(this.plantPage);
+      this.navCtrl.push(this.plantPage, { country: item.CountryName});
     } else {
       alert(item.name + ' has no data');
     }

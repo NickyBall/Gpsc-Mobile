@@ -27,8 +27,10 @@ export class HomePage {
   fontColor2: string = undefined;
   fontColor3: string = undefined;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public plantProvider: PlantProvider) {
-   
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public plantProvider: PlantProvider) {
+
     let id = this.navParams.get('plantId');
     
     this.plantProvider.requestPlant(id)
