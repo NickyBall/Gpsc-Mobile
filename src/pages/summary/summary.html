@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <ion-title>
-       <ion-row class="title-align">
+       <!-- <ion-row class="title-align">
           <ion-col align-self-center>
             <div text-right>
               <img src={{logo}} alt="">
@@ -17,7 +17,19 @@
           <ion-col align-self-center>
             <div text-left>{{ plantData.Result.PlantInfo.CompanyName }}</div>
           </ion-col>
-        </ion-row> 
+        </ion-row> -->
+        <ion-row class="title-align">
+          <ion-col col-3 align-self-center>
+            <div text-right>
+              <img src={{logo}} alt="">
+            </div>
+          </ion-col>
+          <ion-col col-7 align-self-center class="title-header">
+            <!-- <div text-left>{{ companyName }}</div> -->
+            <div text-left text-wrap>Combined Heat and Power Producing Co.,Ltd.</div>
+          </ion-col>
+          <ion-col col-2></ion-col>
+        </ion-row>  
     </ion-title>
   </ion-navbar>
 

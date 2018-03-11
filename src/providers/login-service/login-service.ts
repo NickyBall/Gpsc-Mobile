@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LoginServiceProvider{
-    // apiUrl = "http://pms-api-dev.azurewebsites.net/api/Authentication/Login";
-    apiUrl = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/api/Authentication/Login";
+    apiUrl = "http://pms-api-dev.azurewebsites.net/api/Authentication/Login";
+    // apiUrl = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/api/Authentication/Login";
     constructor(public http: HttpClient) {
         console.log('Hello LoginServiceProvider');
       }

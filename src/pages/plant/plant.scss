@@ -35,7 +35,8 @@ page-plant {
   //   border-bottom: 2px solid, orange;
   // }
   .segment-button.segment-activated {
-    border-bottom: 2px solid orange;
+    // border-bottom: 2px solid orange;
+    border-color: orange !important;
   }
   
   .item-share {

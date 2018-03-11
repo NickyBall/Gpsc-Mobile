@@ -8,7 +8,7 @@ page-home {
     }
 
     .first-card{
-        margin-top: auto;
+        margin-top: 4%;
         max-width: 90%;
         margin-left: auto;
         margin-right: auto;
@@ -19,6 +19,7 @@ page-home {
     }
 
     .text-menu{
+        color: grey !important;
         font-size: 125%;
     }
 
@@ -28,12 +29,17 @@ page-home {
     }
 
     .title-align{
-        position: relative;
-        left: 17%;
+        .title-header{
+            font-size: 90%;
+            color: steelblue;
+        }
     }
 
     .img-icon{
         position: relative;
         left: 15%;
+        img{
+            width: 50px;
+        }
     }
 }
