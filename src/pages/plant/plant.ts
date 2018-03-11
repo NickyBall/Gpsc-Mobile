@@ -37,7 +37,7 @@ export class PlantPage {
     this.loader = this.loadingCtrl.create({
       content: "Loading Power Plant..."
     });
-    this.isRunOnDevice = false;
+    this.isRunOnDevice = true;
   }
 
   ionViewDidLoad() {
@@ -262,12 +262,12 @@ export class PlantPage {
   }
 
   selectedPlant(item) {
-    // if (item.PlantId == 5) {
-    //   this.navCtrl.push(this.homePage);
-    // } else {
-    //   alert (item.name + ' has no data.');
-    // }
-    this.navCtrl.push(this.homePage, { plantId: item.PlantId });
+    if (item.PlantName == 'CHPP') {
+      this.navCtrl.push(this.homePage, { plantId: item.PlantId });
+    } else {
+      // alert (item.name + ' has no data.');
+    }
+    // this.navCtrl.push(this.homePage, { plantId: item.PlantId });
   }
 
 }
