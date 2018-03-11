@@ -31,19 +31,24 @@ export class PlantPage {
   streamList: any;
   loader: any;
   titleLabel: string;
+  isRunOnDevice: boolean;
   constructor(public navCtrl: NavController, public navParams: NavParams, public companyProvider: CompanyProvider, public loadingCtrl: LoadingController) {
     this.titleLabel = this.navParams.get('country');
     this.loader = this.loadingCtrl.create({
       content: "Loading Power Plant..."
-    })
+    });
+    this.isRunOnDevice = false;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlantPage');
-    this.loadMap();
+    if (this.isRunOnDevice) {
+      this.loadMap();
+    } else {
+      this.getPlantList();
+    }
+    
     this.loader.present();
-    // Comment this when deploy.
-    // this.getPlantList();
   }
 
   getPlantList() {
@@ -67,8 +72,9 @@ export class PlantPage {
         }
       });
       this.loader.dismiss();
-      // Uncomment this when deploy.
-      this.updateMarker(this.solarList);
+      if (this.isRunOnDevice) {
+        this.updateMarker(this.solarList);
+      }
     })
   }
 
@@ -103,12 +109,14 @@ export class PlantPage {
     this.tabTwoImg = './assets/imgs/i1.png';
     if (selectedSection == 'tabButtonOne') {
       this.tabOneImg = './assets/imgs/i4.png';
-      // UnComment this when deploy
-      this.updateMarker(this.streamList);
+      if (this.isRunOnDevice) {
+        this.updateMarker(this.streamList);
+      }
     } else if (selectedSection == 'tabButtonTwo') {
       this.tabTwoImg = './assets/imgs/i2.png';
-      // Uncomment this when deploy
-      this.updateMarker(this.solarList);
+      if (this.isRunOnDevice) {
+        this.updateMarker(this.solarList);
+      }
     }
   }
 

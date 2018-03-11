@@ -6,7 +6,10 @@ page-summary {
     }
     .main-bg{
         background-color: rgb(240, 238, 238);
-        
+        .energy-period {
+            margin-top: -18px;
+            padding-bottom: 20px;
+        }
         .tab-segment{
             margin-top: 6px;
             margin-left: -3px;
@@ -28,13 +31,19 @@ page-summary {
                     }
                 }
                 .energy-segment{
-                    height: 20px !important;
+                    height:  20px !important;
                 }
+
+                
             
                 .segment-button.segment-activated {
                     color: steelblue !important;
                     border-bottom: 2px solid rgb(66, 165, 231);
                     border-width: 3px;
+                }
+
+                .segment-button {
+                    text-align: left;
                 }
                 .toolbar-background {
                     background-color:white;

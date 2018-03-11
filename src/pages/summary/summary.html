@@ -204,8 +204,9 @@
               </ion-segment-button>
               <ion-segment-button value="irradiationTab" (click)="irradiationGraph()">
                 <div text-wrap>
-                  <span class="segment-text">Irradiation</span>
+                  <p class="segment-text">Irradiation</p>
                 </div>
+                
               </ion-segment-button>
               <ion-segment-button value="ambientTemperatureTab" (click)="ambientTemperatureGraph()">
                 <div text-wrap>
@@ -254,7 +255,7 @@
                 <ion-grid>
                   <ion-row>
                     <ion-col>
-                      <span class="tab-title">irradiationTab</span>
+                      <span class="tab-title">Irradiation</span>
                     </ion-col>
                   </ion-row>
                   <ion-row class="power-gen-container">
@@ -279,7 +280,7 @@
                 <ion-grid>
                   <ion-row>
                     <ion-col>
-                      <span class="tab-title">ambientTemperatureTab</span>
+                      <span class="tab-title">Ambient Temperature</span>
                     </ion-col>
                   </ion-row>
                   <ion-row class="power-gen-container">
@@ -307,27 +308,27 @@
                     </ion-col>
                   </ion-row>
                   <ion-row class="tab-gap">
-                    <ion-col>
+                    <ion-col class="energy-period">
                       <ion-toolbar color="white" mode="md">
                       <ion-segment [(ngModel)]="selectedEnergySection" color="white" mode="md">
                         <ion-segment-button class="energy-segment" value="hourlyTab" (click)="hourlyGraph(1)">
                           <div>
-                            <span>Hourly</span>
+                            <p>Hourly</p>
                           </div>
                         </ion-segment-button>
                         <ion-segment-button class="energy-segment" value="dailyTab" (click)="dailyGraph(1)">
                           <div>
-                            <span>Daily</span>
+                            <p>Daily</p>
                           </div>
                         </ion-segment-button>
                         <ion-segment-button class="energy-segment" value="monthlyTab" (click)="monthlyGraph(1)">
                           <div>
-                            <span>Monthly</span>
+                            <p>Monthly</p>
                           </div>
                         </ion-segment-button>
                         <ion-segment-button class="energy-segment" value="yearlyTab" (click)="yearlyGraph(1)">
                           <div>
-                            <span>Yearly</span>
+                            <p>Yearly</p>
                           </div>
                         </ion-segment-button>
                       </ion-segment>

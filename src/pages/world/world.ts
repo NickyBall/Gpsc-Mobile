@@ -30,10 +30,12 @@ export class WorldPage {
   solarIcon = '/assets/imgs/i1.png';
   damIcon = '/assets/imgs/i5.png';
   energyIcon = '/assets/imgs/i7.png';
+  isRunOnDevice: boolean;
   constructor(public navCtrl: NavController, public navParams: NavParams, public countryProvider: CountryServiceProvider, public loadingCtrl: LoadingController) {
     this.loader = this.loadingCtrl.create({
       content: "Loading Country..."
-    })
+    });
+    this.isRunOnDevice = false;
   }
 
   getCountryList() {
@@ -89,9 +91,11 @@ export class WorldPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorldPage');
     this.loader.present();
-    this.loadMap();
-    // Comment this when deploy
-    // this.getCountryList();
+    if (this.isRunOnDevice) {
+      this.loadMap();
+    } else {
+      this.getCountryList();
+    }
   }
 
   loadMap(){
