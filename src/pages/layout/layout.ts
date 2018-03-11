@@ -20,7 +20,8 @@ export class LayoutPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.plantData = this.navParams.get('plantData');
-    this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+    // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+    this.logo = 'assets/imgs/CHPP.png'
   }
 
   ionViewDidLoad() {

@@ -75,7 +75,8 @@ export class SummaryPage {
             public yearlyEnergyProvider: YearlyEnergyProvider) {
         
                 this.plantData = this.navParams.get('plantData');
-                this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+                // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+                this.logo = 'assets/imgs/CHPP.png'
                 let id = this.plantData.Result.PlantId;
 
                 this.hourlyEnergyProvider.requestHourlyEnergy(id)
