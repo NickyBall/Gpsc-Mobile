@@ -17,12 +17,14 @@ page-plant {
   }
 
   .tab-section {
+    // position: fixed;
     width: 100%;
     height: 50%;
   }
   .plant-type-toolbar .toolbar-background {
     background-color: white;
     color: orange;
+    height: 20vh;
   }
   // .segment-button.segment-activated:before {
   //   content : "";
@@ -46,6 +48,7 @@ page-plant {
 
   ion-list{
     ion-item{
+      height: 10vh;
       background-color: rgb(240, 240, 240);
     }
   }
