@@ -26,10 +26,10 @@ export class WorldPage {
   plantPage = PlantPage;
   countryList: any;
   loader: any;
-  factoryIcon = '/assets/imgs/i3.png';
-  solarIcon = '/assets/imgs/i1.png';
-  damIcon = '/assets/imgs/i5.png';
-  energyIcon = '/assets/imgs/i7.png';
+  // factoryIcon = '/assets/imgs/i3.png';
+  // solarIcon = '/assets/imgs/i1.png';
+  // damIcon = '/assets/imgs/i5.png';
+  // energyIcon = '/assets/imgs/i7.png';
   constructor(public navCtrl: NavController, public navParams: NavParams, public countryProvider: CountryServiceProvider, public loadingCtrl: LoadingController) {
     this.loader = this.loadingCtrl.create({
       content: "Loading Country..."
