@@ -240,7 +240,7 @@ export class SummaryPage {
 
           this.currentTime = "18.00";
         }
-        if(date.getHours() >= 21 && date.getHours() == 23){
+        if(date.getHours() >= 21 && date.getHours() < 24){
           console.log("21-24 temp is :"+json['list'][7]['main']['temp']);
           this.currentTemp = json['list'][7]['main']['temp'].toString().substring(0,2);
           this.maxTemp = json['list'][7]['main']['temp_max'].toString().substring(0,2);
