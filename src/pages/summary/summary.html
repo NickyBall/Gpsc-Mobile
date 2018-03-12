@@ -8,36 +8,24 @@
 
   <ion-navbar>
     <ion-title>
-       <!-- <ion-row class="title-align">
-          <ion-col align-self-center>
-            <div text-right>
-              <img src={{logo}} alt="">
-            </div>
-          </ion-col>
-          <ion-col align-self-center>
-            <div text-left>{{ plantData.Result.PlantInfo.CompanyName }}</div>
-          </ion-col>
-        </ion-row> -->
-        <ion-row class="title-align">
-          <ion-col col-3 align-self-center>
-            <div text-right>
-              <img src={{logo}} alt="">
-            </div>
-          </ion-col>
-          <ion-col col-7 align-self-center class="title-header">
-            <!-- <div text-left>{{ companyName }}</div> -->
-            <div text-left text-wrap>Combined Heat and Power Producing Co.,Ltd.</div>
-          </ion-col>
-          <ion-col col-2></ion-col>
-        </ion-row>  
+      <ion-row class="title-align">
+        <ion-col col-3 align-self-center>
+          <div text-right>
+            <img src={{logo}} alt="">
+          </div>
+        </ion-col>
+        <ion-col col-7 align-self-center class="title-header">
+          <!-- <div text-left>{{ companyName }}</div> -->
+          <div text-left text-wrap>Combined Heat and Power Producing Co.,Ltd.</div>
+        </ion-col>
+        <ion-col col-2></ion-col>
+      </ion-row>  
     </ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content no-padding class="summary-content">
   <ion-grid class="main-bg">
-
     <ion-row no-padding class="presentweather">
       <ion-col col-3 text-center class="weather-title" no-padding>Bangkok</ion-col>
       <ion-col col-3 class="weather-date" no-padding>
@@ -61,6 +49,7 @@
         <ion-row>
           <ion-col col-3 class="weather-icon" no-padding>
             <img src="./assets/imgs/weathericons/currenticon/{{currentIconWeather}}.png"/>
+            <img src="" alt="">
           </ion-col>
           <ion-col col-4 class="weather-degree" no-padding>
             {{currentTemp}}°

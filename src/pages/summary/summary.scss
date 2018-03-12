@@ -54,8 +54,6 @@ page-summary {
                     text-align: center !important;
                 }
 
-                
-            
                 .segment-button.segment-activated {
                     color: steelblue !important;
                     border-bottom: 2px solid rgb(66, 165, 231);
@@ -261,29 +259,29 @@ page-summary {
         .presentweather{
             //z-index: 5;
             //box-shadow: 0px 2px 1px rgb(184, 184, 184);
-            color: white;
+            color: rgba(255, 255, 255, 0.801);
             padding-top: 2px;
             // padding-bottom: 2px;
-            margin-top: -1%;
+            margin-top: -0.25vh;
             margin-left: -3px;
             margin-right: -3px;
             width: 102%;
-            max-height: 35%;
+            height: 8vh;
             background: linear-gradient(to right, #8dbde8 , #98e9ea);
             .weather-title{
-                font-size: 100%;
+                font-size: 2.25vh;
                 padding-top:0.8%;
             }
             .weather-date{
                 .day{
-                    font-size: 95%;
+                    font-size: 2.25vh;
                     padding-top:4%;
                 }
                 .time{
-                    font-size: 60%
+                    font-size: 1.75vh;
                 }
                 .dt{
-                    font-size: 60%;
+                    font-size: 1.5vh;
                 }
             }
             .weather-icon{
@@ -295,7 +293,7 @@ page-summary {
                 }
             }
             .weather-degree{
-                font-size: 200%;
+                font-size: 3vh;
                 font-weight: 100;
             }
             .weather-env{
