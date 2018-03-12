@@ -13,13 +13,13 @@ page-summary {
             height: 5vh;
         }
         .title-header{
-            font-size: 2vh;
+            font-size: 1.75vh;
             color: steelblue;
         }
     }
     
     .main-bg{
-        background-color: rgb(240, 238, 238);
+        background-color: rgb(245, 245, 242);
         padding-bottom: 0px;
         //background-color:white;
         .energy-period {
@@ -30,9 +30,9 @@ page-summary {
             padding-top: 10%;
         }
         .tab-segment{
-            margin-top: 6px;
-            margin-left: -3px;
-            margin-right: -10px;
+            margin-top: 1.25vh;
+            margin-left: -0.25vw;
+            margin-right: -0.25vw;
             width: 102%;
             background-color: white;
             ion-toolbar{
@@ -40,22 +40,20 @@ page-summary {
                 ion-segment{
                     background-color: white;
                     ion-segment-button{
-                        height: 15px !important;
+                        height: 4vh !important;
                         color: rgb(75, 75, 75) !important;
-                        font-size: 9px !important;
-                        min-height: 30px;
-                        line-height: 1.0rem !important;
+                        font-size: 1.85vh !important;
+                        // min-height: 30px;
+                        line-height: 1.2rem !important;
                         text-transform: none !important;
-                        margin-bottom: -27px;
+                        margin-bottom: -1vh;
                     }
                 }
                 .energy-segment{
-                    height:  20px !important;
+                    height:  4.5vh !important;
                     text-align: center !important;
                 }
 
-                
-            
                 .segment-button.segment-activated {
                     color: steelblue !important;
                     border-bottom: 2px solid rgb(66, 165, 231);
@@ -125,6 +123,10 @@ page-summary {
             background: -webkit-linear-gradient(rgba(22, 154, 231, 0.918), rgb(30, 125, 248));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-size: 2.25vh;
+            position: relative;
+            top: 6vh;
+            left: 3vw;
         }
     
         .power-text{
@@ -132,24 +134,23 @@ page-summary {
             position: relative;
             left: 5%;
             margin-top: -50%;
-        
-        }
-    
-        .power-unit{
-            font-size: 150%;
-            color: rgb(161, 161, 161);
-        }
-    
-        .power-value{
-            font-size: 220%;
-            background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            .power-unit{
+                font-size: 3.5vh;
+                color: rgb(161, 161, 161);
+                position: relative;
+                left: 1vw;
+            }
+            .power-value{
+                font-size: 5.5vh;
+                background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
         }
     
         .power-icon{
             img{
-             max-height: 30px;
+             height: 7.5vh;
              position: relative;
              right: -8%;
     
@@ -202,8 +203,8 @@ page-summary {
         }
         
         .active-energy-btn label{
-            font-size: 15px;
-            padding-left: 5px;
+            font-size: 3vh;
+            padding-left: 1.25vw;
         }
         .chart-type{
             background-color: rgb(255, 255, 255);
@@ -216,11 +217,11 @@ page-summary {
         .target{
             ul li{
                 float: right;
-                font-size: 70%;
-                margin-top: -4%;
+                font-size: 1.75vh;
+                margin-top: -2.5%;
                 color: rgba(248, 94, 23, 0.918);
             }
-            margin-right: 5px;
+            margin-right: 2%;
         }
     
         .start-gap{
@@ -259,59 +260,63 @@ page-summary {
     
         //1st Row Show Current Temp Info
         .presentweather{
-            //z-index: 5;
-            //box-shadow: 0px 2px 1px rgb(184, 184, 184);
-            color: white;
+            z-index: 5;
+            box-shadow: 0 0.5vh 0.25vh rgb(204, 204, 204);
+            color: rgba(255, 255, 255, 0.801);
             padding-top: 2px;
             // padding-bottom: 2px;
-            margin-top: -1%;
+            margin-top: -0.25vh;
             margin-left: -3px;
             margin-right: -3px;
             width: 102%;
-            max-height: 35%;
+            height: 8vh;
             background: linear-gradient(to right, #8dbde8 , #98e9ea);
             .weather-title{
-                font-size: 100%;
+                font-size: 2.25vh;
                 padding-top:0.8%;
             }
             .weather-date{
                 .day{
-                    font-size: 95%;
+                    font-size: 2.25vh;
                     padding-top:4%;
                 }
                 .time{
-                    font-size: 60%
+                    font-size: 1.75vh;
                 }
                 .dt{
-                    font-size: 60%;
+                    font-size: 1.5vh;
                 }
             }
             .weather-icon{
                 position: relative;
                 left: -5%;
                 img{
-                    height: 30px;
-                    width: 30px;
+                    height: 5.5vh;
                 }
             }
             .weather-degree{
-                font-size: 200%;
+                position: relative;
+                top: 1vh;
+                color: white;
+                font-size: 4.5vh;
                 font-weight: 100;
             }
             .weather-env{
                 .text{
-                    font-size: 80%;
+                    font-size: 2vh;
                 }
                 .max-min{
-                    font-size: 50%;
+                    position: relative;
+                    top: 0.35vh;
+                    font-size: 1.75vh;
                 }
             }
         }
 
         .futureweather{
-            margin-top: 2px;
-            margin-left: -3px;
-            margin-right: -10px;
+            margin-top: 0.25vh;
+            margin-left: -0.25vw;
+            margin-right: -0.25vw;
             width: 102%;
             color: steelblue;
             background-color: white;
@@ -329,23 +334,23 @@ page-summary {
                 border-left: 2px solid rgb(71, 184, 236);
             }
             .text{
-                font-size: 60%;
+                font-size: 1.5vh;
                 padding-top: 4%;
             }
             .icon{
                 img{
-                    height: 20px;
+                    height: 4vh;
                 }
             }
             .temp{
-                margin-top: -6px;
+                margin-top: -0.25vh;
                 .temp-value{
-                    font-size: 75%;
+                    font-size: 1.75vh;
                 }
                 .max-min{
                     position: relative;
                     left: -4px;
-                    font-size: 25%;
+                    font-size: 1.25vh;
                 }
             }
         }
@@ -371,29 +376,29 @@ page-summary {
     
         //3rd Row show date time
         .showdatetime{
-            //z-index: 5;
-            //box-shadow: 0px 2px 1px rgb(184, 184, 184);
-            margin-top: 6px;
-            margin-left: -3px;
-            margin-right: -3px;
+            z-index: 5;
+            box-shadow: 0 0.5vh 0.25vh rgb(209, 209, 209);
+            margin-top: 1.25vh;
+            margin-left: -0.25vw;
+            margin-right: -0.25vw;
             width: 102%;
             color:grey;
             background-color: white;
             padding: 4%;
             .title-label{
-                font-size: 80%;
+                font-size: 2vh;
                 position: relative;
                 left: -3%;
             }
             .date{
-                font-size: 80%;
+                font-size: 1.75vh;
                 position: relative;
                 left: 2%;
             }
             .time{
-                font-size: 80%;
+                font-size: 1.75vh;
                 position: relative;
-                left: 3%;
+                left: 5%;
             }
         }
       

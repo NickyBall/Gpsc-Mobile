@@ -630,7 +630,7 @@ export class SummaryPage {
                     display : false
                 },
                 ticks: {
-                    fontSize: 8
+                    fontSize: 10
                 },
               }],
               yAxes: [{
@@ -638,13 +638,13 @@ export class SummaryPage {
                   display: true,
                   labelString: "MW",
                   fontColor: "grey",
-                  fontSize: 10,
+                  fontSize: 14,
                   fontStyle: 'normal',
                   fontFamily: 'Lata'
                 },
                 ticks: {
                     beginAtZero: true,
-                    fontSize: 8,
+                    fontSize: 10,
                     stepSize: 3
                 }
               }],
@@ -758,7 +758,7 @@ export class SummaryPage {
                 },
                 barPercentage: 0.5,
                 ticks: {
-                    fontSize: 8
+                    fontSize: 10
                 }
               }],
               yAxes: [{
@@ -766,7 +766,7 @@ export class SummaryPage {
                   display: true,
                   labelString: "MW",
                   fontColor: "grey",
-                  fontSize: 10,
+                  fontSize: 14,
                   fontStyle: 'normal',
                   fontFamily: 'Lata'
                 },
@@ -774,7 +774,7 @@ export class SummaryPage {
                     // beginAtZero: true,
                     min: lower,
                     max: upper,
-                    fontSize: 8,
+                    fontSize: 10,
                     stepSize: 0.2
                 }
               }],
@@ -911,7 +911,7 @@ export class SummaryPage {
                     display : false
                 },
                 ticks: {
-                    fontSize: 8
+                    fontSize: 10
                 },
               }],
               yAxes: [{
@@ -919,7 +919,7 @@ export class SummaryPage {
                   display: true,
                   labelString: "MW",
                   fontColor: "grey",
-                  fontSize: 10,
+                  fontSize: 14,
                   fontStyle: 'normal',
                   fontFamily: 'Lata'
                 },
@@ -927,7 +927,7 @@ export class SummaryPage {
                     // beginAtZero: true,
                     max: chooseMax,
                     min: lower,
-                    fontSize: 8,
+                    fontSize: 10,
                     // stepSize: 3
                 }
               }],
@@ -1091,13 +1091,13 @@ export class SummaryPage {
                   display: true,
                   labelString: "MW",
                   fontColor: "grey",
-                  fontSize: 10,
+                  fontSize: 14,
                   fontStyle: 'normal',
                   fontFamily: 'Lata'
                 },
                 ticks: {
                     // beginAtZero: true,
-                    fontSize: 8,
+                    fontSize: 10,
                     max: chooseMax,
                     min: lower,
                     // stepSize: 3
