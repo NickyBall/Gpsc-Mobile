@@ -1,26 +1,37 @@
 page-home {
 
     .card{
-     margin-top: 15%;
-     max-width: 90%;
-     margin-left: auto;
-     margin-right: auto;   
+        margin-bottom: 8vh;
+        ion-row{
+            padding: 3vh 0 3vh 0;
+            margin-left: auto;
+            margin-right: auto;
+            height: 16vh;
+            width: 75vw;
+            border-radius: 1.5vh;
+            z-index: 5;
+            box-shadow: 0 0 2vh rgb(184, 184, 184);
+            .img-icon{
+                position: relative;
+                left: 7%;
+                img{
+                    height: 8vh;
+                }
+            }
+            .text-menu{
+                color: rgb(128, 128, 128) !important;
+                font-size: 3.5vh;
+            } 
+        }  
+        
     }
 
     .first-card{
-        margin-top: 4%;
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
+        margin-top: 12vh;
     }
 
     .bg-body{
-        background-color: rgb(238, 238, 238);
-    }
-
-    .text-menu{
-        color: grey !important;
-        font-size: 125%;
+        background-color: rgb(245, 245, 243);
     }
 
     .icon-style{
@@ -29,17 +40,14 @@ page-home {
     }
 
     .title-align{
-        .title-header{
-            font-size: 90%;
-            color: steelblue;
-        }
-    }
-
-    .img-icon{
-        position: relative;
-        left: 15%;
+        margin-left: 5vw;
+        width: 100%;
         img{
-            width: 50px;
+            height: 5vh;
+        }
+        .title-header{
+            font-size: 2vh;
+            color: steelblue;
         }
     }
 }

@@ -18,59 +18,36 @@
 </ion-header>
 
 <ion-content padding class="bg-body">
-  <div class="first-card">
-    <ion-card (click)="changePage(1)" [ngStyle]="{'background-color': cardColor1}">
-      <ion-card-content>
-        <ion-row>
-          <ion-col col-5>
-            <div class="img-icon">
-              <img [src]="icon1" item-start/>
-            </div>
-          </ion-col>
-          <ion-col col-7>
-            <div text-wrap class="text-menu" [ngStyle]="{'color': fontColor1}">
-              General Information
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-card-content> 
-    </ion-card>      
+  <div class="card first-card">
+    <ion-row (click)="changePage(1)" [ngStyle]="{'background-color': cardColor1}">
+      <ion-col col-5 class="img-icon">
+        <img [src]="icon1"/>
+      </ion-col>
+      <ion-col col-7 text-wrap class="text-menu" [ngStyle]="{'color': fontColor1}">
+          General Information
+      </ion-col>
+    </ion-row>
   </div>
   <div class="card">
-    <ion-card (click)="changePage(2)" [ngStyle]="{'background-color': cardColor2}">
-      <ion-card-content>
-        <ion-row>
-          <ion-col col-5>
-            <div class="img-icon">
-                <img [src]="icon2" item-start/>
-            </div>
-          </ion-col>
-          <ion-col col-7>
-            <div text-wrap class="text-menu" [ngStyle]="{'color': fontColor2}">
-              Plant <br>Layout
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-card-content> 
-    </ion-card>
+    <ion-row (click)="changePage(2)" [ngStyle]="{'background-color': cardColor1}">
+      <ion-col col-5 class="img-icon">
+        <img [src]="icon2"/>
+      </ion-col>
+      <ion-col col-7 text-wrap class="text-menu" [ngStyle]="{'color': fontColor1}">
+         Plant<br> Layout
+      </ion-col>
+    </ion-row>
   </div>
   <div class="card">
-    <ion-card (click)="changePage(3)" [ngStyle]="{'background-color': cardColor3}">
-      <ion-card-content>
-        <ion-row>
-          <ion-col col-5>
-            <div class="img-icon">
-              <img [src]="icon3" item-start/>
-            </div>
-          </ion-col>
-          <ion-col col-7>
-            <div text-wrap class="text-menu" [ngStyle]="{'color': fontColor3}">
-              Executive Summary
-            </div>
-          </ion-col>
-        </ion-row>
-        </ion-card-content> 
-    </ion-card>
+    <ion-row (click)="changePage(3)" [ngStyle]="{'background-color': cardColor1}">
+      <ion-col col-5 class="img-icon">
+        <img [src]="icon3"/>
+      </ion-col>
+      <ion-col col-7 text-wrap class="text-menu" [ngStyle]="{'color': fontColor1}">
+          Executive Summary
+      </ion-col>
+    </ion-row>
   </div>
+
   
 </ion-content>

@@ -7,8 +7,13 @@ page-layout {
         margin-right: auto;
       }
       .title-align{
+        margin-left: 5vw;
+        width: 100%;
+        img{
+            height: 5vh;
+        }
         .title-header{
-            font-size: 90%;
+            font-size: 2vh;
             color: steelblue;
         }
     }

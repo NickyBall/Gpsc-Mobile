@@ -24,18 +24,18 @@
         <ion-toolbar color="white" class="plant-type-toolbar shadow-effect" mode="md" >
             <ion-segment [(ngModel)]="selectedSection" color="white" mode="md">
                 <ion-segment-button value="tabButtonOne" (click)="segmentClick(selectedSection)">
-                    <div>
+                    <div class="tab-icon">
                         <img height="28" [src]="tabOneImg" alt="">
                     </div>
                 </ion-segment-button>
                 <ion-segment-button value="tabButtonTwo" (click)="segmentClick(selectedSection)">
-                    <div>
+                    <div class="tab-icon">
                         <img height="28" [src]="tabTwoImg" alt="">
                     </div>
                 </ion-segment-button>
             </ion-segment>
         </ion-toolbar>
-        <ion-scroll scrollY="true" style="width: 100%; height: 40vh; background-color: rgb(240, 240, 240);">
+        <ion-scroll scrollY="true" style="width: 100%; height: 38vh; background-color: rgb(240, 240, 240);">
             <div [ngSwitch]="selectedSection">
                 <div *ngSwitchCase="'tabButtonOne'">
                     <ion-list>
