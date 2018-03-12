@@ -657,7 +657,7 @@ export class SummaryPage {
     if(type === 1){
         config.type = 'bar';
         config.data.datasets =   [{
-            backgroundColor: "rgba(22, 189, 231, 0.918)",
+            backgroundColor: "rgba(98, 182, 239, 0.918)",
             data: y,
             }];
     }
@@ -667,8 +667,9 @@ export class SummaryPage {
         config.data.datasets =   [{
             lineTension: 0.1,
             backgroundColor: "transparent",
-            borderColor: "rgba(22, 189, 231, 0.918)",
-            pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
+            borderColor: "rgba(98, 182, 239, 0.918)",
+            borderWidth: 2,
+            pointBackgroundColor: "rgba(98, 182, 239, 0.918)",
             data: y,
             }];
     }
@@ -785,7 +786,7 @@ export class SummaryPage {
     if(type === 1){
         config.type = 'bar';
         config.data.datasets =   [{
-            backgroundColor: "rgba(22, 189, 231, 0.918)",
+            backgroundColor: "rgba(98, 182, 239, 0.918)",
             data: y,
             }];
     }
@@ -794,8 +795,9 @@ export class SummaryPage {
         config.data.datasets =   [{
             lineTension: 0.1,
             backgroundColor: "transparent",
-            borderColor: "rgba(22, 189, 231, 0.918)",
-            pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
+            borderColor: "rgba(98, 182, 239, 0.918)",
+            borderWidth: 2,
+            pointBackgroundColor: "rgba(98, 182, 239, 0.918)",
             data: y,
         }];
     }
@@ -937,13 +939,14 @@ export class SummaryPage {
     if(type === 1){
         config.type = 'bar';
         config.data.datasets = [{
-                backgroundColor: "rgba(22, 189, 231, 0.918)",
+                backgroundColor: "rgba(98, 182, 239, 0.918)",
                 data: y,
             },
             {
                 lineTension: 0.1,
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
+                borderWidth: 2,
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
                 data: yTarget,
                 type: 'line'
@@ -955,14 +958,16 @@ export class SummaryPage {
         config.data.datasets =   [{
                 lineTension: 0.1,
                 backgroundColor: "transparent",
-                borderColor: "rgba(22, 189, 231, 0.918)",
-                pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
+                borderColor: "rgba(98, 182, 239, 0.918)",
+                borderWidth: 2,
+                pointBackgroundColor: "rgba(98, 182, 239, 0.918)",
                 data: y,
             },
             {
                 lineTension: 0.1,
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
+                borderWidth: 2,
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
                 data: yTarget,
                 type: 'line'
@@ -1106,13 +1111,14 @@ export class SummaryPage {
     if(type === 1){
         config.type = 'bar';
         config.data.datasets = [{
-                backgroundColor: "rgba(22, 189, 231, 0.918)",
+                backgroundColor: "rgba(98, 182, 239, 0.918)",
                 data: y
             },
             {
                 lineTension: 0.1,
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
+                borderWidth: 2,
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
                 data: yTarget,
                 type: 'line'
@@ -1125,14 +1131,16 @@ export class SummaryPage {
             {
                 lineTension: 0.1,
                 backgroundColor: "transparent",
-                pointBackgroundColor: "rgba(22, 189, 231, 0.918)",
-                borderColor: "rgba(22, 189, 231, 0.918)",
+                pointBackgroundColor: "rgba(98, 182, 239, 0.918)",
+                borderColor: "rgba(98, 182, 239, 0.918)",
+                borderWidth: 2,
                 data: y
             },
             {
                 lineTension: 0.1,
                 backgroundColor: "transparent",
                 borderColor: "rgba(248, 94, 23, 0.918)",
+                borderWidth: 2,
                 pointBackgroundColor: "rgba(248, 94, 23, 0.918)",
                 data: yTarget,
                 type: 'line'
