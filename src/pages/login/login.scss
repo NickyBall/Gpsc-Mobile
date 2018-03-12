@@ -30,27 +30,35 @@ page-login {
     }
     .roundcorner{
         padding: 0;
-        border-radius: 20px;
+        border-radius: 3vh;
         // width: 80%;
         // height: 10%;
-        max-width: 80vw;
-        max-height: 10vh;
+        max-width: 65vw;
+        min-height: 6vh;
         margin-left: auto;
         margin-right: auto;
         background-color: rgba(154, 188, 250, 0.61);
+        input{
+            font-size: 2.5vh;
+        }
+        input:focus{
+            font-size: 2.5vh;
+        }
     }
     button.loginbutton{
         display: block;
         margin-top: 4%;
         margin-left: auto;
         margin-right: auto;
-        border-radius: 15px;
-        min-height: 3.5rem;
-        min-width: 80vw;
+        border-radius: 3vh;
+        // min-height: 3.5rem;
+        min-height: 6vh !important;
+        min-width: 65vw;
         //min-height: 10vh;
         margin-left: auto;
         margin-right: auto;
-        color: white;
+        color: rgba(255, 255, 255, 0.808);
+        font-size: 2.5vh;
         //background: linear-gradient(to right, rgb(103, 200, 238) , rgb(143, 240, 247));
         background: linear-gradient(to right, rgb(33, 143, 187) , rgb(143, 240, 247));
 

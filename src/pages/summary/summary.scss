@@ -225,7 +225,7 @@ page-summary {
         }
     
         .start-gap{
-            padding-top: 10%;
+            padding-top: 20%;
         }
 
         .last-gap {
@@ -233,21 +233,23 @@ page-summary {
         }
     
         .snippet{
-            font-size: 70%;
+            font-size: 2vh;
             color: rgb(133, 133, 133);
             position: relative;
             left: 5%;
         }
     
         .value-summary{
-            font-size: 130%;
+            font-size: 3vh;
             background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
     
         .unit-summary{
-            font-size: 65%;
+            position: relative;
+            top: 1vh;
+            font-size: 1.5vh;
             color: rgb(133, 133, 133);
         }
     

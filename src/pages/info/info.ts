@@ -23,6 +23,11 @@ export class InfoPage {
   private logo: string = undefined;
   private ppaData: any = undefined;
 
+  private pic1: string = undefined;
+  private pic2: string = undefined;
+  private pic3: string = undefined;
+  private pic4: string = undefined;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeGeocoder: NativeGeocoder) {
     this.plantData = this.navParams.get('plantData');
  
@@ -43,6 +48,11 @@ export class InfoPage {
     let diffYear = ppaYear - ppaYearNow;
     this.ppaData = diffYear + ' Years (End ' + ppaYear + ')';
     console.log(diffYear);
+
+    this.pic1 = 'assets/imgs/plantInfo/pic1.png';
+    this.pic2 = 'assets/imgs/plantInfo/pic2.png';
+    this.pic3 = 'assets/imgs/plantInfo/pic3.png';
+    this.pic4 = 'assets/imgs/plantInfo/pic4.png';
 
   }
 
