@@ -43,6 +43,7 @@
 
             <ion-col align-self-end class="plant-icon" *ngIf="item.type" >
                 <img [src]="item.type"/>
+                <img *ngIf="item.CountryId == 1" src="./assets/imgs/i1.png" style="padding-left: 15px;" />
             </ion-col>
 
           </ion-row>
