@@ -37,7 +37,7 @@ export class PlantPage {
     this.loader = this.loadingCtrl.create({
       content: "Loading Power Plant..."
     });
-    this.isRunOnDevice = true;
+    this.isRunOnDevice = false;
   }
 
   ionViewDidLoad() {

@@ -35,7 +35,7 @@ export class WorldPage {
     this.loader = this.loadingCtrl.create({
       content: "Loading Country..."
     });
-    this.isRunOnDevice = true;
+    this.isRunOnDevice = false;
   }
 
   getCountryList() {
@@ -60,29 +60,31 @@ export class WorldPage {
       console.log('icon', JSON.stringify(this.countryList));
       this.loader.dismiss();
       console.log(data);
-      this.countryList.forEach((country) => {
-        this.map.addMarker({
-            title: country.name,
-            icon: {
-              url: './assets/imgs/pin1.png',
-              size: {
-                width: 28,
-                height: 35
+      if (this.isRunOnDevice) {
+        this.countryList.forEach((country) => {
+          this.map.addMarker({
+              title: country.name,
+              icon: {
+                url: './assets/imgs/pin1.png',
+                size: {
+                  width: 28,
+                  height: 35
+                }
+              },
+              animation: 'DROP',
+              
+              position: {
+                lat: country.Location.Lat,
+                lng: country.Location.Lng
               }
-            },
-            animation: 'DROP',
-            
-            position: {
-              lat: country.Location.Lat,
-              lng: country.Location.Lng
-            }
-          }).then(marker => {
-            marker.on(GoogleMapsEvent.MARKER_CLICK)
-              .subscribe(() => {
-                // alert('clicked');
-              });
-          });
-      });
+            }).then(marker => {
+              marker.on(GoogleMapsEvent.MARKER_CLICK)
+                .subscribe(() => {
+                  // alert('clicked');
+                });
+            });
+        });
+      }
       // Wait the MAP_READY before using any methods.
       
     });

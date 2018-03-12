@@ -10,9 +10,10 @@ page-info {
     .info-content {
         position: fixed;
         right: auto;
-        bottom: 10px;
-        top: 50px;
+        bottom: 1vh;
+        top: 8vh;
         left: auto;
+        padding: 5px 0px;
     }
 
     .list-grid{
@@ -25,6 +26,10 @@ page-info {
             .scroll-content {
                 margin-bottom: 20px;
             }
+        
+        }
+        .list-col {
+            padding: 5px 0px;
         }
         ion-list{
             margin-top: 1%;
