@@ -13,7 +13,7 @@ page-summary {
             height: 5vh;
         }
         .title-header{
-            font-size: 2vh;
+            font-size: 1.75vh;
             color: steelblue;
         }
     }
@@ -291,20 +291,24 @@ page-summary {
                 position: relative;
                 left: -5%;
                 img{
-                    height: 30px;
-                    width: 30px;
+                    height: 5.5vh;
                 }
             }
             .weather-degree{
-                font-size: 3vh;
+                position: relative;
+                top: 1vh;
+                color: white;
+                font-size: 4.5vh;
                 font-weight: 100;
             }
             .weather-env{
                 .text{
-                    font-size: 80%;
+                    font-size: 2vh;
                 }
                 .max-min{
-                    font-size: 50%;
+                    position: relative;
+                    top: 0.35vh;
+                    font-size: 1.75vh;
                 }
             }
         }
