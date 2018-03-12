@@ -8,7 +8,9 @@
 
   <ion-navbar>
     <div>
-      <ion-title class="nav-title" text-center><img src="./assets/imgs/GPSC-Nav-head.png" alt="" ></ion-title>
+      <ion-title class="nav-title">
+        <img src="./assets/imgs/GPSC-Nav-head.png" alt="" >
+      </ion-title>
     </div>
     
   </ion-navbar>
@@ -20,12 +22,12 @@
   <div id="title-label">Our Projects</div>
   <div id="map_canvas">
   </div>
-  <ion-scroll scrollY="true" class="shadow-effect" style="width: 100%; height: 50%; background-color: rgb(250, 250, 250);">
+  <ion-scroll scrollY="true" class="shadow-effect" style="width: 100%; height: 40%; background-color: rgb(250, 250, 250);">
       <ion-list>
         <ion-item no-lines *ngFor="let item of countryList" (click)="selectedCountry(item)">
           <ion-row>
             <ion-col align-self-end class="pin-icon">
-                <img width="18" src="./assets/imgs/pin1.png"/>
+                <img src="./assets/imgs/pin1.png"/>
             </ion-col>
             <ion-col align-self-end text-uppercase class="country-name">
                 {{item.CountryName}}
@@ -40,7 +42,7 @@
             </ion-col> -->
 
             <ion-col align-self-end class="plant-icon" *ngIf="item.type" >
-                <img width="25" [src]="item.type"/>
+                <img [src]="item.type"/>
             </ion-col>
 
           </ion-row>

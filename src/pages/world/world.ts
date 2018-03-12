@@ -40,7 +40,9 @@ export class WorldPage {
 
   getCountryList() {
     let UserCode = "UserCode123456";
-    this.countryProvider.getAllCountry(UserCode).then((data: any) => {
+    this.countryProvider.getAllCountry(UserCode)
+
+    .then((data: any) => {
       this.countryList = data.Result;
       this.countryList.map(x => {
         if(x.CountryId == 1){

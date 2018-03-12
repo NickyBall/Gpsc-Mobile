@@ -26,6 +26,11 @@
   src: url('../assets/fonts/lato.woff2');
   font-weight: 100;
 }
+
+ion-navbar{
+  height: 8vh !important;
+}
+
 ion-navbar.toolbar {
   height: 20px;
 }
