@@ -14,6 +14,7 @@ page-summary {
     
     .main-bg{
         background-color: rgb(240, 238, 238);
+        //background-color:white;
         .energy-period {
             margin-top: -18px;
             padding-bottom: 20px;
@@ -242,8 +243,8 @@ page-summary {
     
         //1st Row Show Current Temp Info
         .presentweather{
-            z-index: 5;
-            box-shadow: 0px 2px 1px rgb(184, 184, 184);
+            //z-index: 5;
+            //box-shadow: 0px 2px 1px rgb(184, 184, 184);
             color: white;
             padding-top: 2px;
             // padding-bottom: 2px;
@@ -290,7 +291,7 @@ page-summary {
         }
 
         .futureweather{
-            margin-top: 3px;
+            margin-top: 2px;
             margin-left: -3px;
             margin-right: -10px;
             width: 102%;
@@ -351,8 +352,8 @@ page-summary {
     
         //3rd Row show date time
         .showdatetime{
-            z-index: 5;
-            box-shadow: 0px 2px 1px rgb(184, 184, 184);
+            //z-index: 5;
+            //box-shadow: 0px 2px 1px rgb(184, 184, 184);
             margin-top: 6px;
             margin-left: -3px;
             margin-right: -3px;
