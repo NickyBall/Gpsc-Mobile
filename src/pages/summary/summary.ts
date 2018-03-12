@@ -256,7 +256,10 @@ export class SummaryPage {
         let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday",
          "Thursday", "Friday", "Saturday"];
 
-        this.currentDay = weekdays[date.getDay()];
+        let weekdaysBig = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY",
+         "THURSDAY", "FRIDAY", "SATURDAY"];
+
+        this.currentDay = weekdaysBig[date.getDay()];
 
         for(var _i = 0; _i < 4; _i++){
             if(date.getDay()+_i+1 < 7){

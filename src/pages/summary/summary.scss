@@ -256,10 +256,12 @@ page-summary {
             background: linear-gradient(to right, #8dbde8 , #98e9ea);
             .weather-title{
                 font-size: 100%;
+                padding-top:0.8%;
             }
             .weather-date{
                 .day{
                     font-size: 95%;
+                    padding-top:4%;
                 }
                 .time{
                     font-size: 60%
@@ -312,6 +314,7 @@ page-summary {
             }
             .text{
                 font-size: 60%;
+                padding-top: 4%;
             }
             .icon{
                 img{
