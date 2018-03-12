@@ -179,7 +179,7 @@
       <ion-col no-padding>
           <ion-toolbar color="white" mode="md">
             <ion-segment [(ngModel)]="selectedSection" color="white" mode="md">
-              <ion-segment-button value="powerGenerationTab" (click)="powerGenGraph()">
+              <ion-segment-button class="segment-title" value="powerGenerationTab" (click)="powerGenGraph()">
                 <div text-wrap>
                   <span class="segment-text">Power Generation</span>
                 </div>
@@ -190,17 +190,17 @@
                 </div>
                 
               </ion-segment-button>
-              <ion-segment-button value="ambientTemperatureTab" (click)="ambientTemperatureGraph()">
+              <ion-segment-button class="segment-title" class="segment-title" value="ambientTemperatureTab" (click)="ambientTemperatureGraph()">
                 <div text-wrap>
                   <span class="segment-text">Ambient Temperature</span>
                 </div>
               </ion-segment-button>
-              <ion-segment-button value="enegyGenerationTab" (click)="enegyGenerationGraph()">
+              <ion-segment-button class="segment-title" value="enegyGenerationTab" (click)="enegyGenerationGraph()">
                 <div text-wrap>
                   <span class="segment-text">Energy Generation</span>
                 </div>
               </ion-segment-button>
-              <ion-segment-button value="generationSummaryTab">
+              <ion-segment-button class="segment-title" value="generationSummaryTab">
                 <div text-wrap>
                   <span class="segment-text">Generation Summary</span>
                 </div>
@@ -286,7 +286,7 @@
                 <ion-grid class="tt">
                   <ion-row class="tab-gap-header">
                     <ion-col>
-                      <span class="tab-title">Energy Generation</span>
+                      <span class="tab-title" style="top: 0vh;">Energy Generation</span>
                     </ion-col>
                   </ion-row>
                   <ion-row class="tab-gap">

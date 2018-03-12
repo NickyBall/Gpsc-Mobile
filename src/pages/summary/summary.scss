@@ -109,6 +109,10 @@ page-summary {
         div.highcharts-container g.highcharts-tracker > * {
             fill :rgb(155, 155, 155);
         }
+
+        .segment-title {
+            padding-bottom: 4vh;
+        }
     
         .segment-text{
             font-size: 90%;
