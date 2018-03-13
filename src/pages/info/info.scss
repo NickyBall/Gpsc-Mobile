@@ -7,7 +7,7 @@ page-info {
             height: 5vh;
         }
         .title-header{
-            font-size: 1.75vh;
+            font-size: 1.75vw;
             color: steelblue;
         }
     }
@@ -87,14 +87,67 @@ page-info {
     }
 
     .img-grid{
-        padding: 0% 4% 0% 4%;
-        height: 60%;
-        .img-info{
-            display: block;
+        .slider{
+            width: 76%; /*Same as width of the large image*/
+            position: relative;
+            
+            padding-top: 36vh; /*That helps bring the labels down*/
+            
             margin-left: auto;
-            margin-right: auto;
-            width: 100%;
+            margin-right: auto; 
+            /*Lets add a shadow*/
+            // box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.75);
+            .btn{
+                height: 10vh;
+                width: 20vw;;
+            }
+            .active{
+                margin-top: 2.5vh;
+                height: 34vh;
+            }
+            label {
+                /*Lets add some spacing for the thumbnails*/
+                margin-top: 2vh;
+                margin-bottom: 1vh;
+               
+                float: left;
+                cursor: pointer;
+                transition: all 0.5s;
+                
+                /*Default style = low opacity*/
+                opacity: 0.6;
+                img{
+                    display: block;
+                }
+            }
+            label .middle-img{
+                margin-left: 6.8vw;
+                margin-right: 6.8vw;
+            }
+
+            input[name='slide_switch'] {
+                display: none;
+            }
+  
+            input[name='slide_switch']:checked+label {
+                border-color: #666;
+                opacity: 1;
+            }
+            input[name='slide_switch'] ~ img {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+            input[name='slide_switch']:checked+label+img {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
+        .slider>img{
+            position: absolute;
+            left: 0; top: 0;
+            transition: all 0.5s;
+        }
+        
     }
 
 }

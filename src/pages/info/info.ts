@@ -49,10 +49,9 @@ export class InfoPage {
     this.ppaData = diffYear + ' Years (End ' + ppaYear + ')';
     console.log(diffYear);
 
-    this.pic1 = 'assets/imgs/plantInfo/pic1.png';
-    this.pic2 = 'assets/imgs/plantInfo/pic2.png';
-    this.pic3 = 'assets/imgs/plantInfo/pic3.png';
-    this.pic4 = 'assets/imgs/plantInfo/pic4.png';
+    this.pic1 = 'assets/imgs/plantInfo/pic2.png';
+    this.pic2 = 'assets/imgs/plantInfo/pic1.png';
+    this.pic3 = 'assets/imgs/plantInfo/pic4.png';
 
   }
 

@@ -32,14 +32,6 @@
             <ion-col align-self-end text-uppercase class="country-name">
                 {{item.CountryName}}
             </ion-col>
-            <!-- <ion-col align-self-end class="plant-icon" *ngIf="item.type.length > 1; else oneIcon" >
-              <div  *ngFor="let t of item.type">
-                <img width="25" [src]="t.type"/>
-              </div>  
-            <ng-template #oneIcon>
-              <img width="25" [src]="item.type"/>
-            </ng-template>
-            </ion-col> -->
 
             <ion-col align-self-end class="plant-icon" *ngIf="item.type" >
                 <img [src]="item.type"/>
