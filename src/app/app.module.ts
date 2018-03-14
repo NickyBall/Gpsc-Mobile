@@ -26,6 +26,7 @@ import { HourlyEnergyProvider } from '../providers/hourly-energy/hourly-energy';
 import { DailyEnergyProvider } from '../providers/daily-energy/daily-energy';
 import { MonthlyEnergyProvider } from '../providers/monthly-energy/monthly-energy';
 import { YearlyEnergyProvider } from '../providers/yearly-energy/yearly-energy';
+import { SharedService } from '../providers/SharedService';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { YearlyEnergyProvider } from '../providers/yearly-energy/yearly-energy';
     HourlyEnergyProvider,
     DailyEnergyProvider,
     MonthlyEnergyProvider,
-    YearlyEnergyProvider
+    YearlyEnergyProvider,
+    SharedService
   ]
 })
 export class AppModule {}

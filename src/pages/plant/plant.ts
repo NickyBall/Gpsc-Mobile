@@ -8,6 +8,7 @@ import {
 } from '@ionic-native/google-maps';
 import { HomePage } from '../home/home';
 import { CompanyProvider } from '../../providers/company/company';
+import { SharedService } from '../../providers/SharedService';
 
 /**
  * Generated class for the PlantPage page.
@@ -31,18 +32,22 @@ export class PlantPage {
   streamList: any;
   loader: any;
   titleLabel: string;
-  isRunOnDevice: boolean;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public companyProvider: CompanyProvider, public loadingCtrl: LoadingController) {
+  constructor (
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public companyProvider: CompanyProvider, 
+    public loadingCtrl: LoadingController,
+    public shared: SharedService ) 
+  {
     this.titleLabel = this.navParams.get('country');
     this.loader = this.loadingCtrl.create({
       content: "Loading Power Plant..."
     });
-    this.isRunOnDevice = true;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlantPage');
-    if (this.isRunOnDevice) {
+    if (this.shared.isRunOnDevice) {
       this.loadMap();
     } else {
       this.getPlantList();
@@ -54,7 +59,7 @@ export class PlantPage {
   getPlantList() {
     let UserCode = 'UserCode123456';
     let CountryId = 1;
-    this.companyProvider.getAllPlants(UserCode, CountryId).then((data: any) => {
+    this.companyProvider.getAllPlants(CountryId).then((data: any) => {
       this.streamList = data.Result.filter(plant => plant.PlantType == "Stream Plant");
       this.streamList.map(x => {
         if(x.PlantName != 'CHPP'){
@@ -72,7 +77,7 @@ export class PlantPage {
         }
       });
       this.loader.dismiss();
-      if (this.isRunOnDevice) {
+      if (this.shared.isRunOnDevice) {
         this.updateMarker(this.solarList);
       }
     })
@@ -109,12 +114,12 @@ export class PlantPage {
     this.tabTwoImg = './assets/imgs/i1.png';
     if (selectedSection == 'tabButtonOne') {
       this.tabOneImg = './assets/imgs/i4.png';
-      if (this.isRunOnDevice) {
+      if (this.shared.isRunOnDevice) {
         this.updateMarker(this.streamList);
       }
     } else if (selectedSection == 'tabButtonTwo') {
       this.tabTwoImg = './assets/imgs/i2.png';
-      if (this.isRunOnDevice) {
+      if (this.shared.isRunOnDevice) {
         this.updateMarker(this.solarList);
       }
     }

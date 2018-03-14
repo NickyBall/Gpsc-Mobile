@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { SharedService } from '../SharedService';
 
 /*
   Generated class for the HourlyEnergyProvider provider.
@@ -10,20 +11,21 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class HourlyEnergyProvider {
 
-  apiUrl = 'http://pms-api-dev.azurewebsites.net/api/PowerPlant/GetHourlyEnergyGen';
-  constructor(public http: HttpClient) {
+  apiUrl: string;
+  constructor(public http: HttpClient, public shared: SharedService) {
+    this.apiUrl = this.shared.BaseUrl + 'api/PowerPlant/GetHourlyEnergyGen';
   }
 
   requestHourlyEnergy(id){
     return new Promise(resolve => {
       this.http.post(this.apiUrl, 
         {
-          UserCode: "UserCode123456",
           CompanyId: id
         },
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.shared.AccessToken
           }
         }
       ).subscribe(res =>{
