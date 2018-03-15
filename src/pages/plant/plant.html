@@ -57,7 +57,7 @@
                                     <ion-row no-padding *ngIf="item.PowerGen != 0">
                                         <ion-col class="power-gen" no-padding col-2>
                                             <img src="./assets/imgs/E1.png"/>
-                                            {{(item.PowerGen/1000000).toFixed(2)}} MW
+                                            {{(item.PowerGen/1000000).toFixed(2)|number:0}} MW
                                         </ion-col>
                                     </ion-row>
                                 </ion-col>
@@ -101,7 +101,7 @@
                                     <ion-row no-padding *ngIf="item.PowerGen != 0">
                                         <ion-col class="power-gen" no-padding col-2>
                                             <img src="./assets/imgs/E1.png"/>
-                                            {{(item.PowerGen/1000000).toFixed(2)}} MW
+                                            {{(item.PowerGen/1000000).toFixed(2)|number:0}} MW
                                         </ion-col>
                                     </ion-row>
                                 </ion-col>
