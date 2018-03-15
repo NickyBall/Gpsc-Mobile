@@ -114,7 +114,6 @@ export class SummaryPage {
                 // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
                 //this.logo = 'assets/imgs/CHPP.png'
                 this.companyName = this.plantData.Result.PlantInfo.CompanyName;
-                console.log("home "+this.companyName);
                 if(this.companyName == 'CHPP'){
                   this.logo = "./assets/imgs/chpphead.png";
                 }
@@ -173,7 +172,7 @@ export class SummaryPage {
 
     this.powerGenGraph();
     // this.hourlyGraph(1);
-    this.powerData = 3.5;
+    this.powerData = this.plantData.Result.PowerGen/1000000;
     this.irradiationData = 700;
     this.ambientTempData = 30;
   }
