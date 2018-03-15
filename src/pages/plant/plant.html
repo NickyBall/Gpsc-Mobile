@@ -43,7 +43,10 @@
                             <ion-row class="item-list" no-padding>
                                 <ion-col class="item-icon" no-padding col-4 text-center>
                                     <!-- <img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}" /> -->
-                                    <img src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png" />
+                                    <!-- <img src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png" /> -->
+                                    <img *ngIf="item.PlantName == 'CHPP'" src="./assets/imgs/chpp2.png"/> 
+                                    <img *ngIf="item.PlantName != 'CHPP'" src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png"/> 
+                                    <!-- <img src="https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/{{item.PlantInfo.CompanyLogo}}" /> -->
                                 </ion-col>
                                 <ion-col class="item-power" col-6>
                                     <ion-row no-padding>
@@ -82,8 +85,12 @@
                         <ion-item *ngFor="let item of solarList" (click)="selectedPlant(item)" [style.opacity]="item.alpha">
                             <ion-row class="item-list" no-padding>
                                 <ion-col class="item-icon" no-padding col-4 text-center>
+                                    <div *ngIf="isValid;then content else other_content">here is ignored</div>
                                     <!-- <img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}" /> -->
-                                    <img src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png" />
+                                    <!-- <img src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png" /> -->
+                                    <img *ngIf="item.PlantName == 'CHPP'" src="./assets/imgs/chpp2.png"/> 
+                                    <img *ngIf="item.PlantName != 'CHPP'" src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png"/> 
+                                    <!-- <img src="https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/{{item.PlantInfo.CompanyLogo}}" /> -->
                                 </ion-col>
                                 <ion-col class="item-power" col-6>
                                     <ion-row no-padding>
