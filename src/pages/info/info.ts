@@ -28,12 +28,12 @@ export class InfoPage {
   private pic3: string = undefined;
   private pic4: string = undefined;
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
     private nativeGeocoder: NativeGeocoder,
     public viewCtrl:ViewController) {
-      
-    this.viewCtrl = viewCtrl;  
+
+    this.viewCtrl = viewCtrl;
 
     this.plantData = this.navParams.get('plantData');
 
@@ -53,10 +53,11 @@ export class InfoPage {
 
     this.nativeGeocoder.reverseGeocode(this.plantData.Result.Location.Lat, this.plantData.Result.Location.Lng)
           .then((result: NativeGeocoderReverseResult) => {
-            this.locationName = result.administrativeArea
+            this.locationName = result.administrativeArea + ', ' + result.countryName;
+
           })
           .catch((error: any) => console.log(error));
-    
+
     let ppaYear = moment(this.plantData.Result.PlantInfo.PPA).year();
     let ppaYearNow = moment().year();
     let diffYear = ppaYear - ppaYearNow;
@@ -72,7 +73,7 @@ export class InfoPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad InfoPage');
   }
-  
+
   ionViewWillEnter(){
     console.log("setting BtText");
     this.viewCtrl.setBackButtonText('');

@@ -33,12 +33,12 @@ export class PlantPage {
   loader: any;
   titleLabel: string;
   constructor (
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public companyProvider: CompanyProvider, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public companyProvider: CompanyProvider,
     public loadingCtrl: LoadingController,
     public shared: SharedService,
-    public viewCtrl:ViewController ) 
+    public viewCtrl:ViewController )
   {
     this.viewCtrl = viewCtrl;
 
@@ -52,7 +52,7 @@ export class PlantPage {
     console.log("setting BtText");
     this.viewCtrl.setBackButtonText('');
   }
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlantPage');
     if (this.shared.isRunOnDevice) {
@@ -60,7 +60,7 @@ export class PlantPage {
     } else {
       this.getPlantList();
     }
-    
+
     this.loader.present();
   }
 
@@ -68,7 +68,7 @@ export class PlantPage {
     let UserCode = 'UserCode123456';
     let CountryId = 1;
     this.companyProvider.getAllPlants(CountryId).then((data: any) => {
-      this.streamList = data.Result.filter(plant => plant.PlantType == "Stream Plant");
+      this.streamList = data.Result.filter(plant => plant.PlantTypeId == 2);
       this.streamList.map(x => {
         // if(x.PlantName != 'CHPP'){
         //   x.alpha = 0.5;
@@ -81,7 +81,7 @@ export class PlantPage {
           x.alpha = 1;
         }
       });
-      this.solarList = data.Result.filter(plant => plant.PlantType == "Solar Plant");
+      this.solarList = data.Result.filter(plant => plant.PlantTypeId == 1);
       this.solarList.map(x => {
         // if(x.PlantName != 'CHPP'){
         //   x.alpha = 0.5;
