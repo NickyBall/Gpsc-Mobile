@@ -173,8 +173,8 @@ export class SummaryPage {
     this.powerGenGraph();
     // this.hourlyGraph(1);
     this.powerData = this.plantData.Result.PowerGen/1000000;
-    this.irradiationData = 700;
-    this.ambientTempData = 30;
+    this.irradiationData = this.plantData.Result.Irradiation;
+    this.ambientTempData = this.plantData.Result.AMB_Temp;
   }
 
   getWeather(){
