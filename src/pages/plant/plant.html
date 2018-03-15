@@ -44,8 +44,8 @@
                                 <ion-col class="item-icon" no-padding col-4 text-center>
                                     <!-- <img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}" /> -->
                                     <!-- <img src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png" /> -->
-                                    <img *ngIf="item.PlantName == 'CHPP'" src="./assets/imgs/chpp2.png"/> 
-                                    <img *ngIf="item.PlantName != 'CHPP'" src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png"/> 
+                                    <img *ngIf="item.PlantName == 'CHPP'" src="./assets/imgs/chpp2.png"/>
+                                    <img *ngIf="item.PlantName != 'CHPP'" src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png"/>
                                     <!-- <img src="https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/{{item.PlantInfo.CompanyLogo}}" /> -->
                                 </ion-col>
                                 <ion-col class="item-power" col-6>
@@ -57,7 +57,7 @@
                                     <ion-row no-padding *ngIf="item.PowerGen != 0">
                                         <ion-col class="power-gen" no-padding col-2>
                                             <img src="./assets/imgs/E1.png"/>
-                                            {{item.PowerGen/1000000}} MW
+                                            {{(item.PowerGen/1000000).toFixed(2)}} MW
                                         </ion-col>
                                     </ion-row>
                                 </ion-col>
@@ -88,8 +88,8 @@
                                     <div *ngIf="isValid;then content else other_content">here is ignored</div>
                                     <!-- <img src="http://pms-api-dev.azurewebsites.net/{{item.PlantInfo.CompanyLogo}}" /> -->
                                     <!-- <img src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png" /> -->
-                                    <img *ngIf="item.PlantName == 'CHPP'" src="./assets/imgs/chpp2.png"/> 
-                                    <img *ngIf="item.PlantName != 'CHPP'" src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png"/> 
+                                    <img *ngIf="item.PlantName == 'CHPP'" src="./assets/imgs/chpp2.png"/>
+                                    <img *ngIf="item.PlantName != 'CHPP'" src="./assets/imgs/{{item.PlantInfo.CompanyName}}.png"/>
                                     <!-- <img src="https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/{{item.PlantInfo.CompanyLogo}}" /> -->
                                 </ion-col>
                                 <ion-col class="item-power" col-6>
@@ -101,7 +101,7 @@
                                     <ion-row no-padding *ngIf="item.PowerGen != 0">
                                         <ion-col class="power-gen" no-padding col-2>
                                             <img src="./assets/imgs/E1.png"/>
-                                            {{item.PowerGen/1000000}} MW
+                                            {{(item.PowerGen/1000000).toFixed(2)}} MW
                                         </ion-col>
                                     </ion-row>
                                 </ion-col>
