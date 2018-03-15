@@ -31,17 +31,23 @@ export class HomePage {
               public navParams: NavParams, 
               public plantProvider: PlantProvider) {
 
-    // let id = this.navParams.get('plantId');
-    let id = 5;
+    let id = this.navParams.get('plantId');
+    //let id = 5;
     
     this.plantProvider.requestPlant(id)
     .then(data => {
      
       this.plantData = data;
       this.companyName = this.plantData.Result.PlantInfo.CompanyName;
-      console.log(this.companyName);
+      console.log("home "+this.companyName);
+      if(this.companyName == 'CHPP'){
+        this.logo = "./assets/imgs/chpphead.png";
+      }
+      else{
+        this.logo = "./assets/imgs/ichinosekihead.png";
+      }
       // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
-      this.logo = 'assets/imgs/CHPP.png'
+      //this.logo = 'assets/imgs/CHPP.png'
     }); 
   }
 
