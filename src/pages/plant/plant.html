@@ -54,10 +54,10 @@
                                             {{item.PlantName}}
                                         </ion-col>
                                     </ion-row>
-                                    <ion-row no-padding>
+                                    <ion-row no-padding *ngIf="item.PowerGen != 0">
                                         <ion-col class="power-gen" no-padding col-2>
                                             <img src="./assets/imgs/E1.png"/>
-                                            {{item.ElectricGen}} MW
+                                            {{item.PowerGen/1000000}} MW
                                         </ion-col>
                                     </ion-row>
                                 </ion-col>
@@ -98,10 +98,10 @@
                                             {{item.PlantName}}
                                         </ion-col>
                                     </ion-row>
-                                    <ion-row no-padding>
+                                    <ion-row no-padding *ngIf="item.PowerGen != 0">
                                         <ion-col class="power-gen" no-padding col-2>
                                             <img src="./assets/imgs/E1.png"/>
-                                            {{item.ElectricGen}} MW
+                                            {{item.PowerGen/1000000}} MW
                                         </ion-col>
                                     </ion-row>
                                 </ion-col>

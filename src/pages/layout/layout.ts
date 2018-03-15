@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ViewController, NavController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the LayoutPage page.
@@ -19,7 +19,13 @@ export class LayoutPage {
   logo: string;
   companyName: string = undefined;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public viewCtrl:ViewController) {
+
+    this.viewCtrl = viewCtrl;
+
+
     this.plantData = this.navParams.get('plantData');
     // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
     //this.logo = 'assets/imgs/CHPP.png'
@@ -36,5 +42,9 @@ export class LayoutPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LayoutPage');
   }
-
+  
+  ionViewWillEnter(){
+    console.log("setting BtText");
+    this.viewCtrl.setBackButtonText('');
+  }
 }

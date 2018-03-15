@@ -13,11 +13,11 @@ page-summary {
             height: 5vh;
         }
         .title-header{
-            font-size: 1.75vw;
+            font-size: 2vw;
             color: steelblue;
         }
     }
-    
+
     .main-bg{
         background-color: rgb(245, 245, 242);
         padding-bottom: 0px;
@@ -67,16 +67,16 @@ page-summary {
                     background-color:white;
                 }
             }
-            
+
         }
-        
-        
+
+
         // .weather-present {
         //     background-color: #488aff;
         //     color: white;
         //     padding: 0px !important;
         // }
-    
+
         // .card-md, .card-ios {
         //     margin: 0px;
         //     width: 100%;
@@ -89,11 +89,11 @@ page-summary {
         //     margin: 0 -8px;
         //     min-height: 30px;
         //   }
-          
+
           section > * {
             margin: 0 8px;
           }
-    
+
         .divider {
             width: 2px;
             margin: 0px 0;
@@ -105,7 +105,7 @@ page-summary {
             font-size: 12px;
             margin: auto;
         }
-    
+
         div.highcharts-container g.highcharts-tracker > * {
             fill :rgb(155, 155, 155);
         }
@@ -113,16 +113,16 @@ page-summary {
         .segment-title {
             padding-bottom: 4vh;
         }
-    
+
         .segment-text{
             font-size: 90%;
         }
-    
+
         .power-gen-container{
             max-height: 100%;
             margin-top: 20%;
         }
-    
+
         .tab-title{
             background: -webkit-linear-gradient(rgba(22, 154, 231, 0.918), rgb(30, 125, 248));
             -webkit-background-clip: text;
@@ -132,7 +132,7 @@ page-summary {
             top: 6vh;
             left: 3vw;
         }
-    
+
         .power-text{
             margin-top: -50%;
             position: relative;
@@ -151,21 +151,21 @@ page-summary {
                 -webkit-text-fill-color: transparent;
             }
         }
-    
+
         .power-icon{
             img{
              height: 7.5vh;
              position: relative;
              right: -8%;
-    
+
             }
             margin-top: -38%;
         }
-    
+
         .tt{
             background-color: rgb(230, 230, 230);
         }
-    
+
         .tab-gap-header{
             background-color: white;
             padding-top: 3%;
@@ -175,7 +175,7 @@ page-summary {
             margin-left: 8px;
             margin-right: 8px;
         }
-    
+
         .tab-gap{
             background-color: white;
             position: relative;
@@ -183,7 +183,7 @@ page-summary {
             margin-left: 8px;
             margin-right: 8px;
         }
-    
+
         .energy-chart-bg{
             // background-color: rgb(230, 230, 230);
         }
@@ -211,12 +211,12 @@ page-summary {
             .chart-type{
                 background-color: rgb(255, 255, 255);
                 color: #488aff;
-                padding: 3px;
+                padding: 1vw 0.75vw 1vw 1.25vw;
                 border-radius: 3px;
-                margin: 2px;
+                margin-right: 2vw;
             }
         }
-    
+
         .target{
             ul li{
                 float: right;
@@ -226,7 +226,7 @@ page-summary {
             }
             margin-right: 2%;
         }
-    
+
         .start-gap{
             padding-top: 20%;
         }
@@ -234,35 +234,35 @@ page-summary {
         .last-gap {
             margin-bottom: 20%;
         }
-    
+
         .snippet{
             font-size: 2vh;
             color: rgb(133, 133, 133);
             position: relative;
             left: 5%;
         }
-    
+
         .value-summary{
             font-size: 3vh;
             background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-    
+
         .unit-summary{
             position: relative;
             top: 1vh;
             font-size: 1.5vh;
             color: rgb(133, 133, 133);
         }
-    
+
         .underline{
             border-bottom: 2px solid;
             border-color: rgb(197, 197, 197);
             margin-left: 5%;
             margin-right: 5%;
         }
-    
+
         //1st Row Show Current Temp Info
         .presentweather{
             z-index: 5;
@@ -326,7 +326,7 @@ page-summary {
             color: steelblue;
             background-color: white;
             // .seperator{
-               
+
             // }
             .seperator:before{
                 content : "";
@@ -359,17 +359,17 @@ page-summary {
                 }
             }
         }
-   
+
         // .mytemptext{
         //     position: absolute;
         //     top: 30%;
         //     left: 0;
-        //     right: 0;  
+        //     right: 0;
         // }
         //EOF 1st Row Show Current Temp Info
-    
+
         //2nd Row Show Future Temp Info
-      
+
         // img.smallweathericon{
         //     max-width:30%;
         //     max-height:30%;
@@ -378,7 +378,7 @@ page-summary {
         //     margin-right: auto;
         // }
         //EOF 2nd Row Show Future Temp Info
-    
+
         //3rd Row show date time
         .showdatetime{
             z-index: 5;
@@ -406,7 +406,7 @@ page-summary {
                 left: 5%;
             }
         }
-      
+
         .child-showdatetime-text-vertical-center{
             position: absolute;
             top: 50%;

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, ViewController, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import * as HighCharts from 'highcharts';
 import * as moment from 'moment';
@@ -105,8 +105,11 @@ export class SummaryPage {
             public dailyEnergyProvider: DailyEnergyProvider,
             public monthlyEnergyProvider: MonthlyEnergyProvider,
             public yearlyEnergyProvider: YearlyEnergyProvider,
-            public loadingCtrl: LoadingController) {
+            public loadingCtrl: LoadingController,
+            public viewCtrl:ViewController) {
         
+                this.viewCtrl = viewCtrl;
+
                 this.plantData = this.navParams.get('plantData');
                 // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
                 //this.logo = 'assets/imgs/CHPP.png'
@@ -153,6 +156,11 @@ export class SummaryPage {
                   });
   }
 
+  ionViewWillEnter(){
+    console.log("setting BtText");
+    this.viewCtrl.setBackButtonText('');
+  }
+  
   ionViewDidLoad(){
       this.loader.present();
       this.getWeather();
