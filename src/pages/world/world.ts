@@ -8,6 +8,7 @@ import {
 } from '@ionic-native/google-maps';
 import { PlantPage } from '../plant/plant';
 import { CountryServiceProvider } from '../../providers/country-service/country-service';
+import { SharedService } from '../../providers/SharedService';
 
 /**
  * Generated class for the WorldPage page.
@@ -30,17 +31,22 @@ export class WorldPage {
   // solarIcon = '/assets/imgs/i1.png';
   // damIcon = '/assets/imgs/i5.png';
   // energyIcon = '/assets/imgs/i7.png';
-  isRunOnDevice: boolean;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public countryProvider: CountryServiceProvider, public loadingCtrl: LoadingController) {
+  constructor (
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public countryProvider: CountryServiceProvider, 
+    public loadingCtrl: LoadingController,
+    public shared: SharedService ) 
+  {
     this.loader = this.loadingCtrl.create({
       content: "Loading Country..."
     });
-    this.isRunOnDevice = true;
   }
 
   getCountryList() {
-    let UserCode = "UserCode123456";
-    this.countryProvider.getAllCountry(UserCode)
+    // let UserCode = "UserCode123456";
+    // alert(this.shared.AccessToken);
+    this.countryProvider.getAllCountry(this.shared.AccessToken)
 
     .then((data: any) => {
       this.countryList = data.Result;
@@ -62,7 +68,7 @@ export class WorldPage {
       console.log('icon', JSON.stringify(this.countryList));
       this.loader.dismiss();
       console.log(data);
-      if (this.isRunOnDevice) {
+      if (this.shared.isRunOnDevice) {
         this.countryList.forEach((country) => {
           this.map.addMarker({
               title: country.name,
@@ -89,13 +95,15 @@ export class WorldPage {
       }
       // Wait the MAP_READY before using any methods.
       
+    }).catch (err => {
+      // alert(JSON.stringify(err));
     });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorldPage');
     this.loader.present();
-    if (this.isRunOnDevice) {
+    if (this.shared.isRunOnDevice) {
       this.loadMap();
     } else {
       this.getCountryList();

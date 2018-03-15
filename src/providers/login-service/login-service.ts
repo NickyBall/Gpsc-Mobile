@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { SharedService } from '../SharedService';
 
 @Injectable()
 export class LoginServiceProvider{
-    apiUrl = "http://pms-api-dev.azurewebsites.net/api/Authentication/Login";
+    apiUrl: string;
     //apiUrl = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/api/Authentication/Login";
-    constructor(public http: HttpClient) {
+    constructor(public http: HttpClient, private sharedService: SharedService) {
         console.log('Hello LoginServiceProvider');
+        this.apiUrl = sharedService.BaseUrl + "api/Authentication/Login";
       }
       getAuthen(Username, Password) {
         return new Promise((resolve, reject) => {

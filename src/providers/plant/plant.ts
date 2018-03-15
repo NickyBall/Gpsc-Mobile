@@ -1,6 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SharedService } from '../SharedService';
 
 /*
   Generated class for the PlantProvider provider.
@@ -11,22 +12,23 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class PlantProvider {
 
-  apiUrl = 'http://pms-api-dev.azurewebsites.net/api/PowerPlant/GetPlantInfo';
+  apiUrl: string;
   
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public shared: SharedService) {
     console.log('Hello PlantProvider Provider');
+    this.apiUrl =  this.shared.BaseUrl + 'api/PowerPlant/GetPlantInfo';
   }
 
   requestPlant(id){
     return new Promise(resolve => {
       this.http.post(this.apiUrl, 
         {
-          UserCode: "UserCode123456",
           PlantId: id
         },
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.shared.AccessToken
           }
         }
       ).subscribe(res =>{

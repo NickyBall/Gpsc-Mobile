@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 
 import { WorldPage } from '../world/world';
 import { LoginServiceProvider } from '../../providers/login-service/login-service';
+import { SharedService } from '../../providers/SharedService';
 
 /**
  * Generated class for the LoginPage page.
@@ -23,7 +24,13 @@ export class LoginPage {
   resultCode: any;
   loader: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loginService: LoginServiceProvider, public loadingCtrl: LoadingController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public loginService: LoginServiceProvider, 
+    public loadingCtrl: LoadingController,
+    public shared: SharedService ) 
+  {
        this.loginService;
        this.loader = this.loadingCtrl.create({
         content: "Authenticating..."
@@ -55,7 +62,9 @@ export class LoginPage {
       console.log(json['ResultCode']);
       this.loader.dismiss();
       if (json['ResultCode'] == 200) {
-        console.log(json['UserCode']);
+        // alert(json['Result']['AccessToken']);
+        console.log(json['Result']['AccessToken']);
+        this.shared.AccessToken = json['Result']['AccessToken'];
         this.navCtrl.push(this.worldPage);
       } else {
         alert("Invalid Username or Password");
