@@ -62,7 +62,12 @@ export class PlantPage {
     this.companyProvider.getAllPlants(CountryId).then((data: any) => {
       this.streamList = data.Result.filter(plant => plant.PlantType == "Stream Plant");
       this.streamList.map(x => {
-        if(x.PlantName != 'CHPP'){
+        // if(x.PlantName != 'CHPP'){
+        //   x.alpha = 0.5;
+        // }else{
+        //   x.alpha = 1;
+        // }
+        if(x.PlantInfo.IsEnabled == '0'){
           x.alpha = 0.5;
         }else{
           x.alpha = 1;
@@ -70,7 +75,12 @@ export class PlantPage {
       });
       this.solarList = data.Result.filter(plant => plant.PlantType == "Solar Plant");
       this.solarList.map(x => {
-        if(x.PlantName != 'CHPP'){
+        // if(x.PlantName != 'CHPP'){
+        //   x.alpha = 0.5;
+        // }else{
+        //   x.alpha = 1;
+        // }
+        if(x.PlantInfo.IsEnabled == '0'){
           x.alpha = 0.5;
         }else{
           x.alpha = 1;
