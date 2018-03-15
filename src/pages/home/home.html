@@ -5,8 +5,8 @@
         <ion-col col-3 align-self-center>
           <div text-right>
             <!-- <img src={{logo}} alt=""> -->
-            <img *ngIf="companyName == 'CHPP'" src="{{logo}}"/>
-            <img *ngIf="companyName != 'CHPP'" src="{{logo}}"/>
+            <img style="max-width:none!important" *ngIf="companyName == 'CHPP'" src="{{logo}}"/>
+            <img style="max-width:none!important" *ngIf="companyName != 'CHPP'" src="{{logo}}"/>
           </div>
         </ion-col>
         <ion-col col-7 align-self-center class="title-header">
