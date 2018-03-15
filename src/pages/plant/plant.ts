@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, ViewController, NavController, NavParams, LoadingController } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -37,14 +37,22 @@ export class PlantPage {
     public navParams: NavParams, 
     public companyProvider: CompanyProvider, 
     public loadingCtrl: LoadingController,
-    public shared: SharedService ) 
+    public shared: SharedService,
+    public viewCtrl:ViewController ) 
   {
+    this.viewCtrl = viewCtrl;
+
     this.titleLabel = this.navParams.get('country');
     this.loader = this.loadingCtrl.create({
       content: "Loading Power Plant..."
     });
   }
 
+  ionViewWillEnter(){
+    console.log("setting BtText");
+    this.viewCtrl.setBackButtonText('');
+  }
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlantPage');
     if (this.shared.isRunOnDevice) {

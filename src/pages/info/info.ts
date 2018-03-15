@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ViewController, NavController, NavParams } from 'ionic-angular';
 import * as moment from 'moment';
 import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 
@@ -28,7 +28,13 @@ export class InfoPage {
   private pic3: string = undefined;
   private pic4: string = undefined;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private nativeGeocoder: NativeGeocoder) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private nativeGeocoder: NativeGeocoder,
+    public viewCtrl:ViewController) {
+      
+    this.viewCtrl = viewCtrl;  
+
     this.plantData = this.navParams.get('plantData');
 
     this.companyName = this.plantData.Result.PlantInfo.CompanyName;
@@ -66,5 +72,9 @@ export class InfoPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad InfoPage');
   }
-
+  
+  ionViewWillEnter(){
+    console.log("setting BtText");
+    this.viewCtrl.setBackButtonText('');
+  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, ViewController, NavController, NavParams, LoadingController } from 'ionic-angular';
 import {
  GoogleMaps,
  GoogleMap,
@@ -36,11 +36,19 @@ export class WorldPage {
     public navParams: NavParams, 
     public countryProvider: CountryServiceProvider, 
     public loadingCtrl: LoadingController,
-    public shared: SharedService ) 
+    public shared: SharedService,
+    public viewCtrl:ViewController ) 
   {
+    this.viewCtrl = viewCtrl;
+
     this.loader = this.loadingCtrl.create({
       content: "Loading Country..."
     });
+  }
+
+  ionViewWillEnter(){
+    console.log("setting BtText");
+    this.viewCtrl.setBackButtonText('');
   }
 
   getCountryList() {

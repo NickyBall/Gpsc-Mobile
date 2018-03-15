@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, ViewController, NavParams } from 'ionic-angular';
 import { InfoPage } from '../info/info';
 import { LayoutPage } from '../layout/layout';
 import { SummaryPage } from '../summary/summary';
@@ -29,11 +29,14 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
-              public plantProvider: PlantProvider) {
+              public plantProvider: PlantProvider,
+              public viewCtrl:ViewController) {
 
-    let id = this.navParams.get('plantId');
-    //let id = 5;
+    //let id = this.navParams.get('plantId');
+    let id = 5;
     
+    this.viewCtrl = viewCtrl;
+
     this.plantProvider.requestPlant(id)
     .then(data => {
      
@@ -64,6 +67,9 @@ export class HomePage {
   }
 
   ionViewWillEnter(){
+    console.log("setting BtText");
+    this.viewCtrl.setBackButtonText('');
+    
     this.icon1 = "assets/imgs/b1.png";
     this.icon2 = "assets/imgs/b3.png";
     this.icon3 = "assets/imgs/b5.png";
