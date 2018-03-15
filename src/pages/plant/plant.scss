@@ -5,7 +5,6 @@ page-plant {
 
   .nav-title{
     margin-left: 15vw;
-    width: 100%;
     img{
       height: 4vh;
     }
@@ -49,10 +48,6 @@ page-plant {
       border-color: orange !important;
       border-width: 4px;
     }
-    .item-share {
-      width: 10%;
-      padding-right: 40px;
-    }
   
     ion-list{
       ion-item{
@@ -89,7 +84,7 @@ page-plant {
       }
     
       .share-row {
-        padding-left: 4%;
+        padding-left: 3vw;
         color: orangered;
         border-left:2px solid rgb(175, 175, 175);
         .share-percentage {
