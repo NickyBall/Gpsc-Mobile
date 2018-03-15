@@ -59,8 +59,9 @@ export class InfoPage {
           .catch((error: any) => console.log(error));
 
     let ppaYear = moment(this.plantData.Result.PlantInfo.PPA).year();
+    let codYear = moment(this.plantData.Result.PlantInfo.COD).year();
     let ppaYearNow = moment().year();
-    let diffYear = ppaYear - ppaYearNow;
+    let diffYear = ppaYear - codYear;
     this.ppaData = diffYear + ' Years (End ' + ppaYear + ')';
     console.log(diffYear);
 
