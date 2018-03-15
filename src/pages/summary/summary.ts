@@ -30,10 +30,12 @@ export class SummaryPage {
   powerChart: any;
   powerData: any;
   powerIcon: string;
+  powerMax: number;
 
   irradiationChart: any;
   irradiationData: any;
   irradiationIcon: string;
+  irradiationMax: number;
 
   ambientTemperatureChart: any;
   ambientTempData: any;
@@ -98,8 +100,8 @@ export class SummaryPage {
   plantData: any;
   companyName: string = undefined;
 
-  constructor(public navCtrl: NavController, 
-            public navParams: NavParams, 
+  constructor(public navCtrl: NavController,
+            public navParams: NavParams,
             public weatherServiceProvider: WeatherServiceProvider,
             public hourlyEnergyProvider: HourlyEnergyProvider,
             public dailyEnergyProvider: DailyEnergyProvider,
@@ -107,7 +109,7 @@ export class SummaryPage {
             public yearlyEnergyProvider: YearlyEnergyProvider,
             public loadingCtrl: LoadingController,
             public viewCtrl:ViewController) {
-        
+
                 this.viewCtrl = viewCtrl;
 
                 this.plantData = this.navParams.get('plantData');
@@ -159,7 +161,7 @@ export class SummaryPage {
     console.log("setting BtText");
     this.viewCtrl.setBackButtonText('');
   }
-  
+
   ionViewDidLoad(){
       this.loader.present();
       this.getWeather();
@@ -173,7 +175,9 @@ export class SummaryPage {
     this.powerGenGraph();
     // this.hourlyGraph(1);
     this.powerData = this.plantData.Result.PowerGen/1000000;
+    this.powerMax = Math.ceil(parseInt(this.powerData) * (Math.random() * 3 + 3));
     this.irradiationData = this.plantData.Result.Irradiation;
+    this.irradiationMax = Math.ceil(parseInt(this.irradiationData) * (Math.random() * 3 + 3))
     this.ambientTempData = this.plantData.Result.AMB_Temp;
   }
 
@@ -342,10 +346,10 @@ export class SummaryPage {
             }
         }
 
-        console.log("Current Day: "+this.currentDay)        
+        console.log("Current Day: "+this.currentDay)
         //#endregion
 
-        
+
         this.loader.dismiss();
     });
 }
@@ -353,7 +357,7 @@ export class SummaryPage {
   powerGenGraph() {
       setTimeout(() => {
         this.powerChart = HighCharts.chart('power-chart', {
-        
+
             chart: {
                 type: 'gauge',
                 plotBackgroundColor: null,
@@ -363,11 +367,11 @@ export class SummaryPage {
                 margin: [0, 0, 0, 0],
                 plotShadow: false
             },
-        
+
             title: {
                 text: ''
             },
-        
+
             pane: {
                 startAngle: -100,
                 endAngle: 100,
@@ -379,16 +383,16 @@ export class SummaryPage {
                     shape: 'squre'
                 }
             },
-        
+
             // the value axis
             yAxis: {
               min: 0,
-              max: 5,
+              max: this.powerMax,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: 1,
-              tickInterval: 1,
+              tickPixelInterval: this.powerMax / 5,
+              tickInterval: this.powerMax / 5,
               lineWidth: 2,
               labels: {
                   distance: -20,
@@ -399,7 +403,7 @@ export class SummaryPage {
               endOnTick: false,
                 plotBands: [{
                     from: 0,
-                    to: 100,
+                    to: this.powerMax,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [
@@ -409,7 +413,7 @@ export class SummaryPage {
                   }
                 }]
             },
-        
+
             series: [{
                 name: 'Power',
                 data: [this.powerData],
@@ -423,7 +427,7 @@ export class SummaryPage {
                 enabled: false
             },
             loading: false
-        
+
         });
       }, 100);
   }
@@ -431,7 +435,7 @@ export class SummaryPage {
   irradiationGraph() {
       setTimeout(() => {
         this.irradiationChart = HighCharts.chart('irradiation-chart', {
-        
+
             chart: {
                 type: 'gauge',
                 plotBackgroundColor: null,
@@ -441,11 +445,11 @@ export class SummaryPage {
                 margin: [0, 0, 0, 0],
                 plotShadow: false
             },
-        
+
             title: {
                 text: ''
             },
-        
+
             pane: {
                 startAngle: -100,
                 endAngle: 100,
@@ -457,16 +461,16 @@ export class SummaryPage {
                     shape: 'squre'
                 }
             },
-        
+
             // the value axis
             yAxis: {
-              min: 200,
-              max: 1000,
+              min: 0,
+              max: this.irradiationMax,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: 200,
-              tickInterval: 200,
+              tickPixelInterval: this.irradiationMax / 5,
+              tickInterval: this.irradiationMax / 5,
               lineWidth: 2,
               labels: {
                   distance: -25,
@@ -476,8 +480,8 @@ export class SummaryPage {
               minorTickLength: 5,
               endOnTick: false,
                 plotBands: [{
-                    from: 200,
-                    to: 1000,
+                    from: 0,
+                    to: this.irradiationMax,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [
@@ -487,7 +491,7 @@ export class SummaryPage {
                   }
                 }]
             },
-        
+
             series: [{
                 name: 'Irradiation',
                 data: [this.irradiationData],
@@ -496,21 +500,21 @@ export class SummaryPage {
                     valueSuffix: ' W/M<sup>2</sup>'
                 }
             }],
- 
+
             credits: {
                 enabled: false
             },
             loading: false
-        
+
         });
       }, 100);
-    
+
   }
 
   ambientTemperatureGraph() {
       setTimeout(() => {
         this.ambientTemperatureChart = HighCharts.chart('ambient-chart', {
-        
+
             chart: {
                 type: 'gauge',
                 plotBackgroundColor: null,
@@ -520,11 +524,11 @@ export class SummaryPage {
                 margin: [0, 0, 0, 0],
                 plotShadow: false
             },
-        
+
             title: {
                 text: ''
             },
-        
+
             pane: {
                 startAngle: -100,
                 endAngle: 100,
@@ -536,7 +540,7 @@ export class SummaryPage {
                     shape: 'squre'
                 }
             },
-        
+
             // the value axis
             yAxis: {
               min: -40,
@@ -566,7 +570,7 @@ export class SummaryPage {
                   }
                 }]
             },
-        
+
             series: [{
                 name: 'Ambient',
                 data: [this.ambientTempData],
@@ -579,10 +583,10 @@ export class SummaryPage {
                 enabled: false
             },
             loading: false
-        
+
         });
       }, 100);
-    
+
   }
 
   enegyGenerationGraph() {
@@ -608,7 +612,7 @@ export class SummaryPage {
             return Math.round(y.EnergyValue/1000000);
         });
         y = hourlyDataSrc.slice(l-11, l);
-        
+
         timeLabel = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('ha');
         })
@@ -626,7 +630,7 @@ export class SummaryPage {
     // let ppaYear = moment(this.plantData.Result.PlantInfo.PPA).year();
 
 
-    let config = {     
+    let config = {
         type: '',
         data: {
           labels: x,
@@ -665,13 +669,13 @@ export class SummaryPage {
                     stepSize: 3
                 }
               }],
-             
+
             },
             chartArea: {
                 backgroundColor: 'rgba(190, 190, 190, 0.7)'
             }
          }
- 
+
     }
 
     if(type === 1){
@@ -755,7 +759,7 @@ export class SummaryPage {
         })
     }
 
-    let config = {     
+    let config = {
         type: '',
         data: {
           labels: x,
@@ -922,7 +926,7 @@ export class SummaryPage {
         })
     }
 
-    let config = {     
+    let config = {
         type: '',
         data: {
           labels: x,
@@ -1086,7 +1090,7 @@ export class SummaryPage {
         maxTarget = Math.max.apply(null, yTarget);
         min = Math.min.apply(null, y);
         minTarget = Math.min.apply(null, yTarget);
-        
+
         if(maxTarget > max){
             chooseMax = maxTarget;
         }else{
@@ -1111,7 +1115,7 @@ export class SummaryPage {
         })
     }
 
-    let config = {     
+    let config = {
         type: '',
         data: {
           labels: x,
