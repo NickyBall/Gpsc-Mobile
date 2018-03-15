@@ -277,7 +277,7 @@ export class PlantPage {
   }
 
   selectedPlant(item) {
-    if (item.PlantName == 'CHPP') {
+    if (item.PlantName == 'CHPP' || item.PlantName == 'ICHINOSEKI') {
       this.navCtrl.push(this.homePage, { plantId: item.PlantId });
     } else {
       // alert (item.name + ' has no data.');

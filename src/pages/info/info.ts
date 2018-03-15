@@ -22,7 +22,7 @@ export class InfoPage {
   private locationName: string = undefined;
   private logo: string = undefined;
   private ppaData: any = undefined;
-
+  companyName: string = undefined;
   private pic1: string = undefined;
   private pic2: string = undefined;
   private pic3: string = undefined;
@@ -30,9 +30,17 @@ export class InfoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private nativeGeocoder: NativeGeocoder) {
     this.plantData = this.navParams.get('plantData');
- 
+
+    this.companyName = this.plantData.Result.PlantInfo.CompanyName;
+    console.log("home "+this.companyName);
+    if(this.companyName == 'CHPP'){
+      this.logo = "./assets/imgs/chpphead.png";
+    }
+    else{
+      this.logo = "./assets/imgs/ichinosekihead.png";
+    }
     // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
-    this.logo = 'assets/imgs/CHPP.png';
+    //this.logo = 'assets/imgs/CHPP.png';
     let temp = this.plantData.Result.PlantInfo.Capacity;
     temp /= 1000000;
     this.power = Math.round(temp);

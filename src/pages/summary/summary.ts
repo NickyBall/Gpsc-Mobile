@@ -96,8 +96,7 @@ export class SummaryPage {
 
   logo: string = undefined;
   plantData: any;
-
-  id: number;
+  companyName: string = undefined;
 
   constructor(public navCtrl: NavController, 
             public navParams: NavParams, 
@@ -110,10 +109,45 @@ export class SummaryPage {
         
                 this.plantData = this.navParams.get('plantData');
                 // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
-                this.logo = 'assets/imgs/CHPP.png'
-                this.id = this.plantData.Result.PlantId;
+                //this.logo = 'assets/imgs/CHPP.png'
+                this.companyName = this.plantData.Result.PlantInfo.CompanyName;
+                console.log("home "+this.companyName);
+                if(this.companyName == 'CHPP'){
+                  this.logo = "./assets/imgs/chpphead.png";
+                }
+                else{
+                  this.logo = "./assets/imgs/ichinosekihead.png";
+                }
 
-                
+                let id = this.plantData.Result.PlantId;
+
+                this.hourlyEnergyProvider.requestHourlyEnergy(id)
+                    .then(data => {
+                        this.hourlyData = data;
+                    }).catch(error => {
+                        console.log(error);
+                    });
+
+                this.dailyEnergyProvider.requestDailyEnergy(id)
+                .then(data => {
+                    this.dialyData = data;
+                }).catch(error => {
+                    console.log(error);
+                });
+
+                this.monthlyEnergyProvider.requestMonthlyEnergy(id)
+                .then(data => {
+                    this.monthlyData = data;
+                }).catch(error => {
+                    console.log(error);
+                });
+
+                this.yearlyEnergyProvider.requestYearlyEnergy(id)
+                .then(data => {
+                    this.yearlyData = data;
+                }).catch(error => {
+                    console.log(error);
+                });
                 this.loader = this.loadingCtrl.create({
                     content: "Loading..."
                   });
@@ -122,33 +156,6 @@ export class SummaryPage {
   ionViewDidLoad(){
       this.loader.present();
       this.getWeather();
-      this.hourlyEnergyProvider.requestHourlyEnergy(this.id)
-                    .then(data => {
-                        this.hourlyData = data;
-                    }).catch(error => {
-                        console.log(error);
-                    });
-
-                this.dailyEnergyProvider.requestDailyEnergy(this.id)
-                .then(data => {
-                    this.dialyData = data;
-                }).catch(error => {
-                    console.log(error);
-                });
-
-                this.monthlyEnergyProvider.requestMonthlyEnergy(this.id)
-                .then(data => {
-                    this.monthlyData = data;
-                }).catch(error => {
-                    console.log(error);
-                });
-
-                this.yearlyEnergyProvider.requestYearlyEnergy(this.id)
-                .then(data => {
-                    this.yearlyData = data;
-                }).catch(error => {
-                    console.log(error);
-                });
   }
 
   ionViewDidEnter() {
