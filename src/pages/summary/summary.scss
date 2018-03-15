@@ -6,15 +6,38 @@ page-summary {
         background-color: #e6e6e6;
     }
 
+    // .title-align{
+    //     margin-left: 5vw;
+    //     width: 100%;
+    //     img{
+    //         height: 5vh;
+    //     }
+    //     .title-header{
+    //         font-size: 2vw;
+    //         color: steelblue;
+    //     }
+    // }
     .title-align{
-        margin-left: 5vw;
+        // margin-left: -5vw;
         width: 100%;
-        img{
-            height: 5vh;
+        .logo-img{
+            display: inline-block;
+            img{
+                margin-bottom: -2vh;
+                height: 5.5vh;
+                // min-width: 10vw;
+            }
         }
         .title-header{
+            height: 6vh;
+            display: inline-block;
+            word-wrap: break-word;
             font-size: 2vw;
             color: steelblue;
+            text-align: center;
+            max-width: 70vw;
+            margin-top:auto;
+            margin-top: -1.5vh;
         }
     }
 
