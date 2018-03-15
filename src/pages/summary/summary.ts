@@ -96,8 +96,7 @@ export class SummaryPage {
 
   logo: string = undefined;
   plantData: any;
-
-  id: number;
+  companyName: string = undefined;
 
   constructor(public navCtrl: NavController, 
             public navParams: NavParams, 
@@ -110,10 +109,45 @@ export class SummaryPage {
         
                 this.plantData = this.navParams.get('plantData');
                 // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
-                this.logo = 'assets/imgs/CHPP.png'
-                this.id = this.plantData.Result.PlantId;
+                //this.logo = 'assets/imgs/CHPP.png'
+                this.companyName = this.plantData.Result.PlantInfo.CompanyName;
+                console.log("home "+this.companyName);
+                if(this.companyName == 'CHPP'){
+                  this.logo = "./assets/imgs/chpphead.png";
+                }
+                else{
+                  this.logo = "./assets/imgs/ichinosekihead.png";
+                }
 
-                
+                let id = this.plantData.Result.PlantId;
+
+                this.hourlyEnergyProvider.requestHourlyEnergy(id)
+                    .then(data => {
+                        this.hourlyData = data;
+                    }).catch(error => {
+                        console.log(error);
+                    });
+
+                this.dailyEnergyProvider.requestDailyEnergy(id)
+                .then(data => {
+                    this.dialyData = data;
+                }).catch(error => {
+                    console.log(error);
+                });
+
+                this.monthlyEnergyProvider.requestMonthlyEnergy(id)
+                .then(data => {
+                    this.monthlyData = data;
+                }).catch(error => {
+                    console.log(error);
+                });
+
+                this.yearlyEnergyProvider.requestYearlyEnergy(id)
+                .then(data => {
+                    this.yearlyData = data;
+                }).catch(error => {
+                    console.log(error);
+                });
                 this.loader = this.loadingCtrl.create({
                     content: "Loading..."
                   });
@@ -122,33 +156,6 @@ export class SummaryPage {
   ionViewDidLoad(){
       this.loader.present();
       this.getWeather();
-      this.hourlyEnergyProvider.requestHourlyEnergy(this.id)
-                    .then(data => {
-                        this.hourlyData = data;
-                    }).catch(error => {
-                        console.log(error);
-                    });
-
-                this.dailyEnergyProvider.requestDailyEnergy(this.id)
-                .then(data => {
-                    this.dialyData = data;
-                }).catch(error => {
-                    console.log(error);
-                });
-
-                this.monthlyEnergyProvider.requestMonthlyEnergy(this.id)
-                .then(data => {
-                    this.monthlyData = data;
-                }).catch(error => {
-                    console.log(error);
-                });
-
-                this.yearlyEnergyProvider.requestYearlyEnergy(this.id)
-                .then(data => {
-                    this.yearlyData = data;
-                }).catch(error => {
-                    console.log(error);
-                });
   }
 
   ionViewDidEnter() {
@@ -822,7 +829,7 @@ export class SummaryPage {
     let dataSrc = this.monthlyData.Result;
     let monthlyDataSrc = undefined;
     let monthlyDataTarget = undefined;
-    let x, y, yTarget, chooseMax, upper, lower;
+    let x, y, yTarget, chooseMax, chooseMin, upper, lower;
     let timeLabel = undefined;
     let l = dataSrc.length
     if( l >= 12){
@@ -839,20 +846,27 @@ export class SummaryPage {
         yTarget = monthlyDataTarget.slice(l-11, l);
         console.log('value ', y);
         console.log('target', yTarget);
-        let max, maxTarget, min, range, compensate;
+        let max, maxTarget, min, minTarget, range, compensate;
         max = Math.max.apply(null, y);
         maxTarget = Math.max.apply(null, yTarget);
         min = Math.min.apply(null, y);
+        minTarget = Math.min.apply(null, yTarget);
 
         if(maxTarget > max){
             chooseMax = maxTarget;
         }else{
             chooseMax = max;
         }
+
+        if(minTarget < min){
+            chooseMin = minTarget;
+        }else{
+            chooseMin = min
+        }
         range = chooseMax-min;
         compensate = range * 50 / 100; // 50% of range
         upper = Math.round((chooseMax + compensate) * 10)/10
-        lower = Math.round((min - compensate) * 10)/10
+        lower = Math.round((chooseMin - compensate) * 10)/10
         console.log('upper ', upper);
         console.log('lower ', lower);
 
@@ -872,7 +886,7 @@ export class SummaryPage {
 
         console.log('value ', y);
         console.log('target', yTarget);
-        let max, maxTarget, min, range, compensate;
+        let max, maxTarget, min, minTarget, range, compensate;
         max = Math.max.apply(null, y);
         maxTarget = Math.max.apply(null, yTarget);
         min = Math.min.apply(null, y);
@@ -882,10 +896,17 @@ export class SummaryPage {
         }else{
             chooseMax = max;
         }
+
+        if(minTarget < min){
+            chooseMin = minTarget;
+        }else{
+            chooseMin = min
+        }
+
         range = chooseMax-min;
         compensate = range * 50 / 100; // 50% of range
         upper = Math.round((chooseMax + compensate) * 10)/10
-        lower = Math.round((min - compensate) * 10)/10
+        lower = Math.round((chooseMin - compensate) * 10)/10
         console.log('upper ', upper);
         console.log('lower ', lower);
 
@@ -995,7 +1016,7 @@ export class SummaryPage {
     let dataSrc = this.yearlyData.Result;
     let yearlyDataSrc = undefined;
     let yearlyDataSrcTarget = undefined;
-    let x, y, yTarget, chooseMax, upper, lower;
+    let x, y, yTarget, chooseMax, chooseMin, upper, lower;
     let timeLabel = undefined;
     let l = dataSrc.length
     if( l >= 6){
@@ -1011,20 +1032,29 @@ export class SummaryPage {
         yTarget = yearlyDataSrcTarget.slice(l-6, l);
         console.log('value ', y);
         console.log('target', yTarget);
-        let max, maxTarget, min, range, compensate;
+        let max, maxTarget, min, minTarget, range, compensate;
         max = Math.max.apply(null, y);
         maxTarget = Math.max.apply(null, yTarget);
         min = Math.min.apply(null, y);
+        minTarget = Math.min.apply(null, yTarget);
 
         if(maxTarget > max){
             chooseMax = maxTarget;
         }else{
             chooseMax = max;
         }
+
+        if(minTarget < min){
+            chooseMin = minTarget;
+        }else{
+            chooseMin = min
+        }
+        console.log('cMax', chooseMax);
+        console.log('cMin', chooseMin);
         range = chooseMax-min;
         compensate = range * 50 / 100; // 50% of range
         upper = Math.round((chooseMax + compensate) * 10)/10
-        lower = Math.round((min - compensate) * 10)/10
+        lower = Math.round((chooseMin - compensate) * 10)/10
         console.log('upper ', upper);
         console.log('lower ', lower);
 
@@ -1044,20 +1074,28 @@ export class SummaryPage {
 
         console.log('value ', y);
         console.log('target', yTarget);
-        let max, maxTarget, min, range, compensate;
+        let max, maxTarget, min, minTarget, range, compensate;
         max = Math.max.apply(null, y);
         maxTarget = Math.max.apply(null, yTarget);
         min = Math.min.apply(null, y);
-
+        minTarget = Math.min.apply(null, yTarget);
+        
         if(maxTarget > max){
             chooseMax = maxTarget;
         }else{
             chooseMax = max;
         }
+
+        if(minTarget < min){
+            chooseMin = minTarget;
+        }else{
+            chooseMin = min
+        }
+
         range = chooseMax-min;
         compensate = range * 50 / 100; // 50% of range
         upper = Math.round((chooseMax + compensate) * 10)/10
-        lower = Math.round((min - compensate) * 10)/10
+        lower = Math.round((chooseMin - compensate) * 10)/10
         console.log('upper ', upper);
         console.log('lower ', lower);
 

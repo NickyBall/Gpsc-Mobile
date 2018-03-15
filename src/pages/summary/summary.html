@@ -16,7 +16,9 @@
         </ion-col>
         <ion-col col-7 align-self-center class="title-header">
           <!-- <div text-left>{{ companyName }}</div> -->
-          <div text-left text-wrap>Combined Heat and Power Producing Co.,Ltd.</div>
+          <div text-left text-wrap *ngIf="companyName == 'CHPP'">Combined Heat and Power Producing Co.,Ltd.</div>
+          <div text-left text-wrap *ngIf="companyName != 'CHPP'">Ichinoseki Solar Power</div>
+          <!-- <div text-left text-wrap>Combined Heat and Power Producing Co.,Ltd.</div> -->
         </ion-col>
         <ion-col col-2></ion-col>
       </ion-row>  

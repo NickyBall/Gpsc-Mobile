@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -45,6 +46,7 @@ import { SharedService } from '../providers/SharedService';
     MomentModule,
     IonicModule.forRoot(MyApp),
     IonicImageViewerModule,
+    CommonModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
