@@ -43,18 +43,19 @@ export class HomePage {
       this.plantData = data;
       this.companyName = this.plantData.Result.PlantInfo.CompanyName;
       console.log("home "+this.companyName);
-      if(this.companyName == 'CHPP'){
-        this.logo = "./assets/imgs/chpphead.png";
-      }
-      else{
-        this.logo = "./assets/imgs/ichinosekihead.png";
-      }
-      // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+      this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
       //this.logo = 'assets/imgs/CHPP.png'
     }); 
   }
 
   ionViewDidLoad() {
+    // if(this.companyName == 'CHPP'){
+    //   this.logo = "./assets/imgs/chpphead.png";
+    // }
+    // else{
+    //   this.logo = "./assets/imgs/ichinosekihead.png";
+    // }
+
     this.icon1 = "assets/imgs/b1.png";
     this.icon2 = "assets/imgs/b3.png";
     this.icon3 = "assets/imgs/b5.png";

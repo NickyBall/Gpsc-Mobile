@@ -1,31 +1,19 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      <ion-row>
-        <ion-col class="title-align">
-          <div class="logo-img">
-              <img src="{{logo}}"/>
-          </div>
-          <div text-wrap class="title-header">
-            <div *ngIf="companyName == 'CHPP'">CHPP</div>
-            <div *ngIf="companyName != 'CHPP'">Ichinoseki Solar Power</div>
-          </div>
-        </ion-col>
-      </ion-row> 
-          <!-- <div> -->
-            <!-- <img src={{logo}} alt=""> -->
-            <!-- <img style="max-width:none!important" *ngIf="companyName == 'CHPP'" src="{{logo}}"/>
-            <img style="max-width:none!important" *ngIf="companyName != 'CHPP'" src="{{logo}}"/>
-          </div> -->
-        
-        <!-- <ion-col col-7 align-self-center class="title-header">
-          <div text-left text-wrap *ngIf="companyName == 'CHPP'">Combined Heat and Power Producing Co.,Ltd.</div>
-          <div text-left text-wrap *ngIf="companyName != 'CHPP'">Ichinoseki Solar Power</div>
-          <div text-left text-wrap>Combined Heat and Power Producing Co.,Ltd.</div>
-        </ion-col> -->
-        <!-- <ion-col col-2></ion-col> -->
-      
-    </ion-title>
+    <ion-row class="title-header">
+      <ion-col col-4 text-right no-padding>
+        <img [src]="logo" alt="">
+      </ion-col>
+      <ion-col col-6 text-wrap align-self-center text-left no-padding class="text-coop">
+        <div *ngIf="companyName == 'CHPP'">
+          Combined Heat and Power Producing Co.,Ltd.
+        </div>
+        <div *ngIf="companyName != 'CHPP'">
+          Ichinoseki Solar Power
+        </div>
+      </ion-col>
+      <ion-col col-2></ion-col>
+    </ion-row>
   </ion-navbar>
 </ion-header>
 
