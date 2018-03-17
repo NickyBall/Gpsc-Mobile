@@ -1,45 +1,22 @@
-<!--
-  Generated template for the InfoPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
-    <ion-title>
-        <ion-row>
-            <ion-col class="title-align">
-              <div class="logo-img">
-                  <img src="{{logo}}"/>
-              </div>
-              <div text-wrap class="title-header">
-                <div *ngIf="companyName == 'CHPP'">CHPP</div>
-                <div *ngIf="companyName != 'CHPP'">Ichinoseki Solar Power</div>
-              </div>
-            </ion-col>
-          </ion-row> 
-        <!-- <ion-row class="title-align">
-          <ion-col col-3 align-self-center>
-            <div text-right>
-              <img style="max-width:none!important" src={{logo}} alt="">
-            </div>
-          </ion-col>
-          <ion-col col-7 align-self-center class="title-header">
-            <div text-left>{{ companyName }}</div>
-            <div text-left text-wrap *ngIf="companyName == 'CHPP'">Combined Heat and Power Producing Co.,Ltd.</div>
-            <div text-left text-wrap *ngIf="companyName != 'CHPP'">Ichinoseki Solar Power</div>
-            <div text-left text-wrap>Combined Heat and Power Producing Co.,Ltd.</div>
-          </ion-col>
-          <ion-col col-2></ion-col>
-        </ion-row>  -->
-    </ion-title>
+    <ion-row class="title-header">
+      <ion-col col-4 text-right no-padding>
+        <img [src]="logo" alt="">
+      </ion-col>
+      <ion-col col-6 text-wrap align-self-center text-left no-padding class="text-coop">
+        <div *ngIf="companyName == 'CHPP'">
+          Combined Heat and Power Producing Co.,Ltd.
+        </div>
+        <div *ngIf="companyName != 'CHPP'">
+          Ichinoseki Solar Power
+        </div>
+      </ion-col>
+      <ion-col col-2></ion-col>
+    </ion-row>
   </ion-navbar>
 </ion-header>
-
-
-<!-- We will use PrefixFree - a script that takes care of CSS3 vendor prefixes
-You can download it from http://leaverou.github.com/prefixfree/ -->
-<!-- <script src="http://thecodeplayer.com/uploads/js/prefixfree.js" type="text/javascript"></script> -->
 
 <ion-content>
 
