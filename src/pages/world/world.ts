@@ -266,10 +266,10 @@ export class WorldPage {
   }
 
   selectedCountry(item) {
-    if (item.CountryId == 1) {
-      this.navCtrl.push(this.plantPage, { country: item.CountryName});
+    if (item.PlantCount > 0) {
+      this.navCtrl.push(this.plantPage, { country: item.CountryName, country_id: item.CountryId});
     } else {
-      alert(item.name + ' has no data');
+      alert(item.CountryName + ' has no data');
     }
 
   }

@@ -55,14 +55,16 @@ export class InfoPage {
     //this.logo = 'assets/imgs/CHPP.png';
     let temp = this.plantData.Result.PlantInfo.Capacity;
     temp /= 1000000;
-    this.power = Math.round(temp);
+    // this.power = Math.round(temp);
+    this.power = temp;
 
-    this.nativeGeocoder.reverseGeocode(this.plantData.Result.Location.Lat, this.plantData.Result.Location.Lng)
-          .then((result: NativeGeocoderReverseResult) => {
-            this.locationName = result.administrativeArea + ', ' + result.countryName;
+    // this.nativeGeocoder.reverseGeocode(this.plantData.Result.Location.Lat, this.plantData.Result.Location.Lng)
+    //       .then((result: NativeGeocoderReverseResult) => {
+    //         this.locationName = result.administrativeArea + ', ' + result.countryName;
 
-          })
-          .catch((error: any) => console.log(error));
+    //       })
+    //       .catch((error: any) => console.log(error));
+    this.locationName = this.plantData.Result.PlantLocation;
 
     let ppaYear = moment(this.plantData.Result.PlantInfo.PPA).year();
     let codYear = moment(this.plantData.Result.PlantInfo.COD).year();
