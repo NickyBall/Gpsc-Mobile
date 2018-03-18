@@ -174,9 +174,9 @@ export class SummaryPage {
 
     this.powerGenGraph();
     // this.hourlyGraph(1);
-    this.powerData = this.plantData.Result.PowerGen/1000000;
+    this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
     this.powerMax = Math.ceil(parseInt(this.powerData) * (Math.random() * 3 + 3));
-    this.irradiationData = this.plantData.Result.Irradiation;
+    this.irradiationData = Math.floor(parseFloat(this.plantData.Result.Irradiation) / 100000) / 10;
     this.irradiationMax = Math.ceil(parseInt(this.irradiationData) * (Math.random() * 3 + 3))
     this.ambientTempData = this.plantData.Result.AMB_Temp;
   }
@@ -465,12 +465,12 @@ export class SummaryPage {
             // the value axis
             yAxis: {
               min: 0,
-              max: this.irradiationMax,
+              max: 5,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: this.irradiationMax / 5,
-              tickInterval: this.irradiationMax / 5,
+              tickPixelInterval: 1,
+              tickInterval: 1,
               lineWidth: 2,
               labels: {
                   distance: -25,
@@ -481,7 +481,7 @@ export class SummaryPage {
               endOnTick: false,
                 plotBands: [{
                     from: 0,
-                    to: this.irradiationMax,
+                    to: 5,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [
@@ -543,13 +543,13 @@ export class SummaryPage {
 
             // the value axis
             yAxis: {
-              min: -40,
-              max: 60,
+              min: -10,
+              max: 40,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: 20,
-              tickInterval: 20,
+              tickPixelInterval: 10,
+              tickInterval: 10,
               lineWidth: 2,
               labels: {
                   distance: -20,
@@ -559,8 +559,8 @@ export class SummaryPage {
               minorTickLength: 5,
               endOnTick: false,
                 plotBands: [{
-                    from: -40,
-                    to: 60,
+                    from: -10,
+                    to: 40,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [

@@ -32,6 +32,7 @@ export class PlantPage {
   streamList: any;
   loader: any;
   titleLabel: string;
+  countryId: string;
   constructor (
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -43,6 +44,7 @@ export class PlantPage {
     this.viewCtrl = viewCtrl;
 
     this.titleLabel = this.navParams.get('country');
+    this.countryId = this.navParams.get('country_id');
     this.loader = this.loadingCtrl.create({
       content: "Loading Power Plant..."
     });
@@ -65,8 +67,8 @@ export class PlantPage {
   }
 
   getPlantList() {
-    let UserCode = 'UserCode123456';
-    let CountryId = 1;
+    // let UserCode = 'UserCode123456';
+    let CountryId = this.countryId;
     this.companyProvider.getAllPlants(CountryId).then((data: any) => {
       this.streamList = data.Result.filter(plant => plant.PlantTypeId == 2);
       this.streamList.map(x => {
