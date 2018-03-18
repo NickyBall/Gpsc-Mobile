@@ -657,7 +657,7 @@ export class SummaryPage {
               yAxes: [{
                 scaleLabel: {
                   display: true,
-                  labelString: "MW",
+                  labelString: "MWh",
                   fontColor: "grey",
                   fontSize: 14,
                   fontStyle: 'normal',
@@ -785,7 +785,7 @@ export class SummaryPage {
               yAxes: [{
                 scaleLabel: {
                   display: true,
-                  labelString: "MW",
+                  labelString: "MWh",
                   fontColor: "grey",
                   fontSize: 14,
                   fontStyle: 'normal',
@@ -952,7 +952,7 @@ export class SummaryPage {
               yAxes: [{
                 scaleLabel: {
                   display: true,
-                  labelString: "MW",
+                  labelString: "MWh",
                   fontColor: "grey",
                   fontSize: 14,
                   fontStyle: 'normal',
@@ -1141,7 +1141,7 @@ export class SummaryPage {
               yAxes: [{
                 scaleLabel: {
                   display: true,
-                  labelString: "MW",
+                  labelString: "MWh",
                   fontColor: "grey",
                   fontSize: 14,
                   fontStyle: 'normal',
