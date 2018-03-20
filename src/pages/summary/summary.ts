@@ -155,6 +155,9 @@ export class SummaryPage {
                 this.loader = this.loadingCtrl.create({
                     content: "Loading..."
                   });
+                this.powerIcon = "assets/imgs/Elect.png";
+                this.irradiationIcon = "assets/imgs/Sun.png";
+                this.ambientIcon = "assets/imgs/Temp.png";
   }
 
   ionViewWillEnter(){
@@ -168,9 +171,6 @@ export class SummaryPage {
   }
 
   ionViewDidEnter() {
-    this.powerIcon = "assets/imgs/Elect.png";
-    this.irradiationIcon = "assets/imgs/Sun.png";
-    this.ambientIcon = "assets/imgs/Temp.png";
 
     this.powerGenGraph();
     // this.hourlyGraph(1);
