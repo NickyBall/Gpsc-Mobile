@@ -1,9 +1,4 @@
 page-summary {
-
-    animation: fadein .75s;
-    -moz-animation: fadein .75s; /* Firefox */
-    -webkit-animation: fadein .75s; /* Safari and Chrome */
-    -o-animation: fadein .75s; /* Opera */
     // font-family: 'Lato', sans-serif;
     .scroll-content{
         // margin: 0px !important;
@@ -33,6 +28,12 @@ page-summary {
             padding-top: 10%;
         }
         .tab-segment{
+            animation: fadein 3.75s;
+            -moz-animation: fadein 3.75s; /* Firefox */
+            -webkit-animation: fadein 3.75s; /* Safari and Chrome */
+            -o-animation: fadein 3.75s; /* Opera */
+            // transition-timing-function: cubic-bezier(0.42,0,0.58,1);
+
             margin-top: 1.25vh;
             margin-left: -0.25vw;
             margin-right: -0.25vw;
