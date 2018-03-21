@@ -21,7 +21,7 @@
 <ion-content no-padding class="summary-content">
   <ion-grid class="main-bg">
     <ion-row no-padding class="presentweather">
-      <ion-col col-3 text-center class="weather-title" no-padding>Bangkok</ion-col>
+      <ion-col col-3 text-center class="weather-title" no-padding>{{cityName | uppercase}}</ion-col>
       <ion-col col-3 class="weather-date" no-padding>
         <ion-row>
           <ion-col class="day" no-padding>
@@ -78,11 +78,11 @@
           <ion-row>
             <ion-col no-padding class="temp">
               <span class="temp-value">
-                {{futureDay1Temp}}°
+                {{futureDay1Temp}}°C
               </span>
-              <span class="max-min">
+              <!-- <span class="max-min">
                 {{futureDay1minT}}°C-{{futureDay1maxT}}°C
-              </span>
+              </span> -->
             </ion-col>
           </ion-row>
         </ion-col>
@@ -101,11 +101,11 @@
           <ion-row>
             <ion-col no-padding class="temp">
               <span class="temp-value">
-                {{futureDay2Temp}}°
+                {{futureDay2Temp}}°C
               </span>
-              <span class="max-min">
+              <!-- <span class="max-min">
                 {{futureDay2minT}}°C-{{futureDay2maxT}}°C
-              </span>
+              </span> -->
             </ion-col>
           </ion-row>
         </ion-col>
@@ -124,11 +124,11 @@
           <ion-row>
             <ion-col no-padding class="temp">
               <span class="temp-value">
-                {{futureDay3Temp}}°
+                {{futureDay3Temp}}°C
               </span>
-              <span class="max-min">
+              <!-- <span class="max-min">
                 {{futureDay3minT}}°C-{{futureDay3maxT}}°C
-              </span>
+              </span> -->
             </ion-col>
           </ion-row>
         </ion-col>
@@ -147,11 +147,11 @@
           <ion-row>
             <ion-col no-padding class="temp">
               <span class="temp-value">
-                {{futureDay4Temp}}°
+                {{futureDay4Temp}}°C
               </span>
-              <span class="max-min">
+              <!-- <span class="max-min">
                 {{futureDay4minT}}°C-{{futureDay4maxT}}°C
-              </span>
+              </span> -->
             </ion-col>
           </ion-row>
         </ion-col> 
