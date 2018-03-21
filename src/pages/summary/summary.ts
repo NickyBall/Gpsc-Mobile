@@ -162,6 +162,9 @@ export class SummaryPage {
                 this.loader = this.loadingCtrl.create({
                     content: "Loading..."
                   });
+                this.powerIcon = "assets/imgs/Elect.png";
+                this.irradiationIcon = "assets/imgs/Sun.png";
+                this.ambientIcon = "assets/imgs/Temp.png";
   }
 
   ionViewWillEnter(){
@@ -175,9 +178,6 @@ export class SummaryPage {
   }
 
   ionViewDidEnter() {
-    this.powerIcon = "assets/imgs/Elect.png";
-    this.irradiationIcon = "assets/imgs/Sun.png";
-    this.ambientIcon = "assets/imgs/Temp.png";
 
     this.powerGenGraph();
     // this.hourlyGraph(1);
@@ -402,12 +402,12 @@ export class SummaryPage {
             // the value axis
             yAxis: {
               min: 0,
-              max: this.powerMax,
+              max: 20,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: this.powerMax / 5,
-              tickInterval: this.powerMax / 5,
+              tickPixelInterval: 5,
+              tickInterval: 5,
               lineWidth: 2,
               labels: {
                   distance: -20,
@@ -418,7 +418,7 @@ export class SummaryPage {
               endOnTick: false,
                 plotBands: [{
                     from: 0,
-                    to: this.powerMax,
+                    to: 20,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [
@@ -431,7 +431,7 @@ export class SummaryPage {
 
             series: [{
                 name: 'Power',
-                data: [this.powerData],
+                data: [(this.powerData > 20) ? 20 : this.powerData],
                 dataLabels: false,
                 tooltip: {
                     valueSuffix: ' MW'
@@ -672,7 +672,7 @@ export class SummaryPage {
               yAxes: [{
                 scaleLabel: {
                   display: true,
-                  labelString: "MW",
+                  labelString: "MWh",
                   fontColor: "grey",
                   fontSize: 14,
                   fontStyle: 'normal',
@@ -800,7 +800,7 @@ export class SummaryPage {
               yAxes: [{
                 scaleLabel: {
                   display: true,
-                  labelString: "MW",
+                  labelString: "MWh",
                   fontColor: "grey",
                   fontSize: 14,
                   fontStyle: 'normal',
@@ -967,7 +967,7 @@ export class SummaryPage {
               yAxes: [{
                 scaleLabel: {
                   display: true,
-                  labelString: "MW",
+                  labelString: "MWh",
                   fontColor: "grey",
                   fontSize: 14,
                   fontStyle: 'normal',
@@ -1156,7 +1156,7 @@ export class SummaryPage {
               yAxes: [{
                 scaleLabel: {
                   display: true,
-                  labelString: "MW",
+                  labelString: "MWh",
                   fontColor: "grey",
                   fontSize: 14,
                   fontStyle: 'normal',

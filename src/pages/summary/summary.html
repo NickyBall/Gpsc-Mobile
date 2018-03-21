@@ -243,7 +243,7 @@
                   </ion-row>
                   <ion-row>
                     <ion-col col-7 text-center class="power-icon">
-                      <img [src]="irradiationIcon" item-start/>
+                      <img [src]="irradiationIcon" item-start class="show"/>
                     </ion-col>
                     <ion-col col-5 class="power-text">
                       <span class="power-value">{{ irradiationData }}</span>
@@ -432,7 +432,7 @@
                       <div class="value-summary" text-center>{{ summaryToday|number }}</div>
                     </ion-col>
                     <ion-col col-3>
-                      <span class="unit-summary">KW/h</span>
+                      <span class="unit-summary">MWh</span>
                     </ion-col>
                   </ion-row>
                   <ion-row margin>
@@ -443,18 +443,18 @@
                       <div class="value-summary" text-center>{{ summaryMTDActual|number }}/{{ summaryMTDPlan|number }}</div>
                     </ion-col>
                     <ion-col col-3>
-                      <span class="unit-summary">KW/h</span>
+                      <span class="unit-summary">MWh</span>
                     </ion-col>
                   </ion-row>
                   <ion-row margin>
-                    <span class="snippet">YID Generation (Actual/Plan)</span>
+                    <span class="snippet">YTD Generation (Actual/Plan)</span>
                   </ion-row>
                   <ion-row class="underline">
                     <ion-col col-9>
                       <div class="value-summary" text-center>{{ summaryYTDActual|number }}/{{ summaryYTDPlan|number }}</div>
                     </ion-col>
                     <ion-col col-3>
-                      <span class="unit-summary">KW/h</span>
+                      <span class="unit-summary">MWh</span>
                     </ion-col>
                   </ion-row>
                   <ion-row class="last-gap"></ion-row>
