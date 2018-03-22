@@ -4,19 +4,19 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class WeatherServiceProvider{
     appId = "&appid=9322366c87ce1ec0be478a7ed59fb417";
-    city = "q=Bangkok";
+    //city = "q=Chanthaburi";
     unit = "&units=metric";
     // apiUrl = "http://api.openweathermap.org/data/2.5/weather?"
     // +this.city+this.appId+this.unit;
-    apiUrl = "http://api.openweathermap.org/data/2.5/forecast?"
-    +this.city+this.appId+this.unit;
+    apiUrl = "http://api.openweathermap.org/data/2.5/forecast?";
+    //+this.city+this.appId+this.unit;
     
     constructor(public http: HttpClient) {
         console.log('Hello WeatherServiceProvider');
       }
-      getWeather() {
+      getWeather(cityName) {
         return new Promise((resolve, reject) => {
-          this.http.get(this.apiUrl).subscribe(res => {
+          this.http.get(this.apiUrl+"q="+cityName+this.appId+this.unit).subscribe(res => {
             resolve(res);
           }, (err) => {
             reject(err);
