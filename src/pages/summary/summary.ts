@@ -120,14 +120,14 @@ export class SummaryPage {
                 if(this.companyName == 'CHPP'){
                   this.logo = "./assets/imgs/chpphead.png";
                   this.cityName = "Chanthaburi"
-                  this.currentDate = new Date();
+                  this.currentDate = new Date(this.plantData.Result.UpdatedAt);
 
                 }
                 else if(this.companyName == 'ICHINOSEKI'){
                   this.logo = "./assets/imgs/ichinosekihead.png";
                   this.cityName = "Ichinoseki"
-                  this.currentDate = new Date();
-                  this.currentDate.setUTCHours(17);
+                  this.currentDate = new Date(this.plantData.Result.UpdatedAt);
+                  this.currentDate.setHours(this.currentDate.getHours()+2);
                 }
 
                 let id = this.plantData.Result.PlantId;
