@@ -267,7 +267,7 @@ export class WorldPage {
 
   selectedCountry(item) {
     if (item.PlantCount > 0) {
-      this.navCtrl.push(this.plantPage, { country: item.CountryName, country_id: item.CountryId});
+      this.navCtrl.push(this.plantPage, { country: item});
     } else {
       alert(item.CountryName + ' has no data');
     }
