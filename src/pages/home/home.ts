@@ -43,8 +43,14 @@ export class HomePage {
       this.plantData = data;
       this.companyName = this.plantData.Result.PlantInfo.CompanyName;
       console.log("home "+this.companyName);
-      this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
+      //this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
       //this.logo = 'assets/imgs/CHPP.png'
+      if(this.companyName == 'CHPP'){
+        this.logo = "./assets/imgs/chpphead.png";
+      }
+      else if(this.companyName == 'ICHINOSEKI'){
+        this.logo = "./assets/imgs/ichinosekihead.png";
+      }
     }); 
   }
 
@@ -52,7 +58,7 @@ export class HomePage {
     // if(this.companyName == 'CHPP'){
     //   this.logo = "./assets/imgs/chpphead.png";
     // }
-    // else{
+    // else if(this.companyName == 'ICHINOSEKI'){
     //   this.logo = "./assets/imgs/ichinosekihead.png";
     // }
 
