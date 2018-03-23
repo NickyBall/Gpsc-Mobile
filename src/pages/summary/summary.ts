@@ -615,7 +615,8 @@ export class SummaryPage {
     }
 
     let dataSrc = this.hourlyData.Result;
-    console.log('check Result res', dataSrc);
+    console.log('check Result res', this.hourlyData);
+    // console.log('check Result res', dataSrc);
     let hourlyDataSrc = undefined;
     let x;
     let y;
@@ -728,7 +729,8 @@ export class SummaryPage {
     let dailyDataSrc = undefined;
     let x;
     let y;
-    let upper = 16;
+
+    let upper = 0;
     let lower = 0;
     let timeLabel = undefined;
     let l = dataSrc.length
@@ -742,15 +744,11 @@ export class SummaryPage {
         let max, min, range, compensate;
         max = Math.max.apply(null, y);
         min = Math.min.apply(null, y);
-        console.log('max ', max);
-        console.log('min ', min);
         range = max-min;
         compensate = range * 50 / 100; // 20% of range
         console.log('comp ', compensate);
         upper = Math.round((max + compensate) * 10)/10
         lower = Math.round((min - compensate) * 10)/10
-        console.log('upper ', upper);
-        console.log('lower ', lower);
 
         timeLabel = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('D MMM');
@@ -759,19 +757,27 @@ export class SummaryPage {
     }
     else{
         y = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/1000000);
+            // return Math.round(y.EnergyValue/1000000);
+            return y.EnergyValue/1000000;
         });
+        
         let max, min, range, compensate;
-        max = Math.max(y);
-        min = Math.min(y);
+        max = Math.max.apply(null, y);
+        min = Math.min.apply(null, y);
+        console.log('max ', max);
+        console.log('min ', min);
         range = max-min;
         compensate = range * 20 / 100; // 20% of range
         upper = Math.round(compensate) + max;
         lower = min - Math.round(compensate);
+        console.log('upper ', upper);
+        console.log('lower ', lower);
 
         x = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('D MMM');
         })
+        console.log('y', y);
+        console.log('x', x);
     }
 
     let config = {
@@ -807,11 +813,11 @@ export class SummaryPage {
                   fontFamily: 'Lata'
                 },
                 ticks: {
-                    // beginAtZero: true,
+                    // beginAtZero: isZero,
                     min: lower,
                     max: upper,
                     fontSize: 10,
-                    stepSize: 0.2
+                    // stepSize: 0.2
                 }
               }],
               },
@@ -1040,6 +1046,7 @@ export class SummaryPage {
     }
 
     let dataSrc = this.yearlyData.Result;
+    console.log('result', this.yearlyData);
     let yearlyDataSrc = undefined;
     let yearlyDataSrcTarget = undefined;
     let x, y, yTarget, chooseMax, chooseMin, upper, lower;
