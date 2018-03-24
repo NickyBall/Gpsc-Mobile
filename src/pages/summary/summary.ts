@@ -90,6 +90,7 @@ export class SummaryPage {
   maxTempList: any;
   currentTime: any;
   currentDate: any;
+  lastestUpdate: any;
   futureList:any;
   testArr: any[];
   currentIconWeather: any;
@@ -120,14 +121,24 @@ export class SummaryPage {
                 if(this.companyName == 'CHPP'){
                   this.logo = "./assets/imgs/chpphead.png";
                   this.cityName = "Chanthaburi"
-                  this.currentDate = new Date(this.plantData.Result.UpdatedAt);
-
+                  //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
+                  this.currentDate = new Date();
+                  this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
+                  console.log("currentDate:"+this.currentDate);
+                  console.log("lastestUpdate:"+this.lastestUpdate);
                 }
                 else if(this.companyName == 'ICHINOSEKI'){
                   this.logo = "./assets/imgs/ichinosekihead.png";
                   this.cityName = "Ichinoseki"
-                  this.currentDate = new Date(this.plantData.Result.UpdatedAt);
+                  //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
+                  //this.currentDate.setHours(this.currentDate.getHours()+2);
+                  this.currentDate = new Date();
+                  //this.currentDate.setUTCHours(17);
                   this.currentDate.setHours(this.currentDate.getHours()+2);
+                  this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
+                  this.lastestUpdate.setHours(this.lastestUpdate.getHours()+2);
+                  console.log("currentDate:"+this.currentDate);
+                  console.log("lastestUpdate:"+this.lastestUpdate);
                 }
 
                 let id = this.plantData.Result.PlantId;
