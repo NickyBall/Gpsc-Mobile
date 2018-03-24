@@ -33,6 +33,7 @@ export class PlantPage {
   loader: any;
   titleLabel: string;
   countryId: string;
+  country: any;
   constructor (
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -42,9 +43,9 @@ export class PlantPage {
     public viewCtrl:ViewController )
   {
     this.viewCtrl = viewCtrl;
-
-    this.titleLabel = this.navParams.get('country');
-    this.countryId = this.navParams.get('country_id');
+    this.country = this.navParams.get('country');
+    this.titleLabel = this.country.CountryName;
+    this.countryId = this.country.CountryId
     this.loader = this.loadingCtrl.create({
       content: "Loading Power Plant..."
     });
@@ -149,8 +150,8 @@ export class PlantPage {
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
-          lat: 15.87,
-          lng: 100.9925
+          lat: this.country.Location.Lat,
+          lng: this.country.Location.Lng
         },
         zoom: 5,
         tilt: 0
