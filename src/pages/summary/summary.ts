@@ -116,12 +116,13 @@ export class SummaryPage {
                 this.viewCtrl = viewCtrl;
 
                 this.plantData = this.navParams.get('plantData');
+                this.logo = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/" + this.plantData.Result.PlantInfo.CompanyLogo;
                 // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
                 //this.logo = 'assets/imgs/CHPP.png'
                 this.companyName = this.plantData.Result.PlantInfo.CompanyName;
-                console.log("cityName is:"+this.companyName);
+                // console.log("cityName is:"+this.companyName);
                 if(this.companyName == 'CHPP'){
-                  this.logo = "./assets/imgs/chpphead.png";
+                //   this.logo = "./assets/imgs/chpphead.png";
                   this.cityName = "Chanthaburi"
                   //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
                   this.currentDate = new Date();
@@ -130,7 +131,7 @@ export class SummaryPage {
                   console.log("lastestUpdate:"+this.lastestUpdate);
                 }
                 else if(this.companyName == 'ICHINOSEKI'){
-                  this.logo = "./assets/imgs/ichinosekihead.png";
+                //   this.logo = "./assets/imgs/ichinosekihead.png";
                   this.cityName = "Ichinoseki"
                   //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
                   //this.currentDate.setHours(this.currentDate.getHours()+2);
