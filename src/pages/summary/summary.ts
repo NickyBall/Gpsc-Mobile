@@ -9,6 +9,7 @@ import { HourlyEnergyProvider } from '../../providers/hourly-energy/hourly-energ
 import { DailyEnergyProvider } from '../../providers/daily-energy/daily-energy';
 import { MonthlyEnergyProvider } from '../../providers/monthly-energy/monthly-energy';
 import { YearlyEnergyProvider } from '../../providers/yearly-energy/yearly-energy';
+import { SharedService } from '../../providers/SharedService';
 
 HighchartsMore(HighCharts);
 
@@ -109,7 +110,8 @@ export class SummaryPage {
             public monthlyEnergyProvider: MonthlyEnergyProvider,
             public yearlyEnergyProvider: YearlyEnergyProvider,
             public loadingCtrl: LoadingController,
-            public viewCtrl:ViewController) {
+            public viewCtrl:ViewController,
+            public shared: SharedService) {
 
                 this.viewCtrl = viewCtrl;
 
@@ -192,7 +194,8 @@ export class SummaryPage {
 
     this.powerGenGraph();
     // this.hourlyGraph(1);
-    this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
+    //this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
+    this.powerData = Math.floor(parseFloat(this.shared.CapacitySummary) / 100000) / 10;
     this.powerMax = Math.ceil(parseInt(this.powerData) * (Math.random() * 3 + 3));
     this.irradiationData = Math.floor(parseFloat(this.plantData.Result.Irradiation) / 100000) / 10;
     this.irradiationMax = Math.ceil(parseInt(this.irradiationData) * (Math.random() * 3 + 3))

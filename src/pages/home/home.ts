@@ -45,6 +45,7 @@ export class HomePage {
       this.plantData = data;
       console.log(this.plantData.Result.PlantInfo.PlantLayoutImages)
       this.shared.BluePrintPictureList = this.plantData.Result.PlantInfo.PlantLayoutImages;
+      this.shared.CapacitySummary = this.plantData.Result.PlantInfo.Capacity;
       this.companyName = this.plantData.Result.PlantInfo.CompanyName;
       console.log("home "+this.companyName);
       //this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
