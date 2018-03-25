@@ -198,7 +198,8 @@ export class SummaryPage {
     //this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
     this.powerData = Math.floor(parseFloat(this.shared.CapacitySummary) / 100000) / 10;
     this.powerMax = Math.ceil(parseInt(this.powerData) * (Math.random() * 3 + 3));
-    this.irradiationData = Math.floor(parseFloat(this.plantData.Result.Irradiation) / 100000) / 10;
+    // this.irradiationData = Math.floor(parseFloat(this.plantData.Result.Irradiation) / 100000) / 10;
+    this.irradiationData = parseFloat(this.plantData.Result.Irradiation).toFixed(1);
     this.irradiationMax = Math.ceil(parseInt(this.irradiationData) * (Math.random() * 3 + 3))
     this.ambientTempData = this.plantData.Result.AMB_Temp;
   }
