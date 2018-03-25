@@ -38,21 +38,12 @@ export class InfoPage {
     this.plantData = this.navParams.get('plantData');
 
     this.companyName = this.plantData.Result.PlantInfo.CompanyName;
-    console.log("home "+this.companyName);
-    if(this.companyName == 'CHPP'){
-      this.logo = "./assets/imgs/chpphead.png";
-      this.pic1 = "./assets/imgs/chppinfo/info1.jpg";
-      this.pic2 = 'assets/imgs/chppinfo/info2.jpg';
-      this.pic3 = 'assets/imgs/chppinfo/info3.jpg';
-    }
-    else{
-      this.logo = "./assets/imgs/ichinosekihead.png";
-      this.pic1 = "./assets/imgs/ichiinfo/info1.jpg";
-      this.pic2 = 'assets/imgs/ichiinfo/info2.jpg';
-      this.pic3 = 'assets/imgs/ichiinfo/info3.jpg';
-    }
-    // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
-    //this.logo = 'assets/imgs/CHPP.png';
+
+    this.logo = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/" + this.plantData.Result.PlantInfo.CompanyLogo;
+    this.pic1 = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/" + this.plantData.Result.PlantInfo.GeneralInfoImages[0];
+    this.pic2 = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/" + this.plantData.Result.PlantInfo.GeneralInfoImages[1];
+    this.pic3 = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/" + this.plantData.Result.PlantInfo.GeneralInfoImages[2];
+
     let temp = this.plantData.Result.PlantInfo.Capacity;
     temp /= 1000000;
     // this.power = Math.round(temp);
@@ -71,16 +62,7 @@ export class InfoPage {
     let ppaYearNow = moment().year();
     let diffYear = ppaYear - codYear;
     this.ppaData = diffYear + ' Years (End ' + ppaYear + ')';
-    console.log(diffYear);
 
-    // this.pic1 = 'assets/imgs/plantInfo/pic2.png';
-    // this.pic2 = 'assets/imgs/plantInfo/pic1.png';
-    // this.pic3 = 'assets/imgs/plantInfo/pic4.png';
-
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InfoPage');
   }
 
   ionViewWillEnter(){

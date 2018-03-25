@@ -27,16 +27,17 @@ export class LayoutPage {
 
 
     this.plantData = this.navParams.get('plantData');
+    this.logo = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/" + this.plantData.Result.PlantInfo.CompanyLogo;
     // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
     //this.logo = 'assets/imgs/CHPP.png'
     this.companyName = this.plantData.Result.PlantInfo.CompanyName;
     console.log("home "+this.companyName);
-    if(this.companyName == 'CHPP'){
-      this.logo = "./assets/imgs/chpphead.png";
-    }
-    else{
-      this.logo = "./assets/imgs/ichinosekihead.png";
-    }
+    // if(this.companyName == 'CHPP'){
+    //   this.logo = "./assets/imgs/chpphead.png";
+    // }
+    // else{
+    //   this.logo = "./assets/imgs/ichinosekihead.png";
+    // }
   }
 
   ionViewDidLoad() {
