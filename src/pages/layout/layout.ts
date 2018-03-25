@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, ViewController, NavController, NavParams } from 'ionic-angular';
+import { SharedService } from '../../providers/SharedService';
 
 /**
  * Generated class for the LayoutPage page.
@@ -18,13 +19,16 @@ export class LayoutPage {
   plantData: any;
   logo: string;
   companyName: string = undefined;
+  companyBluePrintList: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    public viewCtrl:ViewController) {
+    public viewCtrl:ViewController,
+    public shared: SharedService) {
 
+    this.companyBluePrintList = this.shared.BluePrintPictureList;
+    
     this.viewCtrl = viewCtrl;
-
 
     this.plantData = this.navParams.get('plantData');
     // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
@@ -44,7 +48,7 @@ export class LayoutPage {
   }
   
   ionViewWillEnter(){
-    console.log("setting BtText");
+    //console.log("setting BtText");
     this.viewCtrl.setBackButtonText('');
   }
 }
