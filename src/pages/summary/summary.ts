@@ -53,11 +53,16 @@ export class SummaryPage {
 
   generationSummaryChart: any;
   generationSummaryData: any;
-  summaryToday: number = 234432
-  summaryMTDActual: number = 7654098;
-  summaryMTDPlan: number = 10000000;
-  summaryYTDActual: number = 18324394;
-  summaryYTDPlan: number = 20000000;
+//   summaryToday: number = 234432
+//   summaryMTDActual: number = 7654098;
+//   summaryMTDPlan: number = 10000000;
+//   summaryYTDActual: number = 18324394;
+//   summaryYTDPlan: number = 20000000;
+  summaryToday: any;
+  summaryMTDActual: any;
+  summaryMTDPlan: any;
+  summaryYTDActual: any;
+  summaryYTDPlan: any;
 
   cityName: any;
   currentTemp: any;
@@ -156,6 +161,7 @@ export class SummaryPage {
                 this.dailyEnergyProvider.requestDailyEnergy(id)
                 .then(data => {
                     this.dialyData = data;
+                    console.log("callDailyProviderxxx");
                 }).catch(error => {
                     console.log(error);
                 });
@@ -189,19 +195,24 @@ export class SummaryPage {
   ionViewDidLoad(){
       this.loader.present();
       this.getWeather();
+      //this.generationSummary();
+    //   console.log("daily foreach");
+    //   console.log(this.dialyData.Result);
   }
 
   ionViewDidEnter() {
 
     this.powerGenGraph();
     // this.hourlyGraph(1);
-    //this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
-    this.powerData = Math.floor(parseFloat(this.shared.CapacitySummary) / 100000) / 10;
+    this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
+    //this.powerData = Math.floor(parseFloat(this.shared.CapacitySummary) / 100000) / 10;
     this.powerMax = Math.ceil(parseInt(this.powerData) * (Math.random() * 3 + 3));
     // this.irradiationData = Math.floor(parseFloat(this.plantData.Result.Irradiation) / 100000) / 10;
-    this.irradiationData = parseFloat(this.plantData.Result.Irradiation).toFixed(1);
+    //this.irradiationData = parseFloat(this.plantData.Result.Irradiation).toFixed(1);
+    this.irradiationData = parseFloat(this.plantData.Result.Irradiation);
     this.irradiationMax = Math.ceil(parseInt(this.irradiationData) * (Math.random() * 3 + 3))
     this.ambientTempData = this.plantData.Result.AMB_Temp;
+    this.generationSummary();
   }
 
   getWeather(){
@@ -381,7 +392,7 @@ export class SummaryPage {
         //#endregion
 
 
-        this.loader.dismiss();
+        //this.loader.dismiss();
     });
 }
 
@@ -464,6 +475,8 @@ export class SummaryPage {
   }
 
   irradiationGraph() {
+      console.log("irradiationData api:");
+      console.log(this.irradiationData);
       setTimeout(() => {
         this.irradiationChart = HighCharts.chart('irradiation-chart', {
 
@@ -525,7 +538,8 @@ export class SummaryPage {
 
             series: [{
                 name: 'Irradiation',
-                data: [this.irradiationData],
+                //data: [(this.irradiationData > 5) ? 5 : this.irradiationData],
+                data: [this.irradiationData > 5 ? 5 : this.irradiationData],
                 dataLabels: false,
                 tooltip: {
                     valueSuffix: ' W/M<sup>2</sup>'
@@ -604,6 +618,7 @@ export class SummaryPage {
 
             series: [{
                 name: 'Ambient',
+                
                 data: [this.ambientTempData],
                 dataLabels: false,
                 tooltip: {
@@ -736,11 +751,11 @@ export class SummaryPage {
   }
 
   dailyGraph(type: number){
+    console.log("Call dailyGraph");
     if(this.dialy){
         this.dialy.destroy();
         this.selectedEnergySection = 'dailyTab';
     }
-
     let dataSrc = this.dialyData.Result;
     let dailyDataSrc = undefined;
     let x;
@@ -770,6 +785,7 @@ export class SummaryPage {
             return moment(x.TimeStamp).format('D MMM');
         })
         x = timeLabel.slice(l-7, l);
+        console.log("time:"+x);
     }
     else{
         y = dataSrc.map(y =>{
@@ -1244,6 +1260,61 @@ export class SummaryPage {
     setTimeout(() => {
         this.yearly = new Chart(this.yearlyCanvas.nativeElement, config);
     }, 100);
+  }
+
+  generationSummary(){
+
+    // summaryToday: any;
+    // summaryMTDActual: any;
+    // summaryMTDPlan: any;
+    // summaryYTDActual: any;
+    // summaryYTDPlan: any;
+
+      console.log("generationSummary Called");
+      //#region Daily
+      console.log(this.dialyData);
+      if(this.dialyData.Result.length != 0){
+        let responseDaily = JSON.stringify(this.dialyData); // Convert {any} data to {string}
+        let jsonDaily = JSON.parse(responseDaily);
+        //console.log(jsonDaily["Result"][this.dialyData.Result.length-1]["EnergyValue"]);
+        //this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
+        this.summaryToday = Math.floor(parseFloat(jsonDaily["Result"][this.dialyData.Result.length-1]["EnergyValue"]) / 100000) / 10;
+      }
+      else{
+          this.summaryToday = 0;
+      }
+      //#endregion
+
+      //#region Montyly
+      console.log(this.monthlyData);
+      if(this.monthlyData.Result.length != 0){
+        let responseMontyly = JSON.stringify(this.monthlyData);
+        let jsonMontyly = JSON.parse(responseMontyly);
+        this.summaryMTDActual = Math.floor(parseFloat(jsonMontyly["Result"][parseInt(moment(this.lastestUpdate).format('M'))-1]["EnergyValue"]) / 100000) / 10;
+        this.summaryMTDPlan = Math.floor(parseFloat(jsonMontyly["Result"][parseInt(moment(this.lastestUpdate).format('M'))-1]["Target"]) / 100000) / 10;
+        //console.log(this.summaryMTDActual);
+      }
+      else{
+        this.summaryMTDActual = 0;
+        this.summaryMTDPlan = 0;
+      }
+      //#endregion
+
+      //#region Yearly
+      console.log(this.yearlyData);
+      if(this.yearlyData.Result.length != 0){
+        let responseYearly = JSON.stringify(this.yearlyData);
+        let jsonYearly = JSON.parse(responseYearly);
+        this.summaryYTDActual = Math.floor(parseFloat(jsonYearly["Result"]["0"]["EnergyValue"]) / 100000) / 10;
+        this.summaryYTDPlan = Math.floor(parseFloat(jsonYearly["Result"]["0"]["Target"]) / 100000) / 10;
+      }
+      else{
+        this.summaryYTDActual = 0;
+        this.summaryYTDPlan = 0;
+      }
+      //#endregion
+      console.log(moment(this.lastestUpdate).format('MMM'));
+      this.loader.dismiss();
   }
 
 }
