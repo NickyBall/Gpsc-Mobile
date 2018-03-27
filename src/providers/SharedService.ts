@@ -8,6 +8,15 @@ export class SharedService {
   AccessToken: string;
   isRunOnDevice: boolean;
 
+  // BluePrintList Picture form GetPlantInfo
+  BluePrintPictureList: any;
+
+  // Lastest Weather
+  LastestWeather: any;
+
+  // Capacity of Company
+  CapacitySummary: any;
+
   constructor() {
 
     // this.BaseUrl = "http://pms-api-dev.azurewebsites.net/";

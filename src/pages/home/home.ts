@@ -4,6 +4,7 @@ import { InfoPage } from '../info/info';
 import { LayoutPage } from '../layout/layout';
 import { SummaryPage } from '../summary/summary';
 import { PlantProvider } from '../../providers/plant/plant';
+import { SharedService } from '../../providers/SharedService';
 
 @Component({
   selector: 'page-home',
@@ -30,7 +31,8 @@ export class HomePage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public plantProvider: PlantProvider,
-              public viewCtrl:ViewController) {
+              public viewCtrl:ViewController,
+              public shared: SharedService) {
 
     let id = this.navParams.get('plantId');
     // let id = 5;
@@ -41,16 +43,20 @@ export class HomePage {
     .then(data => {
      
       this.plantData = data;
+      console.log(this.plantData.Result.PlantInfo.PlantLayoutImages)
+      this.shared.BluePrintPictureList = this.plantData.Result.PlantInfo.PlantLayoutImages;
+      this.shared.CapacitySummary = this.plantData.Result.PlantInfo.Capacity;
       this.companyName = this.plantData.Result.PlantInfo.CompanyName;
       console.log("home "+this.companyName);
+      this.logo = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/" + this.plantData.Result.PlantInfo.CompanyLogo;
       //this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
       //this.logo = 'assets/imgs/CHPP.png'
-      if(this.companyName == 'CHPP'){
-        this.logo = "./assets/imgs/chpphead.png";
-      }
-      else if(this.companyName == 'ICHINOSEKI'){
-        this.logo = "./assets/imgs/ichinosekihead.png";
-      }
+      // if(this.companyName == 'CHPP'){
+      //   this.logo = "./assets/imgs/chpphead.png";
+      // }
+      // else if(this.companyName == 'ICHINOSEKI'){
+      //   this.logo = "./assets/imgs/ichinosekihead.png";
+      // }
     }); 
   }
 

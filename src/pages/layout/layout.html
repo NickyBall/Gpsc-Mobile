@@ -27,11 +27,14 @@
 
 <ion-content padding>
   <ion-slides pager>
-    <ion-slide>
+    <!-- <ion-slide>
       <img src="./assets/imgs/blueprint1.jpg" imageViewer/>
     </ion-slide>
     <ion-slide>
       <img src="./assets/imgs/blueprint2.jpg" imageViewer/>
+    </ion-slide> -->
+    <ion-slide *ngFor="let item of companyBluePrintList">
+      <img src="https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/{{item}}" imageViewer/>
     </ion-slide>
   </ion-slides>
 </ion-content>

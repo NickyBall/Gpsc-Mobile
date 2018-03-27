@@ -9,6 +9,7 @@ import { HourlyEnergyProvider } from '../../providers/hourly-energy/hourly-energ
 import { DailyEnergyProvider } from '../../providers/daily-energy/daily-energy';
 import { MonthlyEnergyProvider } from '../../providers/monthly-energy/monthly-energy';
 import { YearlyEnergyProvider } from '../../providers/yearly-energy/yearly-energy';
+import { SharedService } from '../../providers/SharedService';
 
 HighchartsMore(HighCharts);
 
@@ -90,6 +91,7 @@ export class SummaryPage {
   maxTempList: any;
   currentTime: any;
   currentDate: any;
+  lastestUpdate: any;
   futureList:any;
   testArr: any[];
   currentIconWeather: any;
@@ -108,26 +110,38 @@ export class SummaryPage {
             public monthlyEnergyProvider: MonthlyEnergyProvider,
             public yearlyEnergyProvider: YearlyEnergyProvider,
             public loadingCtrl: LoadingController,
-            public viewCtrl:ViewController) {
+            public viewCtrl:ViewController,
+            public shared: SharedService) {
 
                 this.viewCtrl = viewCtrl;
 
                 this.plantData = this.navParams.get('plantData');
+                this.logo = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/" + this.plantData.Result.PlantInfo.CompanyLogo;
                 // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
                 //this.logo = 'assets/imgs/CHPP.png'
                 this.companyName = this.plantData.Result.PlantInfo.CompanyName;
-                console.log("cityName is:"+this.companyName);
+                // console.log("cityName is:"+this.companyName);
                 if(this.companyName == 'CHPP'){
-                  this.logo = "./assets/imgs/chpphead.png";
+                //   this.logo = "./assets/imgs/chpphead.png";
                   this.cityName = "Chanthaburi"
-                  this.currentDate = new Date(this.plantData.Result.UpdatedAt);
-
+                  //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
+                  this.currentDate = new Date();
+                  this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
+                  console.log("currentDate:"+this.currentDate);
+                  console.log("lastestUpdate:"+this.lastestUpdate);
                 }
                 else if(this.companyName == 'ICHINOSEKI'){
-                  this.logo = "./assets/imgs/ichinosekihead.png";
+                //   this.logo = "./assets/imgs/ichinosekihead.png";
                   this.cityName = "Ichinoseki"
-                  this.currentDate = new Date(this.plantData.Result.UpdatedAt);
+                  //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
+                  //this.currentDate.setHours(this.currentDate.getHours()+2);
+                  this.currentDate = new Date();
+                  //this.currentDate.setUTCHours(17);
                   this.currentDate.setHours(this.currentDate.getHours()+2);
+                  this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
+                  this.lastestUpdate.setHours(this.lastestUpdate.getHours()+2);
+                  console.log("currentDate:"+this.currentDate);
+                  console.log("lastestUpdate:"+this.lastestUpdate);
                 }
 
                 let id = this.plantData.Result.PlantId;
@@ -181,9 +195,11 @@ export class SummaryPage {
 
     this.powerGenGraph();
     // this.hourlyGraph(1);
-    this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
+    //this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
+    this.powerData = Math.floor(parseFloat(this.shared.CapacitySummary) / 100000) / 10;
     this.powerMax = Math.ceil(parseInt(this.powerData) * (Math.random() * 3 + 3));
-    this.irradiationData = Math.floor(parseFloat(this.plantData.Result.Irradiation) / 100000) / 10;
+    // this.irradiationData = Math.floor(parseFloat(this.plantData.Result.Irradiation) / 100000) / 10;
+    this.irradiationData = parseFloat(this.plantData.Result.Irradiation).toFixed(1);
     this.irradiationMax = Math.ceil(parseInt(this.irradiationData) * (Math.random() * 3 + 3))
     this.ambientTempData = this.plantData.Result.AMB_Temp;
   }
