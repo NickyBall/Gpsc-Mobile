@@ -51,7 +51,7 @@ page-summary {
                     ion-segment-button{
                         height: 4vh !important;
                         color: rgb(75, 75, 75) !important;
-                        font-size: 1.3vh !important;
+                        font-size: 1.85vh !important;
                         // min-height: 30px;
                         line-height: 1.2rem !important;
                         text-transform: none !important;
@@ -143,18 +143,18 @@ page-summary {
         }
 
         .power-text{
+            margin-top: -50%;
             position: relative;
-            top: -7vh;
             left: 5%;
             margin-top: -50%;
             .power-unit{
-                font-size: 3vh;
+                font-size: 3.5vh;
                 color: rgb(161, 161, 161);
                 position: relative;
                 left: 1vw;
             }
             .power-value{
-                font-size: 5vh;
+                font-size: 5.5vh;
                 background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -163,10 +163,9 @@ page-summary {
 
         .power-icon{
             z-index: 10;
-            position: relative;
-            top: -23vh;
+             margin-top: -38%;
             img{
-             height: 6vh;
+             height: 7.5vh;
              position: relative;
              right: -8%;
              animation: fadein 1s;
@@ -293,13 +292,14 @@ page-summary {
             height: 8vh;
             background: linear-gradient(to right, #8dbde8 , #98e9ea);
             .weather-title{
-                
-                font-size: 1.5vh;
+                //font-size: 2.25vh;
+                font-size: 30px;
+                font-size: 3.5vw;
                 padding-top:1%;
             }
             .weather-date{
                 .day{
-                    font-size: 2vh;
+                    font-size: 2.25vh;
                     padding-top:4%;
                 }
                 .time{
