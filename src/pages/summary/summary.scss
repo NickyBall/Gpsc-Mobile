@@ -163,7 +163,8 @@ page-summary {
 
         .power-icon{
             z-index: 10;
-             margin-top: -38%;
+            position: relative;
+            top: -20.5vh;
             img{
              height: 7.5vh;
              position: relative;
