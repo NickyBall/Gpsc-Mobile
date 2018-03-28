@@ -97,6 +97,7 @@ export class SummaryPage {
   currentTime: any;
   currentDate: any;
   lastestUpdate: any;
+  timezoneApi: any;
   futureList:any;
   testArr: any[];
   currentIconWeather: any;
@@ -125,6 +126,9 @@ export class SummaryPage {
                 // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
                 //this.logo = 'assets/imgs/CHPP.png'
                 this.companyName = this.plantData.Result.PlantInfo.CompanyName;
+                console.log("testPT");
+                console.log(this.plantData.Result);
+                console.log("endtestPT")
                 // console.log("cityName is:"+this.companyName);
                 if(this.companyName == 'CHPP'){
                 //   this.logo = "./assets/imgs/chpphead.png";
@@ -132,8 +136,10 @@ export class SummaryPage {
                   //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
                   this.currentDate = new Date();
                   this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
+                  this.timezoneApi = this.plantData.Result.TimeZone;
                   console.log("currentDate:"+this.currentDate);
                   console.log("lastestUpdate:"+this.lastestUpdate);
+                  console.log(this.timezoneApi);
                 }
                 else if(this.companyName == 'ICHINOSEKI'){
                 //   this.logo = "./assets/imgs/ichinosekihead.png";
@@ -144,9 +150,11 @@ export class SummaryPage {
                   //this.currentDate.setUTCHours(17);
                   this.currentDate.setHours(this.currentDate.getHours()+2);
                   this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
-                  this.lastestUpdate.setHours(this.lastestUpdate.getHours()+2);
+                  //this.lastestUpdate.setHours(this.lastestUpdate.getHours()+2);
+                  this.timezoneApi = this.plantData.Result.TimeZone;
                   console.log("currentDate:"+this.currentDate);
                   console.log("lastestUpdate:"+this.lastestUpdate);
+                  console.log(this.timezoneApi);
                 }
 
                 let id = this.plantData.Result.PlantId;
