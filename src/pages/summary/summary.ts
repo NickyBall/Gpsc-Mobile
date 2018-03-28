@@ -32,15 +32,22 @@ export class SummaryPage {
   powerData: any;
   powerIcon: string;
   powerMax: number;
+  powerMin: number;
+  powerScale: number;
 
   irradiationChart: any;
   irradiationData: any;
   irradiationIcon: string;
   irradiationMax: number;
+  irradiationMin: number;
+  irradiationScale: number;
 
   ambientTemperatureChart: any;
   ambientTempData: any;
   ambientIcon: string;
+  ambientMax: number;
+  ambientMin: number;
+  ambientScale: number;
 
   hourly: any;
   hourlyData: any;
@@ -121,6 +128,7 @@ export class SummaryPage {
                 this.viewCtrl = viewCtrl;
 
                 this.plantData = this.navParams.get('plantData');
+                console.log('data', this.plantData);
                 this.logo = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/" + this.plantData.Result.PlantInfo.CompanyLogo;
                 // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
                 //this.logo = 'assets/imgs/CHPP.png'
@@ -206,12 +214,22 @@ export class SummaryPage {
     // this.hourlyGraph(1);
     this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
     //this.powerData = Math.floor(parseFloat(this.shared.CapacitySummary) / 100000) / 10;
-    this.powerMax = Math.ceil(parseInt(this.powerData) * (Math.random() * 3 + 3));
     // this.irradiationData = Math.floor(parseFloat(this.plantData.Result.Irradiation) / 100000) / 10;
     //this.irradiationData = parseFloat(this.plantData.Result.Irradiation).toFixed(1);
+    this.powerMax = parseInt(this.plantData.Result.PowerGenPeriod.Max);
+    this.powerMin = parseInt(this.plantData.Result.PowerGenPeriod.Min);
+    this.powerScale = parseInt(this.plantData.Result.PowerGenPeriod.Scale);
+
     this.irradiationData = parseFloat(this.plantData.Result.Irradiation);
-    this.irradiationMax = Math.ceil(parseInt(this.irradiationData) * (Math.random() * 3 + 3))
+    this.irradiationMax = parseInt(this.plantData.Result.IrradiationPeriod.Max);
+    this.irradiationMin = parseInt(this.plantData.Result.IrradiationPeriod.Min);
+    this.irradiationScale = parseInt(this.plantData.Result.IrradiationPeriod.Scale);
+
     this.ambientTempData = this.plantData.Result.AMB_Temp;
+    this.ambientMax = parseInt(this.plantData.Result.AMB_TempPeriod.Max);
+    this.ambientMin = parseInt(this.plantData.Result.AMB_TempPeriod.Min);
+    this.ambientScale = parseInt(this.plantData.Result.AMB_TempPeriod.Scale);
+
     this.generationSummary();
   }
 
@@ -428,13 +446,13 @@ export class SummaryPage {
 
             // the value axis
             yAxis: {
-              min: 0,
-              max: 20,
+              min: this.powerMin,
+              max: this.powerMax,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: 5,
-              tickInterval: 5,
+              tickPixelInterval: this.powerScale,
+              tickInterval: this.powerScale,
               lineWidth: 2,
               labels: {
                   distance: -20,
@@ -444,8 +462,8 @@ export class SummaryPage {
               minorTickLength: 5,
               endOnTick: false,
                 plotBands: [{
-                    from: 0,
-                    to: 20,
+                    from: this.powerMin,
+                    to: this.powerMax,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [
@@ -507,13 +525,13 @@ export class SummaryPage {
 
             // the value axis
             yAxis: {
-              min: 0,
-              max: 1000,
+              min: this.irradiationMin,
+              max: this.irradiationMax,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: 200,
-              tickInterval: 200,
+              tickPixelInterval: this.irradiationScale,
+              tickInterval: this.irradiationScale,
               lineWidth: 2,
               labels: {
                   distance: -25,
@@ -523,8 +541,8 @@ export class SummaryPage {
               minorTickLength: 5,
               endOnTick: false,
                 plotBands: [{
-                    from: 0,
-                    to: 1000,
+                    from: this.irradiationMin,
+                    to: this.irradiationMax,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [
@@ -587,13 +605,13 @@ export class SummaryPage {
 
             // the value axis
             yAxis: {
-              min: -10,
-              max: 40,
+              min: this.ambientMin,
+              max: this.ambientMax,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: 10,
-              tickInterval: 10,
+              tickPixelInterval: this.ambientScale,
+              tickInterval: this.ambientScale,
               lineWidth: 2,
               labels: {
                   distance: -20,
@@ -603,8 +621,8 @@ export class SummaryPage {
               minorTickLength: 5,
               endOnTick: false,
                 plotBands: [{
-                    from: -10,
-                    to: 40,
+                    from: this.ambientMin,
+                    to: this.ambientMax,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [
