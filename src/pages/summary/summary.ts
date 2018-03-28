@@ -475,8 +475,7 @@ export class SummaryPage {
   }
 
   irradiationGraph() {
-      console.log("irradiationData api:");
-      console.log(this.irradiationData);
+      let irrData = Math.round(this.irradiationData);
       setTimeout(() => {
         this.irradiationChart = HighCharts.chart('irradiation-chart', {
 
@@ -509,12 +508,12 @@ export class SummaryPage {
             // the value axis
             yAxis: {
               min: 0,
-              max: 5,
+              max: 1000,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: 1,
-              tickInterval: 1,
+              tickPixelInterval: 200,
+              tickInterval: 200,
               lineWidth: 2,
               labels: {
                   distance: -25,
@@ -525,7 +524,7 @@ export class SummaryPage {
               endOnTick: false,
                 plotBands: [{
                     from: 0,
-                    to: 5,
+                    to: 1000,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [
@@ -539,7 +538,7 @@ export class SummaryPage {
             series: [{
                 name: 'Irradiation',
                 //data: [(this.irradiationData > 5) ? 5 : this.irradiationData],
-                data: [this.irradiationData > 5 ? 5 : this.irradiationData],
+                data: [irrData],
                 dataLabels: false,
                 tooltip: {
                     valueSuffix: ' W/M<sup>2</sup>'
