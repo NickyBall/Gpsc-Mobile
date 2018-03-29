@@ -32,15 +32,22 @@ export class SummaryPage {
   powerData: any;
   powerIcon: string;
   powerMax: number;
+  powerMin: number;
+  powerScale: number;
 
   irradiationChart: any;
   irradiationData: any;
   irradiationIcon: string;
   irradiationMax: number;
+  irradiationMin: number;
+  irradiationScale: number;
 
   ambientTemperatureChart: any;
   ambientTempData: any;
   ambientIcon: string;
+  ambientMax: number;
+  ambientMin: number;
+  ambientScale: number;
 
   hourly: any;
   hourlyData: any;
@@ -53,11 +60,16 @@ export class SummaryPage {
 
   generationSummaryChart: any;
   generationSummaryData: any;
-  summaryToday: number = 234432
-  summaryMTDActual: number = 7654098;
-  summaryMTDPlan: number = 10000000;
-  summaryYTDActual: number = 18324394;
-  summaryYTDPlan: number = 20000000;
+//   summaryToday: number = 234432
+//   summaryMTDActual: number = 7654098;
+//   summaryMTDPlan: number = 10000000;
+//   summaryYTDActual: number = 18324394;
+//   summaryYTDPlan: number = 20000000;
+  summaryToday: any;
+  summaryMTDActual: any;
+  summaryMTDPlan: any;
+  summaryYTDActual: any;
+  summaryYTDPlan: any;
 
   cityName: any;
   currentTemp: any;
@@ -92,6 +104,7 @@ export class SummaryPage {
   currentTime: any;
   currentDate: any;
   lastestUpdate: any;
+  timezoneApi: any;
   futureList:any;
   testArr: any[];
   currentIconWeather: any;
@@ -116,10 +129,14 @@ export class SummaryPage {
                 this.viewCtrl = viewCtrl;
 
                 this.plantData = this.navParams.get('plantData');
+                console.log('data', this.plantData);
                 this.logo = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/" + this.plantData.Result.PlantInfo.CompanyLogo;
                 // this.logo = 'http://pms-api-dev.azurewebsites.net/' + this.plantData.Result.PlantInfo.CompanyLogo;
                 //this.logo = 'assets/imgs/CHPP.png'
                 this.companyName = this.plantData.Result.PlantInfo.CompanyName;
+                console.log("testPT");
+                console.log(this.plantData.Result);
+                console.log("endtestPT")
                 // console.log("cityName is:"+this.companyName);
                 if(this.companyName == 'CHPP'){
                 //   this.logo = "./assets/imgs/chpphead.png";
@@ -127,8 +144,10 @@ export class SummaryPage {
                   //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
                   this.currentDate = new Date();
                   this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
+                  this.timezoneApi = this.plantData.Result.TimeZone;
                   console.log("currentDate:"+this.currentDate);
                   console.log("lastestUpdate:"+this.lastestUpdate);
+                  console.log(this.timezoneApi);
                 }
                 else if(this.companyName == 'ICHINOSEKI'){
                 //   this.logo = "./assets/imgs/ichinosekihead.png";
@@ -139,9 +158,11 @@ export class SummaryPage {
                   //this.currentDate.setUTCHours(17);
                   this.currentDate.setHours(this.currentDate.getHours()+2);
                   this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
-                  this.lastestUpdate.setHours(this.lastestUpdate.getHours()+2);
+                  //this.lastestUpdate.setHours(this.lastestUpdate.getHours()+2);
+                  this.timezoneApi = this.plantData.Result.TimeZone;
                   console.log("currentDate:"+this.currentDate);
                   console.log("lastestUpdate:"+this.lastestUpdate);
+                  console.log(this.timezoneApi);
                 }
 
                 let id = this.plantData.Result.PlantId;
@@ -156,6 +177,7 @@ export class SummaryPage {
                 this.dailyEnergyProvider.requestDailyEnergy(id)
                 .then(data => {
                     this.dialyData = data;
+                    console.log("callDailyProviderxxx");
                 }).catch(error => {
                     console.log(error);
                 });
@@ -189,19 +211,34 @@ export class SummaryPage {
   ionViewDidLoad(){
       this.loader.present();
       this.getWeather();
+      //this.generationSummary();
+    //   console.log("daily foreach");
+    //   console.log(this.dialyData.Result);
   }
 
   ionViewDidEnter() {
 
     this.powerGenGraph();
     // this.hourlyGraph(1);
-    //this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
-    this.powerData = Math.floor(parseFloat(this.shared.CapacitySummary) / 100000) / 10;
-    this.powerMax = Math.ceil(parseInt(this.powerData) * (Math.random() * 3 + 3));
+    this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
+    //this.powerData = Math.floor(parseFloat(this.shared.CapacitySummary) / 100000) / 10;
     // this.irradiationData = Math.floor(parseFloat(this.plantData.Result.Irradiation) / 100000) / 10;
-    this.irradiationData = parseFloat(this.plantData.Result.Irradiation).toFixed(1);
-    this.irradiationMax = Math.ceil(parseInt(this.irradiationData) * (Math.random() * 3 + 3))
+    //this.irradiationData = parseFloat(this.plantData.Result.Irradiation).toFixed(1);
+    this.powerMax = parseInt(this.plantData.Result.PowerGenPeriod.Max);
+    this.powerMin = parseInt(this.plantData.Result.PowerGenPeriod.Min);
+    this.powerScale = parseInt(this.plantData.Result.PowerGenPeriod.Scale);
+
+    this.irradiationData = parseFloat(this.plantData.Result.Irradiation);
+    this.irradiationMax = parseInt(this.plantData.Result.IrradiationPeriod.Max);
+    this.irradiationMin = parseInt(this.plantData.Result.IrradiationPeriod.Min);
+    this.irradiationScale = parseInt(this.plantData.Result.IrradiationPeriod.Scale);
+
     this.ambientTempData = this.plantData.Result.AMB_Temp;
+    this.ambientMax = parseInt(this.plantData.Result.AMB_TempPeriod.Max);
+    this.ambientMin = parseInt(this.plantData.Result.AMB_TempPeriod.Min);
+    this.ambientScale = parseInt(this.plantData.Result.AMB_TempPeriod.Scale);
+
+    this.generationSummary();
   }
 
   getWeather(){
@@ -381,7 +418,7 @@ export class SummaryPage {
         //#endregion
 
 
-        this.loader.dismiss();
+        //this.loader.dismiss();
     });
 }
 
@@ -417,13 +454,13 @@ export class SummaryPage {
 
             // the value axis
             yAxis: {
-              min: 0,
-              max: 20,
+              min: this.powerMin,
+              max: this.powerMax,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: 5,
-              tickInterval: 5,
+              tickPixelInterval: this.powerScale,
+              tickInterval: this.powerScale,
               lineWidth: 2,
               labels: {
                   distance: -20,
@@ -433,8 +470,8 @@ export class SummaryPage {
               minorTickLength: 5,
               endOnTick: false,
                 plotBands: [{
-                    from: 0,
-                    to: 20,
+                    from: this.powerMin,
+                    to: this.powerMax,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [
@@ -464,6 +501,7 @@ export class SummaryPage {
   }
 
   irradiationGraph() {
+      let irrData = Math.round(this.irradiationData);
       setTimeout(() => {
         this.irradiationChart = HighCharts.chart('irradiation-chart', {
 
@@ -495,13 +533,13 @@ export class SummaryPage {
 
             // the value axis
             yAxis: {
-              min: 0,
-              max: 5,
+              min: this.irradiationMin,
+              max: this.irradiationMax,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: 1,
-              tickInterval: 1,
+              tickPixelInterval: this.irradiationScale,
+              tickInterval: this.irradiationScale,
               lineWidth: 2,
               labels: {
                   distance: -25,
@@ -511,8 +549,8 @@ export class SummaryPage {
               minorTickLength: 5,
               endOnTick: false,
                 plotBands: [{
-                    from: 0,
-                    to: 5,
+                    from: this.irradiationMin,
+                    to: this.irradiationMax,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [
@@ -525,7 +563,8 @@ export class SummaryPage {
 
             series: [{
                 name: 'Irradiation',
-                data: [this.irradiationData],
+                //data: [(this.irradiationData > 5) ? 5 : this.irradiationData],
+                data: [irrData],
                 dataLabels: false,
                 tooltip: {
                     valueSuffix: ' W/M<sup>2</sup>'
@@ -574,13 +613,13 @@ export class SummaryPage {
 
             // the value axis
             yAxis: {
-              min: -10,
-              max: 40,
+              min: this.ambientMin,
+              max: this.ambientMax,
               lineColor: '#efefef',
               tickColor: '#efefef',
               minorTickColor: 'transparent',
-              tickPixelInterval: 10,
-              tickInterval: 10,
+              tickPixelInterval: this.ambientScale,
+              tickInterval: this.ambientScale,
               lineWidth: 2,
               labels: {
                   distance: -20,
@@ -590,8 +629,8 @@ export class SummaryPage {
               minorTickLength: 5,
               endOnTick: false,
                 plotBands: [{
-                    from: -10,
-                    to: 40,
+                    from: this.ambientMin,
+                    to: this.ambientMax,
                     color:  {
                       linearGradient: { x1: 0, y1: 0.5, x2: 1, y2: 0.5 },
                       stops: [
@@ -604,6 +643,7 @@ export class SummaryPage {
 
             series: [{
                 name: 'Ambient',
+                
                 data: [this.ambientTempData],
                 dataLabels: false,
                 tooltip: {
@@ -736,11 +776,11 @@ export class SummaryPage {
   }
 
   dailyGraph(type: number){
+    console.log("Call dailyGraph");
     if(this.dialy){
         this.dialy.destroy();
         this.selectedEnergySection = 'dailyTab';
     }
-
     let dataSrc = this.dialyData.Result;
     let dailyDataSrc = undefined;
     let x;
@@ -770,6 +810,7 @@ export class SummaryPage {
             return moment(x.TimeStamp).format('D MMM');
         })
         x = timeLabel.slice(l-7, l);
+        console.log("time:"+x);
     }
     else{
         y = dataSrc.map(y =>{
@@ -1244,6 +1285,61 @@ export class SummaryPage {
     setTimeout(() => {
         this.yearly = new Chart(this.yearlyCanvas.nativeElement, config);
     }, 100);
+  }
+
+  generationSummary(){
+
+    // summaryToday: any;
+    // summaryMTDActual: any;
+    // summaryMTDPlan: any;
+    // summaryYTDActual: any;
+    // summaryYTDPlan: any;
+
+      console.log("generationSummary Called");
+      //#region Daily
+      console.log(this.dialyData);
+      if(this.dialyData.Result.length != 0){
+        let responseDaily = JSON.stringify(this.dialyData); // Convert {any} data to {string}
+        let jsonDaily = JSON.parse(responseDaily);
+        //console.log(jsonDaily["Result"][this.dialyData.Result.length-1]["EnergyValue"]);
+        //this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
+        this.summaryToday = Math.floor(parseFloat(jsonDaily["Result"][this.dialyData.Result.length-1]["EnergyValue"]) / 100000) / 10;
+      }
+      else{
+          this.summaryToday = 0;
+      }
+      //#endregion
+
+      //#region Montyly
+      console.log(this.monthlyData);
+      if(this.monthlyData.Result.length != 0){
+        let responseMontyly = JSON.stringify(this.monthlyData);
+        let jsonMontyly = JSON.parse(responseMontyly);
+        this.summaryMTDActual = Math.floor(parseFloat(jsonMontyly["Result"][parseInt(moment(this.lastestUpdate).format('M'))-1]["EnergyValue"]) / 100000) / 10;
+        this.summaryMTDPlan = Math.floor(parseFloat(jsonMontyly["Result"][parseInt(moment(this.lastestUpdate).format('M'))-1]["Target"]) / 100000) / 10;
+        //console.log(this.summaryMTDActual);
+      }
+      else{
+        this.summaryMTDActual = 0;
+        this.summaryMTDPlan = 0;
+      }
+      //#endregion
+
+      //#region Yearly
+      console.log(this.yearlyData);
+      if(this.yearlyData.Result.length != 0){
+        let responseYearly = JSON.stringify(this.yearlyData);
+        let jsonYearly = JSON.parse(responseYearly);
+        this.summaryYTDActual = Math.floor(parseFloat(jsonYearly["Result"]["0"]["EnergyValue"]) / 100000) / 10;
+        this.summaryYTDPlan = Math.floor(parseFloat(jsonYearly["Result"]["0"]["Target"]) / 100000) / 10;
+      }
+      else{
+        this.summaryYTDActual = 0;
+        this.summaryYTDPlan = 0;
+      }
+      //#endregion
+      console.log(moment(this.lastestUpdate).format('MMM'));
+      this.loader.dismiss();
   }
 
 }
