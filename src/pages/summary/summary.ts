@@ -738,7 +738,7 @@ export class SummaryPage {
                 ticks: {
                     beginAtZero: true,
                     fontSize: 10,
-                    stepSize: 3
+                    stepSize: 6
                 }
               }],
 
