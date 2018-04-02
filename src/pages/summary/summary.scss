@@ -51,7 +51,7 @@ page-summary {
                     ion-segment-button{
                         height: 4vh !important;
                         color: rgb(75, 75, 75) !important;
-                        font-size: 1.85vh !important;
+                        font-size: 1.3vh !important;
                         // min-height: 30px;
                         line-height: 1.2rem !important;
                         text-transform: none !important;
@@ -143,18 +143,18 @@ page-summary {
         }
 
         .power-text{
-            margin-top: -50%;
             position: relative;
+            top: -7vh;
             left: 5%;
             margin-top: -50%;
             .power-unit{
-                font-size: 3.5vh;
+                font-size: 3.25vh;
                 color: rgb(161, 161, 161);
                 position: relative;
                 left: 1vw;
             }
             .power-value{
-                font-size: 5.5vh;
+                font-size: 5vh;
                 background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -163,16 +163,16 @@ page-summary {
 
         .power-icon{
             z-index: 10;
-             margin-top: -38%;
+            position: relative;
+            top: -23vh;
             img{
-             height: 7.5vh;
-             position: relative;
-             right: -8%;
-             animation: fadein 1s;
-            -moz-animation: fadein 1s; /* Firefox */
-            -webkit-animation: fadein 1s; /* Safari and Chrome */
-            -o-animation: fadein 1s; /* Opera */
-             
+                position: relative;
+                left: 8%;
+                height: 6vh;
+                animation: fadein 1s;
+                -moz-animation: fadein 1s; /* Firefox */
+                -webkit-animation: fadein 1s; /* Safari and Chrome */
+                -o-animation: fadein 1s; /* Opera */
             }
             
         }
@@ -258,7 +258,7 @@ page-summary {
         }
 
         .value-summary{
-            font-size: 3vh;
+            font-size: 2.5vh;
             background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -292,14 +292,12 @@ page-summary {
             height: 8vh;
             background: linear-gradient(to right, #8dbde8 , #98e9ea);
             .weather-title{
-                //font-size: 2.25vh;
-                font-size: 30px;
-                font-size: 3.5vw;
+                font-size: 1.5vh;
                 padding-top:1%;
             }
             .weather-date{
                 .day{
-                    font-size: 2.25vh;
+                    font-size: 2vh;
                     padding-top:4%;
                 }
                 .time{
@@ -356,7 +354,7 @@ page-summary {
                 border-left: 2px solid rgb(71, 184, 236);
             }
             .text{
-                font-size: 1.5vh;
+                font-size: 1.35vh;
                 padding-top: 4%;
             }
             .icon{
