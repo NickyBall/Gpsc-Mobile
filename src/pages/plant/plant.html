@@ -54,7 +54,7 @@
                                             {{item.PlantName}}
                                         </ion-col>
                                     </ion-row>
-                                    <ion-row no-padding *ngIf="item.PowerGen != 0">
+                                    <ion-row no-padding *ngIf="item.PlantInfo.Capacity != 0">
                                         <ion-col class="power-gen" no-padding col-2>
                                             <img src="./assets/imgs/E1.png"/>
                                             {{(item.PlantInfo.Capacity/1000000).toFixed(2)|number:0}} MW
@@ -98,7 +98,7 @@
                                             {{item.PlantName}}
                                         </ion-col>
                                     </ion-row>
-                                    <ion-row no-padding *ngIf="item.PowerGen != 0">
+                                    <ion-row no-padding *ngIf="item.PlantInfo.Capacity != 0">
                                         <ion-col class="power-gen" no-padding col-2>
                                             <img src="./assets/imgs/E1.png"/>
                                             {{(item.PlantInfo.Capacity/1000000).toFixed(2)|number:0}} MW

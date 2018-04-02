@@ -70,6 +70,7 @@ export class PlantPage {
   getPlantList() {
     // let UserCode = 'UserCode123456';
     let CountryId = this.countryId;
+    console.log("myCountryId:"+this.countryId);
     this.companyProvider.getAllPlants(CountryId).then((data: any) => {
       this.streamList = data.Result.filter(plant => plant.PlantTypeId == 2);
       this.streamList.map(x => {
@@ -78,6 +79,7 @@ export class PlantPage {
         // }else{
         //   x.alpha = 1;
         // }
+        console.log(x.PlantInfo.Capacity);
         if(x.PlantInfo.IsEnabled == '0'){
           x.alpha = 0.5;
         }else{
@@ -91,6 +93,7 @@ export class PlantPage {
         // }else{
         //   x.alpha = 1;
         // }
+        console.log(x.PlantInfo.Capacity);
         if(x.PlantInfo.IsEnabled == '0'){
           x.alpha = 0.5;
         }else{
