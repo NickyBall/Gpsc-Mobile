@@ -246,7 +246,7 @@ export class SummaryPage {
         console.log(data);
         let response = JSON.stringify(data); // Convert {any} data to {string}
         let json = JSON.parse(response); // Convert Json string to JavaScript Key-Value Object
-        //console.log(json);
+        console.log(json);
         //let date = new Date();
         //this.currentDate = new Date();
         //console.log(this.currentDate);
