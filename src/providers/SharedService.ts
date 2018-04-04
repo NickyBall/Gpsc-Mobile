@@ -13,6 +13,8 @@ export class SharedService {
 
   // Lastest Weather
   LastestWeather: any;
+  // Forecast Weather
+  ForeCastWeather: any;
 
   // Capacity of Company
   CapacitySummary: any;

@@ -209,14 +209,15 @@ export class SummaryPage {
   }
 
   ionViewDidLoad(){
-      this.loader.present();
-      this.getWeather();
-      //this.generationSummary();
+    //   this.loader.present();
+    //   this.getWeather();
+    //   this.generationSummary();
     //   console.log("daily foreach");
     //   console.log(this.dialyData.Result);
   }
 
   ionViewDidEnter() {
+    this.loader.present();
 
     this.powerGenGraph();
     // this.hourlyGraph(1);
@@ -238,188 +239,84 @@ export class SummaryPage {
     this.ambientMin = parseInt(this.plantData.Result.AMB_TempPeriod.Min);
     this.ambientScale = parseInt(this.plantData.Result.AMB_TempPeriod.Scale);
 
+
+    this.getWeather();
     this.generationSummary();
   }
-
   getWeather(){
-    this.weatherServiceProvider.getWeather(this.cityName).then((data:any) =>{
-        console.log(data);
-        let response = JSON.stringify(data); // Convert {any} data to {string}
-        let json = JSON.parse(response); // Convert Json string to JavaScript Key-Value Object
-        //console.log(json);
-        //let date = new Date();
-        //this.currentDate = new Date();
-        //console.log(this.currentDate);
-        //console.log(((json['list'][0]['main']['temp']).toString()).substring(0,2));
+    console.log("getWeather");
+    
+    //#region Current Weather
+    //console.log(this.shared.LastestWeather);
+    let response = JSON.stringify(this.shared.LastestWeather); // Convert {any} data to {string}
+    let json = JSON.parse(response); // Convert Json string to JavaScript Key-Value Object
+    let jsonfinal = JSON.parse(json);
+    // console.log(jsonfinal[0]['LocalObservationDateTime']);
+    //console.log(this.currentDate);
+    this.currentDate = new Date((jsonfinal[0]['LocalObservationDateTime']).toString().substring(0,19));
 
-        //#region Set Current day/avgtemp/mintemp/maxtemp/weathericon
-        if(this.currentDate.getHours() >= 0 && this.currentDate.getHours() < 3){
-          console.log("00-03 temp is :"+json['list'][0]['main']['temp']);
-          //this.currentTemp = json['list'][0]['main']['temp'].toString().substring(0,2);
-          this.currentTemp = json['list'][0]['main']['temp'].toString().split(".",1);
-          this.maxTemp = json['list'][0]['main']['temp_max'].toString().split(".",1);
-          this.minTemp = json['list'][0]['main']['temp_min'].toString().split(".",1);
-          this.weatherDescription = json['list'][0]['weather'][0]['main'];
-          this.currentIconWeather = json['list'][0]['weather'][0]['icon'].toString().substring(0,2);
-          this.currentTime = "00.00";
-        }
-        if(this.currentDate.getHours() >= 3 && this.currentDate.getHours() < 6){
-          console.log("03-06 temp is :"+json['list'][1]['main']['temp']);
-          //this.currentTemp = json['list'][1]['main']['temp'].toString().substring(0,2);
-          this.currentTemp = json['list'][1]['main']['temp'].toString().split(".",1);
-          this.maxTemp = json['list'][1]['main']['temp_max'].toString().split(".",1);
-          this.minTemp = json['list'][1]['main']['temp_min'].toString().split(".",1);
-          this.weatherDescription = json['list'][1]['weather'][0]['main'];
-          this.currentIconWeather = json['list'][1]['weather'][0]['icon'].toString().substring(0,2);
+    let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "Saturday"];
+    let weekdaysBig = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY",
+        "THURSDAY", "FRIDAY", "SATURDAY"];
+    //console.log(this.currentDate.getDay());
+    this.currentDay = weekdaysBig[this.currentDate.getDay()];
 
-          this.currentTime = "03.00";
-        }
-        if(this.currentDate.getHours() >= 6 && this.currentDate.getHours() < 9){
-          console.log("06-09 temp is :"+json['list'][2]['main']['temp']);
-          //this.currentTemp = json['list'][2]['main']['temp'].toString().substring(0,2);
-          this.currentTemp = json['list'][2]['main']['temp'].toString().split(".",1);
-          this.maxTemp = json['list'][2]['main']['temp_max'].toString().split(".",1);
-          this.minTemp = json['list'][2]['main']['temp_min'].toString().split(".",1);
-          this.weatherDescription = json['list'][2]['weather'][0]['main'];
-          this.currentIconWeather = json['list'][2]['weather'][0]['icon'].toString().substring(0,2);
+    //console.log(jsonfinal[0]['Temperature']['Metric']['Value']);
+    this.currentTemp = parseInt(jsonfinal[0]['Temperature']['Metric']['Value']);
+    //console.log(jsonfinal[0]['WeatherIcon']);
+    this.currentIconWeather = jsonfinal[0]['WeatherIcon']
+    //console.log(jsonfinal[0]['WeatherText']);
+    this.weatherDescription = jsonfinal[0]['WeatherText']
+    //console.log(jsonfinal[0]['TemperatureSummary']['Past6HourRange']['Minimum']['Metric']['Value']);
+    this.minTemp = parseInt(jsonfinal[0]['TemperatureSummary']['Past6HourRange']['Minimum']['Metric']['Value']);
+    //console.log(jsonfinal[0]['TemperatureSummary']['Past6HourRange']['Maximum']['Metric']['Value']);
+    this.maxTemp = parseInt(jsonfinal[0]['TemperatureSummary']['Past6HourRange']['Maximum']['Metric']['Value']);
+    //#endregion
 
-          this.currentTime = "06.00";
-        }
-        if(this.currentDate.getHours() >= 9 && this.currentDate.getHours() < 12){
-          console.log("09-12 temp is :"+json['list'][3]['main']['temp']);
-          //this.currentTemp = json['list'][3]['main']['temp'].toString().substring(0,2);
-          this.currentTemp = json['list'][3]['main']['temp'].toString().split(".",1);
-          this.maxTemp = json['list'][3]['main']['temp_max'].toString().split(".",1);
-          this.minTemp = json['list'][3]['main']['temp_min'].toString().split(".",1);
-          this.weatherDescription = json['list'][3]['weather'][0]['main'];
-          this.currentIconWeather = json['list'][3]['weather'][0]['icon'].toString().substring(0,2);
+    //#region Forecast Weather
+    let responseForecast = JSON.stringify(this.shared.ForeCastWeather); // Convert {any} data to {string}
+    let jsonForecast = JSON.parse(responseForecast); // Convert Json string to JavaScript Key-Value Object
+    let jsonfinalForcast = JSON.parse(jsonForecast);
+    console.log(jsonfinalForcast);
 
-          this.currentTime = "09.00";
-        }
-        if(this.currentDate.getHours() >= 12 && this.currentDate.getHours() < 15){
-          console.log("12-15 temp is :"+json['list'][4]['main']['temp']);
-          //this.currentTemp = json['list'][4]['main']['temp'].toString().substring(0,2);
-          this.currentTemp = json['list'][4]['main']['temp'].toString().split(".",1);
-          this.maxTemp = json['list'][4]['main']['temp_max'].toString().split(".",1);
-          this.minTemp = json['list'][4]['main']['temp_min'].toString().split(".",1);
-          this.weatherDescription = json['list'][4]['weather'][0]['main'];
-          this.currentIconWeather = json['list'][4]['weather'][0]['icon'].toString().substring(0,2);
+    // Day1
+    this.futureDay1minT = jsonfinalForcast['DailyForecasts'][1]['Temperature']['Minimum']['Value']
+    this.futureDay1maxT = jsonfinalForcast['DailyForecasts'][1]['Temperature']['Maximum']['Value']
+    this.futureDay1Temp = (this.futureDay1maxT+this.futureDay1minT)/2;
+    this.futureDay1Temp = parseInt(this.futureDay1Temp);
+    let forecastday1 = new Date(jsonfinalForcast['DailyForecasts'][1]['Date']);
+    this.futureDay1Name = weekdays[forecastday1.getDay()]
+    this.futureDay1Icon = jsonfinalForcast['DailyForecasts'][1]['Day']['Icon'];
 
-          this.currentTime = "12.00";
-        }
-        if(this.currentDate.getHours() >= 15 && this.currentDate.getHours() < 18){
-          console.log("15-18 temp is :"+json['list'][5]['main']['temp']);
-          //this.currentTemp = json['list'][5]['main']['temp'].toString().substring(0,2);
-          this.currentTemp = json['list'][5]['main']['temp'].toString().split(".",1);
-          this.maxTemp = json['list'][5]['main']['temp_max'].toString().split(".",1);
-          this.minTemp = json['list'][5]['main']['temp_min'].toString().split(".",1);
-          this.weatherDescription = json['list'][5]['weather'][0]['main'];
-          this.currentIconWeather = json['list'][5]['weather'][0]['icon'].toString().substring(0,2);
+    // Day2
+    this.futureDay2minT = jsonfinalForcast['DailyForecasts'][2]['Temperature']['Minimum']['Value']
+    this.futureDay2maxT = jsonfinalForcast['DailyForecasts'][2]['Temperature']['Maximum']['Value']
+    this.futureDay2Temp = (this.futureDay2maxT+this.futureDay2minT)/2;
+    this.futureDay2Temp = parseInt(this.futureDay2Temp);
+    let forecastday2 = new Date(jsonfinalForcast['DailyForecasts'][2]['Date']);
+    this.futureDay2Name = weekdays[forecastday2.getDay()]
+    this.futureDay2Icon = jsonfinalForcast['DailyForecasts'][2]['Day']['Icon'];
 
-          this.currentTime = "15.00";
-        }
-        if(this.currentDate.getHours() >= 18 && this.currentDate.getHours() < 21){
-          console.log("18-21 temp is :"+json['list'][6]['main']['temp']);
-          //this.currentTemp = json['list'][6]['main']['temp'].toString().substring(0,2);
-          this.currentTemp = json['list'][6]['main']['temp'].toString().split(".",1);
-          this.maxTemp = json['list'][6]['main']['temp_max'].toString().split(".",1);
-          this.minTemp = json['list'][6]['main']['temp_min'].toString().split(".",1);
-          this.weatherDescription = json['list'][6]['weather'][0]['main'];
-          this.currentIconWeather = json['list'][6]['weather'][0]['icon'].toString().substring(0,2);
+    // Day3
+    this.futureDay3minT = jsonfinalForcast['DailyForecasts'][3]['Temperature']['Minimum']['Value']
+    this.futureDay3maxT = jsonfinalForcast['DailyForecasts'][3]['Temperature']['Maximum']['Value']
+    this.futureDay3Temp = (this.futureDay3maxT+this.futureDay3minT)/2;
+    this.futureDay3Temp = parseInt(this.futureDay3Temp);
+    let forecastday3 = new Date(jsonfinalForcast['DailyForecasts'][3]['Date']);
+    this.futureDay3Name = weekdays[forecastday3.getDay()]
+    this.futureDay3Icon = jsonfinalForcast['DailyForecasts'][3]['Day']['Icon'];
 
-          this.currentTime = "18.00";
-        }
-        if(this.currentDate.getHours() >= 21 && this.currentDate.getHours() < 24){
-          console.log("21-24 temp is :"+json['list'][7]['main']['temp']);
-          //this.currentTemp = json['list'][7]['main']['temp'].toString().substring(0,2);
-          this.currentTemp = json['list'][7]['main']['temp'].toString().split(".",1);
-          this.maxTemp = json['list'][7]['main']['temp_max'].toString().split(".",1);
-          this.minTemp = json['list'][7]['main']['temp_min'].toString().split(".",1);
-          this.weatherDescription = json['list'][7]['weather'][0]['main'];
-          this.currentIconWeather = json['list'][7]['weather'][0]['icon'].toString().substring(0,2);
+    // Day4
+    this.futureDay4minT = jsonfinalForcast['DailyForecasts'][4]['Temperature']['Minimum']['Value']
+    this.futureDay4maxT = jsonfinalForcast['DailyForecasts'][4]['Temperature']['Maximum']['Value']
+    this.futureDay4Temp = (this.futureDay4maxT+this.futureDay4minT)/2;
+    this.futureDay4Temp = parseInt(this.futureDay4Temp);
+    let forecastday4 = new Date(jsonfinalForcast['DailyForecasts'][4]['Date']);
+    this.futureDay4Name = weekdays[forecastday4.getDay()]
+    this.futureDay4Icon = jsonfinalForcast['DailyForecasts'][4]['Day']['Icon'];
+    //#endregion
 
-          this.currentTime = "21.00";
-        }
-        //#endregion
-
-        //#region Set Forcast 4day day/avgtemp/mintemp/maxtemp/weathericon
-        let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday",
-         "Thursday", "Friday", "Saturday"];
-
-        let weekdaysBig = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY",
-         "THURSDAY", "FRIDAY", "SATURDAY"];
-
-        this.currentDay = weekdaysBig[this.currentDate.getDay()];
-
-        for(var _i = 0; _i < 4; _i++){
-            if(this.currentDate.getDay()+_i+1 < 7){
-                if(_i == 0){
-                    this.futureDay1Name = weekdays[this.currentDate.getDay()+1];
-                    this.futureDay1Temp = json['list'][11]['main']['temp'].toString().split(".",1);
-                    this.futureDay1minT = json['list'][11]['main']['temp_min'].toString().split(".",1);
-                    this.futureDay1maxT = json['list'][11]['main']['temp_max'].toString().split(".",1);
-                    this.futureDay1Icon = json['list'][11]['weather'][0]['icon'].toString().substring(0,2);
-                }
-                if(_i == 1){
-                    this.futureDay2Name = weekdays[this.currentDate.getDay()+2];
-                    this.futureDay2Temp = json['list'][19]['main']['temp'].toString().split(".",1);
-                    this.futureDay2minT = json['list'][19]['main']['temp_min'].toString().split(".",1);
-                    this.futureDay2maxT = json['list'][19]['main']['temp_max'].toString().split(".",1);
-                    this.futureDay2Icon = json['list'][19]['weather'][0]['icon'].toString().substring(0,2);
-                }
-                if(_i == 2){
-                    this.futureDay3Name = weekdays[this.currentDate.getDay()+3];
-                    this.futureDay3Temp = json['list'][27]['main']['temp'].toString().split(".",1);
-                    this.futureDay3minT = json['list'][27]['main']['temp_min'].toString().split(".",1);
-                    this.futureDay3maxT = json['list'][27]['main']['temp_max'].toString().split(".",1);
-                    this.futureDay3Icon = json['list'][27]['weather'][0]['icon'].toString().substring(0,2);
-                }
-                if(_i == 3){
-                    this.futureDay4Name = weekdays[this.currentDate.getDay()+4];
-                    this.futureDay4Temp = json['list'][35]['main']['temp'].toString().split(".",1);
-                    this.futureDay4minT = json['list'][35]['main']['temp_min'].toString().split(".",1);
-                    this.futureDay4maxT = json['list'][35]['main']['temp_max'].toString().split(".",1);
-                    this.futureDay4Icon = json['list'][35]['weather'][0]['icon'].toString().substring(0,2);
-                }
-            }
-            if(this.currentDate.getDay()+_i+1 >= 7){
-                if(_i == 0){
-                    this.futureDay1Name = weekdays[(this.currentDate.getDay()+1)-7];
-                    this.futureDay1Temp = json['list'][11]['main']['temp'].toString().split(".",1);
-                    this.futureDay1minT = json['list'][11]['main']['temp_min'].toString().split(".",1);
-                    this.futureDay1maxT = json['list'][11]['main']['temp_max'].toString().split(".",1);
-                    this.futureDay1Icon = json['list'][11]['weather'][0]['icon'].toString().substring(0,2);
-                }
-                if(_i == 1){
-                    this.futureDay2Name = weekdays[(this.currentDate.getDay()+2)-7];
-                    this.futureDay2Temp = json['list'][19]['main']['temp'].toString().split(".",1);
-                    this.futureDay2minT = json['list'][19]['main']['temp_min'].toString().split(".",1);
-                    this.futureDay2maxT = json['list'][19]['main']['temp_max'].toString().split(".",1);
-                    this.futureDay2Icon = json['list'][19]['weather'][0]['icon'].toString().substring(0,2);
-                }
-                if(_i == 2){
-                    this.futureDay3Name = weekdays[(this.currentDate.getDay()+3)-7];
-                    this.futureDay3Temp = json['list'][27]['main']['temp'].toString().split(".",1);
-                    this.futureDay3minT = json['list'][27]['main']['temp_min'].toString().split(".",1);
-                    this.futureDay3maxT = json['list'][27]['main']['temp_max'].toString().split(".",1);
-                    this.futureDay3Icon = json['list'][27]['weather'][0]['icon'].toString().substring(0,2);
-                }
-                if(_i == 3){
-                    this.futureDay4Name = weekdays[(this.currentDate.getDay()+4)-7];
-                    this.futureDay4Temp = json['list'][35]['main']['temp'].toString().split(".",1);
-                    this.futureDay4minT = json['list'][35]['main']['temp_min'].toString().split(".",1);
-                    this.futureDay4maxT = json['list'][35]['main']['temp_max'].toString().split(".",1);
-                    this.futureDay4Icon = json['list'][35]['weather'][0]['icon'].toString().substring(0,2);
-                }
-            }
-        }
-
-        console.log("Current Day: "+this.currentDay)
-        //#endregion
-
-
-        //this.loader.dismiss();
-    });
 }
 
   powerGenGraph() {

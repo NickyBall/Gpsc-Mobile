@@ -10,17 +10,51 @@ export class WeatherServiceProvider{
     // +this.city+this.appId+this.unit;
     apiUrl = "http://api.openweathermap.org/data/2.5/forecast?";
     //+this.city+this.appId+this.unit;
+    //http://dataservice.accuweather.com/currentconditions/v1/2402925?apikey=7vsiJ74L43UG8veuB28gq1cWEDPxLr8X&language=en-us&details=true
+
+    url ="";
     
     constructor(public http: HttpClient) {
         console.log('Hello WeatherServiceProvider');
       }
       getWeather(cityName) {
-        return new Promise((resolve, reject) => {
-          this.http.get(this.apiUrl+"q="+cityName+this.appId+this.unit).subscribe(res => {
-            resolve(res);
-          }, (err) => {
-            reject(err);
-          })
-        });
+        if(cityName == "Ichinoseki"){
+          this.url = "http://dataservice.accuweather.com/currentconditions/v1/2402925?apikey=7vsiJ74L43UG8veuB28gq1cWEDPxLr8X&language=en-us&details=true";
+          console.log(this.url);
+          return new Promise((resolve, reject) => {
+            this.http.get(this.url).subscribe(res => {
+              resolve(res);
+            }, (err) => {
+              reject(err);
+            })
+          });
+        }
+        else if(cityName == "Chanthaburi"){
+          this.url = "http://dataservice.accuweather.com/currentconditions/v1/317490?apikey=jGzygGfyqgIZQ2FFjOihAF9XjaOYpCwF&language=en-us&details=true";
+          console.log(this.url);
+          return new Promise((resolve, reject) => {
+            this.http.get(this.url).subscribe(res => {
+              resolve(res);
+            }, (err) => {
+              reject(err);
+            })
+          });
+        }
+        else{
+          return new Promise((resolve, reject) => {
+            this.http.get(this.apiUrl+"q="+cityName+this.appId+this.unit).subscribe(res => {
+              resolve(res);
+            }, (err) => {
+              reject(err);
+            })
+          });
+        }
+        // return new Promise((resolve, reject) => {
+        //   this.http.get(this.apiUrl+"q="+cityName+this.appId+this.unit).subscribe(res => {
+        //     resolve(res);
+        //   }, (err) => {
+        //     reject(err);
+        //   })
+        // });
       }
 }
