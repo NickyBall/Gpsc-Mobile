@@ -57,21 +57,17 @@ page-plant {
     }
   
     .item-list{
-      // background-color: rgb(240, 240, 240);
       .item-icon {
         align-content: center;
         img{
           height: 6.25vh;
         }
-        // img{
-        //   height: 12vh;
-        // }
       }
   
       .item-power{
         padding-left: 3vw;
         .item-name {
-          font-size: 2.5vh;
+          font-size: 2.25vh;
           color: steelblue;
         }
         .power-gen{
@@ -82,7 +78,6 @@ page-plant {
           }
         }
       }
-    
       .share-row {
         margin-left: -1.5vw;
         padding-left: 3vw;
@@ -97,6 +92,92 @@ page-plant {
         }
       }
     }
+    // iphone x
+    @media only screen 
+      and (device-width : 375px) 
+      and (device-height : 812px) 
+      and (-webkit-device-pixel-ratio : 3)
+      and (orientation : portrait) {
+        .item-list{
+          .item-icon {
+            align-content: center;
+            img{
+              height: 6vh;
+            }
+          }
+      
+          .item-power{
+            padding-left: 3vw;
+            .item-name {
+              font-size: 1.9vh;
+              color: steelblue;
+            }
+            .power-gen{
+              font-size: 1.5vh;
+              color: gray;
+              img{
+                height: 1.5vh;
+              }
+            }
+          }
+          .share-row {
+            margin-left: -1.5vw;
+            padding-left: 3vw;
+            //padding-left: 4%;
+            color: orangered;
+            border-left:2px solid rgb(175, 175, 175);
+            .share-percentage {
+              font-size: 2vh;
+            }
+            .share-company {
+              font-size: 1.8vh;
+            }
+          }
+        }
+      }
+        // iphone 6 7 8 plus
+      @media only screen 
+      and (device-width : 414px) 
+      and (device-height : 736px) 
+      and (-webkit-device-pixel-ratio : 3)
+      and (orientation : portrait) {
+        .item-list{
+          .item-icon {
+            align-content: center;
+            img{
+              height: 6vh;
+            }
+          }
+      
+          .item-power{
+            padding-left: 3vw;
+            .item-name {
+              font-size: 2.25vh;
+              color: steelblue;
+            }
+            .power-gen{
+              font-size: 1.75vh;
+              color: gray;
+              img{
+                height: 1.75vh;
+              }
+            }
+          }
+          .share-row {
+            margin-left: -1.5vw;
+            padding-left: 3vw;
+            //padding-left: 4%;
+            color: orangered;
+            border-left:2px solid rgb(175, 175, 175);
+            .share-percentage {
+              font-size: 2.25vh;
+            }
+            .share-company {
+              font-size: 2vh;
+            }
+          }
+        }
+      }
   }
   
   // .segment-button.segment-activated:before {

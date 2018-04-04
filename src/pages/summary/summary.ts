@@ -804,7 +804,7 @@ export class SummaryPage {
         compensate = range * 50 / 100; // 20% of range
         console.log('comp ', compensate);
         upper = Math.round((max + compensate) * 10)/10
-        lower = Math.round((min - compensate) * 10)/10
+        // lower = Math.round((min - compensate) * 10)/10
 
         timeLabel = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('D MMM');
@@ -826,7 +826,7 @@ export class SummaryPage {
         range = max-min;
         compensate = range * 20 / 100; // 20% of range
         upper = Math.round(compensate) + max;
-        lower = min - Math.round(compensate);
+        // lower = min - Math.round(compensate);
         console.log('upper ', upper);
         console.log('lower ', lower);
 
@@ -920,7 +920,8 @@ export class SummaryPage {
     let monthlyDataTarget = undefined;
     let x, y, yTarget, chooseMax, chooseMin, upper, lower;
     let timeLabel = undefined;
-    let l = dataSrc.length
+    let l = dataSrc.length;
+    lower = 0;
     if( l >= 12){
 
         monthlyDataSrc = dataSrc.map(y =>{
@@ -955,7 +956,7 @@ export class SummaryPage {
         range = chooseMax-min;
         compensate = range * 50 / 100; // 50% of range
         upper = Math.round((chooseMax + compensate) * 10)/10
-        lower = Math.round((chooseMin - compensate) * 10)/10
+        // lower = Math.round((chooseMin - compensate) * 10)/10
         console.log('upper ', upper);
         console.log('lower ', lower);
 
@@ -995,7 +996,7 @@ export class SummaryPage {
         range = chooseMax-min;
         compensate = range * 50 / 100; // 50% of range
         upper = Math.round((chooseMax + compensate) * 10)/10
-        lower = Math.round((chooseMin - compensate) * 10)/10
+        // lower = Math.round((chooseMin - compensate) * 10)/10
         console.log('upper ', upper);
         console.log('lower ', lower);
 
@@ -1108,7 +1109,8 @@ export class SummaryPage {
     let yearlyDataSrcTarget = undefined;
     let x, y, yTarget, chooseMax, chooseMin, upper, lower;
     let timeLabel = undefined;
-    let l = dataSrc.length
+    let l = dataSrc.length;
+    lower = 0;
     if( l >= 6){
         // for(let i = dataSrc.length; )
         yearlyDataSrc = dataSrc.map(y =>{
@@ -1143,8 +1145,8 @@ export class SummaryPage {
         console.log('cMin', chooseMin);
         range = chooseMax-min;
         compensate = range * 50 / 100; // 50% of range
-        upper = Math.round((chooseMax + compensate) * 10)/10
-        lower = Math.round((chooseMin - compensate) * 10)/10
+        upper = Math.round((chooseMax + compensate) * 10)/10;
+        // lower = Math.round((chooseMin - compensate) * 10)/10;
         console.log('upper ', upper);
         console.log('lower ', lower);
 
@@ -1184,8 +1186,8 @@ export class SummaryPage {
 
         range = chooseMax-min;
         compensate = range * 50 / 100; // 50% of range
-        upper = Math.round((chooseMax + compensate) * 10)/10
-        lower = Math.round((chooseMin - compensate) * 10)/10
+        upper = Math.round((chooseMax + compensate) * 10)/10;
+        // lower = Math.round((chooseMin - compensate) * 10)/10;
         console.log('upper ', upper);
         console.log('lower ', lower);
 

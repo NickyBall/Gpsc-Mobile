@@ -48,6 +48,7 @@ page-summary {
                 background-color: white;
                 ion-segment{
                     background-color: white;
+
                     ion-segment-button{
                         height: 4vh !important;
                         color: rgb(75, 75, 75) !important;
@@ -57,6 +58,63 @@ page-summary {
                         text-transform: none !important;
                         margin-bottom: -1vh;
                     }
+                    // iphone 5 5s SE
+                    @media only screen 
+                        and (device-width : 320px) 
+                        and (device-height : 568px) 
+                        and (orientation : portrait) { 
+                            ion-segment-button{
+                                height: 4vh !important;
+                                color: rgb(75, 75, 75) !important;
+                                font-size: 1.6vh !important;
+                                line-height: 1rem !important;
+                                text-transform: none !important;
+                                margin-bottom: -1vh;
+                            }
+                    }
+                    // ip 6 7 8 plus
+                    @media only screen 
+                        and (device-width : 414px) 
+                        and (device-height : 736px) 
+                        and (orientation : portrait) { 
+                            ion-segment-button{
+                                height: 4vh !important;
+                                color: rgb(75, 75, 75) !important;
+                                font-size: 1.5vh !important;
+                                line-height: 1.2rem !important;
+                                text-transform: none !important;
+                                margin-bottom: -1vh;
+                            }
+                    }
+                    // ip 6 7 8
+                    @media only screen 
+                    and (device-width : 375px) 
+                    and (device-height : 667px) 
+                    and (orientation : portrait) { 
+                        ion-segment-button{
+                            height: 4vh !important;
+                            color: rgb(75, 75, 75) !important;
+                            font-size: 1.65vh !important;
+                            line-height: 1.2rem !important;
+                            text-transform: none !important;
+                            margin-bottom: -1vh;
+                        }
+                    }
+                     // ip x
+                     @media only screen 
+                     and ( device-width : 375px) 
+                     and ( device-height : 812px) 
+                     and (-webkit-device-pixel-ratio : 3)
+                     and (orientation : portrait) { 
+                         ion-segment-button{
+                             height: 4vh !important;
+                             color: rgb(75, 75, 75) !important;
+                             font-size: 1.3vh !important;
+                             line-height: 1.2rem !important;
+                             text-transform: none !important;
+                             margin-bottom: -1vh;
+                         }
+                     }
                 }
                 .energy-segment{
                     height:  4.5vh !important;
@@ -141,12 +199,26 @@ page-summary {
             top: 6vh;
             left: 3vw;
         }
-
+        
+        .power-icon{
+            z-index: 10;
+            position: relative;
+            top: -23vh;
+            img{
+                position: relative;
+                left: 8%;
+                height: 6vh;
+                animation: fadein 1s;
+                -moz-animation: fadein 1s; /* Firefox */
+                -webkit-animation: fadein 1s; /* Safari and Chrome */
+                -o-animation: fadein 1s; /* Opera */
+            } 
+        }
         .power-text{
             position: relative;
             top: -7vh;
             left: 5%;
-            margin-top: -50%;
+            margin-top: -45%;
             .power-unit{
                 font-size: 3.25vh;
                 color: rgb(161, 161, 161);
@@ -160,22 +232,164 @@ page-summary {
                 -webkit-text-fill-color: transparent;
             }
         }
-
-        .power-icon{
-            z-index: 10;
-            position: relative;
-            top: -23vh;
-            img{
-                position: relative;
-                left: 8%;
-                height: 6vh;
-                animation: fadein 1s;
-                -moz-animation: fadein 1s; /* Firefox */
-                -webkit-animation: fadein 1s; /* Safari and Chrome */
-                -o-animation: fadein 1s; /* Opera */
-            }
-            
+        // iphone 5 5s SE
+        @media only screen 
+            and (device-width : 320px) 
+            and (device-height : 568px)
+            and (-webkit-device-pixel-ratio : 2) 
+            and (orientation : portrait) { 
+                .power-icon{
+                    z-index: 10;
+                    position: relative;
+                    top: -21vh;
+                    img{
+                        position: relative;
+                        left: 8%;
+                        height: 6vh;
+                        animation: fadein 1s;
+                        -moz-animation: fadein 1s; /* Firefox */
+                        -webkit-animation: fadein 1s; /* Safari and Chrome */
+                        -o-animation: fadein 1s; /* Opera */
+                    }
+                }
+                .power-text{
+                    position: relative;
+                    top: -7vh;
+                    left: 5%;
+                    margin-top: -35%;
+                    .power-unit{
+                        font-size: 3.25vh;
+                        color: rgb(161, 161, 161);
+                        position: relative;
+                        left: 1vw;
+                    }
+                    .power-value{
+                        font-size: 5.5vh;
+                        background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                }
         }
+        // iPhone 6, 7, & 8 in portrait
+        @media only screen 
+            and (device-width : 375px) 
+            and (device-height : 667px)
+            and (-webkit-device-pixel-ratio : 2) 
+            and (orientation : portrait) { 
+                .power-icon{
+                    z-index: 10;
+                    position: relative;
+                    top: -20vh;
+                    img{
+                        position: relative;
+                        left: 8%;
+                        height: 6vh;
+                        animation: fadein 1s;
+                        -moz-animation: fadein 1s; /* Firefox */
+                        -webkit-animation: fadein 1s; /* Safari and Chrome */
+                        -o-animation: fadein 1s; /* Opera */
+                    }
+                }
+                .power-text{
+                    position: relative;
+                    top: -7vh;
+                    left: 5%;
+                    margin-top: -35%;
+                    .power-unit{
+                        font-size: 3.25vh;
+                        color: rgb(161, 161, 161);
+                        position: relative;
+                        left: 1vw;
+                    }
+                    .power-value{
+                        font-size: 5.5vh;
+                        background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                }
+        }
+        // iPhone 6, 7, & 8 Plus in portrait
+        @media only screen 
+            and (device-width : 414px) 
+            and (device-height : 736px)
+            and (-webkit-device-pixel-ratio : 3) 
+            and (orientation : portrait) {
+                .power-icon{
+                    z-index: 10;
+                    position: relative;
+                    top: -20vh;
+                    img{
+                        position: relative;
+                        left: 8%;
+                        height: 6vh;
+                        animation: fadein 1s;
+                        -moz-animation: fadein 1s; /* Firefox */
+                        -webkit-animation: fadein 1s; /* Safari and Chrome */
+                        -o-animation: fadein 1s; /* Opera */
+                    }
+                }
+                .power-text{
+                    position: relative;
+                    top: -7vh;
+                    left: 5%;
+                    margin-top: -35%;
+                    .power-unit{
+                        font-size: 3.5vh;
+                        color: rgb(161, 161, 161);
+                        position: relative;
+                        left: 1vw;
+                    }
+                    .power-value{
+                        font-size: 5.5vh;
+                        background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                } 
+            }
+            // iphone x
+            @media only screen 
+                and (device-width : 375px) 
+                and (device-height : 812px) 
+                and (-webkit-device-pixel-ratio : 3)
+                and (orientation : portrait) {
+                .power-text{
+                    position: relative;
+                    top: -7vh;
+                    left: 5%;
+                    margin-top: -45%;
+                    .power-unit{
+                        font-size: 2.25vh;
+                        color: rgb(161, 161, 161);
+                        position: relative;
+                        left: 1vw;
+                    }
+                    .power-value{
+                        font-size: 4.5vh;
+                        background: -webkit-linear-gradient(rgba(22, 189, 231, 0.918), rgb(30, 161, 248));
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                }
+                .power-icon{
+                    z-index: 10;
+                    position: relative;
+                    top: -23vh;
+                    img{
+                        position: relative;
+                        left: 8%;
+                        height: 6vh;
+                        animation: fadein 1s;
+                        -moz-animation: fadein 1s; /* Firefox */
+                        -webkit-animation: fadein 1s; /* Safari and Chrome */
+                        -o-animation: fadein 1s; /* Opera */
+                    } 
+                }
+
+        }
+
 
         .tt{
             background-color: rgb(230, 230, 230);
@@ -297,7 +511,7 @@ page-summary {
             }
             .weather-date{
                 .day{
-                    font-size: 2vh;
+                    font-size: 1.8vh;
                     padding-top:4%;
                 }
                 .time{
@@ -419,6 +633,94 @@ page-summary {
                 font-size: 1.5vh;
                 position: relative;
                 left: 5%;
+            }
+             // ip 5 5s SE
+             @media only screen 
+             and (device-width : 320px) 
+             and (device-height : 568px) 
+             and (orientation : portrait) {
+                   .title-label{
+                       font-size: 2vh;
+                       position: relative;
+                       left: -3%;
+                   }
+                   .date{
+                       font-size: 1.75vh;
+                       position: relative;
+                       left: 2%;
+                   }
+                   .time{
+                       font-size: 1.75vh;
+                       position: relative;
+                       left: 5%;
+                   }
+             }
+
+            // ip 6 7 8 plus
+            @media only screen 
+                and (device-width : 414px) 
+                and (device-height : 736px)
+                and (-webkit-device-pixel-ratio : 3) 
+                and (orientation : portrait) {
+                    .title-label{
+                        font-size: 2vh;
+                        position: relative;
+                        left: -3%;
+                    }
+                    .date{
+                        font-size: 1.75vh;
+                        position: relative;
+                        left: 2%;
+                    }
+                    .time{
+                        font-size: 1.75vh;
+                        position: relative;
+                        left: 5%;
+                    }
+            }
+            // ip 6 7 8 
+            @media only screen 
+            and (device-width : 375px) 
+            and (device-height : 667px) 
+            and (-webkit-device-pixel-ratio : 2)
+            and (orientation : portrait) {
+                  .title-label{
+                      font-size: 2vh;
+                      position: relative;
+                      left: -3%;
+                  }
+                  .date{
+                      font-size: 1.75vh;
+                      position: relative;
+                      left: 2%;
+                  }
+                  .time{
+                      font-size: 1.75vh;
+                      position: relative;
+                      left: 5%;
+                  }
+            }
+            // iphone x
+            @media only screen 
+            and (device-width : 375px) 
+            and (device-height : 812px) 
+            and (-webkit-device-pixel-ratio : 3)
+            and (orientation : portrait) {
+                    .title-label{
+                        font-size: 1.75vh;
+                        position: relative;
+                        left: -3%;
+                    }
+                    .date{
+                        font-size: 1.5vh;
+                        position: relative;
+                        left: 2%;
+                    }
+                    .time{
+                        font-size: 1.5vh;
+                        position: relative;
+                        left: 5%;
+                    }
             }
         }
 
