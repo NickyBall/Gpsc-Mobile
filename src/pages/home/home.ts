@@ -43,6 +43,16 @@ export class HomePage {
     .then(data => {
      
       this.plantData = data;
+      console.log("ReceivedData");
+      console.log(this.plantData);
+      //console.log(JSON.stringify(this.plantData.Result.LastestWeather));
+      // console.log("CurrentTempRec");
+      // console.log(this.plantData.Result.LatestTemperature);
+      this.shared.LastestWeather = this.plantData.Result.LatestTemperature;
+      //console.log(this.shared.LastestWeather);
+      // console.log("ForecastTemperature");
+      // console.log(this.plantData.Result.ForecastTemperature);
+      this.shared.ForeCastWeather = this.plantData.Result.ForecastTemperature
       console.log(this.plantData.Result.PlantInfo.PlantLayoutImages)
       this.shared.BluePrintPictureList = this.plantData.Result.PlantInfo.PlantLayoutImages;
       this.shared.CapacitySummary = this.plantData.Result.PlantInfo.Capacity;

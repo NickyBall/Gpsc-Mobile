@@ -21,6 +21,7 @@
 <ion-content no-padding class="summary-content">
   <ion-grid class="main-bg">
     <ion-row no-padding class="presentweather">
+      <!-- <ion-col col-3 text-center class="weather-title" no-padding>{{cityName | uppercase}}</ion-col> -->
       <ion-col col-3 text-center class="weather-title" no-padding>{{cityName | uppercase}}</ion-col>
       <ion-col col-3 class="weather-date" no-padding>
         <ion-row>
@@ -30,7 +31,7 @@
         </ion-row>
         <ion-row>
           <ion-col class="time" no-padding>
-            {{currentTime}}
+            {{currentDate | date:"HH:mm"}}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -42,7 +43,8 @@
       <ion-col col-6>
         <ion-row>
           <ion-col col-3 class="weather-icon" no-padding>
-            <img src="./assets/imgs/weathericons/currenticon/{{currentIconWeather}}.png"/>
+            <!-- <img src="./assets/imgs/weathericons/currenticon/{{currentIconWeather}}.png"/> -->
+            <img src="./assets/imgs/weathericons/newcurrenticon/n{{currentIconWeather}}.png"/>
           </ion-col>
           <ion-col col-4 class="weather-degree" no-padding>
             {{currentTemp}}°
@@ -72,7 +74,8 @@
           </ion-row>
           <ion-row>
             <ion-col no-padding class="icon">
-              <img src="./assets/imgs/weathericons/futureicon/{{futureDay1Icon}}.png"/>
+              <!-- <img src="./assets/imgs/weathericons/futureicon/{{futureDay1Icon}}.png"/> -->
+              <img src="./assets/imgs/weathericons/newfutureicon/b{{futureDay1Icon}}.png"/>
             </ion-col>
           </ion-row>
           <ion-row>
@@ -95,7 +98,8 @@
           </ion-row>
           <ion-row>
             <ion-col no-padding class="icon">
-              <img src="./assets/imgs/weathericons/{{futureDay2Icon}}.png"/>
+              <!-- <img src="./assets/imgs/weathericons/{{futureDay2Icon}}.png"/> -->
+              <img src="./assets/imgs/weathericons/newfutureicon/b{{futureDay2Icon}}.png"/>
             </ion-col>
           </ion-row>
           <ion-row>
@@ -118,7 +122,8 @@
           </ion-row>
           <ion-row>
             <ion-col no-padding class="icon">
-              <img src="./assets/imgs/weathericons/{{futureDay3Icon}}.png"/>
+              <!-- <img src="./assets/imgs/weathericons/{{futureDay3Icon}}.png"/> -->
+              <img src="./assets/imgs/weathericons/newfutureicon/b{{futureDay3Icon}}.png"/>
             </ion-col>
           </ion-row>
           <ion-row>
@@ -141,7 +146,8 @@
           </ion-row>
           <ion-row>
             <ion-col no-padding class="icon">
-              <img src="./assets/imgs/weathericons/{{futureDay4Icon}}.png"/>
+              <!-- <img src="./assets/imgs/weathericons/{{futureDay4Icon}}.png"/> -->
+              <img src="./assets/imgs/weathericons/newfutureicon/b{{futureDay4Icon}}.png"/>
             </ion-col>
           </ion-row>
           <ion-row>
