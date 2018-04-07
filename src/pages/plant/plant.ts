@@ -79,13 +79,13 @@ export class PlantPage {
         // }else{
         //   x.alpha = 1;
         // }
-        console.log(x.PlantInfo.Capacity);
         if(x.PlantInfo.IsEnabled == '0'){
           x.alpha = 0.5;
         }else{
           x.alpha = 1;
         }
       });
+      console.log('stream', this.streamList);
       this.solarList = data.Result.filter(plant => plant.PlantTypeId == 1);
       this.solarList.map(x => {
         // if(x.PlantName != 'CHPP'){
@@ -100,6 +100,7 @@ export class PlantPage {
           x.alpha = 1;
         }
       });
+      console.log('solar', this.streamList);
       this.loader.dismiss();
       if (this.shared.isRunOnDevice) {
         this.updateMarker(this.solarList);
@@ -291,7 +292,7 @@ export class PlantPage {
   }
 
   selectedPlant(item) {
-    if (item.PlantName == 'CHPP' || item.PlantName == 'ICHINOSEKI') {
+    if (item.PlantInfo.IsEnabled === 1) {
       this.navCtrl.push(this.homePage, { plantId: item.PlantId });
     } else {
       // alert (item.name + ' has no data.');

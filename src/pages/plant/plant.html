@@ -55,9 +55,15 @@
                                         </ion-col>
                                     </ion-row>
                                     <ion-row no-padding *ngIf="item.PlantInfo.Capacity != 0">
-                                        <ion-col class="power-gen" no-padding col-2>
-                                            <img src="./assets/imgs/E1.png"/>
-                                            {{(item.PlantInfo.Capacity/1000000).toFixed(2)|number:0}} MW
+                                        <ion-col class="power-gen" no-padding>
+                                            <ion-row>
+                                                <img src="./assets/imgs/E1.png"/>
+                                                {{(item.PlantInfo.Capacity/1000000).toFixed(2)|number:0}} MW &nbsp;
+                                                <div *ngIf="item.PlantInfo.Cogen !=0">
+                                                    <img src="./assets/imgs/E2.png"/>
+                                                    {{item.PlantInfo.Cogen}} T/H
+                                                </div>
+                                            </ion-row>
                                         </ion-col>
                                     </ion-row>
                                 </ion-col>
@@ -102,6 +108,10 @@
                                         <ion-col class="power-gen" no-padding col-2>
                                             <img src="./assets/imgs/E1.png"/>
                                             {{(item.PlantInfo.Capacity/1000000).toFixed(2)|number:0}} MW
+                                            <div *ngIf="item.PlantInfo.Cogen !=0">
+                                                <img src="./assets/imgs/E2.png"/>
+                                                {{item.PlantInfo.Cogen}} T/H
+                                            </div>
                                         </ion-col>
                                     </ion-row>
                                 </ion-col>
