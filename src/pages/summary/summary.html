@@ -31,7 +31,7 @@
         </ion-row>
         <ion-row>
           <ion-col class="time" no-padding>
-            {{currentDate | date:"HH:mm"}}
+            {{currentTime}}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -170,7 +170,7 @@
           {{lastestUpdate | date:"dd/MMM/yyyy"}}
         </span>
         <span class="time">
-            {{lastestUpdate | date:"HH:mm:ss"}}({{timezoneApi}})
+            {{lastestUpdateTime}}({{timezoneApi}})
         </span>  
       </ion-col>
     </ion-row>
