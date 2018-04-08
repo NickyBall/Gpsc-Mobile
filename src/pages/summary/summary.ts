@@ -104,6 +104,7 @@ export class SummaryPage {
   currentTime: any;
   currentDate: any;
   lastestUpdate: any;
+  lastestUpdateTime: any;
   timezoneApi: any;
   futureList:any;
   testArr: any[];
@@ -142,10 +143,12 @@ export class SummaryPage {
                 //   this.logo = "./assets/imgs/chpphead.png";
                   this.cityName = "Chanthaburi"
                   //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
-                  this.currentDate = new Date();
+                  //this.currentDate = new Date();
                   this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
                   this.timezoneApi = this.plantData.Result.TimeZone;
-                  console.log("currentDate:"+this.currentDate);
+                  //console.log("currentDate:"+this.currentDate);
+                  this.lastestUpdateTime = (this.plantData.Result.UpdatedAt).toString().substring(11,19);
+                  console.log("lastestTime:"+this.plantData.Result.UpdatedAt);
                   console.log("lastestUpdate:"+this.lastestUpdate);
                   console.log(this.timezoneApi);
                 }
@@ -154,13 +157,15 @@ export class SummaryPage {
                   this.cityName = "Ichinoseki"
                   //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
                   //this.currentDate.setHours(this.currentDate.getHours()+2);
-                  this.currentDate = new Date();
+                  //this.currentDate = new Date();
                   //this.currentDate.setUTCHours(17);
-                  this.currentDate.setHours(this.currentDate.getHours()+2);
+                  //this.currentDate.setHours(this.currentDate.getHours()+2);
                   this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
                   //this.lastestUpdate.setHours(this.lastestUpdate.getHours()+2);
                   this.timezoneApi = this.plantData.Result.TimeZone;
-                  console.log("currentDate:"+this.currentDate);
+                  //console.log("currentDate:"+this.currentDate);
+                  this.lastestUpdateTime = (this.plantData.Result.UpdatedAt).toString().substring(11,19);
+                  console.log("lastestTime:"+this.plantData.Result.UpdatedAt);
                   console.log("lastestUpdate:"+this.lastestUpdate);
                   console.log(this.timezoneApi);
                 }
@@ -251,9 +256,10 @@ export class SummaryPage {
     let response = JSON.stringify(this.shared.LastestWeather); // Convert {any} data to {string}
     let json = JSON.parse(response); // Convert Json string to JavaScript Key-Value Object
     let jsonfinal = JSON.parse(json);
-    // console.log(jsonfinal[0]['LocalObservationDateTime']);
     //console.log(this.currentDate);
+    console.log((jsonfinal[0]['LocalObservationDateTime']));
     this.currentDate = new Date((jsonfinal[0]['LocalObservationDateTime']).toString().substring(0,19));
+    this.currentTime = (jsonfinal[0]['LocalObservationDateTime']).toString().substring(11,16);
 
     let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday",
         "Thursday", "Friday", "Saturday"];
@@ -278,7 +284,7 @@ export class SummaryPage {
     let responseForecast = JSON.stringify(this.shared.ForeCastWeather); // Convert {any} data to {string}
     let jsonForecast = JSON.parse(responseForecast); // Convert Json string to JavaScript Key-Value Object
     let jsonfinalForcast = JSON.parse(jsonForecast);
-    console.log(jsonfinalForcast);
+    //console.log(jsonfinalForcast);
 
     // Day1
     this.futureDay1minT = jsonfinalForcast['DailyForecasts'][1]['Temperature']['Minimum']['Value']
