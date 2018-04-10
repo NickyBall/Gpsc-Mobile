@@ -654,6 +654,7 @@ page-summary {
                        position: relative;
                        left: 5%;
                    }
+                   
              }
 
             // ip 6 7 8 plus
@@ -720,6 +721,59 @@ page-summary {
                         font-size: 1.5vh;
                         position: relative;
                         left: 5%;
+                    }
+                    .presentweather{
+                        z-index: 5;
+                        box-shadow: 0 0.5vh 0.25vh rgb(204, 204, 204);
+                        color: rgba(255, 255, 255, 0.801);
+                        padding-top: 2px;
+                        // padding-bottom: 2px;
+                        margin-top: -0.25vh;
+                        margin-left: -3px;
+                        margin-right: -3px;
+                        width: 102%;
+                        height: 8vh;
+                        background: linear-gradient(to right, #8dbde8 , #98e9ea);
+                        .weather-title{
+                            font-size: 1.5vh;
+                            padding-top:1%;
+                        }
+                        .weather-date{
+                            .day{
+                                font-size: 1.8vh;
+                                padding-top:4%;
+                            }
+                            .time{
+                                font-size: 1.75vh;
+                            }
+                            .dt{
+                                font-size: 1.5vh;
+                            }
+                        }
+                        .weather-icon{
+                            position: relative;
+                            left: -5%;
+                            img{
+                                height: 5.5vh;
+                            }
+                        }
+                        .weather-degree{
+                            position: relative;
+                            top: 1vh;
+                            color: white;
+                            font-size: 4.5vh;
+                            font-weight: 100;
+                        }
+                        .weather-env{
+                            .text{
+                                font-size: 2vh;
+                            }
+                            .max-min{
+                                position: relative;
+                                top: 0.35vh;
+                                font-size: 1.75vh;
+                            }
+                        }
                     }
             }
         }
