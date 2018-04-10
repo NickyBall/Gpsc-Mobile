@@ -144,7 +144,7 @@ export class SummaryPage {
                   this.cityName = "Chanthaburi"
                   //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
                   //this.currentDate = new Date();
-                  this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
+                  this.lastestUpdate = new Date((this.plantData.Result.UpdatedAt).toString().substring(0,10));
                   this.timezoneApi = this.plantData.Result.TimeZone;
                   //console.log("currentDate:"+this.currentDate);
                   this.lastestUpdateTime = (this.plantData.Result.UpdatedAt).toString().substring(11,19);
@@ -160,7 +160,7 @@ export class SummaryPage {
                   //this.currentDate = new Date();
                   //this.currentDate.setUTCHours(17);
                   //this.currentDate.setHours(this.currentDate.getHours()+2);
-                  this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
+                  this.lastestUpdate = new Date((this.plantData.Result.UpdatedAt).toString().substring(0,10));
                   //this.lastestUpdate.setHours(this.lastestUpdate.getHours()+2);
                   this.timezoneApi = this.plantData.Result.TimeZone;
                   //console.log("currentDate:"+this.currentDate);
@@ -257,8 +257,8 @@ export class SummaryPage {
     let json = JSON.parse(response); // Convert Json string to JavaScript Key-Value Object
     let jsonfinal = JSON.parse(json);
     //console.log(this.currentDate);
-    console.log((jsonfinal[0]['LocalObservationDateTime']));
-    this.currentDate = new Date((jsonfinal[0]['LocalObservationDateTime']).toString().substring(0,19));
+    console.log((jsonfinal[0]['LocalObservationDateTime']).toString().substring(0,10));
+    this.currentDate = new Date((jsonfinal[0]['LocalObservationDateTime']).toString().substring(0,10));
     this.currentTime = (jsonfinal[0]['LocalObservationDateTime']).toString().substring(11,16);
 
     let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday",
