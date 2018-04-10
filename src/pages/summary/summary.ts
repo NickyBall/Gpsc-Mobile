@@ -466,8 +466,8 @@ export class SummaryPage {
 
             series: [{
                 name: 'Irradiation',
-                //data: [(this.irradiationData > 5) ? 5 : this.irradiationData],
-                data: [irrData],
+                data: [(this.irradiationData > this.irradiationMax) ? this.irradiationMax : this.irradiationData],
+                // data: [irrData],
                 dataLabels: false,
                 tooltip: {
                     valueSuffix: ' W/M<sup>2</sup>'
