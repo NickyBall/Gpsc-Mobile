@@ -144,7 +144,7 @@ export class SummaryPage {
                   this.cityName = "Chanthaburi"
                   //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
                   //this.currentDate = new Date();
-                  this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
+                  this.lastestUpdate = new Date((this.plantData.Result.UpdatedAt).toString().substring(0,10));
                   this.timezoneApi = this.plantData.Result.TimeZone;
                   //console.log("currentDate:"+this.currentDate);
                   this.lastestUpdateTime = (this.plantData.Result.UpdatedAt).toString().substring(11,19);
@@ -160,7 +160,7 @@ export class SummaryPage {
                   //this.currentDate = new Date();
                   //this.currentDate.setUTCHours(17);
                   //this.currentDate.setHours(this.currentDate.getHours()+2);
-                  this.lastestUpdate = new Date(this.plantData.Result.UpdatedAt);
+                  this.lastestUpdate = new Date((this.plantData.Result.UpdatedAt).toString().substring(0,10));
                   //this.lastestUpdate.setHours(this.lastestUpdate.getHours()+2);
                   this.timezoneApi = this.plantData.Result.TimeZone;
                   //console.log("currentDate:"+this.currentDate);
@@ -257,8 +257,8 @@ export class SummaryPage {
     let json = JSON.parse(response); // Convert Json string to JavaScript Key-Value Object
     let jsonfinal = JSON.parse(json);
     //console.log(this.currentDate);
-    console.log((jsonfinal[0]['LocalObservationDateTime']));
-    this.currentDate = new Date((jsonfinal[0]['LocalObservationDateTime']).toString().substring(0,19));
+    console.log((jsonfinal[0]['LocalObservationDateTime']).toString().substring(0,10));
+    this.currentDate = new Date((jsonfinal[0]['LocalObservationDateTime']).toString().substring(0,10));
     this.currentTime = (jsonfinal[0]['LocalObservationDateTime']).toString().substring(11,16);
 
     let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday",
@@ -466,8 +466,8 @@ export class SummaryPage {
 
             series: [{
                 name: 'Irradiation',
-                //data: [(this.irradiationData > 5) ? 5 : this.irradiationData],
-                data: [irrData],
+                data: [(this.irradiationData > this.irradiationMax) ? this.irradiationMax : this.irradiationData],
+                // data: [irrData],
                 dataLabels: false,
                 tooltip: {
                     valueSuffix: ' W/M<sup>2</sup>'
@@ -580,14 +580,25 @@ export class SummaryPage {
     let x;
     let y;
     let timeLabel = undefined;
-    let l = dataSrc.length
+    let l = dataSrc.length;
+    let multiScale;
     if( l >= 12){
         // for(let i = dataSrc.length; )
+
         hourlyDataSrc = dataSrc.map(y =>{
             return Math.round(y.EnergyValue/1000000);
         });
         y = hourlyDataSrc.slice(l-11, l);
-
+        let max = Math.max.apply(null, y);
+        let count =  max.toString().length;
+        if(count == 9){
+            multiScale = 600;
+        }else if(count == 8)
+        {
+            multiScale = 60;
+        }else{
+            multiScale = 6;
+        }
         timeLabel = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('ha');
         })
@@ -597,6 +608,21 @@ export class SummaryPage {
         y = dataSrc.map(y =>{
             return Math.round(y.EnergyValue/1000000);
         });
+        let max = Math.max.apply(null, y);
+        let count =  max.toString().length;
+        if(count == 3){
+            multiScale = 600;
+        }else if(count == 2)
+        {
+            multiScale = 60;
+        }else if(count == 1)
+        {
+            multiScale = 6;
+        }else
+        {
+            multiScale = 6 * (count - 1) * 10;
+        }
+   
         x = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('ha');
         })
@@ -641,7 +667,7 @@ export class SummaryPage {
                 ticks: {
                     beginAtZero: true,
                     fontSize: 10,
-                    stepSize: 6
+                    stepSize: multiScale
                 }
               }],
 
