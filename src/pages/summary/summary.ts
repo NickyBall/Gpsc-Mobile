@@ -580,14 +580,25 @@ export class SummaryPage {
     let x;
     let y;
     let timeLabel = undefined;
-    let l = dataSrc.length
+    let l = dataSrc.length;
+    let multiScale;
     if( l >= 12){
         // for(let i = dataSrc.length; )
+
         hourlyDataSrc = dataSrc.map(y =>{
             return Math.round(y.EnergyValue/1000000);
         });
         y = hourlyDataSrc.slice(l-11, l);
-
+        let max = Math.max.apply(null, y);
+        let count =  max.toString().length;
+        if(count == 9){
+            multiScale = 600;
+        }else if(count == 8)
+        {
+            multiScale = 60;
+        }else{
+            multiScale = 6;
+        }
         timeLabel = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('ha');
         })
@@ -597,6 +608,21 @@ export class SummaryPage {
         y = dataSrc.map(y =>{
             return Math.round(y.EnergyValue/1000000);
         });
+        let max = Math.max.apply(null, y);
+        let count =  max.toString().length;
+        if(count == 3){
+            multiScale = 600;
+        }else if(count == 2)
+        {
+            multiScale = 60;
+        }else if(count == 1)
+        {
+            multiScale = 6;
+        }else
+        {
+            multiScale = 6 * (count - 1) * 10;
+        }
+   
         x = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('ha');
         })
@@ -641,7 +667,7 @@ export class SummaryPage {
                 ticks: {
                     beginAtZero: true,
                     fontSize: 10,
-                    stepSize: 6
+                    stepSize: multiScale
                 }
               }],
 
