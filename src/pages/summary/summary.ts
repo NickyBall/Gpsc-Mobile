@@ -1235,8 +1235,12 @@ export class SummaryPage {
       if(this.yearlyData.Result.length != 0){
         let responseYearly = JSON.stringify(this.yearlyData);
         let jsonYearly = JSON.parse(responseYearly);
-        this.summaryYTDActual = Math.floor(parseFloat(jsonYearly["Result"]["0"]["EnergyValue"]) / 100000) / 10;
-        this.summaryYTDPlan = Math.floor(parseFloat(jsonYearly["Result"]["0"]["Target"]) / 100000) / 10;
+        let nowadays = new Date();
+        var thisYearIndex = jsonYearly["Result"].findIndex(c => new Date(c.TimeStamp).getFullYear() == nowadays.getFullYear());
+        console.log("thisYearIndex" + thisYearIndex);
+        
+        this.summaryYTDActual = Math.floor(parseFloat(jsonYearly["Result"][thisYearIndex]["EnergyValue"]) / 100000) / 10;
+        this.summaryYTDPlan = Math.floor(parseFloat(jsonYearly["Result"][thisYearIndex]["Target"]) / 100000) / 10;
       }
       else{
         this.summaryYTDActual = 0;
