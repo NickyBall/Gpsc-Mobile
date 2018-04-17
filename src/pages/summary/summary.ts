@@ -222,7 +222,7 @@ export class SummaryPage {
   }
 
   ionViewDidEnter() {
-    this.loader.present();
+    //  this.loader.present();
 
     this.powerGenGraph();
     // this.hourlyGraph(1);
@@ -1314,7 +1314,7 @@ export class SummaryPage {
       }
       //#endregion
       console.log(moment(this.lastestUpdate).format('MMM'));
-      this.loader.dismiss();
+    //   this.loader.dismiss();
   }
 
 }
