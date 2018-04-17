@@ -44,7 +44,8 @@
     "moment": "^2.20.1",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.18"
+    "zone.js": "0.8.18",
+    "cordova-plugin-advanced-http": "~1.11.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.6",
@@ -56,17 +57,22 @@
       "cordova-plugin-googlemaps": {
         "API_KEY_FOR_ANDROID": "AIzaSyCz4akozeFAIz3LWwMwqT2-twCg7pIqJmw",
         "API_KEY_FOR_IOS": "AIzaSyCz4akozeFAIz3LWwMwqT2-twCg7pIqJmw",
-        "PLAY_SERVICES_VERSION": "11.8.0"
+        "PLAY_SERVICES_VERSION": "11.8.0",
+        "LOCATION_WHEN_IN_USE_DESCRIPTION": "Show your location on the map",
+        "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Trace your location on the map"
       },
       "ionic-plugin-keyboard": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-nativegeocoder": {}
+      "cordova-plugin-nativegeocoder": {
+        "LOCATION_WHEN_IN_USE_DESCRIPTION": "Use geocoder service"
+      },
+      "cordova-plugin-advanced-http": {}
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
