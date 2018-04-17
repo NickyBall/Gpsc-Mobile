@@ -711,6 +711,43 @@ export class SummaryPage {
         this.selectedEnergySection = 'dailyTab';
     }
     let dataSrc = this.dialyData.Result;
+    
+    // let dataSrc = [
+    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-01T00:00:00"},
+    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-02T00:00:00"},
+    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-04-03T00:00:00"},
+    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-04T00:00:00"},
+    //     {EnergyValue: 25700000, Target: -1, TimeStamp: "2018-04-05T00:00:00"},
+    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-06T00:00:00"},
+    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-07T00:00:00"},
+    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-04-08T00:00:00"},
+    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-09T00:00:00"},
+    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-10T00:00:00"},
+    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-11T00:00:00"},
+    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-04-12T00:00:00"},
+    //     {EnergyValue: 75700000, Target: -1, TimeStamp: "2018-04-13T00:00:00"},
+    //     {EnergyValue: 75700000, Target: -1, TimeStamp: "2018-04-14T00:00:00"},
+    //     {EnergyValue: 35700000, Target: -1, TimeStamp: "2018-04-15T00:00:00"},
+    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-16T00:00:00"},
+    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-17T00:00:00"},
+    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-18T00:00:00"},
+    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-19T00:00:00"},
+    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-04-20T00:00:00"},
+    //     {EnergyValue: 75700000, Target: -1, TimeStamp: "2018-04-21T00:00:00"},
+    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-22T00:00:00"},
+    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-04-23T00:00:00"},
+    //     {EnergyValue: 75700000, Target: -1, TimeStamp: "2018-04-24T00:00:00"},
+    //     {EnergyValue: 25700000, Target: -1, TimeStamp: "2018-04-25T00:00:00"},
+    //     {EnergyValue: 35700000, Target: -1, TimeStamp: "2018-04-26T00:00:00"},
+    //     {EnergyValue: 15700000, Target: -1, TimeStamp: "2018-04-27T00:00:00"},
+    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-28T00:00:00"},
+    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-29T00:00:00"},
+    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-30T00:00:00"},
+    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-05-01T00:00:00"},
+    //     {EnergyValue: 75700000, Target: -1, TimeStamp: "2018-05-02T00:00:00"},
+    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-05-03T00:00:00"},
+    // ];
+    console.log('daily', dataSrc);
     let dailyDataSrc = undefined;
     let x;
     let y;
@@ -719,13 +756,12 @@ export class SummaryPage {
     let lower = 0;
     let timeLabel = undefined;
     let l = dataSrc.length
-    if( l >= 7){
-        // for(let i = dataSrc.length; )
+    if( l >= 30){
         dailyDataSrc = dataSrc.map(y =>{
             return Math.round(y.EnergyValue/1000000 *10)/10;
         });
         console.log('check ', dailyDataSrc);
-        y = dailyDataSrc.slice(l-7, l);
+        y = dailyDataSrc.slice(l-30, l);
         let max, min, range, compensate;
         max = Math.max.apply(null, y);
         min = Math.min.apply(null, y);
@@ -738,7 +774,7 @@ export class SummaryPage {
         timeLabel = dataSrc.map(x =>{
             return moment(x.TimeStamp).format('D MMM');
         })
-        x = timeLabel.slice(l-7, l);
+        x = timeLabel.slice(l-30, l);
         console.log("time:"+x);
     }
     else{
@@ -754,7 +790,8 @@ export class SummaryPage {
         console.log('min ', min);
         range = max-min;
         compensate = range * 20 / 100; // 20% of range
-        upper = Math.round(compensate) + max;
+        // upper = Math.round(compensate) + max;
+        // upper = max + ;
         // lower = min - Math.round(compensate);
         console.log('upper ', upper);
         console.log('lower ', lower);
@@ -786,7 +823,10 @@ export class SummaryPage {
                 },
                 barPercentage: 0.5,
                 ticks: {
-                    fontSize: 10
+                    maxRotation: 30,
+                    fontSize: 10,
+                    autoSkip: true,
+                    maxTicksLimit: 6
                 }
               }],
               yAxes: [{
@@ -800,8 +840,8 @@ export class SummaryPage {
                 },
                 ticks: {
                     // beginAtZero: isZero,
-                    min: lower,
-                    max: upper,
+                    // min: lower,
+                    // max: max,
                     fontSize: 10,
                     // stepSize: 0.2
                 }
