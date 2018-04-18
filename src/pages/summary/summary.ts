@@ -975,8 +975,8 @@ export class SummaryPage {
             return Math.round(y.Target/parseFloat(this.plantData.Result.UnitScale));
         });
 
-        y = monthlyDataSrc.slice(l-11, l);
-        yTarget = monthlyDataTarget.slice(l-11, l);
+        y = monthlyDataSrc;
+        yTarget = monthlyDataTarget;
         console.log('value ', y);
         console.log('target', yTarget);
         let max, maxTarget, min, minTarget, range, compensate;
