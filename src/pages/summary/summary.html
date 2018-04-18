@@ -251,9 +251,9 @@
                     <ion-col col-7 text-center class="power-icon">
                       <img [src]="irradiationIcon" item-start class="show"/>
                     </ion-col>
-                    <ion-col col-5 class="power-text">
-                      <span class="power-value">{{ irradiationData }}</span>
-                      <span class="power-unit">W/m<sup>2</sup></span>
+                    <ion-col col-5 class="power-text" [ngStyle]="{'left': leftposition, 'top': topposition}">
+                      <span class="power-value" [ngStyle]="{'font-size': valueScaleDown}">{{ irradiationData }}</span>
+                      <span class="power-unit" [ngStyle]="{'font-size': unitScaleDown}">W/m<sup>2</sup></span>
                     </ion-col>
                   </ion-row>
                 </ion-grid>
