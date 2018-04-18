@@ -44,6 +44,10 @@ export class SummaryPage {
   irradiationMax: number;
   irradiationMin: number;
   irradiationScale: number;
+  private leftposition: string;
+  private topposition: string;
+  private valueScaleDown: string;
+  private unitScaleDown: string;
 
   ambientTemperatureChart: any;
   ambientTempData: any;
@@ -470,6 +474,23 @@ export class SummaryPage {
 
   irradiationGraph() {
       let irrData = Math.round(this.irradiationData);
+
+      this.leftposition = '5%';
+      this.topposition = '-7vh';
+    
+  
+      let count =  this.irradiationData.toString().length;
+      if(count >= 4){
+          this.leftposition = '3%';
+          this.topposition = '-7.5vh';
+          this.valueScaleDown = '4.5vh';
+          this.unitScaleDown = '2.8vh';
+      }
+      
+      if(this.irradiationData >= 1000){
+        this.leftposition = '0%';
+      }
+ 
       setTimeout(() => {
         this.irradiationChart = HighCharts.chart('irradiation-chart', {
 
