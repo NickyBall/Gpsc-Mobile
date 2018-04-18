@@ -13,6 +13,7 @@ export class HourlyEnergyProvider {
 
   apiUrl: string;
   constructor(public http: HttpClient, public shared: SharedService) {
+    console.log('Hello CompanyProvider Provider');
     this.apiUrl = this.shared.BaseUrl + 'api/PowerPlant/GetHourlyEnergyGen';
   }
 

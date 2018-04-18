@@ -10,6 +10,7 @@ import { DailyEnergyProvider } from '../../providers/daily-energy/daily-energy';
 import { MonthlyEnergyProvider } from '../../providers/monthly-energy/monthly-energy';
 import { YearlyEnergyProvider } from '../../providers/yearly-energy/yearly-energy';
 import { SharedService } from '../../providers/SharedService';
+import { now } from 'moment';
 
 HighchartsMore(HighCharts);
 
@@ -30,6 +31,7 @@ export class SummaryPage {
 
   powerChart: any;
   powerData: any;
+  powerOnGraph: number;
   powerIcon: string;
   powerMax: number;
   powerMin: number;
@@ -37,6 +39,7 @@ export class SummaryPage {
 
   irradiationChart: any;
   irradiationData: any;
+  irradiationOnGraph: number;
   irradiationIcon: string;
   irradiationMax: number;
   irradiationMin: number;
@@ -44,6 +47,7 @@ export class SummaryPage {
 
   ambientTemperatureChart: any;
   ambientTempData: any;
+  ambientTempOnGraph: number;
   ambientIcon: string;
   ambientMax: number;
   ambientMin: number;
@@ -109,6 +113,7 @@ export class SummaryPage {
   futureList:any;
   testArr: any[];
   currentIconWeather: any;
+  todayDateGeneration: any;
 
   loader: any;
 
@@ -126,9 +131,12 @@ export class SummaryPage {
             public loadingCtrl: LoadingController,
             public viewCtrl:ViewController,
             public shared: SharedService) {
-
+                
                 this.viewCtrl = viewCtrl;
-
+                this.loader = this.loadingCtrl.create({
+                    content: "Loading..."
+                  });
+                this.loader.present();
                 this.plantData = this.navParams.get('plantData');
                 console.log('data', this.plantData);
                 this.logo = "https://gpscweb.pttgrp.com/GPSC-Plant-monitoring-API_Test/" + this.plantData.Result.PlantInfo.CompanyLogo;
@@ -138,6 +146,7 @@ export class SummaryPage {
                 console.log("testPT");
                 console.log(this.plantData.Result);
                 console.log("endtestPT")
+
                 // console.log("cityName is:"+this.companyName);
                 if(this.companyName == 'CHPP'){
                 //   this.logo = "./assets/imgs/chpphead.png";
@@ -145,6 +154,10 @@ export class SummaryPage {
                   //this.currentDate = new Date(this.plantData.Result.UpdatedAt);
                   //this.currentDate = new Date();
                   this.lastestUpdate = new Date((this.plantData.Result.UpdatedAt).toString().substring(0,10));
+                  this.todayDateGeneration = new Date((this.plantData.Result.UpdatedAt).toString().substring(0,10));
+                  this.todayDateGeneration.setHours(0);
+                  this.todayDateGeneration.setMinutes(0);
+                  this.todayDateGeneration.setSeconds(0);
                   this.timezoneApi = this.plantData.Result.TimeZone;
                   //console.log("currentDate:"+this.currentDate);
                   this.lastestUpdateTime = (this.plantData.Result.UpdatedAt).toString().substring(11,19);
@@ -161,6 +174,10 @@ export class SummaryPage {
                   //this.currentDate.setUTCHours(17);
                   //this.currentDate.setHours(this.currentDate.getHours()+2);
                   this.lastestUpdate = new Date((this.plantData.Result.UpdatedAt).toString().substring(0,10));
+                  this.todayDateGeneration = new Date((this.plantData.Result.UpdatedAt).toString().substring(0,10));
+                  this.todayDateGeneration.setHours(0);
+                  this.todayDateGeneration.setMinutes(0);
+                  this.todayDateGeneration.setSeconds(0);
                   //this.lastestUpdate.setHours(this.lastestUpdate.getHours()+2);
                   this.timezoneApi = this.plantData.Result.TimeZone;
                   //console.log("currentDate:"+this.currentDate);
@@ -175,6 +192,7 @@ export class SummaryPage {
                 this.hourlyEnergyProvider.requestHourlyEnergy(id)
                     .then(data => {
                         this.hourlyData = data;
+                        console.log("callHourlyProviderxxx");
                     }).catch(error => {
                         console.log(error);
                     });
@@ -184,12 +202,14 @@ export class SummaryPage {
                     this.dialyData = data;
                     console.log("callDailyProviderxxx");
                 }).catch(error => {
+                    console.log("callDailyProviderCatch");
                     console.log(error);
                 });
 
                 this.monthlyEnergyProvider.requestMonthlyEnergy(id)
                 .then(data => {
                     this.monthlyData = data;
+                    console.log("callMonthlyProviderxxx");
                 }).catch(error => {
                     console.log(error);
                 });
@@ -197,15 +217,15 @@ export class SummaryPage {
                 this.yearlyEnergyProvider.requestYearlyEnergy(id)
                 .then(data => {
                     this.yearlyData = data;
+                    console.log("callYearlyProviderxxx");
                 }).catch(error => {
                     console.log(error);
                 });
-                this.loader = this.loadingCtrl.create({
-                    content: "Loading..."
-                  });
+                
                 this.powerIcon = "assets/imgs/Elect.png";
                 this.irradiationIcon = "assets/imgs/Sun.png";
                 this.ambientIcon = "assets/imgs/Temp.png";
+                this.loader.dismiss(); 
   }
 
   ionViewWillEnter(){
@@ -213,40 +233,54 @@ export class SummaryPage {
     this.viewCtrl.setBackButtonText('');
   }
 
-  ionViewDidLoad(){
+//   ionViewDidLoad(){
     //   this.loader.present();
     //   this.getWeather();
     //   this.generationSummary();
     //   console.log("daily foreach");
     //   console.log(this.dialyData.Result);
-  }
+//   }
 
-  ionViewDidEnter() {
-    //  this.loader.present();
+//   ionViewDidEnter() {
+    ionViewDidLoad(){
+    
 
     this.powerGenGraph();
     // this.hourlyGraph(1);
-    this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
+    this.powerData = parseFloat(this.plantData.Result.PowerGen)/parseInt(this.plantData.Result.UnitScale);
+    
     //this.powerData = Math.floor(parseFloat(this.shared.CapacitySummary) / 100000) / 10;
     // this.irradiationData = Math.floor(parseFloat(this.plantData.Result.Irradiation) / 100000) / 10;
     //this.irradiationData = parseFloat(this.plantData.Result.Irradiation).toFixed(1);
     this.powerMax = parseInt(this.plantData.Result.PowerGenPeriod.Max);
     this.powerMin = parseInt(this.plantData.Result.PowerGenPeriod.Min);
     this.powerScale = parseInt(this.plantData.Result.PowerGenPeriod.Scale);
+    this.powerOnGraph = parseFloat(this.powerData.toFixed(1));
+    console.log("powerOnGraph" + this.powerOnGraph);
+    
+    if (this.powerData > this.powerMax) this.powerOnGraph = this.powerMax;
+    else if (this.powerData < this.powerMin) this.powerOnGraph = this.powerMin;
 
     this.irradiationData = parseFloat(this.plantData.Result.Irradiation);
     this.irradiationMax = parseInt(this.plantData.Result.IrradiationPeriod.Max);
     this.irradiationMin = parseInt(this.plantData.Result.IrradiationPeriod.Min);
     this.irradiationScale = parseInt(this.plantData.Result.IrradiationPeriod.Scale);
+    this.irradiationOnGraph = parseFloat(this.irradiationData.toFixed(1));
+    if (this.irradiationData > this.irradiationMax) this.irradiationOnGraph = this.irradiationMax;
+    else if (this.irradiationData < this.irradiationMin) this.irradiationOnGraph = this.irradiationMin;
 
     this.ambientTempData = this.plantData.Result.AMB_Temp;
     this.ambientMax = parseInt(this.plantData.Result.AMB_TempPeriod.Max);
     this.ambientMin = parseInt(this.plantData.Result.AMB_TempPeriod.Min);
     this.ambientScale = parseInt(this.plantData.Result.AMB_TempPeriod.Scale);
+    this.ambientTempOnGraph = parseFloat(this.ambientTempData.toFixed(1));
+    if (this.ambientTempData > this.ambientMax) this.ambientTempOnGraph = this.ambientMax;
+    else if (this.ambientTempData < this.ambientMin) this.ambientTempOnGraph = this.ambientMin;
 
 
     this.getWeather();
-    this.generationSummary();
+    //this.generationSummary();
+    
   }
   getWeather(){
     console.log("getWeather");
@@ -387,7 +421,7 @@ export class SummaryPage {
 
             series: [{
                 name: 'Power',
-                data: [(this.powerData > 20) ? 20 : this.powerData],
+                data: [this.powerOnGraph],
                 dataLabels: false,
                 tooltip: {
                     valueSuffix: ' MW'
@@ -466,7 +500,7 @@ export class SummaryPage {
 
             series: [{
                 name: 'Irradiation',
-                data: [(this.irradiationData > this.irradiationMax) ? this.irradiationMax : this.irradiationData],
+                data: [this.irradiationOnGraph],
                 // data: [irrData],
                 dataLabels: false,
                 tooltip: {
@@ -547,7 +581,7 @@ export class SummaryPage {
             series: [{
                 name: 'Ambient',
                 
-                data: [this.ambientTempData],
+                data: [this.ambientTempOnGraph],
                 dataLabels: false,
                 tooltip: {
                     valueSuffix: ' <sup>o</sup>C'
@@ -568,6 +602,7 @@ export class SummaryPage {
   }
 
   hourlyGraph(type: number){
+
     if(this.hourly){
         this.hourly.destroy();
         this.selectedEnergySection = 'hourlyTab';
@@ -586,7 +621,7 @@ export class SummaryPage {
         // for(let i = dataSrc.length; )
 
         hourlyDataSrc = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/1000000);
+            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
         });
         y = hourlyDataSrc.slice(l-11, l);
         let max = Math.max.apply(null, y);
@@ -606,7 +641,7 @@ export class SummaryPage {
     }
     else{
         y = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/1000000);
+            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
         });
         let max = Math.max.apply(null, y);
         let count =  max.toString().length;
@@ -711,42 +746,6 @@ export class SummaryPage {
         this.selectedEnergySection = 'dailyTab';
     }
     let dataSrc = this.dialyData.Result;
-    
-    // let dataSrc = [
-    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-01T00:00:00"},
-    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-02T00:00:00"},
-    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-04-03T00:00:00"},
-    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-04T00:00:00"},
-    //     {EnergyValue: 25700000, Target: -1, TimeStamp: "2018-04-05T00:00:00"},
-    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-06T00:00:00"},
-    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-07T00:00:00"},
-    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-04-08T00:00:00"},
-    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-09T00:00:00"},
-    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-10T00:00:00"},
-    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-11T00:00:00"},
-    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-04-12T00:00:00"},
-    //     {EnergyValue: 75700000, Target: -1, TimeStamp: "2018-04-13T00:00:00"},
-    //     {EnergyValue: 75700000, Target: -1, TimeStamp: "2018-04-14T00:00:00"},
-    //     {EnergyValue: 35700000, Target: -1, TimeStamp: "2018-04-15T00:00:00"},
-    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-16T00:00:00"},
-    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-17T00:00:00"},
-    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-18T00:00:00"},
-    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-19T00:00:00"},
-    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-04-20T00:00:00"},
-    //     {EnergyValue: 75700000, Target: -1, TimeStamp: "2018-04-21T00:00:00"},
-    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-22T00:00:00"},
-    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-04-23T00:00:00"},
-    //     {EnergyValue: 75700000, Target: -1, TimeStamp: "2018-04-24T00:00:00"},
-    //     {EnergyValue: 25700000, Target: -1, TimeStamp: "2018-04-25T00:00:00"},
-    //     {EnergyValue: 35700000, Target: -1, TimeStamp: "2018-04-26T00:00:00"},
-    //     {EnergyValue: 15700000, Target: -1, TimeStamp: "2018-04-27T00:00:00"},
-    //     {EnergyValue: 45700000, Target: -1, TimeStamp: "2018-04-28T00:00:00"},
-    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-29T00:00:00"},
-    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-04-30T00:00:00"},
-    //     {EnergyValue: 65700000, Target: -1, TimeStamp: "2018-05-01T00:00:00"},
-    //     {EnergyValue: 75700000, Target: -1, TimeStamp: "2018-05-02T00:00:00"},
-    //     {EnergyValue: 55700000, Target: -1, TimeStamp: "2018-05-03T00:00:00"},
-    // ];
     console.log('daily', dataSrc);
     let dailyDataSrc = undefined;
     let x;
@@ -758,7 +757,7 @@ export class SummaryPage {
     let l = dataSrc.length
     if( l >= 30){
         dailyDataSrc = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/1000000 *10)/10;
+            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
         });
         console.log('check ', dailyDataSrc);
         y = dailyDataSrc.slice(l-30, l);
@@ -780,7 +779,7 @@ export class SummaryPage {
     else{
         y = dataSrc.map(y =>{
             // return Math.round(y.EnergyValue/1000000);
-            return y.EnergyValue/1000000;
+            return y.EnergyValue/parseFloat(this.plantData.Result.UnitScale);
         });
         
         let max, min, range, compensate;
@@ -894,11 +893,11 @@ export class SummaryPage {
     if( l >= 12){
 
         monthlyDataSrc = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/1000000 * 10)/10;
+            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
         });
 
         monthlyDataTarget = dataSrc.map(y =>{
-            return Math.round(y.Target/1000000 * 10)/10;
+            return Math.round(y.Target/parseFloat(this.plantData.Result.UnitScale));
         });
 
         y = monthlyDataSrc.slice(l-11, l);
@@ -936,11 +935,11 @@ export class SummaryPage {
     }
     else{
         y = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/1000000 * 10)/10;
+            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
         });
 
         yTarget = dataSrc.map(y =>{
-            return Math.round(y.Target/1000000 * 10)/10;
+            return Math.round(y.Target/parseFloat(this.plantData.Result.UnitScale));
         });
 
         console.log('value ', y);
@@ -1083,10 +1082,10 @@ export class SummaryPage {
     if( l >= 6){
         // for(let i = dataSrc.length; )
         yearlyDataSrc = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/1000000);
+            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
         });
         yearlyDataSrcTarget = dataSrc.map(y =>{
-            return Math.round(y.Target/1000000);
+            return Math.round(y.Target/parseFloat(this.plantData.Result.UnitScale));
         });
 
         y = yearlyDataSrc.slice(l-6, l);
@@ -1126,11 +1125,11 @@ export class SummaryPage {
     }
     else{
         y = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/1000000);
+            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
         });
 
         yTarget = dataSrc.map(y =>{
-            return Math.round(y.Target/1000000);
+            return Math.round(y.Target/parseFloat(this.plantData.Result.UnitScale));
         });
 
         console.log('value ', y);
@@ -1265,7 +1264,6 @@ export class SummaryPage {
     // summaryMTDPlan: any;
     // summaryYTDActual: any;
     // summaryYTDPlan: any;
-
       console.log("generationSummary Called");
       //#region Daily
       console.log(this.dialyData);
@@ -1274,7 +1272,22 @@ export class SummaryPage {
         let jsonDaily = JSON.parse(responseDaily);
         //console.log(jsonDaily["Result"][this.dialyData.Result.length-1]["EnergyValue"]);
         //this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
-        this.summaryToday = Math.floor(parseFloat(jsonDaily["Result"][this.dialyData.Result.length-1]["EnergyValue"]) / 100000) / 10;
+        // let nowadays = new Date();
+        // nowadays.setHours(0);
+        // nowadays.setMinutes(0);
+        // nowadays.setSeconds(0);
+        // var thisDailyIndex = jsonDaily["Result"].findIndex(c => new Date(c.TimeStamp).getDay() == nowadays.getDay() && 
+        // new Date(c.TimeStamp).getMonth() == nowadays.getMonth() && new Date(c.TimeStamp).getFullYear() == nowadays.getFullYear());
+
+        console.log(this.todayDateGeneration.toLocaleString());
+
+        //console.log(new Date("2018-04-15T00:00:00").toLocaleString());
+        
+        var thisDailyIndex = jsonDaily["Result"].findIndex(c => new Date(c.TimeStamp).toLocaleString() == this.todayDateGeneration.toLocaleString());
+
+        console.log("thisDailyIndex" + thisDailyIndex);
+        this.summaryToday = parseFloat(jsonDaily["Result"][thisDailyIndex]["EnergyValue"])/parseFloat(this.plantData.Result.UnitScale);
+
       }
       else{
           this.summaryToday = 0;
@@ -1286,8 +1299,15 @@ export class SummaryPage {
       if(this.monthlyData.Result.length != 0){
         let responseMontyly = JSON.stringify(this.monthlyData);
         let jsonMontyly = JSON.parse(responseMontyly);
-        this.summaryMTDActual = Math.floor(parseFloat(jsonMontyly["Result"][parseInt(moment(this.lastestUpdate).format('M'))-1]["EnergyValue"]) / 100000) / 10;
-        this.summaryMTDPlan = Math.floor(parseFloat(jsonMontyly["Result"][parseInt(moment(this.lastestUpdate).format('M'))-1]["Target"]) / 100000) / 10;
+        let nowadays = new Date();
+        nowadays.setDate(1);
+        nowadays.setHours(0);
+        nowadays.setMinutes(0);
+        nowadays.setSeconds(0);
+        var thisMonthlyIndex = jsonMontyly["Result"].findIndex(c => new Date(c.TimeStamp).toLocaleString() == nowadays.toLocaleString());
+
+        this.summaryMTDActual = parseFloat(jsonMontyly["Result"][thisMonthlyIndex]["EnergyValue"])/parseFloat(this.plantData.Result.UnitScale);
+        this.summaryMTDPlan = parseFloat(jsonMontyly["Result"][thisMonthlyIndex]["Target"])/parseFloat(this.plantData.Result.UnitScale);
         //console.log(this.summaryMTDActual);
       }
       else{
@@ -1305,8 +1325,8 @@ export class SummaryPage {
         var thisYearIndex = jsonYearly["Result"].findIndex(c => new Date(c.TimeStamp).getFullYear() == nowadays.getFullYear());
         console.log("thisYearIndex" + thisYearIndex);
         
-        this.summaryYTDActual = Math.floor(parseFloat(jsonYearly["Result"][thisYearIndex]["EnergyValue"]) / 100000) / 10;
-        this.summaryYTDPlan = Math.floor(parseFloat(jsonYearly["Result"][thisYearIndex]["Target"]) / 100000) / 10;
+        this.summaryYTDActual = parseFloat(jsonYearly["Result"][thisYearIndex]["EnergyValue"])/parseFloat(this.plantData.Result.UnitScale);
+        this.summaryYTDPlan = parseFloat(jsonYearly["Result"][thisYearIndex]["Target"])/parseFloat(this.plantData.Result.UnitScale);
       }
       else{
         this.summaryYTDActual = 0;
