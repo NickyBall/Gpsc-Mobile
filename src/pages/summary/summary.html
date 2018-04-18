@@ -200,7 +200,7 @@
                   <span class="segment-text">Energy Generation</span>
                 </div>
               </ion-segment-button>
-              <ion-segment-button class="segment-title" value="generationSummaryTab">
+              <ion-segment-button class="segment-title" value="generationSummaryTab" (click)="generationSummary()">
                 <div text-wrap>
                   <span class="segment-text">Generation Summary</span>
                 </div>
@@ -227,7 +227,7 @@
                       <img [src]="powerIcon" item-start/>
                     </ion-col>
                     <ion-col col-5 class="power-text">
-                        <span class="power-value">{{ powerData }}</span>
+                        <span class="power-value">{{ powerOnGraph }}</span>
                         <span class="power-unit">MW</span>
                       </ion-col>
                   </ion-row>
@@ -252,7 +252,7 @@
                       <img [src]="irradiationIcon" item-start class="show"/>
                     </ion-col>
                     <ion-col col-5 class="power-text">
-                      <span class="power-value">{{ irradiationData }}</span>
+                      <span class="power-value">{{ irradiationOnGraph }}</span>
                       <span class="power-unit">W/m<sup>2</sup></span>
                     </ion-col>
                   </ion-row>
@@ -276,7 +276,7 @@
                       <img [src]="ambientIcon" item-start/>
                     </ion-col>
                     <ion-col col-5 class="power-text">
-                        <span class="power-value">{{ ambientTempData }}</span>
+                        <span class="power-value">{{ ambientTempOnGraph }}</span>
                         <span class="power-unit"><sup>o</sup>C</span>
                       </ion-col>
                   </ion-row>
