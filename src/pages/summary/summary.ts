@@ -49,6 +49,22 @@ export class SummaryPage {
   ambientMin: number;
   ambientScale: number;
 
+  hourlyMax: number;
+  hourlyMin: number;
+  hourlyScale: number;
+
+  dailyMax: number;
+  dailyMin: number;
+  dailyScale: number;
+
+  monthlyMax: number;
+  monthlyMin: number;
+  monthlyScale: number;
+
+  yearlyMax: number;
+  yearlyMin: number;
+  yearlyScale: number;
+
   hourly: any;
   hourlyData: any;
   dialy: any;
@@ -227,6 +243,7 @@ export class SummaryPage {
     this.powerGenGraph();
     // this.hourlyGraph(1);
     this.powerData = Math.floor(parseFloat(this.plantData.Result.PowerGen) / 100000) / 10;
+    
     //this.powerData = Math.floor(parseFloat(this.shared.CapacitySummary) / 100000) / 10;
     // this.irradiationData = Math.floor(parseFloat(this.plantData.Result.Irradiation) / 100000) / 10;
     //this.irradiationData = parseFloat(this.plantData.Result.Irradiation).toFixed(1);
@@ -244,6 +261,21 @@ export class SummaryPage {
     this.ambientMin = parseInt(this.plantData.Result.AMB_TempPeriod.Min);
     this.ambientScale = parseInt(this.plantData.Result.AMB_TempPeriod.Scale);
 
+    this.hourlyMax = parseInt(this.plantData.Result.HourlyPeriod.Max);
+    this.hourlyMin = parseInt(this.plantData.Result.HourlyPeriod.Min);
+    this.hourlyScale = parseInt(this.plantData.Result.HourlyPeriod.Scale);
+
+    this.dailyMax = parseInt(this.plantData.Result.DailyPeriod.Max);
+    this.dailyMin = parseInt(this.plantData.Result.DailyPeriod.Min);
+    this.dailyScale = parseInt(this.plantData.Result.DailyPeriod.Scale);
+
+    this.monthlyMax = parseInt(this.plantData.Result.MonthlyPeriod.Max);
+    this.monthlyMin = parseInt(this.plantData.Result.MonthlyPeriod.Min);
+    this.monthlyScale = parseInt(this.plantData.Result.MonthlyPeriod.Scale);
+
+    this.yearlyMax = parseInt(this.plantData.Result.YearlyPeriod.Max);
+    this.yearlyMin = parseInt(this.plantData.Result.YearlyPeriod.Min);
+    this.yearlyScale = parseInt(this.plantData.Result.YearlyPeriod.Scale);
 
     this.getWeather();
     this.generationSummary();
@@ -608,7 +640,7 @@ export class SummaryPage {
         y = dataSrc.map(y =>{
             return Math.round(y.EnergyValue/1000000);
         });
-        let max = Math.max.apply(null, y);
+        let max = this.hourlyMax;
         let count =  max.toString().length;
         if(count == 3){
             multiScale = 600;
@@ -665,9 +697,11 @@ export class SummaryPage {
                   fontFamily: 'Lata'
                 },
                 ticks: {
+                    min: this.hourlyMin,
+                    max: this.hourlyMax,
                     beginAtZero: true,
                     fontSize: 10,
-                    stepSize: multiScale
+                    stepSize: this.hourlyScale
                 }
               }],
 
@@ -840,10 +874,10 @@ export class SummaryPage {
                 },
                 ticks: {
                     // beginAtZero: isZero,
-                    // min: lower,
-                    // max: max,
+                    min: this.dailyMin,
+                    max: this.dailyMax,
                     fontSize: 10,
-                    // stepSize: 0.2
+                    stepSize: this.dailyScale
                 }
               }],
               },
@@ -1008,10 +1042,10 @@ export class SummaryPage {
                 },
                 ticks: {
                     // beginAtZero: true,
-                    max: chooseMax,
-                    min: lower,
+                    max: this.monthlyMax,
+                    min: this.monthlyMin,
                     fontSize: 10,
-                    // stepSize: 3
+                    stepSize: this.monthlyScale
                 }
               }],
             },
@@ -1200,9 +1234,9 @@ export class SummaryPage {
                 ticks: {
                     // beginAtZero: true,
                     fontSize: 10,
-                    max: chooseMax,
-                    min: lower,
-                    // stepSize: 3
+                    max: this.yearlyMax,
+                    min: this.yearlyMin,
+                    stepSize: this.yearlyScale
                 }
               }]
             },
