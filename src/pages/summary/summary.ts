@@ -669,51 +669,7 @@ export class SummaryPage {
     let timeLabel = undefined;
     let l = dataSrc.length;
     let multiScale;
-    // if( l >= 12){
-    //     // for(let i = dataSrc.length; )
-
-    //     hourlyDataSrc = dataSrc.map(y =>{
-    //         return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
-    //     });
-    //     y = hourlyDataSrc.slice(l-11, l);
-    //     let max = Math.max.apply(null, y);
-    //     let count =  max.toString().length;
-    //     if(count == 9){
-    //         multiScale = 600;
-    //     }else if(count == 8)
-    //     {
-    //         multiScale = 60;
-    //     }else{
-    //         multiScale = 6;
-    //     }
-    //     timeLabel = dataSrc.map(x =>{
-    //         return moment(x.TimeStamp).format('ha');
-    //     })
-    //     x = timeLabel.slice(l-11, l);
-    // }
-    // else{
-    //     y = dataSrc.map(y =>{
-    //         return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
-    //     });
-    //     let max = this.hourlyMax;
-    //     let count =  max.toString().length;
-    //     if(count == 3){
-    //         multiScale = 600;
-    //     }else if(count == 2)
-    //     {
-    //         multiScale = 60;
-    //     }else if(count == 1)
-    //     {
-    //         multiScale = 6;
-    //     }else
-    //     {
-    //         multiScale = 6 * (count - 1) * 10;
-    //     }
-   
-    //     x = dataSrc.map(x =>{
-    //         return moment(x.TimeStamp).format('ha');
-    //     })
-    // }
+ 
     y = dataSrc.map(y =>{
         return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
     });
@@ -829,53 +785,30 @@ export class SummaryPage {
     let upper = 0;
     let lower = 0;
     let timeLabel = undefined;
-    let l = dataSrc.length
-    if( l >= 30){
-        dailyDataSrc = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
-        });
-        console.log('check ', dailyDataSrc);
-        y = dailyDataSrc.slice(l-30, l);
-        let max, min, range, compensate;
-        max = Math.max.apply(null, y);
-        min = Math.min.apply(null, y);
-        range = max-min;
-        compensate = range * 50 / 100; // 20% of range
-        console.log('comp ', compensate);
-        upper = Math.round((max + compensate) * 10)/10
-        // lower = Math.round((min - compensate) * 10)/10
 
-        timeLabel = dataSrc.map(x =>{
-            return moment(x.TimeStamp).format('D MMM');
-        })
-        x = timeLabel.slice(l-30, l);
-        console.log("time:"+x);
-    }
-    else{
-        y = dataSrc.map(y =>{
-            // return Math.round(y.EnergyValue/1000000);
-            return y.EnergyValue/parseFloat(this.plantData.Result.UnitScale);
-        });
-        
-        let max, min, range, compensate;
-        max = Math.max.apply(null, y);
-        min = Math.min.apply(null, y);
-        console.log('max ', max);
-        console.log('min ', min);
-        range = max-min;
-        compensate = range * 20 / 100; // 20% of range
-        // upper = Math.round(compensate) + max;
-        // upper = max + ;
-        // lower = min - Math.round(compensate);
-        console.log('upper ', upper);
-        console.log('lower ', lower);
+    y = dataSrc.map(y =>{
+        // return Math.round(y.EnergyValue/1000000);
+        return y.EnergyValue/parseFloat(this.plantData.Result.UnitScale);
+    });
+    
+    let max, min, range, compensate;
+    max = Math.max.apply(null, y);
+    min = Math.min.apply(null, y);
+    console.log('max ', max);
+    console.log('min ', min);
+    range = max-min;
+    compensate = range * 20 / 100; // 20% of range
+    // upper = Math.round(compensate) + max;
+    // upper = max + ;
+    // lower = min - Math.round(compensate);
+    console.log('upper ', upper);
+    console.log('lower ', lower);
 
-        x = dataSrc.map(x =>{
-            return moment(x.TimeStamp).format('D MMM');
-        })
-        console.log('y', y);
-        console.log('x', x);
-    }
+    x = dataSrc.map(x =>{
+        return moment(x.TimeStamp).format('D MMM');
+    })
+    console.log('y', y);
+    console.log('x', x);
 
     let config = {
         type: '',
@@ -965,88 +898,44 @@ export class SummaryPage {
     let timeLabel = undefined;
     let l = dataSrc.length;
     lower = 0;
-    if( l >= 12){
 
-        monthlyDataSrc = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
-        });
+    y = dataSrc.map(y =>{
+        return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
+    });
 
-        monthlyDataTarget = dataSrc.map(y =>{
-            return Math.round(y.Target/parseFloat(this.plantData.Result.UnitScale));
-        });
+    yTarget = dataSrc.map(y =>{
+        return Math.round(y.Target/parseFloat(this.plantData.Result.UnitScale));
+    });
 
-        y = monthlyDataSrc;
-        yTarget = monthlyDataTarget;
-        console.log('value ', y);
-        console.log('target', yTarget);
-        let max, maxTarget, min, minTarget, range, compensate;
-        max = Math.max.apply(null, y);
-        maxTarget = Math.max.apply(null, yTarget);
-        min = Math.min.apply(null, y);
-        minTarget = Math.min.apply(null, yTarget);
+    console.log('value ', y);
+    console.log('target', yTarget);
+    let max, maxTarget, min, minTarget, range, compensate;
+    max = Math.max.apply(null, y);
+    maxTarget = Math.max.apply(null, yTarget);
+    min = Math.min.apply(null, y);
 
-        if(maxTarget > max){
-            chooseMax = maxTarget;
-        }else{
-            chooseMax = max;
-        }
-
-        if(minTarget < min){
-            chooseMin = minTarget;
-        }else{
-            chooseMin = min
-        }
-        range = chooseMax-min;
-        compensate = range * 50 / 100; // 50% of range
-        upper = Math.round((chooseMax + compensate) * 10)/10
-        // lower = Math.round((chooseMin - compensate) * 10)/10
-        console.log('upper ', upper);
-        console.log('lower ', lower);
-
-        timeLabel = dataSrc.map(x =>{
-            return moment(x.TimeStamp).format('MMM');
-        })
-        x = timeLabel.slice(l-11, l);
+    if(maxTarget > max){
+        chooseMax = maxTarget;
+    }else{
+        chooseMax = max;
     }
-    else{
-        y = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
-        });
 
-        yTarget = dataSrc.map(y =>{
-            return Math.round(y.Target/parseFloat(this.plantData.Result.UnitScale));
-        });
-
-        console.log('value ', y);
-        console.log('target', yTarget);
-        let max, maxTarget, min, minTarget, range, compensate;
-        max = Math.max.apply(null, y);
-        maxTarget = Math.max.apply(null, yTarget);
-        min = Math.min.apply(null, y);
-
-        if(maxTarget > max){
-            chooseMax = maxTarget;
-        }else{
-            chooseMax = max;
-        }
-
-        if(minTarget < min){
-            chooseMin = minTarget;
-        }else{
-            chooseMin = min
-        }
-
-        range = chooseMax-min;
-        compensate = range * 50 / 100; // 50% of range
-        upper = Math.round((chooseMax + compensate) * 10)/10
-        // lower = Math.round((chooseMin - compensate) * 10)/10
-        console.log('upper ', upper);
-        console.log('lower ', lower);
-
-        x = dataSrc.map(x =>{
-            return moment(x.TimeStamp).format('MMM');
-        })
+    if(minTarget < min){
+        chooseMin = minTarget;
+    }else{
+        chooseMin = min
     }
+
+    range = chooseMax-min;
+    compensate = range * 50 / 100; // 50% of range
+    upper = Math.round((chooseMax + compensate) * 10)/10
+    // lower = Math.round((chooseMin - compensate) * 10)/10
+    console.log('upper ', upper);
+    console.log('lower ', lower);
+
+    x = dataSrc.map(x =>{
+        return moment(x.TimeStamp).format('MMM');
+    })
 
     let config = {
         type: '',
@@ -1154,90 +1043,45 @@ export class SummaryPage {
     let timeLabel = undefined;
     let l = dataSrc.length;
     lower = 0;
-    if( l >= 6){
-        // for(let i = dataSrc.length; )
-        yearlyDataSrc = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
-        });
-        yearlyDataSrcTarget = dataSrc.map(y =>{
-            return Math.round(y.Target/parseFloat(this.plantData.Result.UnitScale));
-        });
 
-        y = yearlyDataSrc.slice(l-6, l);
-        yTarget = yearlyDataSrcTarget.slice(l-6, l);
-        console.log('value ', y);
-        console.log('target', yTarget);
-        let max, maxTarget, min, minTarget, range, compensate;
-        max = Math.max.apply(null, y);
-        maxTarget = Math.max.apply(null, yTarget);
-        min = Math.min.apply(null, y);
-        minTarget = Math.min.apply(null, yTarget);
+    y = dataSrc.map(y =>{
+        return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
+    });
 
-        if(maxTarget > max){
-            chooseMax = maxTarget;
-        }else{
-            chooseMax = max;
-        }
+    yTarget = dataSrc.map(y =>{
+        return Math.round(y.Target/parseFloat(this.plantData.Result.UnitScale));
+    });
 
-        if(minTarget < min){
-            chooseMin = minTarget;
-        }else{
-            chooseMin = min
-        }
-        console.log('cMax', chooseMax);
-        console.log('cMin', chooseMin);
-        range = chooseMax-min;
-        compensate = range * 50 / 100; // 50% of range
-        upper = Math.round((chooseMax + compensate) * 10)/10;
-        // lower = Math.round((chooseMin - compensate) * 10)/10;
-        console.log('upper ', upper);
-        console.log('lower ', lower);
+    console.log('value ', y);
+    console.log('target', yTarget);
+    let max, maxTarget, min, minTarget, range, compensate;
+    max = Math.max.apply(null, y);
+    maxTarget = Math.max.apply(null, yTarget);
+    min = Math.min.apply(null, y);
+    minTarget = Math.min.apply(null, yTarget);
 
-        timeLabel = dataSrc.map(x =>{
-            return moment(x.TimeStamp).format('YYYY');
-        })
-        x = timeLabel.slice(l-6, l);
+    if(maxTarget > max){
+        chooseMax = maxTarget;
+    }else{
+        chooseMax = max;
     }
-    else{
-        y = dataSrc.map(y =>{
-            return Math.round(y.EnergyValue/parseFloat(this.plantData.Result.UnitScale));
-        });
 
-        yTarget = dataSrc.map(y =>{
-            return Math.round(y.Target/parseFloat(this.plantData.Result.UnitScale));
-        });
-
-        console.log('value ', y);
-        console.log('target', yTarget);
-        let max, maxTarget, min, minTarget, range, compensate;
-        max = Math.max.apply(null, y);
-        maxTarget = Math.max.apply(null, yTarget);
-        min = Math.min.apply(null, y);
-        minTarget = Math.min.apply(null, yTarget);
-
-        if(maxTarget > max){
-            chooseMax = maxTarget;
-        }else{
-            chooseMax = max;
-        }
-
-        if(minTarget < min){
-            chooseMin = minTarget;
-        }else{
-            chooseMin = min
-        }
-
-        range = chooseMax-min;
-        compensate = range * 50 / 100; // 50% of range
-        upper = Math.round((chooseMax + compensate) * 10)/10;
-        // lower = Math.round((chooseMin - compensate) * 10)/10;
-        console.log('upper ', upper);
-        console.log('lower ', lower);
-
-        x = dataSrc.map(x =>{
-            return moment(x.TimeStamp).format('YYYY');
-        })
+    if(minTarget < min){
+        chooseMin = minTarget;
+    }else{
+        chooseMin = min
     }
+
+    range = chooseMax-min;
+    compensate = range * 50 / 100; // 50% of range
+    upper = Math.round((chooseMax + compensate) * 10)/10;
+    // lower = Math.round((chooseMin - compensate) * 10)/10;
+    console.log('upper ', upper);
+    console.log('lower ', lower);
+
+    x = dataSrc.map(x =>{
+        return moment(x.TimeStamp).format('YYYY');
+    })
 
     let config = {
         type: '',
