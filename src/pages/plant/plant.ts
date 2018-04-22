@@ -100,7 +100,7 @@ export class PlantPage {
           x.alpha = 1;
         }
       });
-      console.log('solar', this.streamList);
+      console.log('solar', this.solarList);
       this.loader.dismiss();
       if (this.shared.isRunOnDevice) {
         this.updateMarker(this.solarList);
